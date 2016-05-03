@@ -4,72 +4,70 @@
 
 " Setup Vundle
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " ==== plugins for looks
 " airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " gitgutter
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " visual indicators
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Yggdroot/indentLine'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Yggdroot/indentLine'
 
 " colorschemes
-Plugin 'flazz/vim-colorschemes'
-Plugin 'morhetz/gruvbox'
+Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 " ==== plugins for completion
 " tab autocomplete
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " auto-add endd
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " auto-close pairs
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " more autocomplete
-Plugin 'Shougo/neocomplete'
+Plug 'Shougo/neocomplete'
 
 " ==== other helpful plugins
 
 " trailing whitespace
-Plugin 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 
 " sensible settings
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " quick-comment
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
 " ack
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " use ag instead
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 " undo
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 
 " file tree
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 
 " syntax checker
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -82,41 +80,39 @@ let g:syntastic_mode_map = {
       \ "active_filetypes": ["ruby"] }
 
 " compiling
-Plugin 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 
 " edit scope surrounding
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " more git stuff
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " sublime-like multicursor
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " search around
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " number lines by dist
-Plugin 'myusuf3/numbers.vim'
+Plug 'myusuf3/numbers.vim'
 
 " ctag lists
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " quickscope
-Plugin 'unblevable/quick-scope'
+Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==== additional content
 " fish
-Plugin 'dag/vim-fish'
+Plug 'dag/vim-fish'
 
 " latex
-Plugin 'vim-latex/vim-latex'
+Plug 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+call plug#end()
 
 " ==== begin other, non-plugin stuff ==== "
 
