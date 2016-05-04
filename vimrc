@@ -60,7 +60,11 @@ if executable('ag')
 endif
 
 " undo
-Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
