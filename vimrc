@@ -132,6 +132,9 @@ set shiftwidth=2
 set number
 set showcmd
 
+set background=dark
+colorscheme colorsbox-material
+
 " wrapping
 set whichwrap+=>,l
 set whichwrap+=<,h
