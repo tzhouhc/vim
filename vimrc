@@ -2,12 +2,9 @@
 " ==== Ting's Vim Setup ====
 "
 
-" Setup Vundle
+" Setup vim-Plug --- "{{{
 set nocompatible
 call plug#begin('~/.vim/bundle')
-
-" let Vundle manage Vundle, required
-Plug 'VundleVim/Vundle.vim'
 
 " ==== plugins for looks
 " airline
@@ -95,6 +92,9 @@ Plug 'tpope/vim-fugitive'
 " sublime-like multicursor
 Plug 'terryma/vim-multiple-cursors'
 
+" split/join
+Plug 'AndrewRadev/splitjoin.vim'
+
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -116,7 +116,7 @@ Plug 'dag/vim-fish'
 Plug 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
 
-call plug#end()
+call plug#end()"}}}
 
 " ==== begin other, non-plugin stuff ==== "
 
@@ -127,31 +127,6 @@ if !has("gui_running")
   endif
 endif
 
-" vim cursor
-if $TERM_PROGRAM =~ "iTerm"
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
-
-" alternate viminfo location
-set viminfo+=n~/.vim/viminfo
-
-set shell=bash
-syntax on
-set foldmethod=syntax
-
-set mouse=a
-
-set background=dark
-colorscheme colorsbox-material "base16-default
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set noshowmode
-
-set tabstop=2
-set softtabstop=2
 set expandtab
 set shiftwidth=2
 set number
@@ -170,7 +145,7 @@ set showmatch
 set incsearch
 set hlsearch
 
-" custom keymaps
+" custom keymaps "{{{
 noremap <Down> gj
 noremap <Up> gk
 noremap <silent> <C-Left> ^
@@ -190,20 +165,21 @@ vnoremap < <esc>`>a><esc>`<i<
 vnoremap $ <esc>`>a$<esc>`<i$
 
 " common utilities
-nnoremap <silent> <leader>g :GitGutterToggle<cr>
-nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
+nnoremap <silent> <leader>gi :GitGutterToggle<cr>
+nnoremap <silent> <leader>rp :RainbowParenthesesToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeToggle<cr>
-nnoremap <silent> <leader>u :GundoToggle<cr>
+nnoremap <silent> <leader>un :GundoToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 
 nnoremap <silent> <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+"}}}
 
 set foldenable
 set foldlevelstart=4
 
 runtime macros/matchit.vim
 
-
+autocmd filetype crontab setlocal nobackup nowritebackup
