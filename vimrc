@@ -58,10 +58,6 @@ endif
 
 " undo
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-if has('persistent_undo')
-  set undodir=~/.vim/undo
-  set undofile
-endif
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -148,6 +144,9 @@ set showmatch
 set incsearch
 set hlsearch
 
+" copying
+set paste
+
 " custom keymaps "{{{
 noremap <Down> gj
 noremap <Up> gk
@@ -168,13 +167,14 @@ vnoremap < <esc>`>a><esc>`<i<
 vnoremap $ <esc>`>a$<esc>`<i$
 
 " common utilities
-nnoremap <silent> <leader>gi :GitGutterToggle<cr>
-nnoremap <silent> <leader>rp :RainbowParenthesesToggle<cr>
+nnoremap <silent> <leader>g :GitGutterToggle<cr>
+nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeToggle<cr>
-nnoremap <silent> <leader>un :GundoToggle<cr>
+nnoremap <silent> <leader>u :GundoToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
+
 
 nnoremap <silent> <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
