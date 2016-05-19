@@ -128,9 +128,6 @@ set shiftwidth=2
 set number
 set showcmd
 
-set background=dark
-colorscheme colorsbox-material
-
 " wrapping
 set whichwrap+=>,l
 set whichwrap+=<,h
@@ -144,8 +141,8 @@ set showmatch
 set incsearch
 set hlsearch
 
-" copying
-set paste
+" mouse use
+set mouse=a
 
 " custom keymaps "{{{
 noremap <Down> gj
@@ -175,7 +172,7 @@ nnoremap <silent> <leader>u :GundoToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 
-
+" quickly modify vimrc file
 nnoremap <silent> <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 "}}}
@@ -186,3 +183,6 @@ set foldlevelstart=4
 runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+set background=dark
+colorscheme colorsbox-material
