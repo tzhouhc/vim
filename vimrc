@@ -160,7 +160,7 @@ vnoremap ' <esc>`>a'<esc>`<i'
 vnoremap [ <esc>`>a]<esc>`<i[
 vnoremap ( <esc>`>a)<esc>`<i(
 vnoremap { <esc>`>a}<esc>`<i{
-vnoremap < <esc>`>a><esc>`<i<
+" vnoremap < <esc>`>a><esc>`<i<
 vnoremap $ <esc>`>a$<esc>`<i$
 
 " common utilities
