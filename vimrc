@@ -13,6 +13,12 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" devicon
+" Plug 'ryanoasis/vim-devicons'
+
+" tabular
+Plug 'godlygeek/tabular'
+
 " gitgutter
 Plug 'airblade/vim-gitgutter'
 
@@ -23,6 +29,9 @@ Plug 'Yggdroot/indentLine'
 " colorschemes
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
+Plug 'roosta/srcery'
+Plug 'rakr/vim-one'
+Plug 'easysid/mod8.vim'
 
 " ==== plugins for completion
 " tab autocomplete
@@ -49,6 +58,9 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
+" quick-run
+Plug 'thinca/vim-quickrun'
+
 " ack
 Plug 'mileszs/ack.vim'
 " use ag instead
@@ -73,8 +85,9 @@ let g:syntastic_loc_list_height = 3
 let g:syntastic_python_checkers = ['pep8', 'pep257']
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "active_filetypes": ["ruby"] }
+      \ "mode": "passive", }
+
+" \ 'active_filetypes': ["ruby"] }
 
 " compiling
 Plug 'tpope/vim-dispatch'
@@ -85,6 +98,15 @@ Plug 'tpope/vim-surround'
 " more git stuff
 Plug 'tpope/vim-fugitive'
 
+" fancy live-running code
+Plug 'metakirby5/codi.vim'
+
+" let g:codi#interpreters = {
+  " \ 'ruby': {
+    " \ 'bin': 'pry'
+  " \ }
+" \ }
+
 " sublime-like multicursor
 Plug 'terryma/vim-multiple-cursors'
 
@@ -93,6 +115,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
+
+" L9
+Plug 'L9'
+
+" fuzzy search
+Plug 'vim-scripts/FuzzyFinder'
 
 " number lines by dist
 Plug 'myusuf3/numbers.vim'
@@ -112,14 +140,27 @@ Plug 'dag/vim-fish'
 Plug 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
 
+" python
+"Plug 'davidhalter/jedi-vim'
+
+" ruby
+Plug 'vim-ruby/vim-ruby'
+
 call plug#end()"}}}
 
 " ==== begin other, non-plugin stuff ==== "
 
+set background=dark
+
 " vim 24-bit color mode
-if !has("gui_running")
-  if has('termtruecolor')
-    set guicolors
+if !has("gui_running") " if terminal vim
+  if has('termguicolors')&&($SSH_CLIENT==0) " if has true color and is local
+    set termguicolors
+    colorscheme material-theme
+    let g:airline_theme='wombat'
+    " colorscheme colorsbox-material
+  else
+    colorscheme gruvbox
   endif
 endif
 
@@ -143,6 +184,9 @@ set hlsearch
 
 " mouse use
 set mouse=a
+
+" encoding
+set encoding=utf8
 
 " custom keymaps "{{{
 noremap <Down> gj
@@ -180,9 +224,10 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 set foldenable
 set foldlevelstart=4
 
+" Fix tmux weird color
+set t_ut=
+
 runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-set background=dark
-colorscheme colorsbox-material
