@@ -12,6 +12,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" " Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " devicon
 " Plug 'ryanoasis/vim-devicons'
@@ -216,9 +218,15 @@ nnoremap <silent> <leader>u :GundoToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 
+noremap <silent> <leader><Left> :bprev<cr>
+noremap <silent> <leader><Right> :bnext<cr>
+
 " quickly modify vimrc file
-nnoremap <silent> <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+
+" Other convenience methods
+nnoremap <silent> <leader>nn :NumbersToggle<CR>
 "}}}
 
 set foldenable
