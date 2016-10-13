@@ -59,6 +59,9 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " vim motion
 Plug 'easymotion/vim-easymotion'
 
+" kill buffer sans killing the split
+Plug 'qpkorr/vim-bufkill'
+
 " trailing whitespace
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -73,6 +76,9 @@ let NERDSpaceDelims = 1
 " quick-run
 Plug 'thinca/vim-quickrun'
 
+" recently used
+Plug 'mru.vim'
+
 " ack
 Plug 'mileszs/ack.vim'
 " use ag instead
@@ -85,27 +91,15 @@ endif
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 
 " file tree
-" leader+f
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+let NERDTreeQuitOnOpen=1
 
 " syntax checker
-" leader+s to check
-" Plug 'scrooloose/syntastic'
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_loc_list_height = 3
-" let g:syntastic_python_checkers = ['pep8', 'pep257']
-" let g:syntastic_ruby_checkers = ['rubocop']
-" let g:syntastic_mode_map = {
-      " \ "mode": "active", }
-
 " neomake
 Plug 'neomake/neomake'
-
-" \ 'active_filetypes': ["ruby"] }
+let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
+let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
 
 " compiling
 Plug 'tpope/vim-dispatch'
@@ -141,6 +135,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " number lines by dist
 Plug 'myusuf3/numbers.vim'
 
+" quickrun
+Plug 'quickrun.vim'
+
 " ctag lists
 Plug 'majutsushi/tagbar'
 
@@ -149,18 +146,20 @@ Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==== additional content
-" fish
-Plug 'dag/vim-fish'
+" ==== additional content
+" polyglot
+Plug 'sheerun/vim-polyglot'
+
+" markdown
+Plug 'tpope/vim-markdown'
+let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'json']
+
+" python
+Plug 'davidhalter/jedi-vim'
 
 " latex
 Plug 'vim-latex/vim-latex'
 let g:tex_flavor='latex'
-
-" python
-"Plug 'davidhalter/jedi-vim'
-
-" ruby
-Plug 'vim-ruby/vim-ruby'
 
 call plug#end()"}}}
 
@@ -204,6 +203,17 @@ set mouse=a
 " encoding
 set encoding=utf8
 
+" functions
+" ===================================
+function! ToggleNERDTreeFind()
+    if g:NERDTree.IsOpen()
+        execute ':NERDTreeClose'
+    else
+        execute ':NERDTreeFind'
+    endif
+endfunction
+
+
 " custom keymaps "{{{
 noremap <Down> gj
 noremap <Up> gk
@@ -225,16 +235,19 @@ vnoremap $ <esc>`>a$<esc>`<i$
 
 " common utilities
 nnoremap <silent> <leader>g :GitGutterToggle<cr>
-nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
+" nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
+nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
-nnoremap <silent> <leader>f :NERDTreeToggle<cr>
+nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<cr>
-nnoremap <silent> <leader>s :SyntasticToggle<cr>
+nnoremap <silent> <leader>p :set paste!<cr>
 
 nnoremap <silent> <Space> :noh<cr>
+nnoremap <silent> <leader>nn :NumbersToggle<cr>
+nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 
-noremap <silent> <leader><Left> :bprev<cr>
-noremap <silent> <leader><Right> :bnext<cr>
+nnoremap <silent> <leader><Left> :bprev<cr>
+nnoremap <silent> <leader><Right> :bnext<cr>
 
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
@@ -254,5 +267,6 @@ runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 
-autocmd BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 
+set background=dark
