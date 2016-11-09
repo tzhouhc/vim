@@ -11,10 +11,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'wombat'
 " " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='wombat'
+let g:airline_theme='quantum'
 
 " devicon
 " Plug 'ryanoasis/vim-devicons'
@@ -36,12 +35,14 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
 
 " colorschemes
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'rakr/vim-one'
 Plug 'mbbill/vim-seattle'
-Plug 'raphamorim/lucario'
+" Plug 'raphamorim/lucario'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'jdkanani/vim-material-theme'
 
 " ==== plugins for completion
 " tab autocomplete
@@ -60,7 +61,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " ==== other helpful plugins
 
 " vim motion
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 " kill buffer sans killing the split
 Plug 'qpkorr/vim-bufkill'
@@ -94,7 +95,7 @@ endif
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 
 " file tree
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
 
@@ -134,7 +135,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'L9'
 
 " fuzzy search
-Plug 'vim-scripts/FuzzyFinder'
+" Plug 'vim-scripts/FuzzyFinder'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -183,7 +184,7 @@ if !has("gui_running") " if terminal vim
    colorscheme gruvbox
  endif
 else
-  colorscheme material-theme 
+  colorscheme material-theme
 endif
 
 set expandtab
@@ -210,14 +211,21 @@ set mouse=a
 " encoding
 set encoding=utf8
 
+" clipboard
+set clipboard=exclude:.*
+
 " functions
 " ===================================
 function! ToggleNERDTreeFind()
+  if exists('g:NERDTree.IsOpen') 
     if g:NERDTree.IsOpen()
         execute ':NERDTreeClose'
     else
         execute ':NERDTreeFind'
     endif
+  else
+    execute ':NERDTreeFind'
+  endif
 endfunction
 
 
