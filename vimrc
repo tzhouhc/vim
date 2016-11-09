@@ -1,4 +1,3 @@
-"
 " ==== Ting's Vim Setup ====
 "
 
@@ -12,6 +11,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'wombat'
 " " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='wombat'
@@ -27,6 +27,9 @@ Plug 'godlygeek/tabular'
 " not much to say here; it's on by default
 Plug 'airblade/vim-gitgutter'
 
+" quickrun
+Plug 'vim-scripts/quickrun.vim'
+
 " visual indicators
 " Turn on rainbow paren with leader+r
 Plug 'kien/rainbow_parentheses.vim'
@@ -35,16 +38,16 @@ Plug 'Yggdroot/indentLine'
 " colorschemes
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-Plug 'roosta/srcery'
+Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'rakr/vim-one'
-Plug 'easysid/mod8.vim'
-Plug 'jacoborus/tender'
+Plug 'mbbill/vim-seattle'
+Plug 'raphamorim/lucario'
 
 " ==== plugins for completion
 " tab autocomplete
 Plug 'ervandew/supertab'
 
-" auto-add endd
+" auto-add end
 Plug 'tpope/vim-endwise'
 
 " auto-close pairs
@@ -121,6 +124,9 @@ Plug 'terryma/vim-multiple-cursors'
 " gs/gJ for splitting/joining
 Plug 'AndrewRadev/splitjoin.vim'
 
+" session save
+Plug 'tpope/vim-obsession'
+
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -150,12 +156,13 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
-" markdown
-Plug 'tpope/vim-markdown'
-let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'json']
 
 " python
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
+" let g:jedi#auto_initialization = 0
+
+" many language support
+Plug 'sheerun/vim-polyglot'
 
 " latex
 Plug 'vim-latex/vim-latex'
@@ -169,14 +176,14 @@ set background=dark
 
 " vim 24-bit color mode
 if !has("gui_running") " if terminal vim
-  if has('termguicolors')&&($SSH_CLIENT==0) " if has true color and is local
-    set termguicolors
-    colorscheme material-theme
-  else
-    colorscheme gruvbox
-  endif
+ if has('termguicolors') " if has true color and is local
+   set termguicolors
+   colorscheme material-theme
+ else
+   colorscheme gruvbox
+ endif
 else
-  colorscheme material-theme
+  colorscheme material-theme 
 endif
 
 set expandtab
@@ -231,7 +238,11 @@ vnoremap [ <esc>`>a]<esc>`<i[
 vnoremap ( <esc>`>a)<esc>`<i(
 vnoremap { <esc>`>a}<esc>`<i{
 " vnoremap < <esc>`>a><esc>`<i<
-vnoremap $ <esc>`>a$<esc>`<i$
+" vnoremap $ <esc>`>a$<esc>`<i$
+
+" tab switch buffer
+nnoremap <leader><Right> :bnext<CR>
+nnoremap <leader><Left> :bprevious<CR>
 
 " common utilities
 nnoremap <silent> <leader>g :GitGutterToggle<cr>
@@ -262,7 +273,6 @@ set foldlevelstart=4
 
 " Fix tmux weird color
 set t_ut=
-
 runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
