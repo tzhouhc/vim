@@ -61,7 +61,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " ==== other helpful plugins
 
 " vim motion
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " kill buffer sans killing the split
 Plug 'qpkorr/vim-bufkill'
@@ -100,10 +100,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
 
 " syntax checker
-" neomake
-Plug 'neomake/neomake'
-let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
-let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
+Plug 'w0rp/ale'
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
 
 " compiling
 Plug 'tpope/vim-dispatch'
@@ -259,7 +258,7 @@ nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<cr>
-nnoremap <silent> <leader>p :set paste!<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:NumbersToggle<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
@@ -278,13 +277,14 @@ nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
 set foldenable
 set foldlevelstart=4
+set foldmethod=syntax
+let g:vim_markdown_conceal = 0
 
 " Fix tmux weird color
 set t_ut=
 runtime macros/matchit.vim
 
+let &runtimepath.=',~/.vim/bundle/ale'
 autocmd filetype crontab setlocal nobackup nowritebackup
-
-autocmd! BufWritePost,BufEnter * Neomake
 
 set background=dark
