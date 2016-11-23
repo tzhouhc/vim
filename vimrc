@@ -1,11 +1,16 @@
 " ==== Ting's Vim Setup ====
 "
 
-" Setup vim-Plug --- "{{{
+" Plugins
+" ==================================
+
+" Setup vim-Plug
 set nocompatible
 call plug#begin('~/.vim/bundle')
 
-" ==== plugins for looks
+" passive plugins that I don't need to touch
+" ============================
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -15,24 +20,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
 
-" devicon
-" Plug 'ryanoasis/vim-devicons'
-
-" tabular
-" ':Tab /:' for alignment with :
-Plug 'godlygeek/tabular'
-
 " gitgutter
 " not much to say here; it's on by default
 Plug 'airblade/vim-gitgutter'
-
-" quickrun
-Plug 'vim-scripts/quickrun.vim'
 
 " visual indicators
 " Turn on rainbow paren with leader+r
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
+let g:indentLine_noConcealCursor=""
 
 " colorschemes
 " Plug 'flazz/vim-colorschemes'
@@ -44,7 +40,6 @@ Plug 'mbbill/vim-seattle'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
-" ==== plugins for completion
 " tab autocomplete
 Plug 'ervandew/supertab'
 
@@ -54,11 +49,42 @@ Plug 'tpope/vim-endwise'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
-" more autocomplete
 Plug 'Shougo/neocomplete'
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
-" ==== other helpful plugins
+" sensible settings
+Plug 'tpope/vim-sensible'
+
+" syntax checker
+Plug 'w0rp/ale'
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+
+" edit scope surrounding
+Plug 'tpope/vim-surround'
+
+" L9
+Plug 'L9'
+
+" number lines by dist
+Plug 'myusuf3/numbers.vim'
+
+" polyglot
+Plug 'sheerun/vim-polyglot'
+
+
+" active plugins; I have to call them
+" ==========================
+
+" tabular
+" ':Tab /:' for alignment with :
+Plug 'godlygeek/tabular'
+
+" quickrun
+Plug 'vim-scripts/quickrun.vim'
 
 " vim motion
 Plug 'easymotion/vim-easymotion'
@@ -69,19 +95,10 @@ Plug 'qpkorr/vim-bufkill'
 " trailing whitespace
 Plug 'bronson/vim-trailing-whitespace'
 
-" sensible settings
-Plug 'tpope/vim-sensible'
-
 " quick-comment
 " leader+c+space = toggle comment
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
-
-" quick-run
-Plug 'thinca/vim-quickrun'
-
-" recently used
-Plug 'mru.vim'
 
 " ack
 Plug 'mileszs/ack.vim'
@@ -99,16 +116,8 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
 
-" syntax checker
-Plug 'w0rp/ale'
-let g:ale_sign_error = '!'
-let g:ale_sign_warning = '?'
-
 " compiling
 Plug 'tpope/vim-dispatch'
-
-" edit scope surrounding
-Plug 'tpope/vim-surround'
 
 " more git stuff
 Plug 'tpope/vim-fugitive'
@@ -124,25 +133,13 @@ Plug 'terryma/vim-multiple-cursors'
 " gs/gJ for splitting/joining
 Plug 'AndrewRadev/splitjoin.vim'
 
-" session save
-Plug 'tpope/vim-obsession'
-
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
-
-" L9
-Plug 'L9'
 
 " fuzzy search
 " Plug 'vim-scripts/FuzzyFinder'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" number lines by dist
-Plug 'myusuf3/numbers.vim'
-
-" quickrun
-Plug 'quickrun.vim'
 
 " ctag lists
 Plug 'majutsushi/tagbar'
@@ -151,27 +148,14 @@ Plug 'majutsushi/tagbar'
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" ==== additional content
-" ==== additional content
-" polyglot
-Plug 'sheerun/vim-polyglot'
-
-
-" python
-" Plug 'davidhalter/jedi-vim'
-" let g:jedi#auto_initialization = 0
-
-" many language support
-Plug 'sheerun/vim-polyglot'
-
-" latex
-Plug 'vim-latex/vim-latex'
-let g:tex_flavor='latex'
-
 call plug#end()"}}}
+
+" ==== end plugins ==== "
 
 " ==== begin other, non-plugin stuff ==== "
 
+" Visual
+" ===========================
 set background=dark
 
 " vim 24-bit color mode
@@ -186,6 +170,8 @@ else
   colorscheme material-theme
 endif
 
+" Settings
+" ===========================
 set expandtab
 set shiftwidth=2
 set number
@@ -213,8 +199,20 @@ set encoding=utf8
 " clipboard
 set clipboard=exclude:.*
 
+set foldenable
+set foldlevelstart=4
+set foldmethod=syntax
+let g:vim_markdown_conceal = 0
+
+" Fix tmux weird color
+set t_ut=
+runtime macros/matchit.vim
+
+let &runtimepath.=',~/.vim/bundle/ale'
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 " functions
-" ===================================
+" ============================
 function! ToggleNERDTreeFind()
   if exists('g:NERDTree.IsOpen') 
     if g:NERDTree.IsOpen()
@@ -227,8 +225,8 @@ function! ToggleNERDTreeFind()
   endif
 endfunction
 
-
-" custom keymaps "{{{
+" keymaps
+" ===========================
 noremap <Down> gj
 noremap <Up> gk
 noremap <silent> <C-Left> ^
@@ -254,7 +252,7 @@ nnoremap <leader><Left> :bprevious<CR>
 " common utilities
 nnoremap <silent> <leader>g :GitGutterToggle<cr>
 " nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
-nnoremap <silent> <leader>r :QuickRun<cr>
+" nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<cr>
@@ -273,18 +271,4 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " Other convenience methods
 nnoremap <silent> <leader>nn :NumbersToggle<CR>
-"}}}
 
-set foldenable
-set foldlevelstart=4
-set foldmethod=syntax
-let g:vim_markdown_conceal = 0
-
-" Fix tmux weird color
-set t_ut=
-runtime macros/matchit.vim
-
-let &runtimepath.=',~/.vim/bundle/ale'
-autocmd filetype crontab setlocal nobackup nowritebackup
-
-set background=dark
