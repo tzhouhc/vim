@@ -56,12 +56,11 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 Plug 'tpope/vim-sensible'
 
 " syntax checker
-Plug 'w0rp/ale'
-let g:ale_sign_error = '!'
-let g:ale_sign_warning = '?'
-let g:ale_linters = {
-\   'python': ['flake8'],
-\}
+Plug 'neomake/neomake'
+let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
+let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
+" linter settings
+let g:neomake_python_enabled_makers = ['flake8', 'mypy']
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -272,3 +271,5 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 " Other convenience methods
 nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
+" Autorun syntax check
+autocmd! BufWritePost * Neomake
