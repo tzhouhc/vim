@@ -60,7 +60,7 @@ Plug 'neomake/neomake'
 let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
 " linter settings
-let g:neomake_python_enabled_makers = ['flake8', 'mypy']
+let g:neomake_python_enabled_makers = ['flake8', 'mypy', 'pylint']
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -273,3 +273,12 @@ nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
 " Autorun syntax check
 autocmd! BufWritePost * Neomake
+" Fix tmux weird color
+set t_ut=
+runtime macros/matchit.vim
+
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+set foldlevelstart=99
+set colorcolumn=80
+set background=dark
