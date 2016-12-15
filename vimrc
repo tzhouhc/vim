@@ -49,8 +49,13 @@ Plug 'tpope/vim-endwise'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
+" neocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neocomplete'
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " sensible settings
 Plug 'tpope/vim-sensible'
@@ -74,6 +79,11 @@ Plug 'myusuf3/numbers.vim'
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
+" vim snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " active plugins; I have to call them
 " ==========================
@@ -105,6 +115,9 @@ Plug 'mileszs/ack.vim'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" quick replacement
+Plug 'brooth/far.vim'
 
 " undo
 " leader+u
@@ -196,7 +209,9 @@ set mouse=a
 set encoding=utf8
 
 " clipboard
-set clipboard=exclude:.*
+if !has('nvim')
+    set clipboard=exclude:.*
+endif
 
 set foldenable
 set foldlevelstart=4
@@ -273,3 +288,8 @@ nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
 " Autorun syntax check
 autocmd! BufWritePost * Neomake
+
+" Neovim stuff!
+if has('nvim')
+  set inccommand=split
+endif
