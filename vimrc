@@ -49,8 +49,16 @@ Plug 'tpope/vim-endwise'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
+" python folding
+Plug 'tmhedberg/SimpylFold'
+
+" neocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neocomplete'
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " sensible settings
 Plug 'tpope/vim-sensible'
@@ -60,10 +68,13 @@ Plug 'neomake/neomake'
 let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
 " linter settings
-let g:neomake_python_enabled_makers = ['flake8', 'mypy', 'pylint']
+let g:neomake_python_enabled_makers = ['pep8', 'mypy', 'pylint']
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
+
+" easier searching
+Plug 'junegunn/vim-slash'
 
 " L9
 Plug 'L9'
@@ -74,6 +85,11 @@ Plug 'myusuf3/numbers.vim'
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
+" vim snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " active plugins; I have to call them
 " ==========================
@@ -105,6 +121,9 @@ Plug 'mileszs/ack.vim'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" quick replacement
+Plug 'brooth/far.vim'
 
 " undo
 " leader+u
@@ -196,7 +215,9 @@ set mouse=a
 set encoding=utf8
 
 " clipboard
-set clipboard=exclude:.*
+if !has('nvim')
+    set clipboard=exclude:.*
+endif
 
 set foldenable
 set foldlevelstart=4
@@ -282,3 +303,8 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 set foldlevelstart=99
 set colorcolumn=80
 set background=dark
+
+" Neovim stuff!
+if has('nvim')
+  set inccommand=split
+endif
