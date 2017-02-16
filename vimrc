@@ -52,6 +52,9 @@ Plug 'Raimondi/delimitMate'
 " python folding
 Plug 'tmhedberg/SimpylFold'
 
+" json folding
+Plug 'elzr/vim-json'
+
 " neocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neocomplete'
@@ -127,7 +130,7 @@ Plug 'brooth/far.vim'
 
 " undo
 " leader+u
-Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
+Plug 'sjl/gundo.vim'
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
@@ -153,6 +156,10 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '^build$',
+  \ }
+let g:ctrlp_extensions = ['line']
 
 " fuzzy search
 " Plug 'vim-scripts/FuzzyFinder'
@@ -275,7 +282,7 @@ nnoremap <silent> <leader>g :GitGutterToggle<cr>
 " nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-nnoremap <silent> <leader>u :GundoToggle<cr>
+nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:NumbersToggle<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>

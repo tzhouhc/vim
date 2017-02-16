@@ -8,3 +8,5 @@ let NERDSpaceDelims = 0
 setlocal  tabstop=4
 setlocal  shiftwidth=4
 " let g:indent_guides_guide_size = 4
+
+set foldmethod=indent
