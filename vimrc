@@ -24,6 +24,9 @@ let g:airline_theme='quantum'
 " not much to say here; it's on by default
 Plug 'airblade/vim-gitgutter'
 
+" Fastfold
+Plug 'Konfekt/FastFold'
+
 " visual indicators
 " Turn on rainbow paren with leader+r
 Plug 'kien/rainbow_parentheses.vim'
@@ -31,12 +34,6 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
 
 " colorschemes
-" Plug 'flazz/vim-colorschemes'
-Plug 'morhetz/gruvbox'
-" Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'rakr/vim-one'
-Plug 'mbbill/vim-seattle'
-" Plug 'raphamorim/lucario'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
@@ -55,23 +52,58 @@ Plug 'tmhedberg/SimpylFold'
 " json folding
 Plug 'elzr/vim-json'
 
+" jedi python
+Plug 'davidhalter/jedi-vim'
+
 " neocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neocomplete'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+"let g:neocomplete#sources#dictionary#dictionaries = {
+    "\ 'default' : '',
+    "\ 'vimshell' : $HOME.'/.vimshell_hist',
+    "\ 'scheme' : $HOME.'/.gosh_completions'
+        "\ }
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+  "let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
 if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 endif
 
 " sensible settings
 Plug 'tpope/vim-sensible'
 
+" other syntax checker
+"Plug 'vim-syntastic/syntastic'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"highlight SyntasticError guibg=#ff7632
+"highlight SyntasticWarning guibg=#ffe032
+
+"let g:syntastic_python_checkers = [] " ['pep8', 'pyflakes']
+""let g:syntastic_python_pep8_exec = '/home/zhout/local/bin/pep8'
+""let g:syntastic_python_pyflakes_exec = '/home/zhout/local/bin/pyflakes'
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_aggregate_errors = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+
 " syntax checker
 Plug 'neomake/neomake'
+let g:neomake_python_enabled_makers = ['pep8', 'pyflakes']
+let g:neomake_python3_enabled_makers = ['pep8', 'pyflakes']
 let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
-" linter settings
-let g:neomake_python_enabled_makers = ['pep8', 'mypy', 'pylint']
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -96,6 +128,9 @@ Plug 'honza/vim-snippets'
 
 " active plugins; I have to call them
 " ==========================
+
+" distraction-free writing
+Plug 'junegunn/goyo.vim'
 
 " tabular
 " ':Tab /:' for alignment with :
@@ -301,6 +336,7 @@ nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
 " Autorun syntax check
 autocmd! BufWritePost * Neomake
+
 " Fix tmux weird color
 set t_ut=
 runtime macros/matchit.vim
@@ -315,3 +351,19 @@ set background=dark
 if has('nvim')
   set inccommand=split
 endif
+
+" persistent undo
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
