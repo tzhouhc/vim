@@ -25,6 +25,7 @@ let g:airline_theme='quantum'
 Plug 'airblade/vim-gitgutter'
 
 " Fastfold
+" This is per neocomplete's request
 Plug 'Konfekt/FastFold'
 
 " visual indicators
@@ -34,6 +35,8 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
 
 " colorschemes
+" Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
@@ -55,48 +58,21 @@ Plug 'elzr/vim-json'
 " jedi python
 Plug 'davidhalter/jedi-vim'
 
-" neocomplete
-Plug 'Shougo/neocomplete'
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-"let g:neocomplete#sources#dictionary#dictionaries = {
-    "\ 'default' : '',
-    "\ 'vimshell' : $HOME.'/.vimshell_hist',
-    "\ 'scheme' : $HOME.'/.gosh_completions'
-        "\ }
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-  "let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
+" completion
 if has('nvim')
+  " deoplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
+else
+  " neocomplete
+  Plug 'Shougo/neocomplete'
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 endif
 
 " sensible settings
 Plug 'tpope/vim-sensible'
-
-" other syntax checker
-"Plug 'vim-syntastic/syntastic'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"highlight SyntasticError guibg=#ff7632
-"highlight SyntasticWarning guibg=#ffe032
-
-"let g:syntastic_python_checkers = [] " ['pep8', 'pyflakes']
-""let g:syntastic_python_pep8_exec = '/home/zhout/local/bin/pep8'
-""let g:syntastic_python_pyflakes_exec = '/home/zhout/local/bin/pyflakes'
-"let g:syntastic_always_populate_loc_list = 0
-"let g:syntastic_aggregate_errors = 1
-"let g:syntastic_auto_loc_list = 0
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
 
 " syntax checker
 Plug 'neomake/neomake'
@@ -183,7 +159,16 @@ Plug 'metakirby5/codi.vim'
 
 " sublime-like multicursor
 " ctrl-n for select next
-Plug 'terryma/vim-multiple-cursors'
+Plug 'kristijanhusak/vim-multiple-cursors'
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+    echo 'Disabled autocomplete'
+endfunction
+
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+    echo 'Enabled autocomplete'
+endfunction
 
 " split/join
 " gs/gJ for splitting/joining
@@ -276,7 +261,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " functions
 " ============================
 function! ToggleNERDTreeFind()
-  if exists('g:NERDTree.IsOpen') 
+  if exists('g:NERDTree.IsOpen')
     if g:NERDTree.IsOpen()
         execute ':NERDTreeClose'
     else
