@@ -40,6 +40,9 @@ Plug 'morhetz/gruvbox'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
+" fancy start
+Plug 'mhinz/vim-startify'
+
 " tab autocomplete
 Plug 'ervandew/supertab'
 
@@ -55,9 +58,6 @@ Plug 'tmhedberg/SimpylFold'
 " json folding
 Plug 'elzr/vim-json'
 
-" jedi python
-Plug 'davidhalter/jedi-vim'
-
 " completion
 if has('nvim')
   " deoplete
@@ -67,8 +67,21 @@ else
   " neocomplete
   Plug 'Shougo/neocomplete'
   let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#max_list = 12
+  let g:neocomplete#max_keyword_width = 30
+  let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#enable_fuzzy_completion = 1
   let g:neocomplete#enable_smart_case = 1
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+endif
+
+" jedi python
+if has('nvim')
+  Plug 'zchee/deoplete-jedi'
+else
+  Plug 'davidhalter/jedi-vim'
+  let g:jedi#popup_select_first = 1
+  let g:jedi#show_call_signatures = 2
+  let g:jedi#smart_auto_mappings = 0
 endif
 
 " sensible settings
@@ -327,6 +340,7 @@ set t_ut=
 runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
+autocmd filetype python setlocal completeopt-=preview
 
 set foldlevelstart=99
 set colorcolumn=80
