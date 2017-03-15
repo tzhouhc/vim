@@ -14,6 +14,9 @@ call plug#begin('~/.vim/bundle')
 " tmux
 Plug 'sjl/vitality.vim'
 
+" Interface
+Plug 'Shougo/denite.nvim'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -46,9 +49,6 @@ Plug 'jdkanani/vim-material-theme'
 " fancy start
 Plug 'mhinz/vim-startify'
 
-" tab autocomplete
-Plug 'ervandew/supertab'
-
 " auto-add end
 Plug 'tpope/vim-endwise'
 
@@ -72,30 +72,22 @@ else
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#max_list = 12
   let g:neocomplete#max_keyword_width = 30
-  let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_fuzzy_completion = 1
   let g:neocomplete#enable_smart_case = 1
 endif
 
 " jedi python
-if has('nvim')
-  Plug 'zchee/deoplete-jedi'
-else
-  Plug 'davidhalter/jedi-vim'
-  let g:jedi#popup_select_first = 1
-  let g:jedi#show_call_signatures = 2
-  let g:jedi#smart_auto_mappings = 0
-endif
+" if has('nvim')
+  " Plug 'zchee/deoplete-jedi'
+" else
+  " Plug 'davidhalter/jedi-vim'
+  " let g:jedi#popup_select_first = 1
+  " let g:jedi#show_call_signatures = 2
+  " let g:jedi#smart_auto_mappings = 0
+" endif
 
 " sensible settings
 Plug 'tpope/vim-sensible'
-
-" syntax checker
-Plug 'neomake/neomake'
-let g:neomake_python_enabled_makers = ['pep8', 'pyflakes']
-let g:neomake_python3_enabled_makers = ['pep8', 'pyflakes']
-let g:neomake_error_sign = {'text': '!', 'texthl': 'Error'}
-let g:neomake_warning_sign = {'text': '?', 'texthl': 'Question'}
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -115,8 +107,12 @@ Plug 'sheerun/vim-polyglot'
 " vim snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
+Plug 'ervandew/snipmate.vim'
+
+" tab autocomplete
+Plug 'ervandew/supertab'
+" use sane order -- to heck with consistency
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " active plugins; I have to call them
 " ==========================
@@ -134,9 +130,6 @@ Plug 'vim-scripts/quickrun.vim'
 " vim motion
 Plug 'easymotion/vim-easymotion'
 
-" kill buffer sans killing the split
-Plug 'qpkorr/vim-bufkill'
-
 " trailing whitespace
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -152,7 +145,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" quick replacement
+" selective replace
 Plug 'brooth/far.vim'
 
 " undo
@@ -161,23 +154,18 @@ Plug 'sjl/gundo.vim'
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
+let g:NERDTreeWinPos = "right"
+
 Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
 
-" compiling
-Plug 'tpope/vim-dispatch'
-
 " more git stuff
 Plug 'tpope/vim-fugitive'
-
-" fancy live-running code
-Plug 'metakirby5/codi.vim'
 
 " sublime-like multicursor
 " ctrl-n for select next
 Plug 'kristijanhusak/vim-multiple-cursors'
 function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
     echo 'Disabled autocomplete'
 endfunction
 
@@ -186,10 +174,6 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
-" split/join
-" gs/gJ for splitting/joining
-Plug 'AndrewRadev/splitjoin.vim'
-
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
@@ -197,8 +181,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_extensions = ['line']
 
-" fuzzy search
-" Plug 'vim-scripts/FuzzyFinder'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -334,9 +316,6 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " Other convenience methods
 nnoremap <silent> <leader>nn :NumbersToggle<CR>
-
-" Autorun syntax check
-autocmd! BufWritePost * Neomake
 
 " Fix tmux weird color
 set t_ut=
