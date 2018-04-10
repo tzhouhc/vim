@@ -3,3 +3,5 @@ bundle
 .netrwhist
 init.vim
 undodir
+plugin
+*.old

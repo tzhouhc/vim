@@ -11,6 +11,9 @@ call plug#begin('~/.vim/bundle')
 " passive plugins that I don't need to touch
 " ============================
 
+" tmux
+Plug 'sjl/vitality.vim'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -101,7 +104,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-slash'
 
 " L9
-Plug 'L9'
+Plug 'vim-scripts/L9'
 
 " number lines by dist
 Plug 'myusuf3/numbers.vim'
