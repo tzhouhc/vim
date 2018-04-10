@@ -10,6 +10,8 @@ call plug#begin('~/.vim/bundle')
 
 " passive plugins that I don't need to touch
 " ============================
+" tmux
+Plug 'sjl/vitality.vim'
 
 " tmux
 Plug 'sjl/vitality.vim'
@@ -87,7 +89,20 @@ endif
 " endif
 
 " sensible settings
-Plug 'tpope/vim-sensible'
+if !has('nvim')
+  Plug 'tpope/vim-sensible'
+endif
+
+Plug 'w0rp/ale'
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_list_vertical = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+" wait 3 secs prior to any linting
+let g:ale_lint_delay = 3000
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -169,10 +184,17 @@ function! Multiple_cursors_before()
     echo 'Disabled autocomplete'
 endfunction
 
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
+if !has('nvim')
+  function! Multiple_cursors_before()
+      exe 'NeoCompleteLock'
+      echo 'Disabled autocomplete'
+  endfunction
+
+  function! Multiple_cursors_after()
+      exe 'NeoCompleteUnlock'
+      echo 'Enabled autocomplete'
+  endfunction
+endif
 
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
@@ -348,3 +370,7 @@ if has('persistent_undo')
     set undofile
 endif
 
+" tmux + iterm cursor
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
