@@ -1,6 +1,8 @@
 " ==== Ting's Vim Setup ====
 "
 
+language en_US
+
 " Plugins
 " ==================================
 
@@ -134,6 +136,13 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " distraction-free writing
 Plug 'junegunn/goyo.vim'
+function! s:goyo_enter()
+  set wrap linebreak nolist
+endfunction
+
+function! s:goyo_leave()
+  set nowrap nolinebreak list
+endfunction
 
 " tabular
 " ':Tab /:' for alignment with :
