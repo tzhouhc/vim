@@ -1,8 +1,6 @@
 " ==== Ting's Vim Setup ====
 "
 
-language en_US
-
 " Plugins
 " ==================================
 
@@ -12,9 +10,6 @@ call plug#begin('~/.vim/bundle')
 
 " passive plugins that I don't need to touch
 " ============================
-" tmux
-Plug 'sjl/vitality.vim'
-
 " tmux
 Plug 'sjl/vitality.vim'
 
@@ -59,9 +54,6 @@ Plug 'tpope/vim-endwise'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
-" python folding
-Plug 'tmhedberg/SimpylFold'
-
 " json folding
 Plug 'elzr/vim-json'
 
@@ -80,15 +72,11 @@ else
   let g:neocomplete#enable_smart_case = 1
 endif
 
-" jedi python
-" if has('nvim')
-  " Plug 'zchee/deoplete-jedi'
-" else
-  " Plug 'davidhalter/jedi-vim'
-  " let g:jedi#popup_select_first = 1
-  " let g:jedi#show_call_signatures = 2
-  " let g:jedi#smart_auto_mappings = 0
-" endif
+" docker
+Plug 'ekalinin/Dockerfile.vim'
+
+" julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 " sensible settings
 if !has('nvim')
@@ -121,11 +109,6 @@ Plug 'myusuf3/numbers.vim'
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
-" vim snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'ervandew/snipmate.vim'
-
 " tab autocomplete
 Plug 'ervandew/supertab'
 " use sane order -- to heck with consistency
@@ -133,23 +116,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " active plugins; I have to call them
 " ==========================
-
-" distraction-free writing
-Plug 'junegunn/goyo.vim'
-function! s:goyo_enter()
-  set wrap linebreak nolist
-endfunction
-
-function! s:goyo_leave()
-  set nowrap nolinebreak list
-endfunction
-
-" tabular
-" ':Tab /:' for alignment with :
-Plug 'godlygeek/tabular'
-
-" quickrun
-Plug 'vim-scripts/quickrun.vim'
 
 " vim motion
 Plug 'easymotion/vim-easymotion'
@@ -280,8 +246,6 @@ set foldlevelstart=4
 set foldmethod=syntax
 let g:vim_markdown_conceal = 0
 
-" Fix tmux weird color
-set t_ut=
 runtime macros/matchit.vim
 
 let &runtimepath.=',~/.vim/bundle/ale'
@@ -327,7 +291,7 @@ nnoremap <leader><Left> :bprevious<CR>
 
 " common utilities
 nnoremap <silent> <leader>g :GitGutterToggle<cr>
-" nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
+nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
 " nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
@@ -378,8 +342,3 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
-
-" tmux + iterm cursor
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
