@@ -322,6 +322,8 @@ autocmd filetype python setlocal completeopt-=preview
 set foldlevelstart=99
 set colorcolumn=80
 set background=dark
+" switch buffer without saving
+set hidden
 
 " Neovim stuff!
 if has('nvim')
