@@ -11,12 +11,15 @@ call plug#begin('~/.vim/bundle')
 " passive plugins that I don't need to touch
 " ============================
 " tmux
+" auto
 Plug 'sjl/vitality.vim'
 
 " Interface
+" auto
 Plug 'Shougo/denite.nvim'
 
 " airline
+" auto
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
@@ -26,7 +29,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
 
 " gitgutter
-" not much to say here; it's on by default
+" auto
 Plug 'airblade/vim-gitgutter'
 
 " Fastfold
@@ -36,6 +39,7 @@ Plug 'Konfekt/FastFold'
 " visual indicators
 " Turn on rainbow paren with leader+r
 Plug 'kien/rainbow_parentheses.vim'
+" Maybe auto change indentline color?
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
 
@@ -46,6 +50,7 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
 " fancy start
+" auto
 Plug 'mhinz/vim-startify'
 
 " auto-add end
@@ -118,28 +123,29 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " ==========================
 
 " vim motion
+" learned;
 Plug 'easymotion/vim-easymotion'
 
 " trailing whitespace
+" auto;
 Plug 'bronson/vim-trailing-whitespace'
 
 " quick-comment
+" familiar
 " leader+c+space = toggle comment
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
-" ack
-Plug 'mileszs/ack.vim'
-" use ag instead
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" ag
+" learned
+Plug 'brookhong/ag.vim'
 
 " selective replace
 Plug 'brooth/far.vim'
 
 " undo
 " leader+u
+" not frequently used; consider eventual removal
 Plug 'sjl/gundo.vim'
 
 " file tree
@@ -154,7 +160,7 @@ Plug 'tpope/vim-fugitive'
 
 " sublime-like multicursor
 " ctrl-n for select next
-Plug 'kristijanhusak/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 function! Multiple_cursors_before()
     echo 'Disabled autocomplete'
 endfunction
@@ -291,7 +297,6 @@ nnoremap <leader><Left> :bprevious<CR>
 
 " common utilities
 nnoremap <silent> <leader>g :GitGutterToggle<cr>
-nnoremap <silent> <leader>r :RainbowParenthesesToggle<cr>
 " nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
@@ -318,6 +323,12 @@ runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 autocmd filetype python setlocal completeopt-=preview
+
+" rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 set foldlevelstart=99
 set colorcolumn=80
