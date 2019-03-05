@@ -32,6 +32,9 @@ let g:airline_theme='quantum'
 " auto
 Plug 'airblade/vim-gitgutter'
 
+" highlight active only
+Plug 'TaDaa/vimade'
+
 " Fastfold
 " This is per neocomplete's request
 Plug 'Konfekt/FastFold'
