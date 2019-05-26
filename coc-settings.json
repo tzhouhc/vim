@@ -4,17 +4,24 @@
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": false,
+  "python.linting.pylintEnabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.lintOnSave": true,
   "python.linting.pydocstyleEnabled": false,
 
+  // json
+  "json.enable": true,
+  "json.format.enable": true,
+
   // global
-  "coc.preferences.formatOnSaveFiletypes": ["python", "json", "css", "Markdown"],
+  "coc.preferences.formatOnSaveFiletypes": ["python", "json"],
   "coc.preferences.colorSupport": true,
-  "prettier.formatterPriority": -1,
 
   // linting
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " ⬩ ",
+  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
