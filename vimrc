@@ -27,6 +27,8 @@ let g:airline#extensions#tabline#enabled = 1
 " " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " gitgutter
 " auto
@@ -66,19 +68,21 @@ Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
 
 " completion
-if has('nvim')
-  " deoplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-else
-  " neocomplete
-  Plug 'Shougo/neocomplete'
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#max_list = 12
-  let g:neocomplete#max_keyword_width = 30
-  let g:neocomplete#enable_fuzzy_completion = 1
-  let g:neocomplete#enable_smart_case = 1
-endif
+" if has('nvim')
+  " " deoplete
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " let g:deoplete#enable_at_startup = 1
+" else
+  " " neocomplete
+  " Plug 'Shougo/neocomplete'
+  " let g:neocomplete#enable_at_startup = 1
+  " let g:neocomplete#max_list = 12
+  " let g:neocomplete#max_keyword_width = 30
+  " let g:neocomplete#enable_fuzzy_completion = 1
+  " let g:neocomplete#enable_smart_case = 1
+" endif
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/jsonc.vim'
 
 " docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -90,17 +94,6 @@ Plug 'JuliaEditorSupport/julia-vim'
 if !has('nvim')
   Plug 'tpope/vim-sensible'
 endif
-
-Plug 'w0rp/ale'
-let g:ale_sign_error = '!'
-let g:ale_sign_warning = '?'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_list_vertical = 1
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-" wait 3 secs prior to any linting
-let g:ale_lint_delay = 3000
 
 " edit scope surrounding
 Plug 'tpope/vim-surround'
@@ -117,10 +110,13 @@ Plug 'myusuf3/numbers.vim'
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
+" golang
+Plug 'fatih/vim-go'
+
 " tab autocomplete
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 " use sane order -- to heck with consistency
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " active plugins; I have to call them
 " ==========================
@@ -326,6 +322,46 @@ runtime macros/matchit.vim
 
 autocmd filetype crontab setlocal nobackup nowritebackup
 autocmd filetype python setlocal completeopt-=preview
+
+" =====
+" Coc suggested features for better completion
+" =====
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use K to show documentation in preview window
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " rainbow parens
 au VimEnter * RainbowParenthesesToggle

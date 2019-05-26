@@ -1,0 +1,22 @@
+{
+  // python
+  "python.jediEnabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pydocstyleEnabled": false,
+
+  // global
+  "coc.preferences.formatOnSaveFiletypes": ["python", "json", "css", "Markdown"],
+  "coc.preferences.colorSupport": true,
+  "prettier.formatterPriority": -1,
+
+  // linting
+  "diagnostic.errorSign": "x",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
+  "diagnostic.hintSign": "·"
+}
