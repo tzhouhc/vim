@@ -4,6 +4,7 @@
 " Google
 source /usr/share/vim/google/google.vim
 Glug youcompleteme-google
+Glug critique plugin[mappings]
 
 " Plugins
 " ==================================
@@ -33,20 +34,28 @@ let g:airline_theme='quantum'
 " highlight active only
 Plug 'TaDaa/vimade'
 
+" pairs
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+
 " lsp
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'w0rp/ale'
 let g:ale_virtualenv_dir_names = []
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_completion_enabled = 0
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '??'
 let g:ale_linters = {
 \   'python': ['gpylint'],
 \}
 
-let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+let g:lsp_diagnostics_enabled = 1         " disable diagnostics support
 let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_hint = {'text': '?'}
@@ -65,12 +74,34 @@ au User lsp_setup call lsp#register_server({
       "\ 'whitelist': ['python'],
       "\ })
 "endif
-"au User lsp_setup call lsp#register_server({
-    "\ 'name': 'Google Pylint',
-    "\ 'cmd': {server_info->['/usr/bin/gpylint', '--mode=style']},
-    "\ 'whitelist': ['python'],
-    "\})
+if executable('solargraph')
+    " gem install solargraph
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        \ 'initialization_options': {"diagnostics": "true"},
+        \ 'whitelist': ['ruby'],
+        \ })
+  endif
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'CiderLSP',
+    \ 'cmd': {server_info->[
+    \   '/google/bin/releases/editor-devtools/ciderlsp',
+    \   '--tooltag=vim-lsp',
+    \   '--noforward_sync_responses',
+    \ ]},
+    \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
+    \ })
 
+" Doc Gen
+Plug 'kkoomen/vim-doge'
+let g:doge_doc_standard_python = 'google'
+
+" languages
+Plug 'sheerun/vim-polyglot'
+
+" ctrlp
+Plug 'ctrlpvim/ctrlp.vim'
 
 " visual indicators
 " Turn on rainbow paren with leader+r
@@ -188,6 +219,8 @@ set encoding=utf8
 " clipboard
 if !has('nvim')
     set clipboard=exclude:.*
+else
+    set clipboard+=unnamedplus
 endif
 
 set foldenable
@@ -251,6 +284,9 @@ nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
+
+nnoremap gd   :LspDefinition<CR>  " gd in Normal mode triggers gotodefinition
+nnoremap <F4> :LspReferences<CR>  " F4 in Normal mode shows all references
 
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
