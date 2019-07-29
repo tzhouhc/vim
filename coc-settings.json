@@ -1,21 +1,11 @@
 {
-  // python
-  "python.jediEnabled": true,
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.mypyEnabled": true,
-  "python.linting.lintOnSave": true,
-  "python.linting.pydocstyleEnabled": false,
-
-  // json
-  "json.enable": true,
-  "json.format.enable": true,
-
   // global
-  "coc.preferences.formatOnSaveFiletypes": ["python", "json"],
+  "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.colorSupport": true,
+
+  // python
+  "python.pythonPath": "/usr/grte/v4/bin/python2.7",
+  "python.jediEnabled": true,
 
   // linting
   "diagnostic.checkCurrentLine": true,
@@ -25,5 +15,40 @@
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
-  "diagnostic.hintSign": "·"
+  "diagnostic.hintSign": "·",
+
+  // custom servers
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "filetypes": ["go"]
+    },
+    "kythe": {
+      "command": "/google/bin/releases/grok/tools/kythe_languageserver",
+      "args": [
+        "--google3"
+      ],
+      "filetypes": [
+        "python",
+        "go",
+        "java",
+        "cpp",
+        "proto"
+      ]
+    },
+    "ciderlsp": {
+      "command": "/google/bin/releases/editor-devtools/ciderlsp",
+      "args": [
+        "--tooltag=vim-lsp",
+        "--noforward_sync_responses"
+      ],
+      "filetypes": [
+        "c",
+        "cpp",
+        "proto",
+        "textproto",
+        "go"
+      ]
+    }
+  }
 }

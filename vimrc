@@ -4,10 +4,9 @@
 
 " Google
 source /usr/share/vim/google/google.vim
-Glug youcompleteme-google
 Glug critique plugin[mappings]
-Glug codefmt
-Glug codefmt-google
+"Glug codefmt
+"Glug codefmt-google
 
 " Plugins
 " ==================================
@@ -42,10 +41,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 
 " lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plug 'neoclide/coc.nvim'
 Plug 'w0rp/ale'
 let g:ale_virtualenv_dir_names = []
 let g:ale_lint_on_text_changed = 0
@@ -61,26 +58,16 @@ let g:ale_linters = {
 " \}
 " let g:ale_fix_on_save = 1
 
-let g:lsp_diagnostics_enabled = 1         " disable diagnostics support
-let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
-let g:lsp_signs_hint = {'text': '?'}
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_async_completion = 1
-let g:asyncomplete_smart_completion = 1
-let g:asyncomplete_auto_popup = 1
-
 " ruby
-if executable('solargraph')
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
-  endif
+" if executable('solargraph')
+    " " gem install solargraph
+    " au User lsp_setup call lsp#register_server({
+        " \ 'name': 'solargraph',
+        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        " \ 'initialization_options': {"diagnostics": "true"},
+        " \ 'whitelist': ['ruby'],
+        " \ })
+  " endif
 
 " go
 " if executable('gopls')
@@ -93,22 +80,22 @@ if executable('solargraph')
 " endif
 
 " kythe
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'Kythe Language Server',
-    \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
-    \ 'whitelist': ['python', 'java', 'cpp', 'proto', 'go'],
-    \})
+" au User lsp_setup call lsp#register_server({
+    " \ 'name': 'Kythe Language Server',
+    " \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
+    " \ 'whitelist': ['python', 'java', 'cpp', 'proto', 'go'],
+    " \})
 
 " ciderlsp - c, go, etc
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'CiderLSP',
-    \ 'cmd': {server_info->[
-    \   '/google/bin/releases/editor-devtools/ciderlsp',
-    \   '--tooltag=vim-lsp',
-    \   '--noforward_sync_responses',
-    \ ]},
-    \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
-    \ })
+" au User lsp_setup call lsp#register_server({
+    " \ 'name': 'CiderLSP',
+    " \ 'cmd': {server_info->[
+    " \   '/google/bin/releases/editor-devtools/ciderlsp',
+    " \   '--tooltag=vim-lsp',
+    " \   '--noforward_sync_responses',
+    " \ ]},
+    " \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
+    " \ })
 
 " python linting and completion is handled by gpylint and YCM respectively
 " since ciderlsp python-support is still in progress (go/ciderlsp)
