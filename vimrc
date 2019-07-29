@@ -1,10 +1,13 @@
 " ==== Ting's Vim Setup ====
 "
+"
 
 " Google
 source /usr/share/vim/google/google.vim
 Glug youcompleteme-google
 Glug critique plugin[mappings]
+Glug codefmt
+Glug codefmt-google
 
 " Plugins
 " ==================================
@@ -54,6 +57,9 @@ let g:ale_sign_warning = '??'
 let g:ale_linters = {
 \   'python': ['gpylint'],
 \}
+" let g:ale_fixers = {
+" \}
+" let g:ale_fix_on_save = 1
 
 let g:lsp_diagnostics_enabled = 1         " disable diagnostics support
 let g:lsp_signs_error = {'text': '✗'}
@@ -61,19 +67,11 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_async_completion = 1
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
 
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'Kythe Language Server',
-    \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
-    \ 'whitelist': ['python', 'go', 'java', 'cpp', 'proto'],
-    \})
-"if executable('pyls')
-  "au User lsp_setup call lsp#register_server({
-      "\ 'name': 'pyls',
-      "\ 'cmd': {server_info->['pyls']},
-      "\ 'whitelist': ['python'],
-      "\ })
-"endif
+" ruby
 if executable('solargraph')
     " gem install solargraph
     au User lsp_setup call lsp#register_server({
@@ -83,6 +81,25 @@ if executable('solargraph')
         \ 'whitelist': ['ruby'],
         \ })
   endif
+
+" go
+" if executable('gopls')
+  " au User lsp_setup call lsp#register_server({
+      " \ 'name': 'gopls',
+      " \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+      " \ 'whitelist': ['go'],
+      " \ })
+  " autocmd BufWrite *.go LspDocumentFormatSync
+" endif
+
+" kythe
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'Kythe Language Server',
+    \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
+    \ 'whitelist': ['python', 'java', 'cpp', 'proto', 'go'],
+    \})
+
+" ciderlsp - c, go, etc
 au User lsp_setup call lsp#register_server({
     \ 'name': 'CiderLSP',
     \ 'cmd': {server_info->[
@@ -92,6 +109,9 @@ au User lsp_setup call lsp#register_server({
     \ ]},
     \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
     \ })
+
+" python linting and completion is handled by gpylint and YCM respectively
+" since ciderlsp python-support is still in progress (go/ciderlsp)
 
 " Doc Gen
 Plug 'kkoomen/vim-doge'
@@ -303,6 +323,10 @@ augroup EditVim
   autocmd!
   autocmd filetype crontab setlocal nobackup nowritebackup
   autocmd filetype python setlocal completeopt-=preview
+augroup END
+
+augroup AutoFormat
+  autocmd FileType go AutoFormatBuffer gofmt
 augroup END
 
 " rainbow parens
