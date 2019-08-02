@@ -1,6 +1,3 @@
-" Google completion
-Glug youcompleteme-google
-
 " auto make
 set makeprg=python\ %
 

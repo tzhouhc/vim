@@ -1,10 +1,10 @@
 " ==== Ting's Vim Setup ====
-"
-"
 
 " Google
 source /usr/share/vim/google/google.vim
+Glug youcompleteme-google
 Glug critique plugin[mappings]
+
 "Glug codefmt
 "Glug codefmt-google
 
@@ -54,9 +54,11 @@ let g:ale_sign_warning = '??'
 let g:ale_linters = {
 \   'python': ['gpylint'],
 \}
-" let g:ale_fixers = {
-" \}
-" let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'markdown': ['prettier'],
+\   'go': ['gofmt']
+\}
+let g:ale_fix_on_save = 1
 
 " ruby
 " if executable('solargraph')
@@ -106,6 +108,11 @@ let g:doge_doc_standard_python = 'google'
 
 " languages
 Plug 'sheerun/vim-polyglot'
+
+" markdown
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
 
 " ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
@@ -233,7 +240,6 @@ endif
 set foldenable
 set foldlevelstart=4
 set foldmethod=syntax
-let g:vim_markdown_conceal = 0
 
 runtime macros/matchit.vim
 
@@ -309,11 +315,15 @@ runtime macros/matchit.vim
 augroup EditVim
   autocmd!
   autocmd filetype crontab setlocal nobackup nowritebackup
-  autocmd filetype python setlocal completeopt-=preview
+  "autocmd filetype python setlocal completeopt-=preview
 augroup END
 
 augroup AutoFormat
   autocmd FileType go AutoFormatBuffer gofmt
+augroup END
+
+augroup CustomHighlight
+  " autocmd Syntax * syn match Keyword /\v<in>/ conceal cchar=∈
 augroup END
 
 " rainbow parens
@@ -322,11 +332,18 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+set conceallevel=2
+set concealcursor-=n
 set foldlevelstart=99
 set colorcolumn=80
 set background=dark
 " switch buffer without saving
 set hidden
+" italics
+set t_ZH=[3m
+set t_ZR=[23m
+" let &t_ZH="\e[3m"
+" let &t_ZR="\e[23m"
 
 " Neovim stuff!
 if has('nvim')
@@ -348,4 +365,7 @@ if has('persistent_undo')
     set undofile
 endif
 
+" custom highlights
+highlight Special gui=italic
+"highlight Comment gui=italic
 

@@ -3,9 +3,8 @@
   "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.colorSupport": true,
 
-  // python
-  "python.pythonPath": "/usr/grte/v4/bin/python2.7",
-  "python.jediEnabled": true,
+  // completion
+  "suggest.autoTrigger": "none",
 
   // linting
   "diagnostic.checkCurrentLine": true,
