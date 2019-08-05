@@ -2,11 +2,15 @@
 
 " Google
 source /usr/share/vim/google/google.vim
-Glug youcompleteme-google
+" Glug youcompleteme-google
 Glug critique plugin[mappings]
 
-"Glug codefmt
-"Glug codefmt-google
+Glug codefmt gofmt_executable="goimports"
+Glug codefmt-google
+
+" blaze
+Glug blaze plugin[mappings] !alerts
+Glug blazedeps auto_filetypes=`['go']`
 
 " Plugins
 " ==================================
@@ -38,7 +42,6 @@ Plug 'TaDaa/vimade'
 
 " pairs
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
 
 " lsp
 
@@ -105,6 +108,9 @@ let g:ale_fix_on_save = 1
 " Doc Gen
 Plug 'kkoomen/vim-doge'
 let g:doge_doc_standard_python = 'google'
+let g:doge_comment_interactive = 0
+let g:doge_mapping_comment_jump_forward = '<C-RIGHT>'
+let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
 " languages
 Plug 'sheerun/vim-polyglot'
@@ -135,14 +141,8 @@ Plug 'mhinz/vim-startify'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
-" easier searching
-Plug 'junegunn/vim-slash'
-
 " L9
 Plug 'vim-scripts/L9'
-
-" number lines by dist
-Plug 'myusuf3/numbers.vim'
 
 " active plugins; I have to call them
 " ==========================
@@ -177,6 +177,33 @@ endfunction
 
 " ctag lists
 Plug 'majutsushi/tagbar'
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+          \ 'p:package',
+          \ 'i:imports:1',
+          \ 'c:constants',
+          \ 'v:variables',
+          \ 't:types',
+          \ 'n:interfaces',
+          \ 'w:fields',
+          \ 'e:embedded',
+          \ 'm:methods',
+          \ 'r:constructor',
+          \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+          \ 't' : 'ctype',
+          \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+          \ 'ctype' : 't',
+          \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \}
+	
 
 " quickscope
 Plug 'unblevable/quick-scope'
@@ -289,7 +316,7 @@ nnoremap <silent> <leader>g :GitGutterToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<CR>
-nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:NumbersToggle<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
@@ -298,8 +325,51 @@ nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
 
-nnoremap gd   :LspDefinition<CR>  " gd in Normal mode triggers gotodefinition
-nnoremap <F4> :LspReferences<CR>  " F4 in Normal mode shows all references
+" =================
+" Coc-nvim
+" =================
+
+function! CocActionAsync(...) abort
+  return s:AsyncRequest('CocAction', a:000)
+endfunction
+
+function! CocRequestAsync(...)
+  return s:AsyncRequest('sendRequest', a:000)
+endfunction
+
+function! s:AsyncRequest(name, args) abort
+  let Cb = a:args[len(a:args) - 1]
+  if type(Cb) == 2
+    if !coc#rpc#ready()
+      call Cb('service not started', v:null)
+    else
+      call coc#rpc#request_async(a:name, a:args[0:-2], Cb)
+    endif
+    return ''
+  endif
+  call coc#rpc#notify(a:name, a:args)
+  return ''
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
@@ -307,6 +377,19 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " Other convenience methods
 nnoremap <silent> <leader>nn :NumbersToggle<CR>
+
+" goto places
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
 
 " Fix tmux weird color
 set t_ut=
@@ -316,6 +399,7 @@ augroup EditVim
   autocmd!
   autocmd filetype crontab setlocal nobackup nowritebackup
   "autocmd filetype python setlocal completeopt-=preview
+  autocmd CursorHold * silent call CocActionAsync('doHover')
 augroup END
 
 augroup AutoFormat
@@ -327,7 +411,7 @@ augroup CustomHighlight
 augroup END
 
 " rainbow parens
-au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
@@ -339,11 +423,11 @@ set colorcolumn=80
 set background=dark
 " switch buffer without saving
 set hidden
+set cmdheight=2
+set shortmess=aFc
 " italics
 set t_ZH=[3m
 set t_ZR=[23m
-" let &t_ZH="\e[3m"
-" let &t_ZR="\e[23m"
 
 " Neovim stuff!
 if has('nvim')

@@ -2,25 +2,46 @@
   // global
   "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.colorSupport": true,
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.jumpCommand": "drop",
 
   // completion
-  "suggest.autoTrigger": "none",
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.noselect": false,
+  "suggest.enablePreview": true,
+  "suggest.enablePreselect": true,
+  "suggest.numberSelect": true,
+  "suggest.floatEnable": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
 
   // linting
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.virtualTextPrefix": " ⬩ ",
+  "diagnostic.enableSign": true,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
   "diagnostic.hintSign": "·",
+  "diagnostic.level": "information",
 
   // custom servers
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "filetypes": ["go"]
+    "ciderlsp": {
+      "command": "/google/bin/releases/editor-devtools/ciderlsp",
+      "args": [
+        "--tooltag=coc-nvim",
+        "--noforward_sync_responses"
+      ],
+      "filetypes": [
+        "c",
+        "cpp",
+        "proto",
+        "textproto",
+        "go"
+      ]
     },
     "kythe": {
       "command": "/google/bin/releases/grok/tools/kythe_languageserver",
@@ -33,20 +54,6 @@
         "java",
         "cpp",
         "proto"
-      ]
-    },
-    "ciderlsp": {
-      "command": "/google/bin/releases/editor-devtools/ciderlsp",
-      "args": [
-        "--tooltag=vim-lsp",
-        "--noforward_sync_responses"
-      ],
-      "filetypes": [
-        "c",
-        "cpp",
-        "proto",
-        "textproto",
-        "go"
       ]
     }
   }
