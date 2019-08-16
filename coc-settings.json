@@ -3,7 +3,7 @@
   "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.colorSupport": true,
   "coc.preferences.hoverTarget": "float",
-  "coc.preferences.jumpCommand": "drop",
+  "coc.preferences.jumpCommand": "tab drop",
 
   // completion
   "suggest.autoTrigger": "always",

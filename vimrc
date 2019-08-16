@@ -58,7 +58,6 @@ let g:ale_linters = {
 \   'python': ['gpylint'],
 \}
 let g:ale_fixers = {
-\   'markdown': ['prettier'],
 \   'go': ['gofmt']
 \}
 let g:ale_fix_on_save = 1
@@ -235,7 +234,7 @@ endif
 " ===========================
 set expandtab
 set shiftwidth=2
-set number
+set number relativenumber
 set showcmd
 
 " wrapping
@@ -311,12 +310,11 @@ nnoremap <leader><Right> :bnext<CR>
 nnoremap <leader><Left> :bprevious<CR>
 
 " common utilities
-nnoremap <silent> <leader>g :GitGutterToggle<cr>
 " nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<CR>
-nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
@@ -390,6 +388,7 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
+nnoremap <silent><esc> <esc>:noh<CR><esc>
 
 " Fix tmux weird color
 set t_ut=
