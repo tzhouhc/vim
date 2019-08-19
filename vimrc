@@ -37,6 +37,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
 
+" p4 signs
+Plug 'mhinz/vim-signify'
+let g:signify_vcs_list = ['perforce', 'git']
+let g:signify_sign_change = '%'
+
 " highlight active only
 Plug 'TaDaa/vimade'
 
@@ -451,4 +456,6 @@ endif
 " custom highlights
 highlight Special gui=italic
 "highlight Comment gui=italic
-
+highlight SignifySignAdd guifg=#2dd671
+highlight SignifySignDelete guifg=#d94a0d
+highlight SignifySignChange guifg=#e6bf12
