@@ -37,6 +37,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
 
+" p4 signs
+Plug 'mhinz/vim-signify'
+let g:signify_vcs_list = ['perforce', 'git']
+let g:signify_sign_change = '%'
+
 " highlight active only
 Plug 'TaDaa/vimade'
 
@@ -271,6 +276,11 @@ runtime macros/matchit.vim
 
 " let &runtimepath.=',~/.vim/bundle/ale'
 
+" Fix tmux weird color
+set t_ut=
+runtime macros/matchit.vim
+
+
 " functions
 " ============================
 function! ToggleNERDTreeFind()
@@ -303,25 +313,63 @@ vnoremap [ <esc>`>a]<esc>`<i[
 vnoremap ( <esc>`>a)<esc>`<i(
 vnoremap { <esc>`>a}<esc>`<i{
 " vnoremap < <esc>`>a><esc>`<i<
-" vnoremap $ <esc>`>a$<esc>`<i$
 
-" tab switch buffer
-nnoremap <leader><Right> :bnext<CR>
-nnoremap <leader><Left> :bprevious<CR>
+" quickly modify vimrc file
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " common utilities
-" nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>
 
-nnoremap <silent> <Space> :noh<cr>
+nnoremap <silent><esc> <esc>:noh<CR><esc>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
 nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 
+" tab switch buffer
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
+
+" other options
+set conceallevel=2
+set concealcursor-=n
+set foldlevelstart=99
+set colorcolumn=80
+set background=dark
+" switch buffer without saving
+set hidden
+set cmdheight=2
+set shortmess=aFc
+" italics
+set t_ZH=[3m
+set t_ZR=[23m
+
+" Neovim stuff!
+if has('nvim')
+  set inccommand=split
+endif
+
+" persistent undo
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
+" rainbow parens
+au VimEnter * RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " =================
 " Coc-nvim
@@ -369,13 +417,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" quickly modify vimrc file
-nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
-nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
-
-" Other convenience methods
-nnoremap <silent> <leader>nn :NumbersToggle<CR>
-
 " goto places
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -388,11 +429,6 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
-nnoremap <silent><esc> <esc>:noh<CR><esc>
-
-" Fix tmux weird color
-set t_ut=
-runtime macros/matchit.vim
 
 augroup EditVim
   autocmd!
@@ -405,50 +441,12 @@ augroup AutoFormat
   autocmd FileType go AutoFormatBuffer gofmt
 augroup END
 
-augroup CustomHighlight
-  " autocmd Syntax * syn match Keyword /\v<in>/ conceal cchar=∈
-augroup END
-
-" rainbow parens
-au VimEnter * RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-set conceallevel=2
-set concealcursor-=n
-set foldlevelstart=99
-set colorcolumn=80
-set background=dark
-" switch buffer without saving
-set hidden
-set cmdheight=2
-set shortmess=aFc
-" italics
-set t_ZH=[3m
-set t_ZR=[23m
-
-" Neovim stuff!
-if has('nvim')
-  set inccommand=split
-endif
-
-" persistent undo
-" Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
-
-" Keep undo history across sessions by storing it in a file
-if has('persistent_undo')
-    let myUndoDir = expand(vimDir . '/undodir')
-    " Create dirs
-    call system('mkdir ' . vimDir)
-    call system('mkdir ' . myUndoDir)
-    let &undodir = myUndoDir
-    set undofile
-endif
-
+" =================
 " custom highlights
+" =================
+
 highlight Special gui=italic
 "highlight Comment gui=italic
-
+highlight SignifySignAdd guifg=#2dd671
+highlight SignifySignDelete guifg=#d94a0d
+highlight SignifySignChange guifg=#e6bf12
