@@ -89,11 +89,9 @@ Plug 'vim-scripts/L9'
 " ==========================
 
 " vim motion
-" learned;
 Plug 'easymotion/vim-easymotion'
 
 " trailing whitespace
-" auto;
 Plug 'bronson/vim-trailing-whitespace'
 
 " quick-comment
@@ -106,6 +104,8 @@ Plug 'brookhong/ag.vim'
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "right"
+" icons
+Plug 'ryanoasis/vim-devicons'
 
 " sublime-like multicursor
 " ctrl-n for select next
@@ -194,7 +194,7 @@ set hlsearch
 set mouse=a
 
 " encoding
-set encoding=utf8
+set encoding=UTF-8
 
 " clipboard
 if !has('nvim')
