@@ -113,9 +113,6 @@ Plug 'myusuf3/numbers.vim'
 " polyglot
 Plug 'sheerun/vim-polyglot'
 
-" golang
-Plug 'fatih/vim-go'
-
 " tab autocomplete
 "Plug 'ervandew/supertab'
 " use sane order -- to heck with consistency
@@ -178,6 +175,10 @@ if !has('nvim')
       echo 'Enabled autocomplete'
   endfunction
 endif
+
+function! SyntaxItem()
+  return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
 
 " search around
 Plug 'ctrlpvim/ctrlp.vim'
@@ -285,8 +286,6 @@ inoremap <c-z> <esc>ui
 inoremap <c-u> <esc><c-r>i
 
 " mimicking sublime's selection enclose behavior
-vnoremap " <esc>`>a"<esc>`<i"
-vnoremap ' <esc>`>a'<esc>`<i'
 vnoremap [ <esc>`>a]<esc>`<i[
 vnoremap ( <esc>`>a)<esc>`<i(
 vnoremap { <esc>`>a}<esc>`<i{
@@ -303,7 +302,8 @@ nnoremap <silent> <leader>g :GitGutterToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<CR>
-nnoremap <silent> <leader>p :set paste!<cr>:set number!<cr>:NumbersToggle<cr>:IndentLinesToggle<cr>::GitGutterToggle<cr>
+
+" To copy to system clipboard, just do "+y
 
 nnoremap <silent> <Space> :noh<cr>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
@@ -335,6 +335,14 @@ autocmd filetype python setlocal completeopt-=preview
 " coc-snippets
 " coc-json
 
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -360,7 +368,8 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" signature help
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " Use K to show documentation in preview window
 function! s:show_documentation()
@@ -404,3 +413,6 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
+
+" Custom highlights
+highlight Comment gui=italic
