@@ -1,5 +1,4 @@
 " ==== Ting's Vim Setup ====
-"
 
 " Plugins
 " ==================================
@@ -10,9 +9,6 @@ call plug#begin('~/.vim/bundle')
 
 " passive plugins that I don't need to touch
 " ============================
-" tmux
-" auto
-Plug 'sjl/vitality.vim'
 
 " Interface
 " auto
@@ -22,24 +18,102 @@ Plug 'Shougo/denite.nvim'
 " auto
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tyrannicaltoucan/vim-quantum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-" gitgutter
-" auto
-Plug 'airblade/vim-gitgutter'
+" p4 signs
+Plug 'mhinz/vim-signify'
+let g:signify_vcs_list = ['perforce', 'git']
+let g:signify_sign_change = '%'
 
 " highlight active only
 Plug 'TaDaa/vimade'
 
-" Fastfold
-" This is per neocomplete's request
-Plug 'Konfekt/FastFold'
+" pairs
+Plug 'tpope/vim-surround'
+
+" lsp
+
+Plug 'neoclide/coc.nvim'
+Plug 'w0rp/ale'
+let g:ale_virtualenv_dir_names = []
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_completion_enabled = 0
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '??'
+let g:ale_linters = {
+\   'python': ['gpylint'],
+\}
+let g:ale_fixers = {
+\   'go': ['gofmt']
+\}
+let g:ale_fix_on_save = 1
+
+" ruby
+" if executable('solargraph')
+    " " gem install solargraph
+    " au User lsp_setup call lsp#register_server({
+        " \ 'name': 'solargraph',
+        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        " \ 'initialization_options': {"diagnostics": "true"},
+        " \ 'whitelist': ['ruby'],
+        " \ })
+  " endif
+
+" go
+" if executable('gopls')
+  " au User lsp_setup call lsp#register_server({
+      " \ 'name': 'gopls',
+      " \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+      " \ 'whitelist': ['go'],
+      " \ })
+  " autocmd BufWrite *.go LspDocumentFormatSync
+" endif
+
+" kythe
+" au User lsp_setup call lsp#register_server({
+    " \ 'name': 'Kythe Language Server',
+    " \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
+    " \ 'whitelist': ['python', 'java', 'cpp', 'proto', 'go'],
+    " \})
+
+" ciderlsp - c, go, etc
+" au User lsp_setup call lsp#register_server({
+    " \ 'name': 'CiderLSP',
+    " \ 'cmd': {server_info->[
+    " \   '/google/bin/releases/editor-devtools/ciderlsp',
+    " \   '--tooltag=vim-lsp',
+    " \   '--noforward_sync_responses',
+    " \ ]},
+    " \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
+    " \ })
+
+" python linting and completion is handled by gpylint and YCM respectively
+" since ciderlsp python-support is still in progress (go/ciderlsp)
+
+" Doc Gen
+Plug 'kkoomen/vim-doge'
+let g:doge_doc_standard_python = 'google'
+let g:doge_comment_interactive = 0
+let g:doge_mapping_comment_jump_forward = '<C-RIGHT>'
+let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
+
+" languages
+Plug 'sheerun/vim-polyglot'
+
+" markdown
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
+
+" ctrlp
+Plug 'ctrlpvim/ctrlp.vim'
 
 " visual indicators
 " Turn on rainbow paren with leader+r
@@ -50,73 +124,17 @@ let g:indentLine_noConcealCursor=""
 
 " colorschemes
 " Plug 'flazz/vim-colorschemes'
-Plug 'morhetz/gruvbox'
-Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jdkanani/vim-material-theme'
 
 " fancy start
 " auto
 Plug 'mhinz/vim-startify'
 
-" auto-add end
-Plug 'tpope/vim-endwise'
-
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
-" json folding
-Plug 'elzr/vim-json'
-
-" completion
-" if has('nvim')
-  " " deoplete
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " let g:deoplete#enable_at_startup = 1
-" else
-  " " neocomplete
-  " Plug 'Shougo/neocomplete'
-  " let g:neocomplete#enable_at_startup = 1
-  " let g:neocomplete#max_list = 12
-  " let g:neocomplete#max_keyword_width = 30
-  " let g:neocomplete#enable_fuzzy_completion = 1
-  " let g:neocomplete#enable_smart_case = 1
-" endif
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-Plug 'neoclide/jsonc.vim'
-
-" docker
-Plug 'ekalinin/Dockerfile.vim'
-
-" julia
-Plug 'JuliaEditorSupport/julia-vim'
-
-" sensible settings
-if !has('nvim')
-  Plug 'tpope/vim-sensible'
-endif
-
-" common snippets
-Plug 'honza/vim-snippets'
-
-" edit scope surrounding
-Plug 'tpope/vim-surround'
-
-" easier searching
-Plug 'junegunn/vim-slash'
-
 " L9
 Plug 'vim-scripts/L9'
-
-" number lines by dist
-Plug 'myusuf3/numbers.vim'
-
-" polyglot
-Plug 'sheerun/vim-polyglot'
-
-" tab autocomplete
-"Plug 'ervandew/supertab'
-" use sane order -- to heck with consistency
-"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " active plugins; I have to call them
 " ==========================
@@ -136,26 +154,11 @@ Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
 " ag
-" learned
 Plug 'brookhong/ag.vim'
-
-" selective replace
-Plug 'brooth/far.vim'
-
-" undo
-" leader+u
-" not frequently used; consider eventual removal
-Plug 'sjl/gundo.vim'
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "right"
-
-Plug 'Xuyuanp/nerdtree-git-plugin'
-let NERDTreeQuitOnOpen=1
-
-" more git stuff
-Plug 'tpope/vim-fugitive'
 
 " sublime-like multicursor
 " ctrl-n for select next
@@ -164,34 +167,35 @@ function! Multiple_cursors_before()
     echo 'Disabled autocomplete'
 endfunction
 
-if !has('nvim')
-  function! Multiple_cursors_before()
-      exe 'NeoCompleteLock'
-      echo 'Disabled autocomplete'
-  endfunction
-
-  function! Multiple_cursors_after()
-      exe 'NeoCompleteUnlock'
-      echo 'Enabled autocomplete'
-  endfunction
-endif
-
-function! SyntaxItem()
-  return synIDattr(synID(line("."),col("."),1),"name")
-endfunction
-
-" search around
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '^build$',
-  \ }
-let g:ctrlp_extensions = ['line']
-
-" fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 " ctag lists
 Plug 'majutsushi/tagbar'
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+          \ 'p:package',
+          \ 'i:imports:1',
+          \ 'c:constants',
+          \ 'v:variables',
+          \ 't:types',
+          \ 'n:interfaces',
+          \ 'w:fields',
+          \ 'e:embedded',
+          \ 'm:methods',
+          \ 'r:constructor',
+          \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+          \ 't' : 'ctype',
+          \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+          \ 'ctype' : 't',
+          \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \}
+	
 
 " quickscope
 Plug 'unblevable/quick-scope'
@@ -223,7 +227,7 @@ endif
 " ===========================
 set expandtab
 set shiftwidth=2
-set number
+set number relativenumber
 set showcmd
 
 " wrapping
@@ -248,17 +252,17 @@ set encoding=utf8
 " clipboard
 if !has('nvim')
     set clipboard=exclude:.*
+else
+    set clipboard+=unnamedplus
 endif
 
 set foldenable
 set foldlevelstart=4
 set foldmethod=syntax
-let g:vim_markdown_conceal = 0
 
 runtime macros/matchit.vim
 
-let &runtimepath.=',~/.vim/bundle/ale'
-autocmd filetype crontab setlocal nobackup nowritebackup
+" let &runtimepath.=',~/.vim/bundle/ale'
 
 " functions
 " ============================
@@ -297,13 +301,12 @@ nnoremap <leader><Right> :bnext<CR>
 nnoremap <leader><Left> :bprevious<CR>
 
 " common utilities
-nnoremap <silent> <leader>g :GitGutterToggle<cr>
 " nnoremap <silent> <leader>r :QuickRun<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>u :GundoToggle<CR>
 
-" To copy to system clipboard, just do "+y
+nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>
 
 nnoremap <silent> <Space> :noh<cr>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
@@ -312,28 +315,31 @@ nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
 
-" quickly modify vimrc file
-nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
-nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+" =================
+" Coc-nvim
+" =================
 
-" Other convenience methods
-nnoremap <silent> <leader>nn :NumbersToggle<CR>
+function! CocActionAsync(...) abort
+  return s:AsyncRequest('CocAction', a:000)
+endfunction
 
-" Fix tmux weird color
-set t_ut=
-runtime macros/matchit.vim
+function! CocRequestAsync(...)
+  return s:AsyncRequest('sendRequest', a:000)
+endfunction
 
-autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype python setlocal completeopt-=preview
-
-" =====
-" Coc suggested features for better completion
-" =====
-"
-" Items to install:
-" coc-python
-" coc-snippets
-" coc-json
+function! s:AsyncRequest(name, args) abort
+  let Cb = a:args[len(a:args) - 1]
+  if type(Cb) == 2
+    if !coc#rpc#ready()
+      call Cb('service not started', v:null)
+    else
+      call coc#rpc#request_async(a:name, a:args[0:-2], Cb)
+    endif
+    return ''
+  endif
+  call coc#rpc#notify(a:name, a:args)
+  return ''
+endfunction
 
 augroup mygroup
   autocmd!
@@ -346,32 +352,31 @@ augroup end
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+" quickly modify vimrc file
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
-" signature help
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" Other convenience methods
+nnoremap <silent> <leader>nn :NumbersToggle<CR>
 
-" Use K to show documentation in preview window
+" goto places
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -381,18 +386,47 @@ function! s:show_documentation()
 endfunction
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
+nnoremap <silent><esc> <esc>:noh<CR><esc>
+
+" Fix tmux weird color
+set t_ut=
+runtime macros/matchit.vim
+
+augroup EditVim
+  autocmd!
+  autocmd filetype crontab setlocal nobackup nowritebackup
+  "autocmd filetype python setlocal completeopt-=preview
+  autocmd CursorHold * silent call CocActionAsync('doHover')
+augroup END
+
+augroup AutoFormat
+  autocmd FileType go AutoFormatBuffer gofmt
+augroup END
+
+augroup CustomHighlight
+  " autocmd Syntax * syn match Keyword /\v<in>/ conceal cchar=∈
+augroup END
 
 " rainbow parens
-au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesActivate
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+set conceallevel=2
+set concealcursor-=n
 set foldlevelstart=99
 set colorcolumn=80
 set background=dark
 " switch buffer without saving
 set hidden
+set cmdheight=2
+set shortmess=aFc
+" italics
+set t_ZH=[3m
+set t_ZR=[23m
 
 " Neovim stuff!
 if has('nvim')
@@ -414,5 +448,9 @@ if has('persistent_undo')
     set undofile
 endif
 
-" Custom highlights
-highlight Comment gui=italic
+" custom highlights
+highlight Special gui=italic
+"highlight Comment gui=italic
+highlight SignifySignAdd guifg=#2dd671
+highlight SignifySignDelete guifg=#d94a0d
+highlight SignifySignChange guifg=#e6bf12

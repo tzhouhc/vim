@@ -23,6 +23,16 @@
   // global
   "coc.preferences.formatOnSaveFiletypes": ["python", "json", "ruby"],
   "coc.preferences.colorSupport": true,
+  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.jumpCommand": "tab drop",
+
+  // completion
+  "suggest.autoTrigger": "always",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.noselect": false,
+  "suggest.enablePreview": true,
+  "suggest.numberSelect": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
 
   "signature.enable": true,
   "signature.hideOnTextChange": true,
@@ -30,8 +40,9 @@
 
   // linting
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.virtualTextPrefix": " ⬩ ",
+  "diagnostic.enableSign": true,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
