@@ -8,27 +8,29 @@ set nocompatible
 call plug#begin('~/.vim/bundle')
 
 " passive plugins that I don't need to touch
-" ============================
+" ==================================
 
 " Interface
-" auto
 Plug 'Shougo/denite.nvim'
 
+" colorschemes
+" Plug 'flazz/vim-colorschemes'
+Plug 'jdkanani/vim-material-theme'
+
 " airline
-" auto
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tyrannicaltoucan/vim-quantum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" " Show just the filename
+" Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='quantum'
 
 " p4 signs
 Plug 'mhinz/vim-signify'
-let g:signify_vcs_list = ['perforce', 'git']
-let g:signify_sign_change = '%'
+let g:signify_vcs_list = ['perforce', 'git', 'hg']
+let g:signify_sign_change = '~'
 
 " highlight active only
 Plug 'TaDaa/vimade'
@@ -37,7 +39,6 @@ Plug 'TaDaa/vimade'
 Plug 'tpope/vim-surround'
 
 " lsp
-
 Plug 'neoclide/coc.nvim'
 Plug 'w0rp/ale'
 let g:ale_virtualenv_dir_names = []
@@ -47,55 +48,7 @@ let g:ale_lint_on_save = 1
 let g:ale_completion_enabled = 0
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '??'
-let g:ale_linters = {
-\   'python': ['gpylint'],
-\}
-let g:ale_fixers = {
-\   'go': ['gofmt']
-\}
 let g:ale_fix_on_save = 1
-
-" ruby
-" if executable('solargraph')
-    " " gem install solargraph
-    " au User lsp_setup call lsp#register_server({
-        " \ 'name': 'solargraph',
-        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        " \ 'initialization_options': {"diagnostics": "true"},
-        " \ 'whitelist': ['ruby'],
-        " \ })
-  " endif
-
-" go
-" if executable('gopls')
-  " au User lsp_setup call lsp#register_server({
-      " \ 'name': 'gopls',
-      " \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-      " \ 'whitelist': ['go'],
-      " \ })
-  " autocmd BufWrite *.go LspDocumentFormatSync
-" endif
-
-" kythe
-" au User lsp_setup call lsp#register_server({
-    " \ 'name': 'Kythe Language Server',
-    " \ 'cmd': {server_info->['/google/bin/releases/grok/tools/kythe_languageserver', '--google3']},
-    " \ 'whitelist': ['python', 'java', 'cpp', 'proto', 'go'],
-    " \})
-
-" ciderlsp - c, go, etc
-" au User lsp_setup call lsp#register_server({
-    " \ 'name': 'CiderLSP',
-    " \ 'cmd': {server_info->[
-    " \   '/google/bin/releases/editor-devtools/ciderlsp',
-    " \   '--tooltag=vim-lsp',
-    " \   '--noforward_sync_responses',
-    " \ ]},
-    " \ 'whitelist': ['c', 'cpp', 'proto', 'textproto', 'go'],
-    " \ })
-
-" python linting and completion is handled by gpylint and YCM respectively
-" since ciderlsp python-support is still in progress (go/ciderlsp)
 
 " Doc Gen
 Plug 'kkoomen/vim-doge'
@@ -122,10 +75,6 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
 
-" colorschemes
-" Plug 'flazz/vim-colorschemes'
-Plug 'jdkanani/vim-material-theme'
-
 " fancy start
 " auto
 Plug 'mhinz/vim-startify'
@@ -148,8 +97,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 
 " quick-comment
-" familiar
-" leader+c+space = toggle comment
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
@@ -195,7 +142,7 @@ let g:tagbar_type_go = {
   \ },
   \ 'ctagsbin'  : 'gotags',
   \}
-	
+
 
 " quickscope
 Plug 'unblevable/quick-scope'
@@ -450,7 +397,7 @@ endif
 
 " custom highlights
 highlight Special gui=italic
-"highlight Comment gui=italic
+highlight Comment gui=italic
 highlight SignifySignAdd guifg=#2dd671
 highlight SignifySignDelete guifg=#d94a0d
 highlight SignifySignChange guifg=#e6bf12
