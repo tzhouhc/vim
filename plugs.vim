@@ -64,6 +64,7 @@ Plug 'sheerun/vim-polyglot'
 
 " markdown
 Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal = 2
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
 
@@ -74,13 +75,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
+let g:indentLine_setConceal = 0
 
 " colorize hex colors
-Plug 'chrisbra/Colorizer'
-let g:colorizer_auto_filetype='css,html,vim'
-if isNeovim
-  let g:colorizer_use_virtual_text = 1
-endif
+Plug 'ap/vim-css-color'
 
 " colorschemes
 Plug 'jdkanani/vim-material-theme'

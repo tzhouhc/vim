@@ -27,7 +27,22 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " other options
 set conceallevel=2
-set concealcursor-=n
+set concealcursor="nc"
 set foldlevelstart=99
 set colorcolumn=80
 set background=dark
+
+" =================
+" custom highlights
+" =================
+" highlights run last since we don't want the color-scheme overwriting them
+
+highlight Special gui=italic
+highlight Comment gui=italic
+
+highlight SignifySignAdd guifg=#2dd671
+highlight SignifySignDelete guifg=#d94a0d
+highlight SignifySignChange guifg=#e6bf12
+
+highlight QuickScopePrimary guifg=#71eb34 gui=underline
+highlight QuickScopeSecondary guifg=#348feb gui=underline
