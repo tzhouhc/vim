@@ -11,7 +11,7 @@
   "suggest.noselect": false,
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
-  "suggest.numberSelect": true,
+  "suggest.numberSelect": false,
   "suggest.floatEnable": true,
   "suggest.acceptSuggestionOnCommitCharacter": true,
 
