@@ -39,7 +39,7 @@ let g:airline_theme='quantum'
 
 " p4 signs
 Plug 'mhinz/vim-signify'
-let g:signify_vcs_list = ['perforce', 'git']
+let g:signify_vcs_list = ['perforce', 'git', 'hg']
 let g:signify_sign_change = '%'
 
 " highlight active only
@@ -138,10 +138,6 @@ let g:indentLine_noConcealCursor=""
 " Plug 'flazz/vim-colorschemes'
 Plug 'jdkanani/vim-material-theme'
 
-" fancy start
-" auto
-Plug 'mhinz/vim-startify'
-
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
@@ -171,6 +167,8 @@ Plug 'brookhong/ag.vim'
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "right"
+" icon
+Plug 'ryanoasis/vim-devicons'
 
 " sublime-like multicursor
 " ctrl-n for select next
@@ -446,7 +444,8 @@ augroup END
 " =================
 
 highlight Special gui=italic
-"highlight Comment gui=italic
+highlight Comment gui=italic
+
 highlight SignifySignAdd guifg=#2dd671
 highlight SignifySignDelete guifg=#d94a0d
 highlight SignifySignChange guifg=#e6bf12
