@@ -51,8 +51,3 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
-
-augroup AutoFormat
-  autocmd FileType go AutoFormatBuffer gofmt
-augroup END
-
