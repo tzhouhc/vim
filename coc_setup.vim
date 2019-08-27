@@ -64,3 +64,99 @@ augroup EditVim
   autocmd CursorHold * silent call CocActionAsync('doHover')
 augroup END
 
+" ==============================
+" Context-sensitive Coc Config
+" ==============================
+
+if isGoogle
+  let g:coc_user_config = {
+        \ 'coc.preferences': {
+        \   'formatonsavefiletypes': [],
+        \   'colorsupport': v:true,
+        \   'hovertarget': 'float',
+        \   'jumpcommand': 'tab drop',
+        \ },
+        \ 'suggest': {
+        \   'autotrigger': 'always',
+        \   'triggerafterinsertenter': v:true,
+        \   'noselect': v:false,
+        \   'enablepreview': v:true,
+        \   'enablepreselect': v:true,
+        \   'numberselect': v:false,
+        \   'floatenable': v:true,
+        \   'acceptsuggestiononcommitcharacter': v:true,
+        \ },
+        \ 'diagnostic': {
+        \   'checkcurrentline': v:true,
+        \   'virtualtext': v:false,
+        \   'virtualtextprefix': ' ⬩ ',
+        \   'enablesign': v:true,
+        \   'refreshoninsertmode': v:true,
+        \   'errorsign': 'x',
+        \   'warningsign': '!',
+        \   'infosign': '?',
+        \   'hintsign': '·',
+        \   'level': 'information',
+        \ },
+        \ 'languageserver': {
+        \   'ciderlsp': {
+        \     'command': '/google/bin/releases/editor-devtools/ciderlsp',
+        \     'args': [
+        \       '--tooltag=coc-nvim',
+        \       '--noforward_sync_responses'
+        \     ],
+        \     'filetypes': [
+        \       'c',
+        \       'cpp',
+        \       'proto',
+        \       'textproto',
+        \       'go'
+        \     ]
+        \   },
+        \   'kythe': {
+        \     'command': '/google/bin/releases/grok/tools/kythe_languageserver',
+        \     'args': [
+        \       '--google3'
+        \     ],
+        \     'filetypes': [
+        \       'python',
+        \       'go',
+        \       'java',
+        \       'cpp',
+        \       'proto'
+        \     ]
+        \   }
+        \ }
+        \}
+else
+  let g:coc_user_config = {
+        \ 'coc.preferences': {
+        \   'formatonsavefiletypes': [],
+        \   'colorsupport': v:true,
+        \   'hovertarget': 'float',
+        \   'jumpcommand': 'tab drop',
+        \ },
+        \ 'suggest': {
+        \   'autotrigger': 'always',
+        \   'triggerafterinsertenter': v:true,
+        \   'noselect': v:false,
+        \   'enablepreview': v:true,
+        \   'enablepreselect': v:true,
+        \   'numberselect': v:false,
+        \   'floatenable': v:true,
+        \   'acceptsuggestiononcommitcharacter': v:true,
+        \ },
+        \ 'diagnostic': {
+        \   'checkcurrentline': v:true,
+        \   'virtualtext': v:false,
+        \   'virtualtextprefix': ' ⬩ ',
+        \   'enablesign': v:true,
+        \   'refreshoninsertmode': v:true,
+        \   'errorsign': 'x',
+        \   'warningsign': '!',
+        \   'infosign': '?',
+        \   'hintsign': '·',
+        \   'level': 'information',
+        \ }
+        \}
+endif
