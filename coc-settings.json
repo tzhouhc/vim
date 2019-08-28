@@ -3,16 +3,18 @@
   "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.colorSupport": true,
   "coc.preferences.hoverTarget": "float",
-  "coc.preferences.jumpCommand": "tab drop",
+  "coc.preferences.jumpCommand": "edit",
 
   // completion
   "suggest.autoTrigger": "always",
-  "suggest.triggerAfterInsertEnter": true,
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.minTriggerInputLength": 2,
   "suggest.noselect": false,
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
   "suggest.numberSelect": false,
   "suggest.floatEnable": true,
+  "suggest.localityBonus": true,
   "suggest.acceptSuggestionOnCommitCharacter": true,
 
   // linting

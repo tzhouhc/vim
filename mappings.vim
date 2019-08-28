@@ -32,9 +32,11 @@ nnoremap <silent><esc> <esc>:noh<CR><esc>
 nnoremap <silent> <leader>nn :NumbersToggle<cr>
 nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
 
-" tab switch buffer
+" switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
+nnoremap <silent> <leader><leader><Left> :tabp<cr>
+nnoremap <silent> <leader><leader><Right> :tabn<cr>
 
 " tmux-like splitting
 nnoremap <c-w>% :vsplit<cr>

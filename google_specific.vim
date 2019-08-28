@@ -12,3 +12,6 @@ Glug codefmt-google
 " blaze
 Glug blaze plugin[mappings] !alerts
 Glug blazedeps auto_filetypes=`['go']`
+
+" before dream gets its own syntax file, consider them gcl files
+autocmd BufNewFile,BufRead *.dream set syntax=gcl
