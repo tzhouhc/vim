@@ -64,3 +64,92 @@ augroup EditVim
   autocmd CursorHold * silent call CocActionAsync('doHover')
 augroup END
 
+" ==============================
+" Context-sensitive Coc Config
+" ==============================
+
+" base settings
+let g:coc_user_config = {
+      \ 'coc.preferences': {
+      \   'formatOnSaveFiletypes': [],
+      \   'colorSupport': v:true,
+      \   'hoverTarget': 'float',
+      \   'jumpCommand': 'edit',
+      \ },
+      \ 'suggest': {
+      \   'autoTrigger': 'always',
+      \   'triggerAfterInsertEnter': v:true,
+      \   'noSelect': v:false,
+      \   'enablePreview': v:true,
+      \   'enablePreselect': v:true,
+      \   'numberSelect': v:false,
+      \   'floatEnable': v:true,
+      \   'acceptSuggestionOnCommitCharacter': v:true,
+      \ },
+      \ 'diagnostic': {
+      \   'checkCurrentLine': v:true,
+      \   'virtualText': v:true,
+      \   'virtualTextPrefix': ' ⬩ ',
+      \   'enableSign': v:true,
+      \   'refreshOnInsertMode': v:true,
+      \   'errorSign': 'x',
+      \   'warningSign': '!',
+      \   'infoSign': '?',
+      \   'hintSign': '·',
+      \   'level': 'information',
+      \ }
+      \}
+
+if isGoogle
+  " Google mode configs
+  let g:coc_user_config.languageserver = {
+      \   'ciderlsp': {
+      \     'command': '/google/bin/releases/editor-devtools/ciderlsp',
+      \     'args': [
+      \       '--tooltag=coc-nvim',
+      \       '--noforward_sync_responses'
+      \     ],
+      \     'filetypes': [
+      \       'c',
+      \       'cpp',
+      \       'proto',
+      \       'textproto',
+      \       'go'
+      \     ]
+      \   },
+      \   'kythe': {
+      \     'command': '/google/bin/releases/grok/tools/kythe_languageserver',
+      \     'args': [
+      \       '--google3'
+      \     ],
+      \     'filetypes': [
+      \       'python',
+      \       'go',
+      \       'java',
+      \       'cpp',
+      \       'proto'
+      \     ]
+      \   }
+      \ }
+else
+  " 'civilian' mode configs
+  let g:coc_user_config.solargraph = {
+      \  'diagnostics': v:true
+      \}
+  let g:coc_user_config.python = {
+      \  'formatting.provider': 'black',
+      \}
+  let g:coc_user_config.languageserver = {
+      \  'bash': {
+      \    'command': 'bash-language-server',
+      \    'args': ['start'],
+      \    'filetypes': ['sh'],
+      \    'ignoredRootPaths': ['~']
+      \  },
+      \  'gopls': {
+      \    'command': 'gopls',
+      \    'filetypes': ['go'],
+      \    'ignoredRootPaths': ['go.mod']
+      \  }
+      \}
+endif
