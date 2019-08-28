@@ -36,7 +36,7 @@ Plug 'tpope/vim-surround'
 " lsp
 Plug 'neoclide/coc.nvim'
 " see coc_specific.vim and coc_config.json for more tweaks
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', isGoogle? {} : { 'on': [] }
 let g:ale_virtualenv_dir_names = []
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
