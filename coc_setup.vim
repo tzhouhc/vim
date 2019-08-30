@@ -79,6 +79,7 @@ let g:coc_user_config = {
       \ 'suggest': {
       \   'autoTrigger': 'always',
       \   'triggerAfterInsertEnter': v:true,
+      \   'localityBonus': v:true,
       \   'noSelect': v:false,
       \   'enablePreview': v:true,
       \   'enablePreselect': v:true,

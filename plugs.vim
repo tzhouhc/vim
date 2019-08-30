@@ -71,6 +71,11 @@ let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vi
 " ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
 
+" incsearch
+Plug 'haya14busa/incsearch.vim'
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+
 " visual indicators
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
@@ -151,6 +156,8 @@ let g:tagbar_type_go = {
   \ 'ctagsbin'  : 'gotags',
   \}
 
+" undo-tree
+Plug 'mbbill/undotree'
 
 " quickscope
 Plug 'unblevable/quick-scope'
