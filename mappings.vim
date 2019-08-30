@@ -6,10 +6,6 @@ noremap <Up> gk
 noremap <silent> <C-Left> ^
 noremap <silent> <C-Right> $
 
-" undo, redo
-inoremap <c-z> <esc>ui
-inoremap <c-u> <esc><c-r>i
-
 " mimicking sublime's selection enclose behavior
 vnoremap " <esc>`>a"<esc>`<i"<esc>
 vnoremap ' <esc>`>a'<esc>`<i'<esc>
@@ -18,6 +14,15 @@ vnoremap ( <esc>`>a)<esc>`<i(<esc>
 vnoremap { <esc>`>a}<esc>`<i{<esc>
 vnoremap ` <esc>`>a`<esc>`<i`<esc>
 " vnoremap < <esc>`>a><esc>`<i<
+
+" select whole words by default
+if visualMoveWholeWord
+  vnoremap w iw
+  vnoremap W iW
+  vnoremap ) i)
+  vnoremap ] i]
+  vnoremap } i}
+endif
 
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>

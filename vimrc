@@ -8,6 +8,16 @@ let &runtimepath.=','.vimDir
 let isGoogle = isdirectory('/google')
 let isNeovim = has('nvim')
 
+" ==== Global personalizations ====
+" These are options that are tied to a couple of things deeper down
+" in the individual files. This provides a quick single location for toggling
+" them.
+
+" vw => viw, etc
+let visualMoveWholeWord = v:true
+" run rainbow parenthesis by default
+let rainbowParens = v:true
+
 " ==== Loading scripts ====
 
 " plugins and plugin settings
@@ -15,6 +25,9 @@ source $HOME/.vim/plugs.vim
 
 " generic settings
 source $HOME/.vim/settings.vim
+
+" custom text objects
+source $HOME/.vim/text_objects.vim
 
 " settings specific to coc
 source $HOME/.vim/coc_setup.vim

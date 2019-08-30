@@ -20,10 +20,12 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 " rainbow parens
-au VimEnter * RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+if rainbowParens
+  au VimEnter * RainbowParenthesesActivate
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
+endif
 
 " other options
 set conceallevel=2
@@ -45,4 +47,4 @@ highlight SignifySignDelete guifg=#d94a0d
 highlight SignifySignChange guifg=#e6bf12
 
 highlight QuickScopePrimary guifg=#71eb34 gui=underline
-highlight QuickScopeSecondary guifg=#348feb gui=underline
+highlight QuickScopeSecondary guifg=#348feb gui=bold
