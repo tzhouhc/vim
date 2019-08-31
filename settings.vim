@@ -28,6 +28,7 @@ set encoding=UTF-8
 " clipboard
 set clipboard+=unnamedplus
 
+" folding
 set foldenable
 set foldlevelstart=4
 set foldmethod=syntax

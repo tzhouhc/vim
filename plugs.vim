@@ -6,7 +6,8 @@
 set nocompatible
 call plug#begin('~/.vim/bundle')
 
-" passive plugins that I don't need to touch
+" ============================
+" passive plugins
 " ============================
 
 " airline
@@ -21,9 +22,9 @@ let g:airline_theme='quantum'
 " version control signs
 Plug 'mhinz/vim-signify'
 let g:signify_vcs_list = ['perforce', 'git', 'hg']
-let g:signify_sign_change = '%'
+let g:signify_sign_change = '~'
 
-" highlight active only
+" highlight active pane only
 Plug 'TaDaa/vimade'
 
 " fancy startup
@@ -32,6 +33,9 @@ Plug 'mhinz/vim-startify', isGoogle ? { 'on': [] } : {}
 
 " pairs
 Plug 'tpope/vim-surround'
+
+" auto-close pairs
+Plug 'Raimondi/delimitMate'
 
 " lsp
 Plug 'neoclide/coc.nvim'
@@ -59,7 +63,7 @@ let g:doge_comment_interactive = 0
 let g:doge_mapping_comment_jump_forward = '<C-RIGHT>'
 let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
-" languages
+" languages highlighting
 Plug 'sheerun/vim-polyglot'
 
 " markdown
@@ -68,10 +72,14 @@ let g:vim_markdown_conceal = 2
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
 
-" ctrlp
+" ctrlp -- for finding local files
 Plug 'ctrlpvim/ctrlp.vim'
+if executable('fd')
+  " this allows us to use nice things like skipping gitignored files, etc
+  let g:ctrlp_user_command = 'fd . %s -i -tf -c=never'
+endif
 
-" incsearch
+" incsearch within the file
 Plug 'haya14busa/incsearch.vim'
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -82,18 +90,17 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor=""
 let g:indentLine_setConceal = 0
 
-" colorize hex colors
+" colorize hex colors like #15c3f2 and #f3a
 Plug 'ap/vim-css-color'
 
 " colorschemes
 Plug 'jdkanani/vim-material-theme'
+Plug 'morhetz/gruvbox'
+let g:gruvbox_box_bold = 1
+let g:gruvbox_box_underline = 1
 
-" auto-close pairs
-Plug 'Raimondi/delimitMate'
 
-" L9
-Plug 'vim-scripts/L9'
-
+" ==========================
 " active plugins
 " ==========================
 
@@ -111,10 +118,11 @@ let NERDSpaceDelims = 1
 Plug 'mileszs/ack.vim'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
-  cnoreabbrev ag Ack
-  cnoreabbrev aG Ack
-  cnoreabbrev Ag Ack
-  cnoreabbrev AG Ack
+  cnoreabbrev Ack Ack!
+  cnoreabbrev ag Ack!
+  cnoreabbrev aG Ack!
+  cnoreabbrev Ag Ack!
+  cnoreabbrev AG Ack!
 endif
 
 " file tree

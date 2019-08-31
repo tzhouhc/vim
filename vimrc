@@ -17,6 +17,12 @@ let isNeovim = has('nvim')
 let visualMoveWholeWord = v:true
 " run rainbow parenthesis by default
 let rainbowParens = v:true
+" toggle italics
+let useItalics = v:true
+" dark mode
+let darkMode = v:true
+" material or Gruvbox
+let useGruvbox = v:false
 
 " ==== Loading scripts ====
 
