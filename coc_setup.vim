@@ -134,23 +134,39 @@ if isGoogle
       \ }
 else
   " 'civilian' mode configs
-  let g:coc_user_config.solargraph = {
-      \  'diagnostics': v:true
+  let g:coc_user_config.languageserver = {}
+  " coc-sh doesn't really have any settings
+  "
+  " requires coc-solarpraph
+  if executable('solargraph')
+    let g:coc_user_config.solargraph = {
+        \  'diagnostics': v:true
+        \}
+  endif
+  " requires coc-python
+  if executable('black')
+    let g:coc_user_config.python = {
+        \  'formatting.provider': 'black',
+        \}
+  endif
+  " requires coc-latex
+  if executable('latexmk')
+    let g:coc_user_config.latex = {
+        \  'build': {
+        \    'onSave': v:true,
+        \  },
+        \  'forwardSearch': {
+        \    'executable': 'open',
+        \  },
+        \}
+  endif
+  " ----------------
+  " non-coc language servers
+  if executable('gopls')
+    let g:coc_user_config.languageserver.gopls = {
+      \  'command': 'gopls',
+      \  'filetypes': ['go'],
+      \  'ignoredRootPaths': ['go.mod']
       \}
-  let g:coc_user_config.python = {
-      \  'formatting.provider': 'black',
-      \}
-  let g:coc_user_config.languageserver = {
-      \  'bash': {
-      \    'command': 'bash-language-server',
-      \    'args': ['start'],
-      \    'filetypes': ['sh'],
-      \    'ignoredRootPaths': ['~']
-      \  },
-      \  'gopls': {
-      \    'command': 'gopls',
-      \    'filetypes': ['go'],
-      \    'ignoredRootPaths': ['go.mod']
-      \  }
-      \}
+  endif
 endif

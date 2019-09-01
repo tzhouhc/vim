@@ -19,10 +19,16 @@ let visualMoveWholeWord = v:true
 let rainbowParens = v:true
 " toggle italics
 let useItalics = v:true
-" dark mode
-let darkMode = v:true
-" material or Gruvbox
-let useGruvbox = v:false
+
+" themes -------
+" let themeChoice = 'one'
+let themeChoice = 'nord'
+" let themeChoice = 'two-firewatch'
+" let themeChoice = 'iceberg'
+" let themeChoice = 'ayu'
+" let themeChoice = 'gruvbox'
+" let themeChoice = 'material-theme'
+
 
 " ==== Loading scripts ====
 
@@ -31,6 +37,9 @@ source $HOME/.vim/plugs.vim
 
 " generic settings
 source $HOME/.vim/settings.vim
+
+" auto-commands
+source $HOME/.vim/auto.vim
 
 " custom text objects
 source $HOME/.vim/text_objects.vim

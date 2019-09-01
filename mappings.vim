@@ -1,10 +1,15 @@
 " ===========================
 " keymaps
 " ===========================
+
+" vertical movement
 noremap <Down> gj
 noremap <Up> gk
+" horizontal
 noremap <silent> <C-Left> ^
 noremap <silent> <C-Right> $
+" cancel search highlight
+nnoremap <silent><esc> <esc>:noh<CR><esc>
 
 " mimicking sublime's selection enclose behavior
 vnoremap " <esc>`>a"<esc>`<i"<esc>
@@ -13,7 +18,6 @@ vnoremap [ <esc>`>a]<esc>`<i[<esc>
 vnoremap ( <esc>`>a)<esc>`<i(<esc>
 vnoremap { <esc>`>a}<esc>`<i{<esc>
 vnoremap ` <esc>`>a`<esc>`<i`<esc>
-" vnoremap < <esc>`>a><esc>`<i<
 
 " select whole words by default
 if visualMoveWholeWord
@@ -32,18 +36,16 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>
-nnoremap <silent> <leader>ch :ColorToggle<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignatureToggleSigns<cr>
 
-nnoremap <silent><esc> <esc>:noh<CR><esc>
-nnoremap <silent> <leader>nn :NumbersToggle<cr>
-nnoremap <silent> <leader>fj :%!python -m json.tool<cr>
-
-map /  <Plug>(incsearch-forward)\v
-map ?  <Plug>(incsearch-backward)\v
-map g/ <Plug>(incsearch-stay)\v
-
+" search for stuff
 nnoremap <c-f> /\v
+nnoremap /  <Plug>(incsearch-forward)\v
+nnoremap ?  <Plug>(incsearch-backward)\v
+nnoremap g/ <Plug>(incsearch-stay)\v
+
+" ctrl-p second
+nnoremap <c-o> :CtrlPMRUFiles<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>

@@ -7,34 +7,21 @@
 " has true color available one-way or another
 let hasTrueColor = v:false
 if has('gui_running') || has('nvim') || has("termguicolors")
-  set termguicolors
+  if has('termguicolors')
+    set termguicolors
+  endif
   let hasTrueColor = v:true
 endif
 
-" bit of a decision to make here :)
-if darkMode
-  set background=dark
-  if hasTrueColor && !useGruvbox
-    colorscheme material-theme
-  else
-    colorscheme gruvbox
-  endif
+if hasTrueColor
+  execute "colorscheme ".themeChoice
 else
-  set background=light
   colorscheme gruvbox
-end
+endif
 
 " italics setup
 set t_ZH=[3m
 set t_ZR=[23m
-
-" rainbow parens
-if rainbowParens
-  au VimEnter * RainbowParenthesesActivate
-  au Syntax * RainbowParenthesesLoadRound
-  au Syntax * RainbowParenthesesLoadSquare
-  au Syntax * RainbowParenthesesLoadBraces
-endif
 
 " other options
 set conceallevel=2
@@ -60,7 +47,7 @@ if useItalics
   highlight Comment gui=italic
 endif
 
-if darkMode
+if &background ==# 'dark'
   highlight SignifySignAdd guifg=#2dd671
   highlight SignifySignDelete guifg=#d94a0d
   highlight SignifySignChange guifg=#e6bf12
@@ -69,6 +56,7 @@ if darkMode
   highlight QuickScopeSecondary guifg=#348feb gui=bold
 else
   " light mode has the colors toned down quite a bit
+  " though really, why would I use a light theme???
   highlight SignifySignAdd guifg=#1d6631
   highlight SignifySignDelete guifg=#792a0d
   highlight SignifySignChange guifg=#b69f12
