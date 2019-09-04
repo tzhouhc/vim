@@ -40,9 +40,9 @@ nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:Inde
 
 " search for stuff
 nnoremap <c-f> /\v
-nnoremap /  <Plug>(incsearch-forward)\v
-nnoremap ?  <Plug>(incsearch-backward)\v
-nnoremap g/ <Plug>(incsearch-stay)\v
+map /  <Plug>(incsearch-forward)\v
+map ?  <Plug>(incsearch-backward)\v
+map g/ <Plug>(incsearch-stay)\v
 
 " ctrl-p second
 nnoremap <c-o> :CtrlPMRUFiles<cr>
