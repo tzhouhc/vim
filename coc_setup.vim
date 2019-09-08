@@ -147,6 +147,7 @@ else
   if executable('black')
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
+        \  'linting.flake8Enabled': v:true,
         \}
   endif
   " requires coc-latex
