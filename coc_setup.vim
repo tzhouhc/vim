@@ -149,6 +149,7 @@ else
         \  'formatting.provider': 'black',
         \  'linting.flake8Enabled': v:true,
         \}
+    let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = ['python']
   endif
   " requires coc-latex
   if executable('latexmk')
@@ -169,5 +170,13 @@ else
       \  'filetypes': ['go'],
       \  'ignoredRootPaths': ['go.mod']
       \}
+  endif
+  " ----------------
+  " experimental server
+  if useEnglishLsp
+    let g:coc_user_config.languageserver.english = {
+        \  'command': '/Users/tingzhou/Documents/Projects/english-lsp/eng_lsp.py',
+        \  'filetypes': ['text', 'markdown'],
+        \}
   endif
 endif

@@ -19,6 +19,8 @@ let visualMoveWholeWord = v:true
 let rainbowParens = v:true
 " toggle italics
 let useItalics = v:true
+" use experimental english lsp
+let useEnglishLsp = v:true
 
 " themes -------
 " let themeChoice = 'one'
