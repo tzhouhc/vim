@@ -115,7 +115,8 @@ if isGoogle
       \       'cpp',
       \       'proto',
       \       'textproto',
-      \       'go'
+      \       'go',
+      \       'java'
       \     ]
       \   },
       \   'kythe': {

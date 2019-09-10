@@ -56,3 +56,8 @@ nnoremap <silent> <leader><leader><Right> :tabn<cr>
 " tmux-like splitting
 nnoremap <c-w>% :vsplit<cr>
 nnoremap <c-w>" :split<cr>
+
+" show current text highlight group
+nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

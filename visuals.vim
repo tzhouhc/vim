@@ -45,6 +45,10 @@ if useItalics
   let g:gruvbox_box_italic = 1
   highlight Special gui=italic
   highlight Comment gui=italic
+  highlight Italic gui=italic
+  highlight Bold gui=bold
+  highlight mkdBold gui=bold
+  highlight htmlItalic gui=italic
 endif
 
 if &background ==# 'dark'

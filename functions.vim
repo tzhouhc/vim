@@ -16,3 +16,13 @@ function! ToggleNERDTreeFind()
     execute ':NERDTreeFind'
   endif
 endfunction
+
+function! AutoGoyo()
+  if &ft == 'markdown'
+    Goyo 80
+  elseif exists('#goyo')
+    let bufnr = bufnr('%')
+    Goyo!
+    execute 'b '.bufnr
+  endif
+endfunction

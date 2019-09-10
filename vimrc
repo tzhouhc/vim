@@ -40,9 +40,6 @@ source $HOME/.vim/plugs.vim
 " generic settings
 source $HOME/.vim/settings.vim
 
-" auto-commands
-source $HOME/.vim/auto.vim
-
 " custom text objects
 source $HOME/.vim/text_objects.vim
 
@@ -61,6 +58,9 @@ endif
 
 " functions
 source $HOME/.vim/functions.vim
+
+" auto-commands
+source $HOME/.vim/auto.vim
 
 " key mappings
 source $HOME/.vim/mappings.vim

@@ -139,6 +139,12 @@ if executable('ag')
   cnoreabbrev AG Ack!
 endif
 
+" distraction-free writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "right"
