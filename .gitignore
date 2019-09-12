@@ -6,3 +6,4 @@ undodir
 plugin
 *.old
 .mypy_cache
+vim_history
