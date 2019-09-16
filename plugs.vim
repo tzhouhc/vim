@@ -48,13 +48,16 @@ let g:ale_lint_on_save = 1
 let g:ale_completion_enabled = 0
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '??'
+" gpylint requires a separate ale-linter definition script
 let g:ale_linters = {
 \   'python': ['gpylint'],
+\   'java': [],
 \}
 let g:ale_fixers = {
 \   'go': ['gofmt']
 \}
 let g:ale_fix_on_save = 1
+let g:ale_python_gpylint_use_global = 1
 
 " Doc Gen
 Plug 'kkoomen/vim-doge'

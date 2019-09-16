@@ -21,6 +21,8 @@ let rainbowParens = v:true
 let useItalics = v:true
 " use experimental english lsp
 let useEnglishLsp = v:true
+" use staging variant of ciderlsp
+let useCiderStaging = v:true
 
 " themes -------
 " let themeChoice = 'one'

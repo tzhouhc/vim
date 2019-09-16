@@ -103,6 +103,9 @@ let g:coc_user_config = {
 
 if isGoogle
   " Google mode configs
+  let g:coc_filetype_map = {
+      \   'dream': 'borg'
+      \ }
   let g:coc_user_config.languageserver = {
       \   'ciderlsp': {
       \     'command': '/google/bin/releases/editor-devtools/ciderlsp',
@@ -116,7 +119,9 @@ if isGoogle
       \       'proto',
       \       'textproto',
       \       'go',
-      \       'java'
+      \       'java',
+      \       'borg',
+      \       'python'
       \     ]
       \   },
       \   'kythe': {
@@ -133,6 +138,9 @@ if isGoogle
       \     ]
       \   }
       \ }
+  if useCiderStaging
+    let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=blade:languageservices-staging']
+  endif
 else
   " 'civilian' mode configs
   let g:coc_user_config.languageserver = {}
