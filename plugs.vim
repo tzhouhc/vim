@@ -40,24 +40,28 @@ Plug 'Raimondi/delimitMate'
 " lsp
 Plug 'neoclide/coc.nvim'
 " see coc_specific.vim and coc_config.json for more tweaks
-Plug 'w0rp/ale', isGoogle? {} : { 'on': [] }
-let g:ale_virtualenv_dir_names = []
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_completion_enabled = 0
-let g:ale_sign_error = '!!'
-let g:ale_sign_warning = '??'
-" gpylint requires a separate ale-linter definition script
-let g:ale_linters = {
-\   'python': ['gpylint'],
-\   'java': [],
-\}
-let g:ale_fixers = {
-\   'go': ['gofmt']
-\}
-let g:ale_fix_on_save = 1
-let g:ale_python_gpylint_use_global = 1
+
+" For performance concerns, removing ale for now
+" since it's somehow not quite doing async fixes.
+" Plug 'w0rp/ale', isGoogle? {} : { 'on': [] }
+" let g:ale_virtualenv_dir_names = []
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_completion_enabled = 0
+" let g:ale_sign_error = '!!'
+" let g:ale_sign_warning = '??'
+" " gpylint requires a separate ale-linter definition script
+" let g:ale_linters = {
+" \   'python': ['gpylint'],
+" \   'java': [],
+" \}
+" let g:ale_fixers = {
+" \   'go': ['gofmt'],
+" \}
+" " \   'bzl': ['Buildifier'],
+" let g:ale_fix_on_save = 1
+" let g:ale_python_gpylint_use_global = 1
 
 " Doc Gen
 Plug 'kkoomen/vim-doge'
@@ -150,7 +154,7 @@ autocmd! User GoyoLeave Limelight!
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 " icons
 Plug 'ryanoasis/vim-devicons'
 

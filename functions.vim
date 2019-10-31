@@ -26,3 +26,9 @@ function! AutoGoyo()
     execute 'b '.bufnr
   endif
 endfunction
+
+function! Buildifier(buffer)
+  return {
+        \  'command': 'buildifier'
+        \}
+endfunction

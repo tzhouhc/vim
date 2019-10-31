@@ -36,7 +36,7 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignatureToggleSigns<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>
 
 " search for stuff
 nnoremap <c-f> /\v
