@@ -24,6 +24,9 @@ Plug 'mhinz/vim-signify'
 let g:signify_vcs_list = ['perforce', 'git', 'hg']
 let g:signify_sign_change = '~'
 
+" changes in current file since last save
+Plug 'chrisbra/changesPlugin'
+
 " highlight active pane only
 Plug 'TaDaa/vimade'
 

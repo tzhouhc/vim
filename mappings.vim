@@ -35,8 +35,13 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 " common utilities
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
+" formatting using codefmt;
+nnoremap <silent> <leader>l :FormatCode<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>
+nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>:TCV<cr>
+
+" line formatting
+vnoremap <silent> <leader>l :FormatLines<cr>
 
 " search for stuff
 nnoremap <c-f> /\v
