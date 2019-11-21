@@ -21,8 +21,17 @@ let g:airline_theme='quantum'
 
 " version control signs
 Plug 'mhinz/vim-signify'
-let g:signify_vcs_list = ['perforce', 'git', 'hg']
 let g:signify_sign_change = '~'
+if isGoogle
+  let g:signify_vcs_list = ['perforce', 'hg', 'git']
+  let g:signify_vcs_cmds = {
+        \ 'perforce':'DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
+        \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
+        \ 'hg': 'hg diff --color=never --config aliases.diff= --nodates -U0 -- %f'
+        \ }
+else
+  let g:signify_vcs_list = ['git']
+endif
 
 " changes in current file since last save
 Plug 'chrisbra/changesPlugin'
@@ -165,6 +174,11 @@ Plug 'ryanoasis/vim-devicons'
 " ctrl-n for select next
 Plug 'terryma/vim-multiple-cursors'
 
+" autoctag
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+let g:easytags_auto_highlight = 0
+let g:easytags_suppress_report = 1
 " ctag lists
 Plug 'majutsushi/tagbar'
 let g:tagbar_type_go = {

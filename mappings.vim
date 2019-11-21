@@ -35,8 +35,10 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 " common utilities
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
+
 " formatting using codefmt;
-nnoremap <silent> <leader>l :FormatCode<cr>
+" disabled due to introducing unwanted changes in external code bases
+" nnoremap <silent> <leader>l :FormatCode<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>:TCV<cr>
 
@@ -50,7 +52,9 @@ map ?  <Plug>(incsearch-backward)\v
 map g/ <Plug>(incsearch-stay)\v
 
 " ctrl-p second
-nnoremap <c-o> :CtrlPMRUFiles<cr>
+nnoremap <c-o> :CtrlP<cr>
+nnoremap <c-p> :CtrlPMRUFiles<cr>
+nnoremap <c-i> :CtrlPTag<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>
