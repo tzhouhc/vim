@@ -51,9 +51,11 @@ map /  <Plug>(incsearch-forward)\v
 map ?  <Plug>(incsearch-backward)\v
 map g/ <Plug>(incsearch-stay)\v
 
-" ctrl-p second
+" ctrl-p for local files and local tags; c-p is mru files.
 nnoremap <c-o> :CtrlP<cr>
 nnoremap <c-i> :CtrlPBufTag<cr>
+" super lookup of *anything*
+nnoremap <c-s-i> :CtrlPTag<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>

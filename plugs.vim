@@ -181,10 +181,9 @@ Plug 'xolox/vim-easytags'
 let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
 let g:easytags_suppress_report = 1
-let g:easytags_by_filetype = 1
 let g:easytags_on_cursorhold = 0
 let g:easytags_python_enabled = 1
-let g:easytags_file = '~/.vim/tags'
+let g:easytags_by_filetype = '~/.vim/tags'
 
 " ctag lists
 Plug 'majutsushi/tagbar'
