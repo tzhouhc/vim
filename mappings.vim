@@ -52,15 +52,14 @@ map ?  <Plug>(incsearch-backward)\v
 map g/ <Plug>(incsearch-stay)\v
 
 " ctrl-p for local files and local tags; c-p is mru files.
-nnoremap <c-o> :CtrlP<cr>
+nnoremap <c-o> :Files<cr>
+nnoremap <c-p> :History<cr>
 " tags in current file
-nnoremap <c-i> :CtrlPBufTag<cr>
+nnoremap <c-i> :BTags<cr>
 " tags in *all* files of this type
-nnoremap <c-y> :CtrlPTag<cr>
-" recent changes
-nnoremap <c-c> :CtrlPChange<cr>
+nnoremap <c-y> :Tags<cr>
 " lines in current file... sort of just like a search, but fuzzier
-nnoremap <c-l> :CtrlPLine<cr>
+nnoremap <c-l> :BLines<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>

@@ -91,13 +91,9 @@ let g:vim_markdown_conceal = 2
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
 
-" ctrlp -- for finding local files
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_cmd = 'CtrlPMRUFiles'
-if executable('fd')
-  " this allows us to use nice things like skipping gitignored files, etc
-  let g:ctrlp_user_command = 'fd . %s -i -tf -c=never'
-endif
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf.vim'
 
 " incsearch within the file
 Plug 'haya14busa/incsearch.vim'
