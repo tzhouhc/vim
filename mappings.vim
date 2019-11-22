@@ -53,8 +53,7 @@ map g/ <Plug>(incsearch-stay)\v
 
 " ctrl-p second
 nnoremap <c-o> :CtrlP<cr>
-nnoremap <c-p> :CtrlPMRUFiles<cr>
-nnoremap <c-i> :CtrlPTag<cr>
+nnoremap <c-i> :CtrlPBufTag<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>

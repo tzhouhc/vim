@@ -93,6 +93,7 @@ let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vi
 
 " ctrlp -- for finding local files
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
 if executable('fd')
   " this allows us to use nice things like skipping gitignored files, etc
   let g:ctrlp_user_command = 'fd . %s -i -tf -c=never'
@@ -177,8 +178,14 @@ Plug 'terryma/vim-multiple-cursors'
 " autoctag
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
+let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
 let g:easytags_suppress_report = 1
+let g:easytags_by_filetype = 1
+let g:easytags_on_cursorhold = 0
+let g:easytags_python_enabled = 1
+let g:easytags_file = '~/.vim/tags'
+
 " ctag lists
 Plug 'majutsushi/tagbar'
 let g:tagbar_type_go = {
