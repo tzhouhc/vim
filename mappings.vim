@@ -46,10 +46,9 @@ nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:Inde
 vnoremap <silent> <leader>l :FormatLines<cr>
 
 " search for stuff
-nnoremap <c-f> /\v
-map /  <Plug>(incsearch-forward)\v
-map ?  <Plug>(incsearch-backward)\v
-map g/ <Plug>(incsearch-stay)\v
+map /  /\v
+map ?  ?\v
+map g/ g/\v
 
 " ctrl-p for local files and local tags; c-p is mru files.
 nnoremap <c-o> :Files<cr>

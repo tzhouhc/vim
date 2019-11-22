@@ -95,11 +95,6 @@ let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vi
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 
-" incsearch within the file
-Plug 'haya14busa/incsearch.vim'
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-
 " visual indicators
 Plug 'luochen1990/rainbow'
 if rainbowParens
