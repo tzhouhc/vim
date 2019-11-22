@@ -57,9 +57,15 @@ nnoremap <c-p> :History<cr>
 " tags in current file
 nnoremap <c-i> :BTags<cr>
 " tags in *all* files of this type
-nnoremap <c-y> :Tags<cr>
+nnoremap <c-u> :Tags<cr>
 " lines in current file... sort of just like a search, but fuzzier
 nnoremap <c-l> :BLines<cr>
+
+" faster movement
+nnoremap <c-Up> 10k
+nnoremap <c-Down> 10j
+nnoremap <c-Left> 10h
+nnoremap <c-Right> 10l
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>
