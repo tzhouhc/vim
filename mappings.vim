@@ -53,9 +53,14 @@ map g/ <Plug>(incsearch-stay)\v
 
 " ctrl-p for local files and local tags; c-p is mru files.
 nnoremap <c-o> :CtrlP<cr>
+" tags in current file
 nnoremap <c-i> :CtrlPBufTag<cr>
-" super lookup of *anything*
-nnoremap <c-s-i> :CtrlPTag<cr>
+" tags in *all* files of this type
+nnoremap <c-y> :CtrlPTag<cr>
+" recent changes
+nnoremap <c-c> :CtrlPChange<cr>
+" lines in current file... sort of just like a search, but fuzzier
+nnoremap <c-l> :CtrlPLine<cr>
 
 " switch buffer/tabs
 nnoremap <silent> <leader><Left> :bprev<cr>
@@ -66,6 +71,7 @@ nnoremap <silent> <leader><leader><Right> :tabn<cr>
 " tmux-like splitting
 nnoremap <c-w>% :vsplit<cr>
 nnoremap <c-w>" :split<cr>
+nnoremap <c-w>z :only<cr>
 
 " show current text highlight group
 nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
