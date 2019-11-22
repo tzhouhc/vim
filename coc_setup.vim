@@ -156,7 +156,9 @@ else
   if executable('black')
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
+        \  'python.pythonPath': 'python3',
         \  'linting.flake8Enabled': v:true,
+        \  'linting.mypyEnabled': v:true,
         \}
     let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = ['python']
   endif
