@@ -17,16 +17,6 @@ function! ToggleNERDTreeFind()
   endif
 endfunction
 
-function! AutoGoyo()
-  if &ft == 'markdown'
-    Goyo 80
-  elseif exists('#goyo')
-    let bufnr = bufnr('%')
-    Goyo!
-    execute 'b '.bufnr
-  endif
-endfunction
-
 function! Buildifier(buffer)
   return {
         \  'command': 'buildifier'

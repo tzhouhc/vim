@@ -71,7 +71,7 @@ augroup END
 " base settings
 let g:coc_user_config = {
       \ 'coc.preferences': {
-      \   'formatOnSaveFiletypes': [],
+      \   'formatOnSaveFiletypes': ['rust'],
       \   'colorSupport': v:true,
       \   'hoverTarget': 'float',
       \   'jumpCommand': 'edit',
@@ -190,4 +190,7 @@ else
         \  'filetypes': ['text', 'markdown'],
         \}
   endif
+  let g:coc_user_config['rust-client'] = {
+        \  'revealOutputChannelOn': 'error',
+        \}
 endif

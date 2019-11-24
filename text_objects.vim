@@ -10,3 +10,14 @@ call textobj#user#plugin('letters', {
 \     'select': ['aq'],
 \   },
 \ })
+
+call textobj#user#plugin('strings', {
+\   'single': {
+\     'pattern': "'[^']*'",
+\     'select': ["a'"],
+\   },
+\   'double': {
+\     'pattern': '"[^"]*"',
+\     'select': ['a"'],
+\   },
+\ })

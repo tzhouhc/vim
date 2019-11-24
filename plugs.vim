@@ -33,7 +33,7 @@ else
   let g:signify_vcs_list = ['git']
 endif
 
-" changes in current file since last save
+" changes gutter in current file since last save
 Plug 'chrisbra/changesPlugin'
 
 " highlight active pane only
@@ -49,31 +49,16 @@ Plug 'tpope/vim-surround'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
+" movement around pairs
+Plug 'andymass/vim-matchup'
+
 " lsp
 Plug 'neoclide/coc.nvim'
-" see coc_specific.vim and coc_config.json for more tweaks
+" NOTE: see coc_specific.vim and coc_config.json for more tweaks
 
-" For performance concerns, removing ale for now
-" since it's somehow not quite doing async fixes.
-" Plug 'w0rp/ale', isGoogle? {} : { 'on': [] }
-" let g:ale_virtualenv_dir_names = []
-" let g:ale_lint_on_text_changed = 0
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_save = 1
-" let g:ale_completion_enabled = 0
-" let g:ale_sign_error = '!!'
-" let g:ale_sign_warning = '??'
-" " gpylint requires a separate ale-linter definition script
-" let g:ale_linters = {
-" \   'python': ['gpylint'],
-" \   'java': [],
-" \}
-" let g:ale_fixers = {
-" \   'go': ['gofmt'],
-" \}
-" " \   'bzl': ['Buildifier'],
-" let g:ale_fix_on_save = 1
-" let g:ale_python_gpylint_use_global = 1
+" formatter - for outside of Google space
+Plug 'google/vim-maktaba', isGoogle ? { 'on': [] } : {}
+Plug 'google/vim-codefmt', isGoogle ? { 'on': [] } : {}
 
 " Doc Gen
 Plug 'kkoomen/vim-doge'
@@ -91,9 +76,11 @@ let g:vim_markdown_conceal = 2
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
 
-" fzf
+" fzf -- quick jump to file, tag and such
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
+" preview configs
+source $HOME/.vim/fzf.vim
 
 " visual indicators
 Plug 'luochen1990/rainbow'
@@ -150,12 +137,6 @@ if executable('ag')
   cnoreabbrev AG Ack!
 endif
 
-" distraction-free writing
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "left"
@@ -174,6 +155,7 @@ let g:easytags_auto_highlight = 0
 let g:easytags_suppress_report = 1
 let g:easytags_on_cursorhold = 0
 let g:easytags_python_enabled = 1
+let g:easytags_opts = ['--fields=+n']
 let g:easytags_by_filetype = '~/.vim/tags'
 
 " ctag lists
