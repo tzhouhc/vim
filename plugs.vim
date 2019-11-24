@@ -148,15 +148,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'terryma/vim-multiple-cursors'
 
 " autoctag
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-let g:easytags_async = 1
-let g:easytags_auto_highlight = 0
-let g:easytags_suppress_report = 1
-let g:easytags_on_cursorhold = 0
-let g:easytags_python_enabled = 1
-let g:easytags_opts = ['--fields=+n']
-let g:easytags_by_filetype = '~/.vim/tags'
+Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_cache_dir = "~/.vim/tags"
+let g:gutentags_file_list_command = 'find . -type f -d 1'
+let g:gutentags_resolve_symlinks = 1
+let g:gutentags_ctags_extra_args = ['--fields=+n']
 
 " ctag lists
 Plug 'majutsushi/tagbar'

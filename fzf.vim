@@ -1,4 +1,4 @@
-" with PREVIEWS!
+" PREVIEWS!
 " Buffer Tag previews with some modifications so that it has both coloring as
 " well as correct alignment to the line with the keyword
 let buf_tags_style = {
@@ -20,6 +20,7 @@ let tags_style = {
   \                 --preview-window="60%"
   \                 --preview "
   \                     bat --style=changes --color always {2} |
+  \                     tail -n +\$(echo {-2} | sed "s/^line\://") |
   \                     head -n 16"'
   \ }
 
@@ -46,4 +47,3 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=* History
   \ call fzf#vim#history(files_style,
   \ )
-
