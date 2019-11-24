@@ -11,7 +11,7 @@ command! -bang -nargs=* BTags
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
-  \                     bat --color always {2} |
+  \                     bat --style=changes --color always {2} |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") |
   \                     tail -n +4 |
   \                     head -n 16"'
@@ -48,6 +48,6 @@ command! -bang -nargs=* History
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --color always {} | head -16"'
+  \        bat --style=changes --color always \$(echo {} | sed s:\~:\$HOME:) | head -16"'
   \ }, <bang>0
   \ )
