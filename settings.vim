@@ -1,6 +1,7 @@
 " ===========================
 " Settings
 " ===========================
+set autoindent
 set expandtab
 set shiftwidth=2
 set number relativenumber
@@ -11,12 +12,19 @@ set whichwrap+=>,l
 set whichwrap+=<,h
 set whichwrap+=[,]
 
+" tab completion for commands
 set wildmenu
+set wildmode=longest:full,full
+" saves time by not frequently redrawing stuff
 set lazyredraw
 set showmatch
+" pwd is always current file -- helpful for ctrl-o
+set autochdir
 
 " searching
 set incsearch
+" check case when query has uppercase letters
+set smartcase
 set hlsearch
 
 " mouse use
@@ -27,6 +35,10 @@ set encoding=UTF-8
 
 " clipboard
 set clipboard+=unnamedplus
+
+if useCursorLine
+  set cursorline
+endif
 
 " folding
 set foldenable

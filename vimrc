@@ -23,15 +23,12 @@ let useItalics = v:true
 let useEnglishLsp = v:false
 " use staging variant of ciderlsp
 let useCiderStaging = v:true
+" highlight line with cursor
+let useCursorLine = v:true
 
-" themes -------
-" let themeChoice = 'one'
+" ==== themes ====
+" switch easily using the `Themes` command
 let themeChoice = 'nord'
-" let themeChoice = 'two-firewatch'
-" let themeChoice = 'iceberg'
-" let themeChoice = 'ayu'
-" let themeChoice = 'gruvbox'
-" let themeChoice = 'material-theme'
 
 
 " ==== Loading scripts ====
