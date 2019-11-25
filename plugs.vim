@@ -49,7 +49,7 @@ Plug 'tpope/vim-surround'
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 
-" movement around pairs
+" movement around pairs, highlight
 Plug 'andymass/vim-matchup'
 
 " lsp

@@ -59,6 +59,7 @@ nnoremap <c-i> :BTags<cr>
 nnoremap <c-u> :Tags<cr>
 " lines in current file... sort of just like a search, but fuzzier
 nnoremap <c-l> :BLines<cr>
+nnoremap <c-m> :Marks<cr>
 
 " faster movement
 nnoremap <c-Up> 10k
