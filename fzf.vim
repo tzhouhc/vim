@@ -52,6 +52,15 @@ command! -bang -nargs=* History
   \      --preview-window="60%"
   \      --preview "
   \        bat --style=changes --theme OneHalfDark --color always {} | head -n 16"'}),
-  \   <bang>0
-  \ )
+  \   <bang>0)
 
+" Local recursive text search
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview({
+  \   'down': '40%',
+  \   'options':
+  \     '--reverse
+  \      --preview-window="60%"
+  \      --preview "
+  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 16"'}),
+  \   <bang>0)

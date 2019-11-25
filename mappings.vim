@@ -57,9 +57,10 @@ nnoremap <c-p> :History<cr>
 nnoremap <c-i> :BTags<cr>
 " tags in *all* files of this type
 nnoremap <c-u> :Tags<cr>
-" lines in current file... sort of just like a search, but fuzzier
-nnoremap <c-l> :BLines<cr>
+" lines in open buffers since why not?
+nnoremap <c-l> :Lines<cr>
 nnoremap <c-m> :Marks<cr>
+nnoremap <c-f> :Ag<cr>
 
 " faster movement
 nnoremap <c-Up> 10k
