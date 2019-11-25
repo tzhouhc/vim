@@ -14,7 +14,7 @@ if has('gui_running') || has('nvim') || has("termguicolors")
 endif
 
 if hasTrueColor
-  execute "colorscheme ".themeChoice
+  colorscheme nord
 else
   colorscheme gruvbox
 endif

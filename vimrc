@@ -26,11 +26,6 @@ let useCiderStaging = v:true
 " highlight line with cursor
 let useCursorLine = v:true
 
-" ==== themes ====
-" switch easily using the `Themes` command
-let themeChoice = 'nord'
-
-
 " ==== Loading scripts ====
 
 " plugins and plugin settings

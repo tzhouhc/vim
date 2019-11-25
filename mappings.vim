@@ -78,6 +78,12 @@ nnoremap <c-w>% :vsplit<cr>
 nnoremap <c-w>" :split<cr>
 nnoremap <c-w>z :only<cr>
 
+" easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " show current text highlight group
 nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"

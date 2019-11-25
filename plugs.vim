@@ -61,26 +61,29 @@ Plug 'google/vim-maktaba', isGoogle ? { 'on': [] } : {}
 Plug 'google/vim-codefmt', isGoogle ? { 'on': [] } : {}
 
 " Doc Gen
-Plug 'kkoomen/vim-doge'
-let g:doge_doc_standard_python = 'google'
-let g:doge_comment_interactive = 0
-let g:doge_mapping_comment_jump_forward = '<C-RIGHT>'
+Plug 'kkoomen/vim-doge', { 'on': 'DogeGenerate' }
+let g:doge_doc_standard_python           = 'google'
+let g:doge_comment_interactive           = 0
+let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
 let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
 " languages highlighting
 Plug 'sheerun/vim-polyglot'
 
 " markdown
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_conceal = 2
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+let g:vim_markdown_conceal             = 2
 let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
+let g:vim_markdown_fenced_languages    = ["python=python","json=json","vimscript=vim","bash=bash"]
 
 " fzf -- quick jump to file, tag and such
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " preview configs
 source $HOME/.vim/fzf.vim
+
+" easy align
+Plug 'junegunn/vim-easy-align'
 
 " visual indicators
 Plug 'luochen1990/rainbow'
@@ -95,22 +98,26 @@ if rainbowParens
   \}
 end
 Plug 'Yggdroot/indentLine'
-let g:indentLine_noConcealCursor=""
-let g:indentLine_setConceal = 0
+let g:indentLine_noConcealCursor = ""
+let g:indentLine_setConceal      = 0
 
 " colorize hex colors like #15c3f2 and #f3a
 Plug 'ap/vim-css-color'
 
 " colorschemes
-Plug 'jdkanani/vim-material-theme'
 Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'rakr/vim-one'
-Plug 'rakr/vim-two-firewatch'
-Plug 'cocopon/iceberg.vim'
+" ==== backups ====
+" Plug 'jdkanani/vim-material-theme'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'rakr/vim-one'
+" Plug 'rakr/vim-two-firewatch'
+" Plug 'cocopon/iceberg.vim'
 Plug 'morhetz/gruvbox'
-let g:gruvbox_box_bold = 1
+let g:gruvbox_box_bold      = 1
 let g:gruvbox_box_underline = 1
+
+" icons
+Plug 'ryanoasis/vim-devicons'
 
 " ==========================
 " active plugins
@@ -126,22 +133,9 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
-" ag
-Plug 'mileszs/ack.vim'
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
-  cnoreabbrev Ack Ack!
-  cnoreabbrev ag Ack!
-  cnoreabbrev aG Ack!
-  cnoreabbrev Ag Ack!
-  cnoreabbrev AG Ack!
-endif
-
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "left"
-" icons
-Plug 'ryanoasis/vim-devicons'
 
 " sublime-like multicursor
 " ctrl-n for select next
@@ -149,13 +143,13 @@ Plug 'terryma/vim-multiple-cursors'
 
 " autoctag
 Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_cache_dir = "~/.vim/tags"
+let g:gutentags_cache_dir         = "~/.vim/tags"
 let g:gutentags_file_list_command = 'find . -type f -d 1'
-let g:gutentags_resolve_symlinks = 1
-let g:gutentags_ctags_extra_args = ['--fields=+n']
+let g:gutentags_resolve_symlinks  = 1
+let g:gutentags_ctags_extra_args  = ['--fields=+n']
 
 " ctag lists
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 let g:tagbar_type_go = {
   \ 'ctagstype' : 'go',
   \ 'kinds'     : [
@@ -184,7 +178,7 @@ let g:tagbar_type_go = {
   \}
 
 " undo-tree
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 " quickscope
 Plug 'unblevable/quick-scope'
