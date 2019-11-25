@@ -64,3 +64,21 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
+
+" ShaDa file -- controlling viminfo behavior
+" " ' -> marked files
+" f -> global marks?
+" < -> saved lines for registers
+" : -> number of lines to save from the command line history
+" @ -> number of lines to save from the input line history
+" / -> number of lines to save from the search history
+" r -> removable media, for which no marks will be stored (can be
+"   used several times)
+" ! -> global variables that start with an uppercase letter and
+"   don't contain lowercase letters
+" h -> disable 'hlsearch' highlighting when starting
+" % -> the buffer list (only restored when starting Vim without file
+"   arguments)
+" c -> convert the text using 'encoding'
+" n -> name used for the ShaDa file (must be the last option)
+set shada='20,f1,<500,:100,@40,/20
