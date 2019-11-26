@@ -29,35 +29,35 @@ let useCursorLine = v:true
 " ==== Loading scripts ====
 
 " plugins and plugin settings
-source $HOME/.vim/plugs.vim
+source $HOME/.vim/configs/plugs.vim
 
 " generic settings
-source $HOME/.vim/settings.vim
+source $HOME/.vim/configs/settings.vim
 
 " custom text objects
-source $HOME/.vim/text_objects.vim
+source $HOME/.vim/configs/text_objects.vim
 
 " settings specific to coc
-source $HOME/.vim/coc_setup.vim
+source $HOME/.vim/configs/coc_setup.vim
 
 " settings specific to neovim
 if isNeovim
-  source $HOME/.vim/nvim_specific.vim
+  source $HOME/.vim/configs/nvim_specific.vim
 endif
 
 " settings specfic to google3
 if isGoogle
-  source $HOME/.vim/google_specific.vim
+  source $HOME/.vim/configs/google_specific.vim
 endif
 
 " functions
-source $HOME/.vim/functions.vim
+source $HOME/.vim/configs/functions.vim
 
 " auto-commands
-source $HOME/.vim/auto.vim
+source $HOME/.vim/configs/auto.vim
 
 " key mappings
-source $HOME/.vim/mappings.vim
+source $HOME/.vim/configs/mappings.vim
 
 " settings related to how vim looks
-source $HOME/.vim/visuals.vim
+source $HOME/.vim/configs/visuals.vim

@@ -80,7 +80,7 @@ let g:vim_markdown_fenced_languages    = ["python=python","json=json","vimscript
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 " preview configs
-source $HOME/.vim/fzf.vim
+source $HOME/.vim/configs/fzf.vim
 
 " easy align
 Plug 'junegunn/vim-easy-align'
