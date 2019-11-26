@@ -12,6 +12,7 @@ call plug#begin('~/.vim/bundle')
 
 " airline
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
@@ -22,9 +23,19 @@ let g:lightline = {
       \              [ 'percent', 'lineinfo' ]
       \   ]
       \ },
+      \ 'tabline': {
+      \   'left': [ [ 'buffers' ] ],
+      \   'right': [ [ 'tabs' ] ]
+      \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ 'component': {
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
       \ },
       \ }
 

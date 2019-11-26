@@ -5,6 +5,7 @@ set autoindent
 set expandtab
 set shiftwidth=2
 set number relativenumber
+set stal=2
 set showcmd
 
 " wrapping
