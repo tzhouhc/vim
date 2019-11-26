@@ -12,3 +12,9 @@ augroup templates
   au!
   autocmd BufNewFile *.rb 0r ~/.vim/templates/template.rb
 augroup END
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END

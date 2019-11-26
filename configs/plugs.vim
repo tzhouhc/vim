@@ -11,13 +11,22 @@ call plug#begin('~/.vim/bundle')
 " ============================
 
 " airline
-Plug 'vim-airline/vim-airline'
-Plug 'tyrannicaltoucan/vim-quantum'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='quantum'
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'filetype' ],
+      \              [ 'fileencoding' ],
+      \              [ 'percent', 'lineinfo' ]
+      \   ]
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'component': {
+      \ },
+      \ }
 
 " version control signs
 Plug 'mhinz/vim-signify'
@@ -66,6 +75,9 @@ let g:doge_doc_standard_python           = 'google'
 let g:doge_comment_interactive           = 0
 let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
 let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
+
+" better writing
+Plug 'reedes/vim-pencil'
 
 " languages highlighting
 Plug 'sheerun/vim-polyglot'
@@ -132,6 +144,9 @@ Plug 'bronson/vim-trailing-whitespace'
 " quick-comment
 Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
+
+" common file system operations
+Plug 'tpope/vim-eunuch'
 
 " file tree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
