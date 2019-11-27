@@ -22,3 +22,11 @@ function! Buildifier(buffer)
         \  'command': 'buildifier'
         \}
 endfunction
+
+function! G4dName()
+  let name = expand("%:p")
+  if name  =~ "^/google/src/cloud/[^/]*/[^/]*/"
+    return split(name, '/')[4]
+  endif
+  return ""
+endfunction
