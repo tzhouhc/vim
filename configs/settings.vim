@@ -25,6 +25,7 @@ set autochdir
 " searching
 set incsearch
 " check case when query has uppercase letters
+set ignorecase
 set smartcase
 set hlsearch
 

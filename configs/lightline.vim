@@ -1,7 +1,7 @@
 let g:lightline = {
     \ 'colorscheme': 'nord',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'g4d' ],
     \             [ 'readonly', 'filename', 'modified' ] ],
     \   'right': [ [ 'filetype' ],
     \              [ 'fileencoding' ],
@@ -9,7 +9,7 @@ let g:lightline = {
     \   ]
     \ },
     \ 'tabline': {
-    \   'left': [ [ 'g4d' ], [ 'buffers' ] ],
+    \   'left': [ [ 'buffers' ] ],
     \   'right': [ [ 'tabs' ] ]
     \ },
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
