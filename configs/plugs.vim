@@ -89,13 +89,14 @@ Plug 'luochen1990/rainbow'
 if rainbowParens
   let g:rainbow_active = 1
   " actual rainbow color from a color wheel
-  let g:rainbow_conf = {
+  let g:rainbow_conf   = {
   \ 'guifgs': [
   \   '#F6ED56', '#A6C955', '#4BA690', '#4191C9', '#2258A0', '#654997',
   \   '#994D95', '#D45196', '#DB3A35', '#E5783A', '#EC943F', '#F7C247'
   \  ]
   \}
 end
+" line hinting for indentation
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor = ""
 let g:indentLine_setConceal      = 0
@@ -181,6 +182,8 @@ let g:tagbar_type_go = {
 
 " undo-tree
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators    = 1
 
 " quickscope
 Plug 'unblevable/quick-scope'

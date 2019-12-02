@@ -87,6 +87,10 @@ let g:coc_user_config = {
       \   'floatEnable': v:true,
       \   'acceptSuggestionOnCommitCharacter': v:true,
       \ },
+      \ 'snippets': {
+      \   'userSnippetsDirectory': "~/.vim/snippets",
+      \   'snipmate.enable': v:false,
+      \ },
       \ 'diagnostic': {
       \   'checkCurrentLine': v:true,
       \   'virtualText': v:true,
