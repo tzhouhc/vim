@@ -13,6 +13,9 @@ call plug#begin('~/.vim/bundle')
 " airline
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+let g:lightline#bufferline#enable_devicons = 1
+" want to figure out how to customize pathshorten
+let g:lightline#bufferline#filename_modifier = ':t'
 source $HOME/.vim/configs/lightline.vim
 
 " version control signs
@@ -146,10 +149,15 @@ Plug 'terryma/vim-multiple-cursors'
 
 " autoctag
 Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_cache_dir         = "~/.vim/tags"
-let g:gutentags_file_list_command = 'find . -type f -d 1'
-let g:gutentags_resolve_symlinks  = 1
-let g:gutentags_ctags_extra_args  = ['--fields=+n']
+let g:gutentags_cache_dir                = "~/.vim/tags"
+if isGoogle
+  " google3 -- use nearest BUILD file as package root marker
+  " otherwise just use git
+  let g:gutentags_project_root           = ['BUILD', '.git']
+endif
+let g:gutentags_resolve_symlinks         = 1
+let g:gutentags_ctags_extra_args         = ['--fields=+n']
+let g:gutentags_define_advanced_commands = 1
 
 " ctag lists
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }

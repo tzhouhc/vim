@@ -67,6 +67,8 @@ if has('persistent_undo')
     set undofile
 endif
 
+set tags+="~/.vim/tags"
+
 " ShaDa file -- controlling viminfo behavior
 " " ' -> marked files
 " f -> global marks?
