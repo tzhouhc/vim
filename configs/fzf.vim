@@ -14,7 +14,7 @@ command! -bang -nargs=* BTags
   \                     bat --style=changes --theme OneHalfDark --color always {2} |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") |
   \                     tail -n +4 |
-  \                     head -n 16"'
+  \                     head -n 40"'
   \ }, <bang>0)
 
 command! -bang -nargs=* Tags
@@ -26,7 +26,7 @@ command! -bang -nargs=* Tags
   \                 --preview "
   \                     bat --style=changes --theme OneHalfDark --color always {2} |
   \                     tail -n +\$(echo {-2} | sed "s/^line\://") |
-  \                     head -n 16"'
+  \                     head -n 40"'
   \ }, <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
@@ -36,7 +36,7 @@ command! -bang -nargs=? -complete=dir Files
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 16"'
+  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'
   \ }),
   \ <bang>0)
 
@@ -51,7 +51,7 @@ command! -bang -nargs=* History
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 16"'}),
+  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'}),
   \   <bang>0)
 
 " Local recursive text search
@@ -62,5 +62,5 @@ command! -bang -nargs=* Ag
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 16"'}),
+  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'}),
   \   <bang>0)

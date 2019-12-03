@@ -25,6 +25,7 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet ifbin "check if binary exists" b
-if type {bin-name} 2>/dev/null; then
+# run if '${1:bin-name}' exists on path
+if type $1 >/dev/null 2>&1; then
 fi
 endsnippet
