@@ -18,3 +18,9 @@ augroup pencil
   autocmd FileType markdown,mkd call pencil#init()
   autocmd FileType text         call pencil#init()
 augroup END
+
+augroup gutentags_status
+            autocmd!
+            autocmd User GutentagsUpdating call lightline#update()
+            autocmd User GutentagsUpdated call lightline#update()
+augroup END

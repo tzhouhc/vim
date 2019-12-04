@@ -3,7 +3,8 @@ let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'g4d' ],
     \             [ 'readonly', 'filename', 'modified' ] ],
-    \   'right': [ [ 'filetype' ],
+    \   'right': [ [ 'gutentags' ],
+    \              [ 'filetype' ],
     \              [ 'fileencoding' ],
     \              [ 'percent', 'lineinfo' ]
     \   ]
@@ -17,7 +18,8 @@ let g:lightline = {
     \ 'component': {
     \ },
     \ 'component_function': {
-    \   'g4d': 'G4dName'
+    \   'g4d': 'G4dName',
+    \   'gutentags': 'gutentags#statusline'
     \ },
     \ 'component_expand': {
     \   'buffers': 'lightline#bufferline#buffers'
