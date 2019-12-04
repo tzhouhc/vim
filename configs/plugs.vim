@@ -153,7 +153,8 @@ let g:gutentags_cache_dir                = "~/.vim/tags"
 if isGoogle
   " google3 -- use nearest BUILD file as package root marker
   " otherwise just use git
-  let g:gutentags_project_root           = ['BUILD', '.git']
+  " Metadata for doc folders
+  let g:gutentags_project_root           = ['BUILD', 'METADATA', '.git']
 endif
 let g:gutentags_resolve_symlinks         = 1
 let g:gutentags_ctags_extra_args         = ['--fields=+n']

@@ -7,20 +7,22 @@
 command! -bang -nargs=* BTags
   \ call fzf#vim#buffer_tags(<q-args>, {
   \     'down': '40%',
-  \     'options': '--with-nth 1
+  \     'options': '--delimiter="\t"
+  \                 --with-nth 1
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
   \                     bat --style=changes --theme OneHalfDark --color always {2} |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") |
-  \                     tail -n +4 |
+  \                     tail -n +1 |
   \                     head -n 40"'
   \ }, <bang>0)
 
 command! -bang -nargs=* Tags
   \ call fzf#vim#tags(<q-args>, {
   \     'down': '40%',
-  \     'options': '--with-nth 1
+  \     'options': '--delimiter="\t"
+  \                 --with-nth 1
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
