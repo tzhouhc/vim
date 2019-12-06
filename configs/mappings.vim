@@ -60,7 +60,7 @@ nnoremap <c-p> :History<cr>
 " tags in current file
 nnoremap <c-i> :BTags<cr>
 " tags in *all* files of this type
-nnoremap <c-u> :Tags<cr>
+nnoremap <c-k> :Tags<cr>
 " lines in open buffers since why not?
 nnoremap <c-l> :Lines<cr>
 " nnoremap <c-m> :Marks<cr>

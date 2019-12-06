@@ -19,7 +19,7 @@ let g:lightline = {
     \ },
     \ 'component_function': {
     \   'g4d': 'G4dName',
-    \   'gutentags': 'gutentags#statusline'
+    \   'gutentags': 'gutentags#statusline',
     \ },
     \ 'component_expand': {
     \   'buffers': 'lightline#bufferline#buffers'
