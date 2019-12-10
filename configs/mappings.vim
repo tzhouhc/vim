@@ -69,8 +69,8 @@ nnoremap <c-f> :Ag<cr>
 " faster movement
 nnoremap <c-Up> 10k
 nnoremap <c-Down> 10j
-nnoremap <c-Left> 10h
-nnoremap <c-Right> 10l
+vnoremap <c-Up> 10k
+vnoremap <c-Down> 10j
 
 " buffer movement
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -85,6 +85,10 @@ nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " switch buffer/tabs
+nnoremap <silent> [b :bprev<cr>
+nnoremap <silent> ]b :bnext<cr>
+nnoremap <silent> [t :tabp<cr>
+nnoremap <silent> ]t :tabn<cr>
 nnoremap <silent> <leader><Left> :bprev<cr>
 nnoremap <silent> <leader><Right> :bnext<cr>
 nnoremap <silent> <leader><leader><Left> :tabp<cr>
