@@ -25,7 +25,7 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet func "Create a go function" b
-// Function Comment
-func (actorname ActorType) functionName(varname VarType) (outputname OutputType, err Error) {
+// ${5:Function Comment}
+func (${2:actor ActorType}) ${1:functionName}(${3:argument ArgumentType}) (${4:output OutputType}, err error) {
 }
 endsnippet
