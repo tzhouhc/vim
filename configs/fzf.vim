@@ -12,10 +12,10 @@ command! -bang -nargs=* BTags
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
-  \                     bat --style=changes --theme OneHalfDark -H 3 --color always {2} |
-  \                     tail -n +\$(echo {3} | tr -d \";\\\"\") |
-  \                     tail -n +1 |
-  \                     head -n 40"'
+  \                     ln=\$(echo {3} | sed \"s/[^0-9]//g\" );
+  \                     bat -H \$ln
+  \                     -r \$((\$[\$ln-3] < 0 ? 0 : \$[\$ln-3])):\$[\$ln+20]
+  \                     {2}"'
   \ }, <bang>0)
 
 command! -bang -nargs=* Tags
@@ -26,9 +26,10 @@ command! -bang -nargs=* Tags
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
-  \                     bat --style=changes --theme OneHalfDark --color always {2} |
-  \                     tail -n +\$(echo {-2} | sed "s/^line\://") |
-  \                     head -n 40"'
+  \                     ln=\$(echo {-2} | sed \"s/^line\://\" );
+  \                     bat -H \$ln
+  \                     -r \$((\$[\$ln-3] < 0 ? 0 : \$[\$ln-3])):\$[\$ln+20]
+  \                     {2}"'
   \ }, <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
@@ -38,7 +39,7 @@ command! -bang -nargs=? -complete=dir Files
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'
+  \        bat {} -r :40"'
   \ }),
   \ <bang>0)
 
@@ -53,7 +54,7 @@ command! -bang -nargs=* History
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'}),
+  \        bat {} -r :40"'}),
   \   <bang>0)
 
 " Local recursive text search
@@ -64,5 +65,5 @@ command! -bang -nargs=* Ag
   \     '--reverse
   \      --preview-window="60%"
   \      --preview "
-  \        bat --style=changes --theme OneHalfDark --color always {} | head -n 40"'}),
+  \        bat {} -r :40"'}),
   \   <bang>0)

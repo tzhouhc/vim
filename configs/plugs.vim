@@ -161,7 +161,6 @@ if isGoogle
 endif
 let g:gutentags_file_list_command        = "fd . --type f -d 1"
 let g:gutentags_resolve_symlinks         = 1
-let g:gutentags_ctags_extra_args         = ['--fields=+n']
 let g:gutentags_define_advanced_commands = 1
 
 " ctag lists
