@@ -12,7 +12,7 @@ command! -bang -nargs=* BTags
   \                 --reverse
   \                 --preview-window="60%"
   \                 --preview "
-  \                     bat --style=changes --theme OneHalfDark --color always {2} |
+  \                     bat --style=changes --theme OneHalfDark -H 3 --color always {2} |
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") |
   \                     tail -n +1 |
   \                     head -n 40"'

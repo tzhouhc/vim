@@ -1,7 +1,7 @@
 let g:lightline = {
     \ 'colorscheme': 'nord',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'g4d' ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'g4d', 'pwd' ],
     \             [ 'readonly', 'filename', 'modified' ] ],
     \   'right': [ [ 'gutentags' ],
     \              [ 'filetype' ],
@@ -19,6 +19,7 @@ let g:lightline = {
     \ },
     \ 'component_function': {
     \   'g4d': 'G4dName',
+    \   'pwd': 'Pwd',
     \   'gutentags': 'gutentags#statusline',
     \ },
     \ 'component_expand': {

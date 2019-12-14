@@ -143,6 +143,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
 let g:NERDTreeWinPos = "left"
 
+" do not kill split with buffer
+Plug 'qpkorr/vim-bufkill'
+
 " sublime-like multicursor
 " ctrl-n for select next
 Plug 'terryma/vim-multiple-cursors'

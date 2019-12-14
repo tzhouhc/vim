@@ -30,3 +30,11 @@ function! G4dName()
   endif
   return ""
 endfunction
+
+function! Pwd()
+  let path = fnamemodify(expand("%"), ':p:~:h')
+  if path  =~ "^/google/src/cloud/[^/]*/[^/]*/"
+    return join(split(path, '/')[5:], "/")
+  endif
+  return path
+endfunction
