@@ -53,6 +53,8 @@ vnoremap <silent> <leader>l :FormatLines<cr>
 map /  /\v
 map ?  ?\v
 map g/ g/\v
+" search visual selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " ctrl-p for local files and local tags; c-p is mru files.
 nnoremap <c-o> :Files<cr>

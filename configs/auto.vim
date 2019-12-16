@@ -8,6 +8,13 @@ augroup vimrc
   autocmd BufRead * silent! execute "!echo '%:p' >> ~/.vim/vim_history && sort ~/.vim/vim_history | uniq | tee ~/.vim/vim_history" | redraw!
 augroup END
 
+augroup extensions
+  au!
+  if isGoogle
+    autocmd BufNewFile,BufRead *.pp set syntax=gcl
+  endif
+augroup END
+
 augroup templates
   au!
   autocmd BufNewFile *.rb 0r ~/.vim/templates/template.rb
@@ -19,7 +26,7 @@ augroup pencil
 augroup END
 
 augroup gutentags_status
-            autocmd!
-            autocmd User GutentagsUpdating call lightline#update()
-            autocmd User GutentagsUpdated call lightline#update()
+  autocmd!
+  autocmd User GutentagsUpdating call lightline#update()
+  autocmd User GutentagsUpdated call lightline#update()
 augroup END

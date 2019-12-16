@@ -22,14 +22,11 @@ source $HOME/.vim/configs/lightline.vim
 Plug 'mhinz/vim-signify'
 let g:signify_sign_change = '~'
 if isGoogle
-  let g:signify_vcs_list = ['perforce', 'hg', 'git']
   let g:signify_vcs_cmds = {
-        \ 'perforce':'DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
+        \ 'perforce':'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
         \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
         \ 'hg': 'hg diff --color=never --config aliases.diff= --nodates -U0 -- %f'
         \ }
-else
-  let g:signify_vcs_list = ['git']
 endif
 
 " changes gutter in current file since last save
