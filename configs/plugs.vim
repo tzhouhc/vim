@@ -47,6 +47,7 @@ Plug 'Raimondi/delimitMate'
 
 " movement around pairs, highlight
 Plug 'andymass/vim-matchup'
+let g:matchup_matchparen_offscreen = {}
 
 " lsp
 Plug 'neoclide/coc.nvim'

@@ -145,6 +145,14 @@ if isGoogle
   if useCiderStaging
     let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=blade:languageservices-staging']
   endif
+  if executable('black')
+    let g:coc_user_config.python = {
+        \  'formatting.provider': 'black',
+        \  'python.pythonPath': 'python3',
+        \  'linting.flake8Enabled': v:true,
+        \  'linting.mypyEnabled': v:false,
+        \}
+  endif
 else
   " 'civilian' mode configs
   let g:coc_user_config.languageserver = {}
