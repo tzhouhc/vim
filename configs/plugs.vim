@@ -33,6 +33,7 @@ endif
 Plug 'chrisbra/changesPlugin'
 
 " highlight active pane only
+" make sure neovim's python bindings are up-to-date
 Plug 'TaDaa/vimade'
 
 " fancy startup
@@ -101,9 +102,6 @@ end
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor = ""
 let g:indentLine_setConceal      = 0
-
-" colorize hex colors like #15c3f2 and #f3a
-Plug 'ap/vim-css-color'
 
 " colorschemes
 Plug 'arcticicestudio/nord-vim'
