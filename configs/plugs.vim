@@ -71,8 +71,10 @@ Plug 'reedes/vim-pencil'
 Plug 'sheerun/vim-polyglot'
 
 " markdown
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-let g:markdown_fenced_languages = ["python=python","json=json","vimscript=vim","bash=bash"]
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+let g:vim_markdown_conceal             = 2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_fenced_languages    = ["python=python","json=json","vimscript=vim","bash=bash"]
 
 " fzf -- quick jump to file, tag and such
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
@@ -155,7 +157,7 @@ if isGoogle
   " Metadata for doc folders
   let g:gutentags_project_root           = ['BUILD', 'METADATA', '.git']
 endif
-let g:gutentags_file_list_command        = "gutentagger"
+let g:gutentags_file_list_command        = "fd . --type f -d 1"
 let g:gutentags_resolve_symlinks         = 1
 let g:gutentags_define_advanced_commands = 1
 
