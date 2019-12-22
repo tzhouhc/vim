@@ -61,3 +61,5 @@ source $HOME/.vim/configs/mappings.vim
 
 " settings related to how vim looks
 source $HOME/.vim/configs/visuals.vim
+
+set runtimepath+=~/.vim/local/after

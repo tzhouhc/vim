@@ -9,4 +9,5 @@ plugin
 .mypy_cache
 vim_history
 tags/*
+local/*
 vim-plug
