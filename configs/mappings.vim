@@ -45,6 +45,8 @@ nnoremap <silent> <leader>t :TagbarToggle<cr>
 " nnoremap <silent> <leader>l :FormatCode<cr>
 nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
 nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>:TCV<cr>
+" google3 jump
+nnoremap <silent> <leader><leader>c :CsThis<cr>
 
 " line formatting
 vnoremap <silent> <leader>l :FormatLines<cr>

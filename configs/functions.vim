@@ -38,3 +38,15 @@ function! Pwd()
   endif
   return path
 endfunction
+
+function! CsThis()
+  let template = "https://source.corp.google.com/piper///depot/"
+  let path = fnamemodify(expand("%"), ':p:~')
+  if path  =~ "^/google/src/cloud/[^/]*/[^/]*/"
+    let cspath = join(split(path, '/')[5:], "/")
+  else
+    let cspath = ""
+  endif
+  echo template . cspath
+endfunction
+command! CsThis call CsThis()
