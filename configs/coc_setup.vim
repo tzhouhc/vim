@@ -169,10 +169,12 @@ else
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
         \  'python.pythonPath': 'python3',
+        \  'linting.pylintEnabled': v:false,
+        \  'linting.pylintArgs': ["--init-hook='import sys; sys.path.append(\".\")'"],
         \  'linting.flake8Enabled': v:true,
         \  'linting.mypyEnabled': v:true,
         \}
-    let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = []
+    let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = ['python']
   endif
   " requires coc-latex
   if executable('latexmk')
