@@ -113,3 +113,10 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" ==== Arpeggios ====
+call arpeggio#load()
+
+" empty line without movement
+Arpeggio nnoremap io o<esc>k
+Arpeggio nnoremap IO O<esc>j
