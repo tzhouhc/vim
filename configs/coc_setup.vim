@@ -75,6 +75,7 @@ let g:coc_user_config = {
       \   'colorSupport': v:true,
       \   'hoverTarget': 'float',
       \   'jumpCommand': 'edit',
+      \   'echodocSupport': v:true,
       \ },
       \ 'coc.source': {
       \   'file': v:true,
