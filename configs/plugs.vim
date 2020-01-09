@@ -197,10 +197,15 @@ let g:undotree_ShortIndicators    = 1
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+" switch
+Plug 'andrewradev/switch.vim'
+
 " arpeggio
 Plug 'kana/vim-arpeggio'
 
 " custom text objects
 Plug 'kana/vim-textobj-user'
+" 'y' means 'the current syntax highlight group'
+Plug 'kana/vim-textobj-syntax'
 
 call plug#end()"}}}
