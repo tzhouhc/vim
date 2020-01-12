@@ -155,7 +155,7 @@ if isGoogle
   " Metadata for doc folders
   let g:gutentags_project_root           = ['BUILD', 'METADATA', '.git']
 endif
-let g:gutentags_file_list_command        = "fd . --type f -d 1"
+let g:gutentags_file_list_command        = "gutentagger"
 let g:gutentags_resolve_symlinks         = 1
 let g:gutentags_define_advanced_commands = 1
 
