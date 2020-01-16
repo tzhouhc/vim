@@ -47,6 +47,7 @@ function! CsThis()
   else
     let cspath = ""
   endif
-  echo template . cspath
+  " return a link to reference the current file and line in Code Search
+  echo template . cspath . ";l=" . line(".")
 endfunction
 command! CsThis call CsThis()
