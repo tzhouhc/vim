@@ -8,6 +8,10 @@ let &runtimepath.=','.vimDir
 let isGoogle = isdirectory('/google')
 let isNeovim = has('nvim')
 
+" Lean Vim removes many of the plugins, for cases where launch speed is
+" absolutely crucial
+let isLeanVim = $LEANVIM == 'true'
+
 " ==== Global personalizations ====
 " These are options that are tied to a couple of things deeper down
 " in the individual files. This provides a quick single location for toggling
@@ -35,7 +39,9 @@ source $HOME/.vim/configs/plugs.vim
 source $HOME/.vim/configs/settings.vim
 
 " custom text objects
-source $HOME/.vim/configs/text_objects.vim
+if !isLeanVim
+  source $HOME/.vim/configs/text_objects.vim
+endif
 
 " settings specific to coc
 source $HOME/.vim/configs/coc_setup.vim
@@ -46,7 +52,7 @@ if isNeovim
 endif
 
 " settings specfic to google3
-if isGoogle
+if isGoogle && !isLeanVim
   source $HOME/.vim/configs/google_specific.vim
 endif
 

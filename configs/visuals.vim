@@ -30,13 +30,6 @@ set foldlevelstart=99
 set colorcolumn=80
 
 " =================
-" Airline
-" =================
-
-
-
-
-" =================
 " custom highlights
 " =================
 " highlights run last since we don't want the color-scheme overwriting them
