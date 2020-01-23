@@ -134,6 +134,9 @@ if !isLeanVim
   " preview configs
   source $HOME/.vim/configs/fzf.vim
 
+  " peekaboo - see contents of registers
+  Plug 'junegunn/vim-peekaboo'
+
   " ==== backups ====
   " Plug 'jdkanani/vim-material-theme'
   " Plug 'ayu-theme/ayu-vim'

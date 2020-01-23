@@ -67,3 +67,7 @@ command! -bang -nargs=* Ag
   \      --preview "
   \        bat {} -r :40"'}),
   \   <bang>0)
+
+command! -bang -nargs=* Marks
+  \ call fzf#vim#marks({'options': ['--preview',
+  \   'ln={2};bat -H {2} -r "$[$[$ln - 3] < 0 ? 0 : $[$ln - 3]]:" {4}']})

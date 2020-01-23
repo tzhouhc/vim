@@ -1,6 +1,7 @@
 " ===========================
 " keymaps
 " ===========================
+" With the ESC+ option from iterm, neovim allows one to use meta+ key maps.
 
 " vertical movement
 noremap <Down> gj
@@ -77,6 +78,16 @@ nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+if isNeovim
+  inoremap <M-d> <esc>viw
+  inoremap <M-a> <esc><S-v>
+  inoremap <M-A> <esc>gg<S-v>G
+  nnoremap <M-d> <esc>viw
+  nnoremap <M-a> <esc><S-v>
+  nnoremap <M-A> <esc>gg<S-v>G
+  nnoremap <M-n> :tabe<cr>
+endif
+
 " If in lean mode, many kep mappings wouldn't work
 if !isLeanVim
   " line formatting
@@ -118,6 +129,7 @@ if !isLeanVim
   nnoremap <c-l> :Lines<cr>
   " nnoremap <c-m> :Marks<cr>
   nnoremap <c-f> :Ag<cr>
+  nnoremap <c-m> :Marks<cr>
 
   " ==== Arpeggios ====
   call arpeggio#load()
