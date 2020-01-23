@@ -85,6 +85,9 @@ if !isLeanVim
   " version control signs
   Plug 'mhinz/vim-signify'
   let g:signify_sign_change = '~'
+  let g:signify_skip = {
+          \ 'vcs': {'deny': ['rcs']}
+          \ }
   if isGoogle
     let g:signify_vcs_cmds = {
           \ 'perforce':'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',

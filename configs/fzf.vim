@@ -4,6 +4,8 @@
 
 " Do not attempt to DRY this up by extracting the dict -- it gets modified or
 " something, causing subsequent calls to be without previews whatsoever.
+
+" buffer tags -- local tags, for quick traversal of current file
 command! -bang -nargs=* BTags
   \ call fzf#vim#buffer_tags(<q-args>, {
   \     'down': '40%',
@@ -18,6 +20,7 @@ command! -bang -nargs=* BTags
   \                     {2}"'
   \ }, <bang>0)
 
+" project tags, for quickly going to key code points around the project
 command! -bang -nargs=* Tags
   \ call fzf#vim#tags(<q-args>, {
   \     'down': '40%',
@@ -68,6 +71,8 @@ command! -bang -nargs=* Ag
   \        bat {} -r :40"'}),
   \   <bang>0)
 
+" Marks -- recent notable edit locations
+" Currently problematic -- not all marks provide meaningful preview locations
 command! -bang -nargs=* Marks
   \ call fzf#vim#marks({'options': ['--preview',
-  \   'ln={2};bat -H {2} -r "$[$[$ln - 3] < 0 ? 0 : $[$ln - 3]]:" {4}']})
+  \   "ln={2};bat -H {2} -r \"$[$[$ln - 3] < 0 ? 0 : $[$ln - 3]]:\" '{4}'"]})
