@@ -86,7 +86,7 @@ if !isLeanVim
   Plug 'mhinz/vim-signify'
   let g:signify_sign_change = '~'
   let g:signify_skip = {
-          \ 'vcs': {'deny': ['rcs']}
+          \ 'vcs': {'deny': ['rcs', 'svn']}
           \ }
   if isGoogle
     let g:signify_vcs_cmds = {

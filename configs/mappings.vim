@@ -130,7 +130,6 @@ if !isLeanVim
   nnoremap <c-l> :Lines<cr>
   " nnoremap <c-m> :Marks<cr>
   nnoremap <c-f> :Ag<cr>
-  nnoremap <c-m> :Marks<cr>
 
   " ==== Arpeggios ====
   call arpeggio#load()
