@@ -31,6 +31,9 @@ let useCiderStaging = v:true
 let useCursorLine = v:true
 
 " ==== Loading scripts ====
+" Why not use plugin/? loading sequence.
+" Having explicit `source` statements also make it easier to selectively disable
+" portions of the vimrc
 
 " plugins and plugin settings
 source $HOME/.vim/configs/plugs.vim

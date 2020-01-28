@@ -155,10 +155,6 @@ if !isLeanVim
 
   " Active plugins ====
 
-  " file tree
-  Plug 'scrooloose/nerdtree', {'on': 'NERDTreeFind'}
-  let g:NERDTreeWinPos = "left"
-
   " do not kill split with buffer
   Plug 'qpkorr/vim-bufkill'
 

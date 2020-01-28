@@ -1,7 +1,17 @@
 " ===========================
 " keymaps
 " ===========================
-" With the ESC+ option from iterm, neovim allows one to use meta+ key maps.
+"
+" Guideing Philosophy --
+" * g for movement or code change
+"   * gl for formatting
+"   * ga for alignment
+"   * gq for rewrap
+" * ctrl for common actions
+"   * fzf operations
+" * leader for
+" * meta for what cmd/ctrl in other common text editors would do
+"   * e.g. change tabs, select all, etc
 
 " vertical movement
 noremap <Down> gj
@@ -79,6 +89,7 @@ nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" With the ESC+ option from iterm, neovim allows one to use meta+ key maps.
 if isNeovim
   inoremap <M-d> <esc>viw
   inoremap <M-a> <esc><S-v>
@@ -87,23 +98,22 @@ if isNeovim
   nnoremap <M-a> <esc><S-v>
   nnoremap <M-A> <esc>gg<S-v>G
   nnoremap <M-n> :tabe<cr>
+
+  " meta+f to select and go to one specific letter on screen
+  map  <M-f> <Plug>(easymotion-bd-f)
+  nmap <M-f> <Plug>(easymotion-overwin-f)
+  map  <M-F> <Plug>(easymotion-bd-f2)
+  nmap <M-F> <Plug>(easymotion-overwin-f2)
 endif
 
 " If in lean mode, many kep mappings wouldn't work
 if !isLeanVim
   " line formatting
-  vnoremap <silent> <leader>l :FormatLines<cr>
+  vnoremap <silent> gl :FormatLines<cr>
 
   " common utilities
   nnoremap <silent> <leader>u :UndotreeToggle<cr>
   nnoremap <silent> <leader>t :TagbarToggle<cr>
-
-  " formatting using codefmt;
-  " disabled due to introducing unwanted changes in external code bases
-  " nnoremap <silent> <leader>l :FormatCode<cr>
-  nnoremap <silent> <leader>f :call ToggleNERDTreeFind()<cr>
-  nnoremap <silent> <leader>p :set paste!<cr>:set number! relativenumber!<cr>:IndentLinesToggle<cr>:SignifyToggle<cr>:TCV<cr>
-  " google3 jump
 
   " ==== lightline tab jump ====
   " buffer movement

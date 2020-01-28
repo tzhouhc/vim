@@ -65,7 +65,8 @@ command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview({
   \   'down': '40%',
   \   'options':
-  \     '--reverse
+  \     '--exact
+  \      --reverse
   \      --preview-window="60%"
   \      --preview "
   \        bat {} -r :40"'}),
