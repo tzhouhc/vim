@@ -16,6 +16,3 @@ else
 endif
 
 set foldmethod=indent
-
-" python triple quotes
-inoremap """ """"""<esc>3ha
