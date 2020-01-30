@@ -70,7 +70,7 @@ endif
 set tags+="~/.vim/tags"
 
 " ShaDa file -- controlling viminfo behavior
-" " ' -> marked files
+" ' -> marked files (file history)
 " f -> global marks?
 " < -> saved lines for registers
 " : -> number of lines to save from the command line history
@@ -85,4 +85,4 @@ set tags+="~/.vim/tags"
 "   arguments)
 " c -> convert the text using 'encoding'
 " n -> name used for the ShaDa file (must be the last option)
-set shada='20,f1,<500,:100,@40,/20
+set shada='50,f1,<500,:100,@40,/20

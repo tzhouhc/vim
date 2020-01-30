@@ -46,6 +46,18 @@ command! -bang -nargs=? -complete=dir Files
   \ }),
   \ <bang>0)
 
+if isGoogle
+  command! -bang -nargs=? -complete=dir G4Files
+    \ call fzf#run(fzf#wrap({
+    \ 'source':  "p4 p -s relativepath | tail -n +2 | grep -v delete | sed 's/^ *//' | cut -d' ' -f1",
+    \ 'options':
+    \     '--reverse
+    \      --preview-window="60%"
+    \      --preview "
+    \        bat {} -r :40"'
+    \}))
+endif
+
 " History preview with colorings and such
 " Post-Portem 2019/11/24: Bash 3.2.57(1) for darwin19 (Catalina) has a shell
 " var substitution bug that causes this to fail. Updating bash fixes the

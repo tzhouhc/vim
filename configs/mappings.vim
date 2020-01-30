@@ -129,17 +129,23 @@ if !isLeanVim
   nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
   " ==== FZF ====
-  " ctrl-p for local files and local tags; c-p is mru files.
+  " ctrl-p for local files and local tags
   nnoremap <c-o> :Files<cr>
+  " mru files
   nnoremap <c-p> :History<cr>
   " tags in current file
   nnoremap <c-i> :BTags<cr>
   " tags in *all* files of this type
   nnoremap <c-k> :Tags<cr>
-  " lines in open buffers since why not?
-  nnoremap <c-l> :Lines<cr>
+  " lines in current buffer
+  nnoremap <c-f> :BLines<cr>
+  " local folder content search
+  nnoremap <c-g> :Ag<cr>
+  " marks disabled due to unactionable content
   " nnoremap <c-m> :Marks<cr>
-  nnoremap <c-f> :Ag<cr>
+  if isGoogle
+    nnoremap <c-j> :G4Files<cr>
+  endif
 
   " ==== Arpeggios ====
   call arpeggio#load()
