@@ -8,10 +8,14 @@ set number relativenumber
 set stal=2
 set showcmd
 
-" wrapping
+" cursor wrapping
 set whichwrap+=>,l
 set whichwrap+=<,h
 set whichwrap+=[,]
+
+" 'a' indicates automatic formatting. In code this is only active if typing in
+" comments.
+set formatoptions+=a
 
 " tab completion for commands
 set wildmenu

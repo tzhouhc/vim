@@ -122,14 +122,13 @@ if !isLeanVim
   let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
   let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
-  " better writing
-  Plug 'reedes/vim-pencil'
-
   " markdown
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-  let g:vim_markdown_conceal             = 2
-  let g:vim_markdown_conceal_code_blocks = 0
-  let g:vim_markdown_fenced_languages    = ["python=python","json=json","vimscript=vim","bash=bash"]
+  let g:vim_markdown_conceal              = 2
+  let g:vim_markdown_conceal_code_blocks  = 0
+  let g:vim_markdown_auto_insert_bullets  = 1
+  let g:vim_markdown_new_list_item_indent = 0
+  let g:vim_markdown_fenced_languages     = ["python=python","json=json","vimscript=vim","bash=bash"]
 
   " fzf -- quick jump to file, tag and such
   Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
