@@ -45,6 +45,7 @@ let g:coc_snippet_prev = '[p'
 
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>ef :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 nnoremap <silent> <leader>ez :e $HOME/.dotfiles/zshrc<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
