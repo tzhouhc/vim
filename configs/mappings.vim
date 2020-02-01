@@ -133,7 +133,8 @@ if !isLeanVim
   nnoremap <c-o> :Files<cr>
   " mru files
   nnoremap <c-p> :History<cr>
-  " tags in current file
+  " tags in current file; note that ^i is equivalent to <tab> due to terminal
+  " stupidity
   nnoremap <c-i> :BTags<cr>
   " tags in *all* files of this type
   nnoremap <c-k> :Tags<cr>

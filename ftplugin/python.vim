@@ -16,3 +16,4 @@ else
 endif
 
 set foldmethod=indent
+set formatoptions+=a

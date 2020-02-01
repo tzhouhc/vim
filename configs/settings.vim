@@ -14,8 +14,11 @@ set whichwrap+=<,h
 set whichwrap+=[,]
 
 " 'a' indicates automatic formatting. In code this is only active if typing in
-" comments.
-set formatoptions+=a
+" comments. The problem, though, is that for languages without a good formatprg,
+" this can make it so that code is also autoformatted, often incorrectly.
+"
+" Apparently not a problem for vimL though :)
+" set formatoptions+=ac
 
 " tab completion for commands
 set wildmenu

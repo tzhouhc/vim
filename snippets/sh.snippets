@@ -29,3 +29,14 @@ snippet ifbin "check if binary exists" b
 if type $1 >/dev/null 2>&1; then
 fi
 endsnippet
+
+snippet iffile "check if file exists" b
+if [[ -f '${1:file}']]; then
+fi
+endsnippet
+
+snippet ifdir "check if folder exists" b
+if [[ -d '${1:dir}']]; then
+fi
+endsnippet
+
