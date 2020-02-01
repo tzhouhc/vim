@@ -51,3 +51,12 @@ function! CsThis()
   echo template . cspath . ";l=" . line(".")
 endfunction
 command! CsThis call CsThis()
+
+function! ToggleFlag(option,flag)
+  exec ('let lopt = &' . a:option)
+  if lopt =~ (".*" . a:flag . ".*")
+    exec ('set ' . a:option . '-=' . a:flag)
+  else
+    exec ('set ' . a:option . '+=' . a:flag)
+  endif
+endfunction

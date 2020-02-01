@@ -1,5 +1,5 @@
 " auto make
-set makeprg=python\ %
+setlocal makeprg=python\ %
 
 " somehow python has built-in one-space already
 let NERDSpaceDelims = 0
@@ -15,5 +15,5 @@ else
   let g:indent_guides_guide_size = 4
 endif
 
-set foldmethod=indent
-set formatoptions+=a
+setlocal foldmethod=indent
+setlocal formatoptions=carnojq

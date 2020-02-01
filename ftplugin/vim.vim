@@ -1,1 +1,1 @@
-set formatoptions+=a
+setlocal formatoptions=carnojq

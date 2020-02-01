@@ -1,2 +1,3 @@
-set makeprg=bash\ %
+setlocal makeprg=bash\ %
+setlocal formatoptions=carnojq
 

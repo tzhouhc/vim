@@ -15,11 +15,6 @@ augroup templates
 augroup END
 
 if !isLeanVim
-  augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-  augroup END
-
   augroup gutentags_status
     autocmd!
     autocmd User GutentagsUpdating call lightline#update()

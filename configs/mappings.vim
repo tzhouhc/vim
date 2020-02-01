@@ -48,6 +48,7 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 nnoremap <silent> <leader>ef :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 nnoremap <silent> <leader>ez :e $HOME/.dotfiles/zshrc<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>fa :call ToggleFlag("formatoptions","a")<CR>
 
 nnoremap <silent> <leader><leader>c :CsThis<cr>
 
