@@ -60,3 +60,15 @@ function! ToggleFlag(option,flag)
     exec ('set ' . a:option . '+=' . a:flag)
   endif
 endfunction
+
+function! SynStack()
+  if !exists("*synstack")
+    return ''
+  endif
+  let synlist = map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  if len(synlist) > 0
+    return synlist[0]
+  else
+    return ''
+  endif
+endfunc

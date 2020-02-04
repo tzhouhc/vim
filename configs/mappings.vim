@@ -25,9 +25,9 @@ nnoremap <silent><esc> <esc>:noh<CR><esc>
 " mimicking sublime's selection enclose behavior
 vnoremap " <esc>`>a"<esc>`<i"<esc>
 vnoremap ' <esc>`>a'<esc>`<i'<esc>
-vnoremap [ <esc>`>a]<esc>`<i[<esc>
-vnoremap ( <esc>`>a)<esc>`<i(<esc>
-vnoremap { <esc>`>a}<esc>`<i{<esc>
+vnoremap ] <esc>`>a]<esc>`<i[<esc>
+vnoremap ) <esc>`>a)<esc>`<i(<esc>
+vnoremap } <esc>`>a}<esc>`<i{<esc>
 vnoremap ` <esc>`>a`<esc>`<i`<esc>
 
 " select whole words by default
@@ -43,8 +43,10 @@ endif
 let g:coc_snippet_next = ']p'
 let g:coc_snippet_prev = '[p'
 
+" ==== leader actions ====
 " quickly modify vimrc file
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>ep :e ~/.vim/configs/plugs.vim<cr>
 nnoremap <silent> <leader>ef :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 nnoremap <silent> <leader>ez :e $HOME/.dotfiles/zshrc<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
@@ -70,10 +72,6 @@ nnoremap <silent> [b :bprev<cr>
 nnoremap <silent> ]b :bnext<cr>
 nnoremap <silent> [t :tabp<cr>
 nnoremap <silent> ]t :tabn<cr>
-nnoremap <silent> <leader><Left> :bprev<cr>
-nnoremap <silent> <leader><Right> :bnext<cr>
-nnoremap <silent> <leader><leader><Left> :tabp<cr>
-nnoremap <silent> <leader><leader><Right> :tabn<cr>
 
 " tmux-like splitting
 nnoremap <c-w>% :vsplit<cr>
@@ -87,6 +85,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " show current text highlight group
+" deprecated in favor of lightline section
 nnoremap <silent> <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

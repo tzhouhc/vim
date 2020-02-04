@@ -3,10 +3,9 @@ let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'g4d', 'pwd' ],
     \             [ 'readonly', 'filename', 'modified' ] ],
-    \   'right': [ [ 'gutentags' ],
-    \              [ 'filetype' ],
+    \   'right': [ [ 'filetype' ],
     \              [ 'fileencoding' ],
-    \              [ 'percent', 'lineinfo' ]
+    \              [ 'hl', 'percent', 'lineinfo' ]
     \   ]
     \ },
     \ 'tabline': {
@@ -21,6 +20,7 @@ let g:lightline = {
     \   'g4d': 'G4dName',
     \   'pwd': 'Pwd',
     \   'gutentags': 'gutentags#statusline',
+    \   'hl': 'SynStack',
     \ },
     \ 'component_expand': {
     \   'buffers': 'lightline#bufferline#buffers'

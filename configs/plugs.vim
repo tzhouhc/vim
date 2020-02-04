@@ -36,6 +36,7 @@ if rainbowParens
   \  ]
   \}
 end
+
 " line hinting for indentation
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor = ""
@@ -55,14 +56,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 
 " quick-comment
-Plug 'scrooloose/nerdcommenter'
-let NERDSpaceDelims = 1
+Plug 'tpope/vim-commentary'
 
-" common file system operations
-Plug 'tpope/vim-eunuch'
-
-" sublime-like multicursor
-" ctrl-n for select next
+" sublime-like multicursor ctrl-n for select next
 Plug 'terryma/vim-multiple-cursors'
 
 " quickscope
@@ -98,6 +94,9 @@ if !isLeanVim
 
   " changes gutter in current file since last save
   Plug 'chrisbra/changesPlugin'
+
+  " common file system operations
+  Plug 'tpope/vim-eunuch'
 
   " highlight active pane only
   " make sure neovim's python bindings are up-to-date
@@ -138,6 +137,7 @@ if !isLeanVim
 
   " peekaboo - see contents of registers
   Plug 'junegunn/vim-peekaboo'
+  let g:peekaboo_prefix = '<leader>'
 
   " ==== backups ====
   " Plug 'jdkanani/vim-material-theme'
@@ -169,35 +169,6 @@ if !isLeanVim
   let g:gutentags_file_list_command        = "gutentagger"
   let g:gutentags_resolve_symlinks         = 1
   let g:gutentags_define_advanced_commands = 1
-
-  " ctag lists
-  Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-  let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \}
 
   " undo-tree
   Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }

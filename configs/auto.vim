@@ -21,3 +21,9 @@ if !isLeanVim
     autocmd User GutentagsUpdated call lightline#update()
   augroup END
 endif
+
+if highlightCursor
+  augroup highlight_cursor_word
+    autocmd! CursorMoved * exe printf('match Underline /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+  augroup END
+endif

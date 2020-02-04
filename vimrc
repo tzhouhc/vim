@@ -29,6 +29,8 @@ let useEnglishLsp = v:false
 let useCiderStaging = v:true
 " highlight line with cursor
 let useCursorLine = v:true
+" highlight word under cursor
+let highlightCursor = v:false
 
 " ==== Loading scripts ====
 " Why not use plugin/? loading sequence.
