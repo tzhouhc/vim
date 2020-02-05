@@ -5,12 +5,19 @@
 " Guideing Philosophy --
 " * g for movement or code change
 "   * gl for formatting
+"   " gs for switch
 "   * ga for alignment
+"   * gc for commenting
 "   * gq for rewrap
+"   * gd for go to definition
+"   * gr for go to references
+"
 " * ctrl for common actions
 "   * fzf operations
-" * leader for
-" * meta for what cmd/ctrl in other common text editors would do
+"   * find
+"   * revert changes
+" * leader for plugin actions or file operations
+" * meta for what cmd/ctrl in other common text editors would do...?
 "   * e.g. change tabs, select all, etc
 
 " vertical movement

@@ -21,9 +21,6 @@ Plug 'Raimondi/delimitMate'
 " languages highlighting
 Plug 'sheerun/vim-polyglot'
 
-" easy align
-Plug 'junegunn/vim-easy-align'
-
 " visual indicators
 Plug 'luochen1990/rainbow'
 if rainbowParens
@@ -56,6 +53,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 
 " quick-comment
+" `gc` for commenting
 Plug 'tpope/vim-commentary'
 
 " sublime-like multicursor ctrl-n for select next
@@ -95,9 +93,6 @@ if !isLeanVim
   " changes gutter in current file since last save
   Plug 'chrisbra/changesPlugin'
 
-  " common file system operations
-  Plug 'tpope/vim-eunuch'
-
   " highlight active pane only
   " make sure neovim's python bindings are up-to-date
   Plug 'TaDaa/vimade'
@@ -109,17 +104,6 @@ if !isLeanVim
   " movement around pairs, highlight
   Plug 'andymass/vim-matchup'
   let g:matchup_matchparen_offscreen = {}
-
-  " formatter - for outside of Google space
-  Plug 'google/vim-maktaba', isGoogle ? { 'on': [] } : {}
-  Plug 'google/vim-codefmt', isGoogle ? { 'on': [] } : {}
-
-  " Doc Gen
-  Plug 'kkoomen/vim-doge', { 'on': 'DogeGenerate' }
-  let g:doge_doc_standard_python           = 'google'
-  let g:doge_comment_interactive           = 0
-  let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
-  let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
   " markdown
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -134,10 +118,6 @@ if !isLeanVim
   Plug 'junegunn/fzf.vim'
   " preview configs
   source $HOME/.vim/configs/fzf.vim
-
-  " peekaboo - see contents of registers
-  Plug 'junegunn/vim-peekaboo'
-  let g:peekaboo_prefix = '<leader>'
 
   " ==== backups ====
   " Plug 'jdkanani/vim-material-theme'
@@ -154,8 +134,31 @@ if !isLeanVim
 
   " Active plugins ====
 
+  " easy align
+  " `ga` for alignment
+  Plug 'junegunn/vim-easy-align'
+
+  " common file system operations
+  Plug 'tpope/vim-eunuch'
+
+  " formatter - for outside of Google space
+  " `gl` to format visualized text
+  Plug 'google/vim-maktaba', isGoogle ? { 'on': [] } : {}
+  Plug 'google/vim-codefmt', isGoogle ? { 'on': [] } : {}
+
+  " Doc Gen
+  Plug 'kkoomen/vim-doge', { 'on': 'DogeGenerate' }
+  let g:doge_doc_standard_python           = 'google'
+  let g:doge_comment_interactive           = 0
+  let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
+  let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
+
   " do not kill split with buffer
   Plug 'qpkorr/vim-bufkill'
+
+  " peekaboo - see contents of registers
+  Plug 'junegunn/vim-peekaboo'
+  let g:peekaboo_prefix = '<leader>'
 
   " autoctag
   Plug 'ludovicchabant/vim-gutentags'
@@ -176,6 +179,7 @@ if !isLeanVim
   let g:undotree_ShortIndicators    = 1
 
   " switch
+  " `gs` to switch content under cursor
   Plug 'andrewradev/switch.vim'
 
   " arpeggio
