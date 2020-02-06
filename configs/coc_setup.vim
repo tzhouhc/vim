@@ -57,6 +57,17 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
 
+" navigate between errors
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" format selected code
+xmap <silent> gf  <Plug>(coc-format-selected)
+nmap <silent> gf  <Plug>(coc-format)
+
+" rename variable
+nmap <leader>rn <Plug>(coc-rename)
+
 augroup EditVim
   autocmd!
   autocmd filetype crontab setlocal nobackup nowritebackup
@@ -233,13 +244,6 @@ else
       \}
   endif
   " ----------------
-  " experimental server
-  if useEnglishLsp
-    let g:coc_user_config.languageserver.english = {
-        \  'command': '/Users/tingzhou/Documents/Projects/english-lsp/eng_lsp.py',
-        \  'filetypes': ['text', 'markdown'],
-        \}
-  endif
   let g:coc_user_config['rust-client'] = {
         \  'revealOutputChannelOn': 'error',
         \}

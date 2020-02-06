@@ -23,8 +23,6 @@ let visualMoveWholeWord = v:true
 let rainbowParens = v:true
 " toggle italics
 let useItalics = v:true
-" use experimental english lsp
-let useEnglishLsp = v:false
 " use staging variant of ciderlsp
 let useCiderStaging = v:true
 " highlight line with cursor
