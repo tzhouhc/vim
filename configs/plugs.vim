@@ -178,6 +178,9 @@ if !isLeanVim
   let g:undotree_SetFocusWhenToggle = 1
   let g:undotree_ShortIndicators    = 1
 
+  " go do stuff
+  Plug 'tpope/vim-dispatch'
+
   " switch
   " `gs` to switch content under cursor
   Plug 'andrewradev/switch.vim'

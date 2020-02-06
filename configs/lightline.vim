@@ -5,7 +5,7 @@ let g:lightline = {
     \             [ 'readonly', 'filename', 'modified' ] ],
     \   'right': [ [ 'filetype' ],
     \              [ 'fileencoding' ],
-    \              [ 'hl', 'percent', 'lineinfo' ]
+    \              [ 'percent', 'lineinfo' ]
     \   ]
     \ },
     \ 'tabline': {
@@ -30,3 +30,6 @@ let g:lightline = {
     \ },
     \ }
 
+if highlightGroupHint
+  let g:lightline['active']['right'][2] = ['hl', 'percent', 'lineinfo']
+endif

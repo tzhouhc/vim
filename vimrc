@@ -31,6 +31,8 @@ let useCiderStaging = v:true
 let useCursorLine = v:true
 " highlight word under cursor
 let highlightCursor = v:false
+" status line shows current cursor highlight group
+let highlightGroupHint = v:false
 
 " ==== Loading scripts ====
 " Why not use plugin/? loading sequence.
