@@ -93,8 +93,7 @@ if !isLeanVim
   " changes gutter in current file since last save
   Plug 'chrisbra/changesPlugin'
 
-  " highlight active pane only
-  " make sure neovim's python bindings are up-to-date
+  " highlight active pane only make sure neovim's python bindings are up-to-date
   Plug 'TaDaa/vimade'
 
   " fancy startup
@@ -104,6 +103,9 @@ if !isLeanVim
   " movement around pairs, highlight
   Plug 'andymass/vim-matchup'
   let g:matchup_matchparen_offscreen = {}
+
+  " variable highlighting
+  Plug 'jaxbot/semantic-highlight.vim'
 
   " markdown
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -162,7 +164,8 @@ if !isLeanVim
 
   " autoctag
   Plug 'ludovicchabant/vim-gutentags'
-  let g:gutentags_cache_dir                = "~/.vim/tags"
+  " maybe gutentags doesn't work well with '~'?
+  let g:gutentags_cache_dir                = $HOME . "/.vim/tags"
   if isGoogle
     " google3 -- use nearest BUILD file as package root marker
     " otherwise just use git

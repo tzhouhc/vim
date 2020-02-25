@@ -123,6 +123,9 @@ if !isLeanVim
   nnoremap <silent> <leader>u :UndotreeToggle<cr>
   nnoremap <silent> <leader>t :TagbarToggle<cr>
 
+  " semantic highlighting
+  nnoremap <silent> <leader>sh :SemanticHighlightToggle<cr>
+
   " ==== lightline tab jump ====
   " buffer movement
   nmap <Leader>1 <Plug>lightline#bufferline#go(1)

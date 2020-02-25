@@ -196,7 +196,7 @@ if isGoogle
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
         \  'python.pythonPath': 'python3',
-        \  'linting.flake8Enabled': v:true,
+        \  'linting.flake8Enabled': v:false,
         \  'linting.mypyEnabled': v:false,
         \}
   endif
