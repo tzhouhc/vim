@@ -2,6 +2,7 @@ cache
 bundle
 *.bk
 .netrwhist
+*.shada
 init.vim
 undodir
 plugin

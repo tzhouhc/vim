@@ -85,4 +85,4 @@ set tags+="~/.vim/tags"
 "   arguments)
 " c -> convert the text using 'encoding'
 " n -> name used for the ShaDa file (must be the last option)
-set shada='50,f1,<500,:100,@40,/20
+set shada='50,f1,<500,:100,@40,/20,n~/.vim/main.shada

@@ -221,7 +221,7 @@ else
         \  'linting.flake8Enabled': v:true,
         \  'linting.mypyEnabled': v:true,
         \}
-    let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = ['python']
+    let g:coc_user_config['coc.preferences']['formatOnSaveFiletypes'] = []
   endif
   " requires coc-latex
   if executable('latexmk')
