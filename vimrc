@@ -8,9 +8,14 @@ let &runtimepath.=','.vimDir
 let isGoogle = isdirectory('/google')
 let isNeovim = has('nvim')
 
+" ==== variables that are selected when opening vim ====
 " Lean Vim removes many of the plugins, for cases where launch speed is
 " absolutely crucial
-let isLeanVim = $LEANVIM == 'true'
+let isLeanVim = $LEANVIM == '1'
+" use staging variant of ciderlsp
+let useCiderStaging = $VIM_USE_CIDER_STAGING == '1'
+" use local running ciderlsp
+let useLocalCider = $VIM_USE_LOCAL_CIDER == '1'
 
 " ==== Global personalizations ====
 " These are options that are tied to a couple of things deeper down
@@ -18,19 +23,11 @@ let isLeanVim = $LEANVIM == 'true'
 " them.
 
 " vw => viw, etc
-let visualMoveWholeWord = v:true
-" run rainbow parenthesis by default
-let rainbowParens = v:true
-" toggle italics
-let useItalics = v:true
-" use staging variant of ciderlsp
-let useCiderStaging = v:true
-" use local running ciderlsp
-let useLocalCider = $VIM_USE_LOCAL_CIDER == '1'
+let visualMoveWholeWord = v:false
 " highlight line with cursor
 let useCursorLine = v:true
-" highlight word under cursor
-let highlightCursor = v:false
+" highlight word (and all matching) under cursor
+let highlightCursor = v:true
 " status line shows current cursor highlight group
 let highlightGroupHint = v:false
 

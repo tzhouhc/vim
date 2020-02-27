@@ -34,15 +34,13 @@ set colorcolumn=80
 " =================
 " highlights run last since we don't want the color-scheme overwriting them
 
-if useItalics
-  let g:gruvbox_box_italic = 1
-  highlight Special gui=italic
-  highlight Comment gui=italic
-  highlight Italic gui=italic
-  highlight Bold gui=bold
-  highlight mkdBold gui=bold
-  highlight htmlItalic gui=italic
-endif
+let g:gruvbox_box_italic = 1
+highlight Special gui=italic
+highlight Comment gui=italic
+highlight Italic gui=italic
+highlight Bold gui=bold
+highlight mkdBold gui=bold
+highlight htmlItalic gui=italic
 
 if &background ==# 'dark'
   highlight SignifySignAdd guifg=#2dd671
