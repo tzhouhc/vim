@@ -25,6 +25,8 @@ let rainbowParens = v:true
 let useItalics = v:true
 " use staging variant of ciderlsp
 let useCiderStaging = v:true
+" use local running ciderlsp
+let useLocalCider = $VIM_USE_LOCAL_CIDER == '1'
 " highlight line with cursor
 let useCursorLine = v:true
 " highlight word under cursor

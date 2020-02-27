@@ -192,6 +192,9 @@ if isGoogle
   if useCiderStaging
     let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=blade:languageservices-staging']
   endif
+  if useLocalCider
+    let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=localhost:10066']
+  endif
   if executable('black')
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
