@@ -30,6 +30,20 @@ let g:lightline = {
     \ },
     \ }
 
+let g:lightline#bufferline#enable_devicons = 1
+" want to figure out how to customize pathshorten
+let g:lightline#bufferline#filename_modifier = ':t'
+
+let g:lightline#bufferline#number_map = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#modified = " "
+let g:lightline#bufferline#unamed = ""
+let g:lightline#bufferline#clickable = 1
+let g:lightline.component_raw = {'buffers': 1}
+
 if highlightGroupHint
   let g:lightline['active']['right'][2] = ['hl', 'percent', 'lineinfo']
 endif

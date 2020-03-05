@@ -137,6 +137,7 @@ let g:coc_user_config = {
       \ 'snippets': {
       \   'userSnippetsDirectory': "~/.vim/snippets",
       \   'snipmate.enable': v:false,
+      \   'ultisnips.enable': v:false,
       \ },
       \ 'diagnostic': {
       \   'checkCurrentLine': v:true,

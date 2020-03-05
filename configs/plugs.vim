@@ -69,9 +69,6 @@ if !isLeanVim
   " airline
   Plug 'itchyny/lightline.vim'
   Plug 'mengelbrecht/lightline-bufferline'
-  let g:lightline#bufferline#enable_devicons = 1
-  " want to figure out how to customize pathshorten
-  let g:lightline#bufferline#filename_modifier = ':t'
   source $HOME/.vim/configs/lightline.vim
 
   " version control signs
