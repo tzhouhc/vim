@@ -101,6 +101,9 @@ if !isLeanVim
 
   " variable highlighting
   Plug 'jaxbot/semantic-highlight.vim'
+  if useSemanticHighlighting
+    let g:semanticEnableFileTypes = ['go', 'python']
+  endif
 
   " markdown
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }

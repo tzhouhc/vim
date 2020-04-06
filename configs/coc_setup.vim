@@ -58,8 +58,8 @@ nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
 
 " navigate between errors
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " format selected code
 xmap <silent> gf  <Plug>(coc-format-selected)
@@ -149,7 +149,7 @@ let g:coc_user_config = {
       \   'warningSign': '!',
       \   'infoSign': '?',
       \   'hintSign': '·',
-      \   'level': 'information',
+      \   'level': 'hint',
       \ }
       \}
 
@@ -219,7 +219,9 @@ else
   if executable('black')
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
-        \  'python.pythonPath': 'python3',
+        \  'jediEnabled': v:true,
+        \  'pythonPath': '/usr/bin/python3',
+        \  'linting.enabled': v:true,
         \  'linting.pylintEnabled': v:false,
         \  'linting.pylintArgs': ["--init-hook='import sys; sys.path.append(\".\")'"],
         \  'linting.flake8Enabled': v:true,

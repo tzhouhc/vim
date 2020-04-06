@@ -17,6 +17,8 @@ let isLeanVim = $LEANVIM == '1'
 let useCiderStaging = $VIM_USE_CIDER_STAGING == '1'
 " use local running ciderlsp
 let useLocalCider = $VIM_USE_LOCAL_CIDER == '1'
+" use ~~fancy~~ color-vomit semantic highlighting
+let useSemanticHighlighting = $VIM_USE_SEMANTIC_HIGHLIGHTING == '1'
 
 " ==== Global personalizations ====
 " These are options that are tied to a couple of things deeper down
