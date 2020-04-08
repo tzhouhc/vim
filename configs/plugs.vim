@@ -126,8 +126,10 @@ if !isLeanVim
   let g:gruvbox_box_bold      = 1
   let g:gruvbox_box_underline = 1
 
-  " icons
-  Plug 'ryanoasis/vim-devicons'
+  if hasNerdfont
+    " icons
+    Plug 'ryanoasis/vim-devicons'
+  endif
 
   " Active plugins ====
 

@@ -7,6 +7,7 @@ let vimDir = '$HOME/.vim'
 let &runtimepath.=','.vimDir
 let isGoogle = isdirectory('/google')
 let isNeovim = has('nvim')
+let hasNerdfont = $NERDFONT != 'false'
 
 " ==== variables that are selected when opening vim ====
 " Lean Vim removes many of the plugins, for cases where launch speed is

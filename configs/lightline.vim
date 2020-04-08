@@ -39,8 +39,13 @@ let g:lightline#bufferline#number_map = {
 \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
 let g:lightline#bufferline#show_number = 2
-let g:lightline#bufferline#modified = " "
-let g:lightline#bufferline#unamed = ""
+if hasNerdfont
+  let g:lightline#bufferline#modified = " "
+  let g:lightline#bufferline#unamed = ""
+else
+  let g:lightline#bufferline#modified = " *"
+  let g:lightline#bufferline#unamed = " ?"
+endif
 let g:lightline#bufferline#clickable = 1
 let g:lightline.component_raw = {'buffers': 1}
 
