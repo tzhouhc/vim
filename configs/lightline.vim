@@ -40,8 +40,8 @@ let g:lightline#bufferline#number_map = {
 
 let g:lightline#bufferline#show_number = 2
 if hasNerdfont
-  let g:lightline#bufferline#modified = " "
-  let g:lightline#bufferline#unamed = ""
+  let g:lightline#bufferline#modified = "  "
+  let g:lightline#bufferline#unamed = " "
 else
   let g:lightline#bufferline#modified = " *"
   let g:lightline#bufferline#unamed = " ?"
