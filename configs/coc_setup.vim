@@ -220,7 +220,7 @@ else
     let g:coc_user_config.python = {
         \  'formatting.provider': 'black',
         \  'jediEnabled': v:true,
-        \  'pythonPath': '/usr/bin/python3',
+        \  'pythonPath': '/usr/local/bin/python3',
         \  'linting.enabled': v:true,
         \  'linting.pylintEnabled': v:false,
         \  'linting.pylintArgs': ["--init-hook='import sys; sys.path.append(\".\")'"],

@@ -11,3 +11,7 @@ set conceallevel=2
 set concealcursor=nc
 set tw=80
 set spelllang=en
+
+" not working due to misinterpretation of the S from vim-surround;
+" vnoremap <c-i> S*
+" vnoremap <c-b> S*gvS*

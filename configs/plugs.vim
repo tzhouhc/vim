@@ -163,7 +163,7 @@ if !isLeanVim
   let g:peekaboo_prefix = '<leader>'
 
   " autoctag
-  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'ludovicchabant/vim-gutentags', { 'commit': '31c0ead' }
   " maybe gutentags doesn't work well with '~'?
   let g:gutentags_cache_dir                = $HOME . "/.vim/tags"
   if isGoogle
