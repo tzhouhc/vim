@@ -71,8 +71,11 @@ nmap <leader>rn <Plug>(coc-rename)
 augroup EditVim
   autocmd!
   autocmd filetype crontab setlocal nobackup nowritebackup
-  "autocmd filetype python setlocal completeopt-=preview
-  autocmd CursorHold * silent call CocActionAsync('doHover')
+  " autocmd filetype python setlocal completeopt-=preview
+
+  " The issue with auto doHover is that the resulting extreme frequency of
+  " hover requests and failure counts.
+  " autocmd CursorHold * silent call CocActionAsync('doHover')
 augroup END
 
 " ==============================

@@ -36,12 +36,13 @@ let g:rainbow_conf   = {
 Plug 'Yggdroot/indentLine'
 let g:indentLine_noConcealCursor = ""
 let g:indentLine_setConceal      = 0
+set list lcs=tab:\¦\ 
 
 " colorschemes
 Plug 'arcticicestudio/nord-vim'
 
 " lsp
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " NOTE: see coc_specific.vim and coc_config.json for more tweaks
 
 " vim motion

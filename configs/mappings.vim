@@ -139,6 +139,10 @@ if !isLeanVim
   nmap <Leader>9 <Plug>lightline#bufferline#go(9)
   nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
+  " ==== COC error jump ====
+  nmap <silent> ]e <Plug>(coc-diagnostic-next)
+  nmap <silent> [e <Plug>(coc-diagnostic-prev)
+
   " ==== FZF ====
   " ctrl-p for local files and local tags
   nnoremap <c-o> :Files<cr>
