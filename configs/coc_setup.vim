@@ -193,6 +193,13 @@ if isGoogle
       \     ]
       \   }
       \ }
+  let g:coc_user_config.python = {
+      \  'jediEnabled': v:false,
+      \  'linting.enabled': v:false,
+      \  'linting.pylintEnabled': v:false,
+      \  'linting.flake8Enabled': v:false,
+      \  'linting.mypyEnabled': v:false
+      \}
   if useCiderStaging
     let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=blade:languageservices-staging']
   endif
