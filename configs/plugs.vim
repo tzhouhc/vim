@@ -15,6 +15,12 @@ call plug#begin('~/.vim/bundle')
 " pairs
 Plug 'tpope/vim-surround'
 
+" variants
+Plug 'tpope/vim-abolish'
+
+" targets
+Plug 'wellle/targets.vim'
+
 " auto-close pairs
 Plug 'Raimondi/delimitMate'
 

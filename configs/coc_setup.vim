@@ -163,7 +163,7 @@ if isGoogle
       \ }
   let g:coc_user_config.languageserver = {
       \   'ciderlsp': {
-      \     'command': '/google/bin/releases/editor-devtools/ciderlsp',
+      \     'command': '/google/bin/releases/cider/ciderlsp/ciderlsp',
       \     'args': [
       \       '--tooltag=coc-nvim',
       \       '--noforward_sync_responses'
@@ -173,25 +173,13 @@ if isGoogle
       \       'cpp',
       \       'proto',
       \       'textproto',
+      \       'gcl',
       \       'go',
       \       'java',
       \       'borg',
       \       'python'
       \     ]
       \   },
-      \   'kythe': {
-      \     'command': '/google/bin/releases/grok/tools/kythe_languageserver',
-      \     'args': [
-      \       '--google3'
-      \     ],
-      \     'filetypes': [
-      \       'python',
-      \       'go',
-      \       'java',
-      \       'cpp',
-      \       'proto'
-      \     ]
-      \   }
       \ }
   let g:coc_user_config.python = {
       \  'jediEnabled': v:false,
