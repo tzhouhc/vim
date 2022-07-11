@@ -147,14 +147,15 @@ if !isLeanVim
   " ctrl-p for local files and local tags
   nnoremap <c-o> :Files<cr>
   " mru files
-  nnoremap <c-p> :History<cr>
+  nnoremap <c-p> :G4Files<cr>
   " tags in current file; note that ^i is equivalent to <tab> due to terminal
   " stupidity
-  nnoremap <c-i> :BTags<cr>
+  nnoremap <c-l> :Tags<cr>
   " tags in *all* files of this type
-  nnoremap <c-k> :Tags<cr>
+  nnoremap <c-k> :BTags<cr>
   " lines in current buffer
   nnoremap <c-f> :BLines<cr>
+  nnoremap <c-F> :Lines<cr>
   " local folder content search
   nnoremap <c-g> :Ag<cr>
   " marks disabled due to unactionable content

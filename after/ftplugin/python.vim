@@ -16,4 +16,4 @@ else
 endif
 
 setlocal foldmethod=indent
-setlocal formatoptions=carnojq
+setlocal formatoptions=carnojqw
