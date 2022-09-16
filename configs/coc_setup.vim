@@ -56,6 +56,7 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <silent> gr :call CocActionAsync('jumpReferences')<CR>
+nnoremap <silent> <leader>rn <Plug>(coc-rename)
 
 " navigate between errors
 nmap <silent> [e <Plug>(coc-diagnostic-prev)

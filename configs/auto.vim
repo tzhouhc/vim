@@ -27,3 +27,8 @@ if highlightCursor
     autocmd! CursorMoved * exe printf('match Underline /\V\<%s\>/', escape(expand('<cword>'), '/\'))
   augroup END
 endif
+
+augroup formatting
+  au!
+  autocmd BufWritePost * FixWhitespace
+augroup END

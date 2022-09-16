@@ -30,8 +30,6 @@ noremap <silent> <C-Right> $
 nnoremap <silent><esc> <esc>:noh<CR><esc>
 
 " mimicking sublime's selection enclose behavior
-vnoremap " <esc>`>a"<esc>`<i"<esc>
-vnoremap ' <esc>`>a'<esc>`<i'<esc>
 vnoremap ] <esc>`>a]<esc>`<i[<esc>
 vnoremap ) <esc>`>a)<esc>`<i(<esc>
 vnoremap } <esc>`>a}<esc>`<i{<esc>
@@ -84,6 +82,15 @@ nnoremap <silent> ]t :tabn<cr>
 nnoremap <c-w>% :vsplit<cr>
 nnoremap <c-w>" :split<cr>
 nnoremap <c-w>z :only<cr>
+
+" no-yanking ops
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
 
 " easy align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
