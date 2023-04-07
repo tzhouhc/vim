@@ -92,6 +92,10 @@ if !isLeanVim
           \ }
   endif
 
+  if isGoogle
+    Plug 'sso://user/ycyi/coc-ciderlsp'
+  endif
+
   " changes gutter in current file since last save
   Plug 'chrisbra/changesPlugin'
 

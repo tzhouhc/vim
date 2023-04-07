@@ -159,50 +159,28 @@ let g:coc_user_config = {
 
 if isGoogle
   " Google mode configs
+  call coc#config('coc-ciderlsp.filetypes', [
+    \                 "cpp",
+    \                 "python",
+    \                 "borg",
+    \                 "go",
+    \                 "java",
+    \                 "proto",
+    \                 "bzl",
+    \                 "javascript",
+    \                 "typescript",
+    \                 "gcl",
+    \                 "textproto"
+    \         ])
+  call coc#config('coc-ciderlsp.args', [
+    \                 "--tooltag=coc-nvim",
+    \                 "--noforward_sync_responses"
+    \         ])
+  call coc#config('coc-ciderlsp.enabled', v:true)
+  call coc#config('coc-ciderlsp.compose.enabled', v:true)
   let g:coc_filetype_map = {
       \   'dream': 'borg'
       \ }
-  let g:coc_user_config.languageserver = {
-      \   'ciderlsp': {
-      \     'command': '/google/bin/releases/cider/ciderlsp/ciderlsp',
-      \     'args': [
-      \       '--tooltag=coc-nvim',
-      \       '--noforward_sync_responses'
-      \     ],
-      \     'filetypes': [
-      \       'c',
-      \       'cpp',
-      \       'proto',
-      \       'textproto',
-      \       'gcl',
-      \       'go',
-      \       'java',
-      \       'borg',
-      \       'python'
-      \     ]
-      \   },
-      \ }
-  let g:coc_user_config.python = {
-      \  'jediEnabled': v:false,
-      \  'linting.enabled': v:false,
-      \  'linting.pylintEnabled': v:false,
-      \  'linting.flake8Enabled': v:false,
-      \  'linting.mypyEnabled': v:false
-      \}
-  if useCiderStaging
-    let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=blade:languageservices-staging']
-  endif
-  if useLocalCider
-    let g:coc_user_config.languageserver.ciderlsp.args += ['-hub_addr=localhost:10066']
-  endif
-  if executable('black')
-    let g:coc_user_config.python = {
-        \  'formatting.provider': 'black',
-        \  'python.pythonPath': 'python3',
-        \  'linting.flake8Enabled': v:false,
-        \  'linting.mypyEnabled': v:false,
-        \}
-  endif
 else
   " 'civilian' mode configs
   let g:coc_user_config.languageserver = {}
