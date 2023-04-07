@@ -13,12 +13,11 @@ call plug#begin('~/.vim/bundle')
 " and are always loaded; this selection is *rather arbitrary*
 
 " pairs
+" Allows pairwise changing parens and such.
 Plug 'tpope/vim-surround'
 
-" variants
-Plug 'tpope/vim-abolish'
-
 " targets
+" Provides text objects such as `cin(`.
 Plug 'wellle/targets.vim'
 
 " auto-close pairs
@@ -52,6 +51,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " NOTE: see coc_specific.vim and coc_config.json for more tweaks
 
 " vim motion
+" <M-F> to jump to specific character on screen.
 Plug 'easymotion/vim-easymotion'
 
 " trailing whitespace
@@ -107,6 +107,7 @@ if !isLeanVim
   Plug 'mhinz/vim-startify', isGoogle ? { 'on': [] } : {}
 
   " movement around pairs, highlight
+  " <%> to jump to matching symbol/keyword.
   Plug 'andymass/vim-matchup'
   let g:matchup_matchparen_offscreen = {}
 
@@ -131,11 +132,6 @@ if !isLeanVim
   source $HOME/.vim/configs/fzf.vim
 
   " ==== backups ====
-  " Plug 'jdkanani/vim-material-theme'
-  " Plug 'ayu-theme/ayu-vim'
-  " Plug 'rakr/vim-one'
-  " Plug 'rakr/vim-two-firewatch'
-  " Plug 'cocopon/iceberg.vim'
   Plug 'morhetz/gruvbox'
   let g:gruvbox_box_bold      = 1
   let g:gruvbox_box_underline = 1
@@ -151,20 +147,10 @@ if !isLeanVim
   " `ga` for alignment
   Plug 'junegunn/vim-easy-align'
 
-  " common file system operations
-  Plug 'tpope/vim-eunuch'
-
   " formatter - for outside of Google space
   " `gl` to format visualized text
   Plug 'google/vim-maktaba', isGoogle ? { 'on': [] } : {}
   Plug 'google/vim-codefmt', isGoogle ? { 'on': [] } : {}
-
-  " Doc Gen
-  Plug 'kkoomen/vim-doge', { 'on': 'DogeGenerate' }
-  let g:doge_doc_standard_python           = 'google'
-  let g:doge_comment_interactive           = 0
-  let g:doge_mapping_comment_jump_forward  = '<C-RIGHT>'
-  let g:doge_mapping_comment_jump_backward = '<C-LEFT>'
 
   " do not kill split with buffer
   Plug 'qpkorr/vim-bufkill'
@@ -191,20 +177,6 @@ if !isLeanVim
   Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   let g:undotree_SetFocusWhenToggle = 1
   let g:undotree_ShortIndicators    = 1
-
-  " ranger
-  Plug 'rbgrouleff/bclose.vim'
-  Plug 'francoiscabrol/ranger.vim'
-
-  " go do stuff
-  Plug 'tpope/vim-dispatch'
-
-  " switch
-  " `gs` to switch content under cursor
-  Plug 'andrewradev/switch.vim'
-
-  " arpeggio
-  Plug 'kana/vim-arpeggio'
 
   " custom text objects
   Plug 'kana/vim-textobj-user'

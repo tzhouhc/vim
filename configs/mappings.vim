@@ -170,22 +170,4 @@ if !isLeanVim
   if isGoogle
     nnoremap <c-j> :G4Files<cr>
   endif
-
-  " ==== Arpeggios ====
-  call arpeggio#load()
-
-  " empty line without movement
-  Arpeggio nnoremap io o<esc>k
-  Arpeggio nnoremap IO O<esc>j
-
-  Arpeggio nnoremap cw ciw
-  Arpeggio nnoremap cW ciW
-  Arpeggio nnoremap c) ci)
-  Arpeggio nnoremap c] ci]
-  Arpeggio nnoremap c} ci}
-  Arpeggio nnoremap vw viw
-  Arpeggio nnoremap vW viW
-  Arpeggio nnoremap v) vi)
-  Arpeggio nnoremap v] vi]
-  Arpeggio nnoremap v} vi}
 endif
