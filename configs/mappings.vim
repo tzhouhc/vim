@@ -150,6 +150,9 @@ if !isLeanVim
   nmap <silent> ]e <Plug>(coc-diagnostic-next)
   nmap <silent> [e <Plug>(coc-diagnostic-prev)
 
+  " ==== COC commit ====
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
   " ==== FZF ====
   " ctrl-p for local files and local tags
   nnoremap <c-o> :Files<cr>

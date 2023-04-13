@@ -59,3 +59,23 @@ else
   highlight QuickScopePrimary guifg=#518b14 gui=underline
   highlight QuickScopeSecondary guifg=#145fcb gui=bold
 endif
+
+
+" =================
+" coc highlights
+" =================
+
+hi! CocErrorSign guifg=#bf616a
+hi! CocInfoSign guibg=#a3be8c
+hi! CocWarningSign guifg=#ebcb8b
+
+hi! CocErrorVirtualText guifg=#bf616a
+hi! CocInfoVirtualText guibg=#a3be8c
+hi! CocWarningVirtualText guifg=#ebcb8b
+
+hi! CocErrorHighlight guifg=#bf616a
+hi! CocInfoHighlight guibg=#a3be8c
+hi! CocWarningHighlight guifg=#ebcb8b
+
+hi! CocErrorFloat guifg=#bf616a
+hi! CocHintFloat guibg=#a3be8c
