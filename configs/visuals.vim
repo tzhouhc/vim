@@ -66,16 +66,24 @@ endif
 " =================
 
 hi! CocErrorSign guifg=#bf616a
-hi! CocInfoSign guibg=#a3be8c
+hi! CocInfoSign guifg=#a3be8c
 hi! CocWarningSign guifg=#ebcb8b
 
 hi! CocErrorVirtualText guifg=#bf616a
-hi! CocInfoVirtualText guibg=#a3be8c
+hi! CocInfoVirtualText guifg=#a3be8c
 hi! CocWarningVirtualText guifg=#ebcb8b
 
 hi! CocErrorHighlight guifg=#bf616a
-hi! CocInfoHighlight guibg=#a3be8c
+hi! CocInfoHighlight guifg=#a3be8c
 hi! CocWarningHighlight guifg=#ebcb8b
 
 hi! CocErrorFloat guifg=#bf616a
-hi! CocHintFloat guibg=#a3be8c
+hi! CocHintFloat guifg=#a3be8c
+
+" =================
+"
+" =================
+
+if &diff                             " only for diff mode/vimdiff
+  set diffopt=filler,context:1000000 " filler is default and inserts empty lines for sync
+endif

@@ -56,6 +56,7 @@ nnoremap <silent> <leader>ef :e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>
 nnoremap <silent> <leader>ez :e $HOME/.dotfiles/zshrc<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>fa :call ToggleFlag("formatoptions","a")<CR>
+nnoremap <silent> <leader>fc :FormatCode<CR>
 
 nnoremap <silent> <leader><leader>c :CsThis<cr>
 
@@ -75,6 +76,8 @@ vnoremap <c-Down> 10j
 " switch buffer/tabs
 nnoremap <silent> [b :bprev<cr>
 nnoremap <silent> ]b :bnext<cr>
+nnoremap <silent> <PageUp> :bprev<cr>
+nnoremap <silent> <PageDown> :bnext<cr>
 nnoremap <silent> [t :tabp<cr>
 nnoremap <silent> ]t :tabn<cr>
 
