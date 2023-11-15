@@ -114,10 +114,8 @@ if isNeovim
   nnoremap <M-n> :tabe<cr>
 
   " meta+f to select and go to one specific letter on screen
-  map  <M-f> <Plug>(easymotion-bd-f)
-  nmap <M-f> <Plug>(easymotion-overwin-f)
-  map  <M-F> <Plug>(easymotion-bd-f2)
-  nmap <M-F> <Plug>(easymotion-overwin-f2)
+  map  <c-f> <Plug>(easymotion-bd-f)
+  nmap <c-f> <Plug>(easymotion-overwin-f)
 endif
 
 " If in lean mode, many kep mappings wouldn't work
@@ -163,10 +161,9 @@ if !isLeanVim
   " tags in *all* files of this type
   nnoremap <c-k> :BTags<cr>
   " lines in current buffer
-  nnoremap <c-f> :BLines<cr>
-  nnoremap <c-F> :Lines<cr>
+  nnoremap <M-f> :BLines<cr>
   " local folder content search
-  nnoremap <c-g> :Ag<cr>
+  nnoremap <M-F> :Ag<cr>
   " marks disabled due to unactionable content
   " nnoremap <c-m> :Marks<cr>
   if isGoogle

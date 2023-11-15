@@ -79,6 +79,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Non-Essentials ======
 " (but still important and nice)
 
+" Copilot
+" Plug 'github/copilot.vim'
+
 if !isLeanVim
   " passive plugins ====
   " airline
