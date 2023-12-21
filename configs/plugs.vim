@@ -16,6 +16,9 @@ call plug#begin('~/.vim/bundle')
 " Allows pairwise changing parens and such.
 Plug 'tpope/vim-surround'
 
+" pcre search
+Plug 'othree/eregex.vim'
+
 " targets
 " Provides text objects such as `cin(`.
 Plug 'wellle/targets.vim'

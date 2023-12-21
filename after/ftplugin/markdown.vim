@@ -4,7 +4,7 @@
 " using either `Enter` or `o` or `O`, that we do indeed get another bullet
 " point. I.e. we only want a new line when we *ask* for it.
 set autoindent
-set formatoptions=carnojqw
+set formatoptions=crnojqw
 
 " set conceallevel=2
 " set concealcursor=nc

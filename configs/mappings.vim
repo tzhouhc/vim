@@ -60,10 +60,6 @@ nnoremap <silent> <leader>fc :FormatCode<CR>
 
 nnoremap <silent> <leader><leader>c :CsThis<cr>
 
-" search for stuff
-map /  /\v
-map ?  ?\v
-map g/ g/\v
 " search visual selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
