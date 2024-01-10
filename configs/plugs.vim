@@ -19,6 +19,11 @@ Plug 'tpope/vim-surround'
 " pcre search
 Plug 'othree/eregex.vim'
 
+if isNeovim
+  " scrollbar
+  Plug 'petertriho/nvim-scrollbar'
+endif
+
 " targets
 " Provides text objects such as `cin(`.
 Plug 'wellle/targets.vim'

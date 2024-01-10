@@ -56,6 +56,7 @@ source $HOME/.vim/configs/coc_setup.vim
 " settings specific to neovim
 if isNeovim
   source $HOME/.vim/configs/nvim_specific.vim
+  lua require('plugins')
 endif
 
 " settings specfic to google3
