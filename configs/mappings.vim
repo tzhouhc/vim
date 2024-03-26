@@ -45,8 +45,8 @@ if visualMoveWholeWord
 endif
 
 " next place holder in snippet
-let g:coc_snippet_next = ']p'
-let g:coc_snippet_prev = '[p'
+" let g:coc_snippet_next = ']p'
+" let g:coc_snippet_prev = '[p'
 
 " ==== leader actions ====
 " quickly modify vimrc file
@@ -144,11 +144,11 @@ if !isLeanVim
   nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
   " ==== COC error jump ====
-  nmap <silent> ]e <Plug>(coc-diagnostic-next)
-  nmap <silent> [e <Plug>(coc-diagnostic-prev)
+  " nmap <silent> ]e <Plug>(coc-diagnostic-next)
+  " nmap <silent> [e <Plug>(coc-diagnostic-prev)
 
   " ==== COC commit ====
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+  " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
   " ==== FZF ====
   " ctrl-p for local files and local tags

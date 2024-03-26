@@ -51,12 +51,14 @@ if !isLeanVim
 endif
 
 " settings specific to coc
-source $HOME/.vim/configs/coc_setup.vim
+" source $HOME/.vim/configs/coc_setup.vim
 
 " settings specific to neovim
 if isNeovim
   source $HOME/.vim/configs/nvim_specific.vim
+  " note: lua require statements don't work in the vim-plug code block.
   lua require('plugins')
+  lua require('lsp')
 endif
 
 " settings specfic to google3

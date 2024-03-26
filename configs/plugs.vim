@@ -54,10 +54,6 @@ set list lcs=tab:\¦\
 " colorschemes
 Plug 'arcticicestudio/nord-vim'
 
-" lsp
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" NOTE: see coc_specific.vim and coc_config.json for more tweaks
-
 " vim motion
 " <M-F> to jump to specific character on screen.
 Plug 'easymotion/vim-easymotion'
@@ -101,10 +97,6 @@ if !isLeanVim
           \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
           \ 'hg': 'hg diff --color=never --config aliases.diff= --nodates -U0 -- %f'
           \ }
-  endif
-
-  if isGoogle
-    Plug 'sso://user/ycyi/coc-ciderlsp'
   endif
 
   " changes gutter in current file since last save
@@ -193,6 +185,15 @@ if !isLeanVim
   Plug 'kana/vim-textobj-user'
   " 'y' means 'the current syntax highlight group'
   Plug 'kana/vim-textobj-syntax'
+
+  " lsp
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+
 endif
 
 call plug#end()"}}}
