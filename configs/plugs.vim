@@ -28,9 +28,6 @@ endif
 " Provides text objects such as `cin(`.
 Plug 'wellle/targets.vim'
 
-" auto-close pairs
-Plug 'Raimondi/delimitMate'
-
 " languages highlighting
 Plug 'sheerun/vim-polyglot'
 

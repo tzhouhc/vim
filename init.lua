@@ -45,5 +45,6 @@ require('lazy').setup({
 })
 
 require('visuals')
+require('mappings')
 require('settings')
 require('lsp')
