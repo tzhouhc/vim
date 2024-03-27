@@ -193,7 +193,9 @@ if !isLeanVim
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
-
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'folke/trouble.nvim'
+  Plug 'folke/neodev.nvim'
 endif
 
 call plug#end()"}}}
