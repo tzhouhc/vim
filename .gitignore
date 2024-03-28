@@ -12,3 +12,4 @@ vim_history
 tags/*
 local/*
 vim-plug
+lazy-lock.json

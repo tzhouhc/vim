@@ -26,3 +26,6 @@ vim.cmd("highlight QuickScopeSecondary guifg=#348feb gui=bold")
 if vim.api.nvim_win_get_option(0, "diff") then
   vim.opt.diffopt="filler,context:1000000"
 end
+
+-- lightline
+vim.cmd("source $HOME/.vim/configs/lightline.vim")

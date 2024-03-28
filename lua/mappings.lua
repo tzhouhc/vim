@@ -1,3 +1,5 @@
+vim.g.mapleader = "\\"
+
 local function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
@@ -43,7 +45,7 @@ nmap("<Up>", "gk")
 nmap("<silent>", "<C-Left> ^")
 nmap("<silent>", "<C-Right> $")
 -- cancel search highlight
-nmap("<silent><esc>", "<esc>:noh<CR><esc>")
+nmap("<esc>", ":noh<CR>")
 
 -- mimicking sublime's selection enclose behavior
 vmap("]", "<esc>`>a]<esc>`<i[<esc>")
@@ -103,17 +105,8 @@ vmap("<leader>p", "\"_dP")
 
 -- " ==== FZF ====
 -- " ctrl-p for local files and local tags
--- nnoremap <c-o> :Files<cr>
--- " mru files
--- nnoremap <c-p> :G4Files<cr>
--- " tags in current file; note that ^i is equivalent to <tab> due to terminal
--- " stupidity
--- nnoremap <c-l> :Tags<cr>
--- " tags in *all* files of this type
--- nnoremap <c-k> :BTags<cr>
+nmap("<c-o>", ":Files<cr>")
 -- " lines in current buffer
--- nnoremap <M-f> :BLines<cr>
+nmap("<c-f>", ":BLines<cr>")
 -- " local folder content search
--- nnoremap <M-F> :Ag<cr>
--- " marks disabled due to unactionable content
--- " nnoremap <c-m> :Marks<cr>
+nmap("M-F", ":Ag<cr>")

@@ -5,7 +5,6 @@
 " ==== Global vars ====
 let vimDir = '$HOME/.vim'
 let &runtimepath.=','.vimDir
-let isGoogle = isdirectory('/google')
 let isNeovim = has('nvim')
 let hasNerdfont = $NERDFONT != 'false'
 
@@ -50,21 +49,10 @@ if !isLeanVim
   source $HOME/.vim/configs/text_objects.vim
 endif
 
-" settings specific to coc
-" source $HOME/.vim/configs/coc_setup.vim
-
-" settings specific to neovim
-if isNeovim
-  source $HOME/.vim/configs/nvim_specific.vim
-  " note: lua require statements don't work in the vim-plug code block.
-  lua require('plugins')
-  lua require('lsp')
-endif
-
-" settings specfic to google3
-if isGoogle && !isLeanVim
-  source $HOME/.vim/configs/google_specific.vim
-endif
+source $HOME/.vim/configs/nvim_specific.vim
+" note: lua require statements don't work in the vim-plug code block.
+lua require('plugins')
+lua require('lsp')
 
 " functions
 source $HOME/.vim/configs/functions.vim

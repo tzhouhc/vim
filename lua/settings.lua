@@ -5,6 +5,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.stal = 2
 vim.opt.showcmd = true
+vim.opt.inccommand = "split"
 
 -- tab completion for commands
 vim.opt.wildmenu = true
@@ -24,7 +25,7 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 
 -- mouse use
-vim.opt.mouse="a"
+vim.opt.mouse = "a"
 
 -- encoding
 vim.opt.encoding="UTF-8"
@@ -37,7 +38,7 @@ vim.opt.cursorline = true
 -- folding
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 4
-vim.opt.foldmethod="syntax"
+vim.opt.foldmethod="indent"
 
 -- switch buffer without saving
 vim.opt.hidden = true
@@ -51,7 +52,7 @@ vim.opt.shortmess= "aFc"
     -- call system('mkdir ' . vimDir)
     -- call system('mkdir ' . myUndoDir)
     -- let &undodir = myUndoDir
-    -- vim.opt.undofile
+vim.opt.undofile = true
 
 vim.opt.tags = "~/.vim/tags"
 
