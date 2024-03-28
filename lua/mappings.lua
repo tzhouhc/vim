@@ -8,10 +8,6 @@ local function nmap(shortcut, command)
   map('n', shortcut, command)
 end
 
-local function imap(shortcut, command)
-  map('i', shortcut, command)
-end
-
 local function vmap(shortcut, command)
   map('v', shortcut, command)
 end
@@ -68,7 +64,7 @@ nmap("<leader>ep", ":e ~/.vim/configs/plugs.vim<cr>")
 nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
-nmap("<leader>fc", ":FormatCode<CR>")
+nmap("<leader>fc", ":LspZeroFormat<CR>")
 
 -- -- faster movement
 nmap("<c-Up>", "10k")
@@ -105,8 +101,12 @@ vmap("<leader>p", "\"_dP")
 
 -- " ==== FZF ====
 -- " ctrl-p for local files and local tags
-nmap("<c-o>", ":Files<cr>")
+nmap("<c-o>", ":Telescope find_files<cr>")
 -- " lines in current buffer
-nmap("<c-f>", ":BLines<cr>")
+nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
 -- " local folder content search
-nmap("M-F", ":Ag<cr>")
+-- nmap("<M-f>", ":Telescope buffers<cr>")
+-- local symbols
+nmap("<c-k>", ":Telescope lsp_document_symbols<cr>")
+-- git changes
+nmap("<c-p>", ":Telescope git_status<cr>")

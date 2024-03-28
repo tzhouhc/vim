@@ -24,6 +24,7 @@ require('lazy').setup({
   "HiPhish/rainbow-delimiters.nvim",
   "akinsho/bufferline.nvim",
   "nvim-lualine/lualine.nvim",
+  "norcalli/nvim-colorizer.lua",
   "chrisbra/changesPlugin",
   "lewis6991/gitsigns.nvim",
   "folke/todo-comments.nvim",
@@ -41,8 +42,10 @@ require('lazy').setup({
   "qpkorr/vim-bufkill",
   "folke/which-key.nvim",
   -- tools
-  "ibhagwan/fzf-lua",
   "numToStr/Comment.nvim",
+  "nvim-lua/plenary.nvim",
+  { "nvim-telescope/telescope.nvim",            tag = '0.1.6' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   "nvim-treesitter/nvim-treesitter",
   -- LSPs
   "williamboman/mason.nvim",
@@ -53,7 +56,7 @@ require('lazy').setup({
   "L3MON4D3/LuaSnip",
   "VonHeikemen/lsp-zero.nvim",
   "nvim-tree/nvim-web-devicons",
-  "folke/trouble.nvim",
+  { "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   -- nvim configuration
   "folke/neodev.nvim",
 })
@@ -76,7 +79,7 @@ require('visuals')
 require('mappings')
 require('settings')
 require('lsp')
+require('auto')
 
 vim.cmd("source $HOME/.vim/configs/functions.vim")
-vim.cmd("source $HOME/.vim/configs/auto.vim")
 vim.opt.runtimepath:append(",~/.vim,~/.vim/local/after")

@@ -1,28 +1,6 @@
 " ============================
 " functions
 " ============================
-function! Multiple_cursors_before()
-    echo 'Disabled autocomplete'
-endfunction
-
-function! ToggleNERDTreeFind()
-  if exists('g:NERDTree.IsOpen')
-    if g:NERDTree.IsOpen()
-        execute ':NERDTreeClose'
-    else
-        execute ':NERDTreeFind'
-    endif
-  else
-    execute ':NERDTreeFind'
-  endif
-endfunction
-
-function! Buildifier(buffer)
-  return {
-        \  'command': 'buildifier'
-        \}
-endfunction
-
 function! G4dName()
   let name = expand("%:p")
   if name  =~ "^/google/src/cloud/[^/]*/[^/]*/"
@@ -51,24 +29,3 @@ function! CsThis()
   echo template . cspath . ";l=" . line(".")
 endfunction
 command! CsThis call CsThis()
-
-function! ToggleFlag(option,flag)
-  exec ('let lopt = &' . a:option)
-  if lopt =~ (".*" . a:flag . ".*")
-    exec ('set ' . a:option . '-=' . a:flag)
-  else
-    exec ('set ' . a:option . '+=' . a:flag)
-  endif
-endfunction
-
-function! SynStack()
-  if !exists("*synstack")
-    return ''
-  endif
-  let synlist = map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-  if len(synlist) > 0
-    return synlist[0]
-  else
-    return ''
-  endif
-endfunc
