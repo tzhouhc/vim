@@ -9,6 +9,7 @@ require("nvim-surround").setup()
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("neodev").setup()
+require("numb").setup()
 
 -- treesitter
 require'nvim-treesitter.configs'.setup {

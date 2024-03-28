@@ -95,18 +95,14 @@ vmap("<leader>d", "\"_d")
 vmap("<leader>p", "\"_dP")
 
 --   " meta+f to select and go to one specific letter on screen
---   map  <c-f> <Plug>(easymotion-bd-f)
---   nmap <c-f> <Plug>(easymotion-overwin-f)
--- endif
+nmap('<m-f>',  '<Plug>(leap)')
 
--- " ==== FZF ====
--- " ctrl-p for local files and local tags
+-- Telescope
+-- for local files and local tags
 nmap("<c-o>", ":Telescope find_files<cr>")
--- " lines in current buffer
+-- lines in current buffer
 nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
--- " local folder content search
--- nmap("<M-f>", ":Telescope buffers<cr>")
--- local symbols
-nmap("<c-k>", ":Telescope lsp_document_symbols<cr>")
+-- local symbols based on treesitter
+nmap("<c-k>", ":Telescope treesitter<cr>")
 -- git changes
 nmap("<c-p>", ":Telescope git_status<cr>")

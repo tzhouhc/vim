@@ -16,11 +16,12 @@ require('lazy').setup({
   -- motion
   "wellle/targets.vim",
   "andymass/vim-matchup",
-  "folke/flash.nvim",
+  "ggandor/leap.nvim",
+  "ggandor/flit.nvim",
   -- visuals
   "lukas-reineke/indent-blankline.nvim",
   "petertriho/nvim-scrollbar",
-  "arcticicestudio/nord-vim",
+  "shaunsingh/nord.nvim",
   "HiPhish/rainbow-delimiters.nvim",
   "akinsho/bufferline.nvim",
   "nvim-lualine/lualine.nvim",
@@ -41,6 +42,7 @@ require('lazy').setup({
   "bronson/vim-trailing-whitespace",
   "qpkorr/vim-bufkill",
   "folke/which-key.nvim",
+  "nacro90/numb.nvim",
   -- tools
   "numToStr/Comment.nvim",
   "nvim-lua/plenary.nvim",
