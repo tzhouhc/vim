@@ -71,6 +71,10 @@ nmap("<c-Up>", "10k")
 nmap("<c-Down>", "10j")
 nmap("<c-Up>", "10k")
 nmap("<c-Down>", "10j")
+vmap("<c-Up>", "10k")
+vmap("<c-Down>", "10j")
+vmap("<c-Up>", "10k")
+vmap("<c-Down>", "10j")
 
 -- -- switch buffer/tabs
 nmap("[b", ":bprev<cr>")
@@ -105,4 +109,6 @@ nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
 -- local symbols based on treesitter
 nmap("<c-k>", ":Telescope treesitter<cr>")
 -- git changes
-nmap("<c-p>", ":Telescope git_status<cr>")
+nmap("<c-p>", ":Telescope oldfiles<cr>")
+-- commander
+nmap("<m-space>", ":Telescope commander<cr>")

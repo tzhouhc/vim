@@ -10,6 +10,8 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 require("neodev").setup()
 require("numb").setup()
+require('flit').setup()
+require("symbols-outline").setup()
 
 -- treesitter
 require'nvim-treesitter.configs'.setup {
@@ -68,8 +70,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-
--- fzf
+-- telescope / fzf
 require('telescope').setup {
   extensions = {
     fzf = {
@@ -84,6 +85,7 @@ require('telescope').setup {
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('nerdy')
 
 -- bufferline
 require("bufferline").setup{
@@ -100,22 +102,6 @@ require('lualine').setup({
 -- signify
 vim.g.signify_sign_change = '~'
 
--- noice
-require("noice").setup({
-  lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-    },
-  },
-  -- you can enable a preset for easier configuration
-  presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
-  },
-})
+-- commander
+require('commander').setup()
+require('commands')
