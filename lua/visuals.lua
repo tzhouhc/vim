@@ -31,9 +31,6 @@ end
 -- scrollbar
 require("scrollbar").setup()
 
--- lightline
-vim.cmd("source $HOME/.vim/configs/lightline.vim")
-
 -- rainbow delimiters
 vim.cmd("highlight RainbowDelim0 guifg=#F6ED56")
 vim.cmd("highlight RainbowDelim1 guifg=#A6C955")

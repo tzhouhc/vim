@@ -21,7 +21,7 @@ require('lazy').setup({
   -- visuals
   "lukas-reineke/indent-blankline.nvim",
   "petertriho/nvim-scrollbar",
-  "shaunsingh/nord.nvim",
+  "nordtheme/vim",
   "HiPhish/rainbow-delimiters.nvim",
   "akinsho/bufferline.nvim",
   "nvim-lualine/lualine.nvim",
