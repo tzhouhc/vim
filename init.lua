@@ -23,6 +23,7 @@ require('lazy').setup({
   'lukas-reineke/indent-blankline.nvim',
   'petertriho/nvim-scrollbar',
   'nordtheme/vim',
+  'karb94/neoscroll.nvim',
   'HiPhish/rainbow-delimiters.nvim',
   'akinsho/bufferline.nvim',
   'nvim-lualine/lualine.nvim',
@@ -36,6 +37,7 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-context',
   'RRethy/vim-illuminate',
   'mhinz/vim-signify',
+  { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
   -- passives
   'windwp/nvim-autopairs',
   'kylechui/nvim-surround',

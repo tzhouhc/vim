@@ -106,9 +106,14 @@ nmap('<m-f>',  '<Plug>(leap)')
 nmap("<c-o>", ":Telescope find_files<cr>")
 -- lines in current buffer
 nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
+-- lines in all local files
+nmap("<c-g>", ":Telescope live_grep<cr>")
 -- local symbols based on treesitter
 nmap("<c-k>", ":Telescope treesitter<cr>")
 -- git changes
 nmap("<c-p>", ":Telescope oldfiles<cr>")
 -- commander
 nmap("<m-space>", ":Telescope commander<cr>")
+
+-- terminal mode exit
+vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })

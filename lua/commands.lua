@@ -1,17 +1,17 @@
 local c = require('commander')
 
--- c.add({
---   {
---     desc = "Symbols Outline",
---     cmd = ":SymbolsOutline<cr>",
---   },
---   {
---     desc = "Telescope",
---     cmd = ":Telescope<cr>",
---   },
--- }, {
---   cat = "Tools",
--- })
+c.add({
+  {
+    desc = "Unfold All",
+    cmd = "zR",
+  },
+  {
+    desc = "Fold To Top",
+    cmd = "zM",
+  },
+}, {
+  cat = "Folding",
+})
 
 local function makeSimple (com)
   return {

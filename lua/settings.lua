@@ -45,7 +45,8 @@ vim.opt.foldmethod="indent"
 
 -- switch buffer without saving
 vim.opt.hidden = true
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
+vim.opt.shortmess = "laoOAIcCF"
 vim.opt.shortmess= "aFc"
 
 -- TODO: persistent undo

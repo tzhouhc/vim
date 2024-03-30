@@ -1,9 +1,12 @@
+---@diagnostic disable: missing-fields
+
 -- regular plugins with minimal setup requirements
 require("ibl").setup()
 require("gitsigns").setup()
 require("Comment").setup()
 require("which-key").setup()
 require('twilight').setup()
+require('neoscroll').setup()
 require('nvim-autopairs').setup()
 require("nvim-surround").setup()
 require("mason").setup()
@@ -14,9 +17,8 @@ require('flit').setup()
 require("symbols-outline").setup()
 
 -- treesitter
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   modules = { "highlight" },
-
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {
     "go",
@@ -32,20 +34,15 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "java",
   },
-
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
-
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
-
   -- List of parsers to ignore installing (or "all")
   ignore_install = {},
-
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
   highlight = {
     enable = true,
     -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
@@ -55,13 +52,12 @@ require'nvim-treesitter.configs'.setup {
     -- disable = { "c", "rust" },
     -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
     disable = function(_, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
+      local max_filesize = 100 * 1024   -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
     end,
-
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -70,15 +66,28 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
+})
+
 -- telescope / fzf
 require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+      }
+    }
+  },
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     }
   }
 }
@@ -87,8 +96,9 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('nerdy')
 
+
 -- bufferline
-require("bufferline").setup{
+require("bufferline").setup {
   options = {
     show_buffer_close_icons = false,
   }
@@ -121,5 +131,5 @@ vim.g.changes_delete_sign = '┃'
 vim.g.changes_modified_sign = '┃'
 
 -- commander
-require('commander').setup()
+require('commander').setup({})
 require('commands')
