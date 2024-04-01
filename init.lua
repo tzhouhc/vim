@@ -35,6 +35,7 @@ require('lazy').setup({
   'folke/twilight.nvim',
   'nvim-treesitter/nvim-treesitter-context',
   'RRethy/vim-illuminate',
+  'mhinz/vim-signify',
   -- passives
   'windwp/nvim-autopairs',
   'kylechui/nvim-surround',
