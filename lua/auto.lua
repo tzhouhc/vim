@@ -13,3 +13,11 @@ api.nvim_create_autocmd({"BufEnter"}, {
   end,
   group = "WorkingDirectory",
 })
+
+-- autocmd BufWritePost * FixWhitespace
+api.nvim_create_autocmd({'BufWritePost'}, {
+  pattern = {"*.*"},
+  callback = function()
+    api.nvim_command(":FixWhitespace")
+  end
+})
