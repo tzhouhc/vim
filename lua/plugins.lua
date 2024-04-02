@@ -1,21 +1,5 @@
 ---@diagnostic disable: missing-fields
 
--- regular plugins with minimal setup requirements
-require("ibl").setup()
-require("gitsigns").setup()
-require("Comment").setup()
-require("which-key").setup()
-require('twilight').setup()
-require('neoscroll').setup()
-require('nvim-autopairs').setup()
-require("nvim-surround").setup()
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("neodev").setup()
-require("numb").setup()
-require('flit').setup()
-require("symbols-outline").setup()
-
 -- treesitter
 require 'nvim-treesitter.configs'.setup {
   modules = { "highlight" },
@@ -115,10 +99,6 @@ vim.g.signify_sign_add = '┃'
 vim.g.signify_sign_delete_first_line = '▔'
 vim.g.signify_sign_delete_change = '┃'
 vim.g.signify_sign_delete_change_delete = '┣'
--- skip git for gitsigns
-vim.g.signify_skip = {
-  vcs = { deny = {'git'} }
-}
 vim.g.signify_vcs_cmds = {
   perforce = 'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
   git = 'git diff --no-color --no-ext-diff -U0 -- %f',

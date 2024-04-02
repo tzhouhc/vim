@@ -28,9 +28,6 @@ if vim.api.nvim_win_get_option(0, "diff") then
   vim.opt.diffopt="filler,context:1000000"
 end
 
--- scrollbar
-require("scrollbar").setup()
-
 -- rainbow delimiters
 vim.cmd("highlight RainbowDelim0 guifg=#F6ED56")
 vim.cmd("highlight RainbowDelim1 guifg=#A6C955")
@@ -61,6 +58,3 @@ require('rainbow-delimiters.setup').setup {
     'RainbowDelim11',
   }
 }
-
--- colorizer
-require('colorizer').setup()

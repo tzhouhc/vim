@@ -15,46 +15,85 @@ vim.opt.termguicolors = true
 
 require('lazy').setup({
   -- motion
+  -- text targets like "inside quotes"
   'wellle/targets.vim',
+  -- % to jump to matching "pair"
   'andymass/vim-matchup',
+  -- better f/F and t/T
   'ggandor/leap.nvim',
-  'ggandor/flit.nvim',
+  -- quick jump on screen using two char as beacon
+  { 'ggandor/flit.nvim', config = true },
+
   -- visuals
-  'lukas-reineke/indent-blankline.nvim',
-  'petertriho/nvim-scrollbar',
+  {
+    -- create vertical lines to mark indentation.
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('ibl').setup()
+    end,
+  },
+  -- scrollbar for checking location in file
+  { 'petertriho/nvim-scrollbar', config = true },
+  -- nord theme
   'nordtheme/vim',
-  'karb94/neoscroll.nvim',
+  -- smooth scrolling
+  { 'karb94/neoscroll.nvim', config = true },
+  -- rainbow colors for parens/brackets for easier depth determination
   'HiPhish/rainbow-delimiters.nvim',
+  -- 'tabs'
   'akinsho/bufferline.nvim',
+  -- status bar
   'nvim-lualine/lualine.nvim',
-  'norcalli/nvim-colorizer.lua',
+  -- highlight hex colors
+  { 'norcalli/nvim-colorizer.lua', config = true },
+  -- mark unsaved chages in buffer in gutter
   'chrisbra/changesPlugin',
-  'lewis6991/gitsigns.nvim',
+  -- highlight TODOs
   'folke/todo-comments.nvim',
-  'MunifTanjim/nui.nvim',
-  'rcarriga/nvim-notify',
-  'folke/twilight.nvim',
+  -- smart dimming of unrelated contextual code
+  { 'folke/twilight.nvim', config = true },
+  -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
+  -- highlight same token as currently cursored-over
   'RRethy/vim-illuminate',
+  -- add signs to gutter for marking diffs
   'mhinz/vim-signify',
+  -- smarter folding
   { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+
   -- passives
-  'windwp/nvim-autopairs',
-  'kylechui/nvim-surround',
+  -- automatically close/add pairs
+  { 'windwp/nvim-autopairs', config = true },
+  -- y/d/s for pairs at once
+  { 'kylechui/nvim-surround', config = true },
+  -- use pcre for searching (replacement uses S instead of s)
   'othree/eregex.vim',
+  -- removing trailing whitespaces on save
   'bronson/vim-trailing-whitespace',
+  -- kill buffer but keep split
   'qpkorr/vim-bufkill',
-  'folke/which-key.nvim',
-  'nacro90/numb.nvim',
+  -- helps remembering things like registers
+  { 'folke/which-key.nvim' , config = true},
+  -- peek lines with ':num'
+  { 'nacro90/numb.nvim', config = true },
+
   -- tools
-  'numToStr/Comment.nvim',
+  -- quickly toggle line comment
+  { 'numToStr/Comment.nvim', config = true },
+  -- library code
   'nvim-lua/plenary.nvim',
+  -- custom commands
   'FeiyouG/commander.nvim',
-  'simrat39/symbols-outline.nvim',
+  -- tree-like code intel for current buffer
+  { 'simrat39/symbols-outline.nvim', config = true },
+  -- tool for searching stuff
   { 'nvim-telescope/telescope.nvim',            tag = '0.1.6' },
+  -- with fzf
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  -- semantic parser
   'nvim-treesitter/nvim-treesitter',
   {
+    -- nerdfont glyph telescope
     '2kabhishek/nerdy.nvim',
     dependencies = {
       'stevearc/dressing.nvim',
@@ -63,8 +102,8 @@ require('lazy').setup({
     cmd = 'Nerdy',
   },
   -- LSPs
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
+  { 'williamboman/mason.nvim', config = true },
+  { 'williamboman/mason-lspconfig.nvim', config = true },
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
@@ -73,8 +112,9 @@ require('lazy').setup({
   'VonHeikemen/lsp-zero.nvim',
   'nvim-tree/nvim-web-devicons',
   { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  -- nvim configuration
-  'folke/neodev.nvim',
+
+  -- nvim configuration development
+  { 'folke/neodev.nvim', config = true },
 })
 
 -- variables
