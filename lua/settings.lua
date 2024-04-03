@@ -28,7 +28,7 @@ vim.opt.hlsearch = true
 vim.opt.mouse = "a"
 
 -- cursor wrap
-vim.opt.whichwrap = "<,>,h,l"
+vim.opt.whichwrap = "<,>,[,]"
 
 -- encoding
 vim.opt.encoding="UTF-8"

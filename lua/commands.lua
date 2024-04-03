@@ -13,6 +13,15 @@ c.add({
   cat = "Folding",
 })
 
+c.add({
+  {
+    desc = "Edit Working Directory as Buffer",
+    cmd = ":Oil --float<cr>",
+  },
+}, {
+  cat = "Tools",
+})
+
 local function makeSimple (com)
   return {
     desc = com,

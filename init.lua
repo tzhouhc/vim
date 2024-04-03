@@ -22,7 +22,7 @@ require('lazy').setup({
   -- better f/F and t/T
   'ggandor/leap.nvim',
   -- quick jump on screen using two char as beacon
-  { 'ggandor/flit.nvim', config = true },
+  { 'ggandor/flit.nvim',         config = true },
 
   -- visuals
   {
@@ -37,7 +37,7 @@ require('lazy').setup({
   -- nord theme
   'nordtheme/vim',
   -- smooth scrolling
-  { 'karb94/neoscroll.nvim', config = true },
+  { 'karb94/neoscroll.nvim',       config = true },
   -- rainbow colors for parens/brackets for easier depth determination
   'HiPhish/rainbow-delimiters.nvim',
   -- 'tabs'
@@ -51,7 +51,7 @@ require('lazy').setup({
   -- highlight TODOs
   'folke/todo-comments.nvim',
   -- smart dimming of unrelated contextual code
-  { 'folke/twilight.nvim', config = true },
+  { 'folke/twilight.nvim',    config = true },
   -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
   -- highlight same token as currently cursored-over
@@ -59,11 +59,11 @@ require('lazy').setup({
   -- add signs to gutter for marking diffs
   'mhinz/vim-signify',
   -- smarter folding
-  { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+  { 'kevinhwang91/nvim-ufo',  dependencies = 'kevinhwang91/promise-async' },
 
   -- passives
   -- automatically close/add pairs
-  { 'windwp/nvim-autopairs', config = true },
+  { 'windwp/nvim-autopairs',  config = true },
   -- y/d/s for pairs at once
   { 'kylechui/nvim-surround', config = true },
   -- use pcre for searching (replacement uses S instead of s)
@@ -73,19 +73,26 @@ require('lazy').setup({
   -- kill buffer but keep split
   'qpkorr/vim-bufkill',
   -- helps remembering things like registers
-  { 'folke/which-key.nvim' , config = true},
-  -- peek lines with ':num'
-  { 'nacro90/numb.nvim', config = true },
+  { 'folke/which-key.nvim', config = true },
+  -- better 0
+  { 'yuki-yano/zero.nvim',  config = true },
+  -- don't yank deletion except with 'm'
+  {
+    "gbprod/cutlass.nvim",
+    opts = {
+      cut_key = 'm',
+    },
+  },
 
   -- tools
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim', config = true },
+  { 'numToStr/Comment.nvim',                    config = true },
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands
   'FeiyouG/commander.nvim',
   -- tree-like code intel for current buffer
-  { 'simrat39/symbols-outline.nvim', config = true },
+  { 'simrat39/symbols-outline.nvim',            config = true },
   -- tool for searching stuff
   { 'nvim-telescope/telescope.nvim',            tag = '0.1.6' },
   -- with fzf
@@ -101,8 +108,14 @@ require('lazy').setup({
     },
     cmd = 'Nerdy',
   },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    config = true,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   -- LSPs
-  { 'williamboman/mason.nvim', config = true },
+  { 'williamboman/mason.nvim',           config = true },
   { 'williamboman/mason-lspconfig.nvim', config = true },
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
@@ -114,7 +127,7 @@ require('lazy').setup({
   { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 
   -- nvim configuration development
-  { 'folke/neodev.nvim', config = true },
+  { 'folke/neodev.nvim',  config = true },
 })
 
 -- variables
