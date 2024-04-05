@@ -87,6 +87,12 @@ require'lspconfig'.lua_ls.setup{
   capabilities = capabilities,
 }
 
+-- markdown
+require'lspconfig'.marksman.setup{
+  capabilities = capabilities,
+}
+
+
 -- symbols
 vim.fn.sign_define('DiagnosticSignError', { text = 'x', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '!', texthl = 'DiagnosticSignWarn' })

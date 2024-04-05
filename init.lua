@@ -19,10 +19,14 @@ require('lazy').setup({
   'wellle/targets.vim',
   -- % to jump to matching "pair"
   'andymass/vim-matchup',
+  -- quick jump on screen; supports visual mode
+  'easymotion/vim-easymotion',
   -- better f/F and t/T
-  'ggandor/leap.nvim',
-  -- quick jump on screen using two char as beacon
-  { 'ggandor/flit.nvim',         config = true },
+  {
+    'ggandor/flit.nvim',
+    config = true,
+    dependencies = { 'ggandor/leap.nvim' },
+  },
 
   -- visuals
   {
@@ -37,7 +41,7 @@ require('lazy').setup({
   -- nord theme
   'nordtheme/vim',
   -- smooth scrolling
-  { 'karb94/neoscroll.nvim',       config = true },
+  { 'karb94/neoscroll.nvim',     config = true },
   -- rainbow colors for parens/brackets for easier depth determination
   'HiPhish/rainbow-delimiters.nvim',
   -- 'tabs'
@@ -51,7 +55,7 @@ require('lazy').setup({
   -- highlight TODOs
   'folke/todo-comments.nvim',
   -- smart dimming of unrelated contextual code
-  { 'folke/twilight.nvim',    config = true },
+  { 'folke/twilight.nvim',         config = true },
   -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
   -- highlight same token as currently cursored-over
@@ -60,6 +64,9 @@ require('lazy').setup({
   'mhinz/vim-signify',
   -- smarter folding
   { 'kevinhwang91/nvim-ufo',  dependencies = 'kevinhwang91/promise-async' },
+
+  -- languages
+  { 'preservim/vim-markdown', branch = 'master' },
 
   -- passives
   -- automatically close/add pairs
@@ -76,17 +83,21 @@ require('lazy').setup({
   { 'folke/which-key.nvim', config = true },
   -- better 0
   { 'yuki-yano/zero.nvim',  config = true },
-  -- don't yank deletion except with 'm'
+  -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",
     opts = {
-      cut_key = 'm',
+      cut_key = 'x',
     },
   },
+  -- wrapping
+  { "andrewferrier/wrapping.nvim", config = true, },
 
   -- tools
+  -- git differ
+  { 'sindrets/diffview.nvim', config = true },
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim',                    config = true },
+  { 'numToStr/Comment.nvim',       config = true },
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands

@@ -99,7 +99,8 @@ vmap("<leader>d", "\"_d")
 vmap("<leader>p", "\"_dP")
 
 --   " meta+f to select and go to one specific letter on screen
-nmap('<m-f>',  '<Plug>(leap)')
+nmap('<m-f>',  '<Plug>(easymotion-bd-f)')
+vmap('<m-f>',  '<Plug>(easymotion-bd-f)')
 
 -- Telescope
 -- for local files and local tags
@@ -114,6 +115,8 @@ nmap("<c-k>", ":Telescope treesitter<cr>")
 nmap("<c-p>", ":Telescope oldfiles<cr>")
 -- commander
 nmap("<m-space>", ":Telescope commander<cr>")
+nmap("<m-p>", ":Telescope registers<cr>")
+vmap("<m-p>", "d<esc>:Telescope registers<cr>")
 
 -- terminal mode exit
 vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })
