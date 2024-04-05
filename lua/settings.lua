@@ -40,7 +40,9 @@ vim.opt.cursorline = true
 
 -- folding
 vim.opt.foldenable = true
-vim.opt.foldlevelstart = 4
+vim.opt.foldlevelstart = 20
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevelstart = 20
 vim.opt.foldmethod="indent"
 
 -- switch buffer without saving

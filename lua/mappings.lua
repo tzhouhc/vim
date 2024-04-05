@@ -120,3 +120,11 @@ vmap("<m-p>", "d<esc>:Telescope registers<cr>")
 
 -- terminal mode exit
 vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })
+
+-- better cutting
+nmap("X", '"_dd')
+vmap("X", '"_dd')
+
+-- folding
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

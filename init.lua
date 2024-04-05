@@ -87,7 +87,7 @@ require('lazy').setup({
   {
     "gbprod/cutlass.nvim",
     opts = {
-      cut_key = 'x',
+      cut_key = 'd',
     },
   },
   -- wrapping
