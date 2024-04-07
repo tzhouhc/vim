@@ -22,9 +22,9 @@ c.add({
   cat = "Tools",
 })
 
-local function makeSimple (com)
+local function makeSimple (name, com)
   return {
-    desc = com,
+    desc = name,
     cmd = ":" .. com .. "<cr>",
   }
 end
@@ -37,8 +37,13 @@ local direct_calls = {
   "Lazy",
   "Trouble",
   "Mason",
+  { name = 'Colorizer', com = 'ColorizerToggle' }
 }
 
 for _, com in pairs(direct_calls) do
-  c.add({makeSimple(com)}, {cat='Tools'})
+  if type(com) == 'table' then
+    c.add({makeSimple(com['name'], com['com'])}, {cat='Tools'})
+  else
+    c.add({makeSimple(com, com)}, {cat='Tools'})
+  end
 end

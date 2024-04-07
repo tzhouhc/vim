@@ -65,6 +65,8 @@ nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
 nmap("<leader>fc", ":LspZeroFormat<CR>")
+nmap("<leader>ft", ":NvimTreeToggle<CR>")
+nmap("<leader>dv", ":DiffviewFileHistory<CR>")
 
 -- -- faster movement
 nmap("<c-Up>", "10k")
@@ -84,23 +86,18 @@ nmap("<PageDown>", ":bnext<cr>")
 nmap("[t", ":tabp<cr>")
 nmap("]t", ":tabn<cr>")
 
--- -- tmux-like splitting
+-- tmux-like splitting
 nmap("<c-w>%", ":vsplit<cr>")
 nmap("<c-w>\"", ":split<cr>")
 nmap("<c-w>z", ":only<cr>")
 
--- -- no-yanking ops
--- -- delete without yanking
-nmap("<leader>d", "\"_d")
-vmap("<leader>d", "\"_d")
-
--- -- replace currently selected text with default register
--- -- without yanking it
+-- replace currently selected text with default register
+-- without yanking it
 vmap("<leader>p", "\"_dP")
 
---   " meta+f to select and go to one specific letter on screen
-nmap('<m-f>',  '<Plug>(easymotion-bd-f)')
-vmap('<m-f>',  '<Plug>(easymotion-bd-f)')
+-- meta+f to select and go to one specific letter on screen
+nmap('<m-f>', '<Plug>(easymotion-bd-f)')
+vmap('<m-f>', '<Plug>(easymotion-bd-f)')
 
 -- Telescope
 -- for local files and local tags
@@ -121,10 +118,14 @@ vmap("<m-p>", "d<esc>:Telescope registers<cr>")
 -- terminal mode exit
 vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })
 
--- better cutting
+-- better cutting (`x` no longer yanks due to cutlass, but it doesn't delete the whole line.)
 nmap("X", '"_dd')
 vmap("X", '"_dd')
 
 -- folding
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- jump to first position after the first space (to avoid comment prefixes).
+nmap("0", '^f l')
+vmap("0", '^f l')

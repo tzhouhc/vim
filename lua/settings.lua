@@ -36,9 +36,10 @@ vim.opt.encoding="UTF-8"
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
 
+-- highlight line with cursor
 vim.opt.cursorline = true
 
--- folding
+-- folding (note -- number due to effect of plugin "ufo")
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = '1'
@@ -47,17 +48,16 @@ vim.opt.foldmethod="indent"
 
 -- switch buffer without saving
 vim.opt.hidden = true
+
+-- diffing
+vim.opt.diffopt:append("algorithm:patience")
+
+-- command area height and 'hit-enter' message prevention
 vim.opt.cmdheight = 1
 vim.opt.shortmess = "laoOAIcCF"
 vim.opt.shortmess= "aFc"
 
--- TODO: persistent undo
 -- Keep undo history across sessions by storing it in a file
-    -- let myUndoDir = expand(vimDir . '/undodir')
-    -- " Create dirs
-    -- call system('mkdir ' . vimDir)
-    -- call system('mkdir ' . myUndoDir)
-    -- let &undodir = myUndoDir
 vim.opt.undofile = true
 
 vim.opt.tags = "~/.vim/tags"

@@ -7,12 +7,12 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
-local function highlight(name, vis)
-  vim.cmd("highlight " .. name .. " " .. vis)
+local function highclear(name)
+  vim.cmd("hi clear "..name)
 end
 
-local function highlink(name, other)
-  vim.cmd("highlight link " .. name .. " " .. other)
+local function highlight(name, vis)
+  vim.cmd("highlight " .. name .. " " .. vis)
 end
 
 -- italics
@@ -65,4 +65,28 @@ require('rainbow-delimiters.setup').setup {
     'RainbowDelim10',
     'RainbowDelim11',
   }
+}
+
+-- diffview
+vim.opt.fillchars:append("diff:/")
+local diffChangedForeground = "#F6ED56"
+local diffChangedColor = "#41423F"
+local diffAddedColor = "#38463F"
+local diffRemovedColor = "#41343A"
+local hlToClear = {
+  "DiffAdd",
+  "DiffChange",
+  "DiffDelete",
+  "DiffText",
+}
+for _, c in pairs(hlToClear) do
+  highclear(c)
+end
+
+highlight("DiffAdd", "guibg="..diffAddedColor)
+highlight("DiffChange", "guibg="..diffChangedColor)
+highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
+highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
+require('diffview').setup {
+  enhanced_diff_hl = true,
 }

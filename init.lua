@@ -80,9 +80,7 @@ require('lazy').setup({
   -- kill buffer but keep split
   'qpkorr/vim-bufkill',
   -- helps remembering things like registers
-  { 'folke/which-key.nvim', config = true },
-  -- better 0
-  { 'yuki-yano/zero.nvim',  config = true },
+  { 'folke/which-key.nvim',        config = true },
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",
@@ -95,7 +93,7 @@ require('lazy').setup({
 
   -- tools
   -- git differ
-  { 'sindrets/diffview.nvim', config = true },
+  'sindrets/diffview.nvim',
   -- quickly toggle line comment
   { 'numToStr/Comment.nvim',       config = true },
   -- library code
@@ -125,6 +123,27 @@ require('lazy').setup({
     config = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+
+  -- applications
+  { 'nvim-tree/nvim-tree.lua',           config = true },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "Vault",
+          path = "~/Documents/Vault",
+        },
+      },
+    },
+  },
+
   -- LSPs
   { 'williamboman/mason.nvim',           config = true },
   { 'williamboman/mason-lspconfig.nvim', config = true },
@@ -141,18 +160,6 @@ require('lazy').setup({
   { 'folke/neodev.nvim',  config = true },
 })
 
--- variables
-vim.api.nvim_set_var('hasNerdfont', vim.env.NERDFONT ~= 'false')
-vim.api.nvim_set_var('useSemanticHighlighting', vim.env.VIM_USE_SEMANTIC_HIGHLIGHTING == '1')
--- vw => viw, etc
-vim.api.nvim_set_var('visualMoveWholeWord', false)
--- highlight line with cursor
-vim.api.nvim_set_var('useCursorLine', true)
--- highlight word (and all matching) under cursor
-vim.api.nvim_set_var('highlightCursor', true)
--- status line shows current cursor highlight group
-vim.api.nvim_set_var('highlightGroupHint', false)
-
 -- initialize
 require('plugins')
 require('visuals')
@@ -161,5 +168,4 @@ require('settings')
 require('lsp')
 require('auto')
 
-vim.cmd("source $HOME/.vim/configs/functions.vim")
 vim.opt.runtimepath:append(",~/.vim,~/.vim/local/after")
