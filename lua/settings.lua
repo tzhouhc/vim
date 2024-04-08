@@ -15,6 +15,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.lazyredraw = true
 vim.opt.showmatch = true
 -- pwd is always current file -- helpful for ctrl-o
+-- (doesn't always work well with telescope?)
 vim.opt.autochdir = true
 
 -- searching

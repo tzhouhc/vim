@@ -28,10 +28,6 @@ highlight("SignifySignAdd", "guifg=#2dd671")
 highlight("SignifySignDelete", "guifg=#d94a0d")
 highlight("SignifySignChange", "guifg=#e6bf12")
 
--- quickscope
-highlight("QuickScopePrimary", "guifg=#71eb34 gui=underline")
-highlight("QuickScopeSecondary", "guifg=#348feb gui=bold")
-
 if vim.api.nvim_win_get_option(0, "diff") then
   vim.opt.diffopt="filler,context:1000000"
 end
