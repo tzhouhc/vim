@@ -88,8 +88,6 @@ require('lazy').setup({
       cut_key = 'd',
     },
   },
-  -- wrapping
-  { "andrewferrier/wrapping.nvim", config = true, },
 
   -- tools
   -- git differ
@@ -168,4 +166,5 @@ require('settings')
 require('lsp')
 require('auto')
 
-vim.opt.runtimepath:append(",~/.vim,~/.vim/local/after")
+-- runtime
+vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")

@@ -9,6 +9,9 @@ set formatoptions=crnojqw
 " set conceallevel=2
 " set concealcursor=nc
 set tw=80
+set wrapmargin=0
+set formatoptions+=t
+set linebreak
 set spelllang=en
 
 " not working due to misinterpretation of the S from vim-surround;

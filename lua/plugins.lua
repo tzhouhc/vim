@@ -51,13 +51,6 @@ require('ufo').setup({
 
 -- telescope / fzf
 require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ["<esc>"] = require('telescope.actions').close,
-      }
-    }
-  },
   extensions = {
     fzf = {
       fuzzy = true,                   -- false will only do exact matching
@@ -72,6 +65,8 @@ require('telescope').setup {
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('nerdy')
+-- custom telescopes
+require("scopes")
 
 
 -- bufferline
