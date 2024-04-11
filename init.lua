@@ -159,12 +159,16 @@ require('lazy').setup({
 })
 
 -- initialize
-require('plugins')
-require('visuals')
-require('mappings')
-require('settings')
-require('lsp')
-require('auto')
+-- setup "safe_require" so that nvim doesn't break if any one plugin was
+-- slightly misconfigured.
+local safe_require = require('utils').safe_require
+
+safe_require('plugins')
+safe_require('visuals')
+safe_require('mappings')
+safe_require('settings')
+safe_require('lsp')
+safe_require('auto')
 
 -- runtime
 vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")

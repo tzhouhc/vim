@@ -1,4 +1,5 @@
 ---@diagnostic disable: missing-fields
+local safe_require = require('utils').safe_require
 
 -- treesitter
 require 'nvim-treesitter.configs'.setup {
@@ -100,4 +101,4 @@ vim.g.changes_modified_sign = '┃'
 
 -- commander
 require('commander').setup({})
-require('commands')
+safe_require('commands')

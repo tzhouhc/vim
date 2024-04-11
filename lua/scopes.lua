@@ -1,11 +1,14 @@
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
+local builtin = require "telescope.builtin"
 local conf = require "telescope.config".values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
+local M = {}
+
 -- finds all standalone vim scripts in runtime path and source them.
-local runtime_files = function(opts)
+function M.runtime_files(opts)
   local files = vim.api.nvim_get_runtime_file("*.vim", true)
   opts = opts or {}
   pickers.new(opts, {
@@ -28,4 +31,19 @@ local runtime_files = function(opts)
   }):find()
 end
 
-vim.api.nvim_create_user_command('Runtimes', runtime_files, {})
+vim.api.nvim_create_user_command('Runtimes', M.runtime_files, {})
+
+function M.find_configs()
+  builtin.find_files {
+    prompt_title = " Neovim Configs",
+    results_title = "Config Files Results",
+    path_display = { "smart" },
+    search_dirs = {
+      "~/.config/nvim",
+    },
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.65, width = 0.75 },
+  }
+end
+
+return M

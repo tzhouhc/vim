@@ -1,49 +1,32 @@
 local c = require('commander')
 
-c.add({
-  {
-    desc = "Unfold All",
-    cmd = "zR",
-  },
-  {
-    desc = "Fold To Top",
-    cmd = "zM",
-  },
-}, {
-  cat = "Folding",
-})
-
-c.add({
-  {
-    desc = "Edit Working Directory as Buffer",
-    cmd = ":Oil --float<cr>",
-  },
-}, {
-  cat = "Tools",
-})
-
-local function makeSimple (name, com)
+local function makeSimple(name, com)
   return {
     desc = name,
     cmd = ":" .. com .. "<cr>",
   }
 end
 
-local direct_calls = {
+local table = {
   "SymbolsOutline",
+  "Runfiles",
   "Telescope",
   "Twilight",
   "Nerdy",
   "Lazy",
   "Trouble",
   "Mason",
-  { name = 'Colorizer', com = 'ColorizerToggle' }
+  { name = "Unfold All", com = "zR", cat = "Folding" },
+  { name = "Fold All", com = "zM", cat = "Folding" },
+  { name = 'Colorizer', com = 'ColorizerToggle' },
+  { name = "Edit Working Directory as Buffer", com = ":Oil --float<cr>" },
+  -- { name = "Open Configs", cmd = ":lua require'scopes'"}
 }
 
-for _, com in pairs(direct_calls) do
+for _, com in pairs(table) do
   if type(com) == 'table' then
-    c.add({makeSimple(com['name'], com['com'])}, {cat='Tools'})
+    c.add({ makeSimple(com['name'], com['com']) }, { cat = com['cat'] or 'Tools' })
   else
-    c.add({makeSimple(com, com)}, {cat='Tools'})
+    c.add({ makeSimple(com, com) }, { cat = 'Tools' })
   end
 end
