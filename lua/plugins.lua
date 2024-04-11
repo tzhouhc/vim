@@ -52,6 +52,13 @@ require('ufo').setup({
 
 -- telescope / fzf
 require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = require("telescope.actions").close,
+      },
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true,                   -- false will only do exact matching
