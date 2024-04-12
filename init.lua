@@ -80,7 +80,7 @@ require('lazy').setup({
   -- kill buffer but keep split
   'qpkorr/vim-bufkill',
   -- helps remembering things like registers
-  { 'folke/which-key.nvim',        config = true },
+  { 'folke/which-key.nvim',  config = true },
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",
@@ -93,7 +93,7 @@ require('lazy').setup({
   -- git differ
   'sindrets/diffview.nvim',
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim',       config = true },
+  { 'numToStr/Comment.nvim', config = true },
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands

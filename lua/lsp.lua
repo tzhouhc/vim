@@ -74,6 +74,14 @@ lsp_zero.extend_lspconfig()
 lsp_zero.on_attach(function(_, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
+
+  -- K: display hover
+  -- gd: go to definition
+  -- gD: go to declaration
+  -- gi: list all implementations
+  -- go: go to type definition
+  -- gr: list all references
+  -- gs: show signature info
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 

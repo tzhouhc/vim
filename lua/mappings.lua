@@ -64,7 +64,6 @@ nmap("<leader>ep", ":e ~/.vim/configs/plugs.vim<cr>")
 nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
-nmap("<leader>fc", ":LspZeroFormat<CR>")
 nmap("<leader>ft", ":NvimTreeToggle<CR>")
 nmap("<leader>dv", ":DiffviewFileHistory<CR>")
 
@@ -129,3 +128,8 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 -- jump to first position after the first space (to avoid comment prefixes).
 nmap("0", '^f l')
 vmap("0", '^f l')
+
+-- lsp actions
+nmap("<leader>fc", ':LspZeroFormat<cr>')
+nmap("<leader>rn", '<cmd>lua vim.lsp.buf.rename()<cr>')
+nmap("<leader>tr", ':TroubleToggle<cr>')
