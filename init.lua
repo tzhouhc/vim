@@ -90,6 +90,8 @@ require('lazy').setup({
   },
 
   -- tools
+  -- multiple cursors
+  'mg979/vim-visual-multi',
   -- git differ
   'sindrets/diffview.nvim',
   -- quickly toggle line comment
