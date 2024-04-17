@@ -16,6 +16,12 @@ cmp.setup({
       { name = 'nvim_lsp' },
     }, {
       { name = 'buffer' },
+    }, {
+      { name = 'path' },
+    }, {
+      { name = 'buffer' },
+    }, {
+      { name = 'cmdline' },
   }),
   snippet = {
     expand = function(args)
