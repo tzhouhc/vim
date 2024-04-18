@@ -88,6 +88,8 @@ require('lazy').setup({
       cut_key = 'd',
     },
   },
+  -- automated ctagging
+  'ludovicchabant/vim-gutentags',
 
   -- tools
   -- multiple cursors
