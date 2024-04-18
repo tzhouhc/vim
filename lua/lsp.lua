@@ -20,8 +20,8 @@ cmp.setup({
       { name = 'path' },
     }, {
       { name = 'buffer' },
-    }, {
-      { name = 'cmdline' },
+    -- }, {
+    --   { name = 'cmdline' },
   }),
   snippet = {
     expand = function(args)

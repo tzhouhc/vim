@@ -128,8 +128,8 @@ vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 -- jump to first position after the first space (to avoid comment prefixes).
-nmap("0", '^f l')
-vmap("0", '^f l')
+vim.keymap.set('n', '0', require('functions').alternating_zero, { noremap = true, silent = true })
+vim.keymap.set('v', '0', require('functions').alternating_zero, { noremap = true, silent = true })
 
 -- lsp actions
 nmap("<leader>fc", ':LspZeroFormat<cr>')

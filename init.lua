@@ -58,6 +58,8 @@ require('lazy').setup({
   { 'folke/twilight.nvim',         config = true },
   -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
+  -- text objects
+  'nvim-treesitter/nvim-treesitter-textobjects',
   -- highlight same token as currently cursored-over
   'RRethy/vim-illuminate',
   -- add signs to gutter for marking diffs

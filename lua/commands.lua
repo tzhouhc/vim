@@ -23,7 +23,6 @@ local table = {
   { name = "Fold All", com = "zM", cat = "Folding" },
   { name = 'Colorizer', com = 'ColorizerToggle' },
   { name = "Edit Working Directory as Buffer", com = ":Oil --float<cr>" },
-  -- { name = "Open Configs", cmd = ":lua require'scopes'"}
 }
 
 for _, com in pairs(table) do
