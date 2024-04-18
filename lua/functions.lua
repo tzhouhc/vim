@@ -1,7 +1,7 @@
 local M = {}
 
 function M.alternating_zero()
-  -- initialize
+  -- initialize global var for alternating
   if vim.g.alternating_zero_state == nil then
     vim.g.alternating_zero_state = 1
   end
@@ -16,7 +16,12 @@ function M.alternating_zero()
     end,
     function()
       -- this _does_ require remapping from tree-sitter's text object seeking.
-      vim.api.nvim_feedkeys("^]cf l", 'M', false)
+      -- we go to end of line the seek backwards since we want to avoid the
+      -- situation where we are already at a comment.outer and `]c` jumps to the
+      -- *next* one after that.
+      --
+      -- Note that if called on a line without a comment it will jump way out.
+      vim.api.nvim_feedkeys("$[tf l", 'M', false)
     end,
   }
 
