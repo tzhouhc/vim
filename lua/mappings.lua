@@ -107,6 +107,8 @@ nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
 nmap("<c-g>", ":Telescope live_grep<cr>")
 -- local symbols based on treesitter
 nmap("<c-k>", ":Telescope treesitter<cr>")
+-- local symbols based on ctags
+nmap("<m-k>", ":Telescope tags<cr>")
 -- git changes
 nmap("<c-p>", ":Telescope oldfiles<cr>")
 -- commander

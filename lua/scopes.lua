@@ -46,4 +46,21 @@ function M.find_configs()
   }
 end
 
+vim.api.nvim_create_user_command('VimConfigs', M.find_configs, {})
+
+function M.find_dotfiles()
+  builtin.find_files {
+    prompt_title = " Dotfiles",
+    results_title = "Config Files Results",
+    path_display = { "smart" },
+    search_dirs = {
+      "~/.dotfiles",
+    },
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.65, width = 0.75 },
+  }
+end
+
+vim.api.nvim_create_user_command('Dotfiles', M.find_dotfiles, {})
+
 return M

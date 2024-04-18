@@ -16,6 +16,9 @@ local table = {
   "Lazy",
   "Trouble",
   "Mason",
+  { name = "VimConfigs", cat = "Configs" },
+  { name = "Dotfiles", cat = "Configs" },
+  { name = "Ctags Config", com = "e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },
   { name = "Unfold All", com = "zR", cat = "Folding" },
   { name = "Fold All", com = "zM", cat = "Folding" },
   { name = 'Colorizer', com = 'ColorizerToggle' },
@@ -25,7 +28,11 @@ local table = {
 
 for _, com in pairs(table) do
   if type(com) == 'table' then
-    c.add({ makeSimple(com['name'], com['com']) }, { cat = com['cat'] or 'Tools' })
+    if com['com'] ~= nil then
+      c.add({ makeSimple(com['name'], com['com']) }, { cat = com['cat'] or 'Tools' })
+    else
+      c.add({ makeSimple(com['name'], com['name']) }, { cat = com['cat'] or 'Tools' })
+    end
   else
     c.add({ makeSimple(com, com) }, { cat = 'Tools' })
   end
