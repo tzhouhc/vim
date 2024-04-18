@@ -131,6 +131,8 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set('n', '0', require('functions').alternating_zero, { noremap = true, silent = true })
 vim.keymap.set('v', '0', require('functions').alternating_zero, { noremap = true, silent = true })
 
+vim.keymap.set('n', 'I', require('functions').smarter_shift_i, { noremap = true, silent = true })
+
 -- lsp actions
 nmap("<leader>fc", ':LspZeroFormat<cr>')
 nmap("<leader>rn", '<cmd>lua vim.lsp.buf.rename()<cr>')
