@@ -1,6 +1,17 @@
 -- Command Palette Customizations
 
 local safe_require = require('lib.meta').safe_require
+
+-- Custom Commands
+local scopes = safe_require('lib.scopes')
+local tools = safe_require('lib.tools')
+
+vim.api.nvim_create_user_command('Runtimes', scopes.runtime_files, {})
+vim.api.nvim_create_user_command('VimConfigs', scopes.find_configs, {})
+vim.api.nvim_create_user_command('Dotfiles', scopes.find_dotfiles, {})
+vim.api.nvim_create_user_command('ToggleCopyMode', tools.toggle_gutter, {})
+
+-- Commander
 local c = safe_require('commander')
 
 local function makeSimple(name, com)
@@ -12,22 +23,22 @@ end
 
 local commands_table = {
   "Runtimes",
-  "Telescope",
   "Twilight",
   "Nerdy",
   "Lazy",
   "Trouble",
   "Mason",
-  { "Unfold All",                       com = "zR",                          cat = "Folding" },
-  { "Fold All",                         com = "zM",                          cat = "Folding" },
-  { "Symbols Outline",                  com = "<CMD>SymbolsOutline<cr>" },
-  { "Format Code",                      com = "<CMD>LspZeroFormat<cr>" },
-  { "File Tree",                        com = "<CMD>NvimTreeToggle<cr>" },
+  { "Unfold All",                       com = "zR",                                   cat = "Folding" },
+  { "Fold All",                         com = "zM",                                   cat = "Folding" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
   { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },
   { "Ctags Config",                     com = "<CMD>e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },
+  { "Symbols Outline",                  com = "<CMD>SymbolsOutline<cr>" },
+  { "Format Code",                      com = "<CMD>LspZeroFormat<cr>" },
+  { "File Tree",                        com = "<CMD>NvimTreeToggle<cr>" },
   { 'Colorizer',                        com = "<CMD>ColorizerToggle<cr>" },
   { "Edit Working Directory as Buffer", com = "<CMD>Oil --float<cr>" },
+  { "Telescope",                        com = "<CMD>Telescope<cr>" },
   { "Tags",                             com = "<CMD>Telescope tags<cr>" },
   { "Registers",                        com = "<CMD>Telescope registers<cr>" },
 }
