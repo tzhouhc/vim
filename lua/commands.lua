@@ -39,6 +39,6 @@ for _, com in pairs(commands_table) do
     local command = com['com'] or name
     c.add({ makeSimple(name, command) }, { cat = cat })
   else
-    c.add({ makeSimple(com, com) }, { cat = 'Tools' })
+    c.add({ makeSimple(com, ":"..com.."<cr>") }, { cat = 'Tools' })
   end
 end
