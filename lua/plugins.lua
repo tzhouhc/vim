@@ -1,8 +1,10 @@
+-- Plugins Setups
+
 ---@diagnostic disable: missing-fields
-local safe_require = require('utils').safe_require
+local safe_require = require('lib.meta').safe_require
 
 -- treesitter
-require 'nvim-treesitter.configs'.setup {
+safe_require 'nvim-treesitter.configs'.setup {
   modules = { "highlight" },
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {
@@ -101,18 +103,18 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 
-require('ufo').setup({
+safe_require('ufo').setup({
     provider_selector = function(bufnr, filetype, buftype)
         return {'treesitter', 'indent'}
     end
 })
 
 -- telescope / fzf
-require('telescope').setup {
+safe_require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ["<esc>"] = require("telescope.actions").close,
+        ["<esc>"] = safe_require("telescope.actions").close,
       },
     },
   },
@@ -128,21 +130,21 @@ require('telescope').setup {
 }
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('nerdy')
+safe_require('telescope').load_extension('fzf')
+safe_require('telescope').load_extension('nerdy')
 -- custom telescopes
-require("scopes")
+safe_require("scopes")
 
 
 -- bufferline
-require("bufferline").setup {
+safe_require("bufferline").setup {
   options = {
     show_buffer_close_icons = false,
   }
 }
 
 -- status lines
-require('lualine').setup({
+safe_require('lualine').setup({
   options = { theme = 'nord' }
 })
 
@@ -164,7 +166,7 @@ vim.g.changes_delete_sign = '┃'
 vim.g.changes_modified_sign = '┃'
 
 -- commander
-require('commander').setup({})
+safe_require('commander').setup({})
 safe_require('commands')
 
 -- gutentags

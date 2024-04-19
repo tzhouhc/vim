@@ -1,5 +1,8 @@
+-- Visual Experience Configurations
+
 -- theme
 vim.cmd("colorscheme nord")
+local safe_require = require('lib.meta').safe_require
 
 -- other options
 vim.opt.conceallevel=2
@@ -46,7 +49,7 @@ highlight("RainbowDelim9", "guifg=#E5783A")
 highlight("RainbowDelim10", "guifg=#EC943F")
 highlight("RainbowDelim11", "guifg=#F7C247")
 
-require('rainbow-delimiters.setup').setup {
+safe_require('rainbow-delimiters.setup').setup {
   highlight = {
     'RainbowDelim0',
     'RainbowDelim1',
@@ -83,6 +86,7 @@ highlight("DiffAdd", "guibg="..diffAddedColor)
 highlight("DiffChange", "guibg="..diffChangedColor)
 highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
 highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
-require('diffview').setup {
+
+safe_require('diffview').setup {
   enhanced_diff_hl = true,
 }

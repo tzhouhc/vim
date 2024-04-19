@@ -1,10 +1,13 @@
----@diagnostic disable: missing-fields
+-- LSP configurations
 
-local cmp = require'cmp'
-local lsp_zero = require('lsp-zero')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local lspkind = require('lspkind')
+---@diagnostic disable: missing-fields
+local safe_require = require('lib.meta').safe_require
+
+local cmp = safe_require'cmp'
+local lsp_zero = safe_require('lsp-zero')
+local capabilities = safe_require('cmp_nvim_lsp').default_capabilities()
+local cmp_autopairs = safe_require('nvim-autopairs.completion.cmp')
+local lspkind = safe_require('lspkind')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -25,7 +28,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      safe_require('luasnip').lsp_expand(args.body)
     end,
   },
   window = {
@@ -67,7 +70,6 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
 })
 -- autopair
@@ -92,17 +94,17 @@ lsp_zero.on_attach(function(_, bufnr)
 end)
 
 -- python
-require'lspconfig'.pyright.setup{
+safe_require'lspconfig'.pyright.setup{
   capabilities = capabilities,
 }
 
 -- lua
-require'lspconfig'.lua_ls.setup{
+safe_require'lspconfig'.lua_ls.setup{
   capabilities = capabilities,
 }
 
 -- markdown
-require'lspconfig'.marksman.setup{
+safe_require'lspconfig'.marksman.setup{
   capabilities = capabilities,
 }
 

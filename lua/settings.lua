@@ -1,3 +1,5 @@
+-- NeoVim Global Keyed Options
+
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2

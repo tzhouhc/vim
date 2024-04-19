@@ -1,3 +1,5 @@
+-- Autocommand Setup
+
 local api = vim.api
 local fn = vim.fn
 

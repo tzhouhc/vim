@@ -1,5 +1,7 @@
--- Init.vim
--- Ting's custom NeoVim configurations.
+-- Fallback version of init.lua
+-- Version 2024-04-18
+-- Intended to work while the main init.lua gets changes and might require git
+-- merging or such potentially disruptive operations.
 
 -- initialize
 -- setup "safe_require" so that nvim doesn't break if any one plugin was

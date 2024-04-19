@@ -1,4 +1,7 @@
-local c = require('commander')
+-- Command Palette Customizations
+
+local safe_require = require('lib.meta').safe_require
+local c = safe_require('commander')
 
 local function makeSimple(name, com)
   return {

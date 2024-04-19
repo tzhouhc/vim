@@ -1,4 +1,10 @@
+-- Keyboard Mapping Configurations
+
 vim.g.mapleader = "\\"
+
+local safe_require = require('lib.meta').safe_require
+local key_utils = safe_require('lib.key_utils')
+local ufo = safe_require('ufo')
 
 local function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
@@ -127,14 +133,14 @@ nmap("X", '"_dd')
 vmap("X", '"_dd')
 
 -- folding
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zR', ufo.openAllFolds)
+vim.keymap.set('n', 'zM', ufo.closeAllFolds)
 
 -- jump to first position after the first space (to avoid comment prefixes).
-vim.keymap.set('n', '0', require('functions').alternating_zero, { noremap = true, silent = true })
-vim.keymap.set('v', '0', require('functions').alternating_zero, { noremap = true, silent = true })
+vim.keymap.set('n', '0', key_utils.alternating_zero, { noremap = true, silent = true })
+vim.keymap.set('v', '0', key_utils.alternating_zero, { noremap = true, silent = true })
 
-vim.keymap.set('n', 'I', require('functions').smarter_shift_i, { noremap = true, silent = true })
+vim.keymap.set('n', 'I', key_utils.smarter_shift_i, { noremap = true, silent = true })
 
 -- lsp actions
 nmap("<leader>fc", ':LspZeroFormat<cr>')
