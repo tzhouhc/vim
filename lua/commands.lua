@@ -16,6 +16,7 @@ local table = {
   "Lazy",
   "Trouble",
   "Mason",
+  { name = "File Tree", com = "NvimTreeToggle" },
   { name = "VimConfigs", cat = "Configs" },
   { name = "Dotfiles", cat = "Configs" },
   { name = "Ctags Config", com = "e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },

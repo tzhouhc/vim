@@ -89,6 +89,9 @@ nmap("]t", ":tabn<cr>")
 nmap("<c-w>%", ":vsplit<cr>")
 nmap("<c-w>\"", ":split<cr>")
 nmap("<c-w>z", ":only<cr>")
+-- alternate window movement
+nmap("[w", "<c-w><left>")
+nmap("]w", "<c-w><right>")
 
 -- replace currently selected text with default register
 -- without yanking it
