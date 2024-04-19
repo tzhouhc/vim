@@ -132,9 +132,6 @@ safe_require('telescope').setup {
 -- load_extension, somewhere after setup function:
 safe_require('telescope').load_extension('fzf')
 safe_require('telescope').load_extension('nerdy')
--- custom telescopes
-safe_require("scopes")
-
 
 -- bufferline
 safe_require("bufferline").setup {

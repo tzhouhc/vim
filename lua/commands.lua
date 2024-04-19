@@ -4,12 +4,10 @@ local safe_require = require('lib.meta').safe_require
 
 -- Custom Commands
 local scopes = safe_require('lib.scopes')
-local tools = safe_require('lib.tools')
 
 vim.api.nvim_create_user_command('Runtimes', scopes.runtime_files, {})
 vim.api.nvim_create_user_command('VimConfigs', scopes.find_configs, {})
 vim.api.nvim_create_user_command('Dotfiles', scopes.find_dotfiles, {})
-vim.api.nvim_create_user_command('ToggleCopyMode', tools.toggle_gutter, {})
 
 -- Commander
 local c = safe_require('commander')

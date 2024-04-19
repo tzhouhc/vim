@@ -14,12 +14,16 @@ end
 -- returns the module normally, or a NullSetup in case of failure. The NullSetup
 -- object will run `setup` and `load_extension` functions with any params.
 function M.safe_require(name)
-  local ok, module = pcall(require, name)
+  local req_func = function()
+    return require(name)
+  end
+  local ok, res = xpcall(req_func, debug.traceback)
+  -- local ok, module = pcall(require, name)
   if ok then
-    return module
+    return res
   else
     -- won't be silenced: this will invoke a hit-enter event
-    print("Error loading module: "..name)
+    print("Error loading module: "..name.."\n"..res)
   end
   return NullSetup
 end
