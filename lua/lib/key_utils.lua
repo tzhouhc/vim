@@ -10,26 +10,30 @@ function M.go_to_start_of_comment()
   vim.api.nvim_feedkeys("$[tf l", 'M', false)
 end
 
+-- three states: start of line, start of non-spaces, first after comment
+local alternating_zero_behaviors = {
+  function()
+    vim.api.nvim_feedkeys("0", 'n', false)
+  end,
+  function()
+    vim.api.nvim_feedkeys("^", 'n', false)
+  end,
+  function()
+    M.go_to_start_of_comment()
+  end,
+}
+
 function M.alternating_zero()
-  -- initialize global var for alternating
-  if vim.g.alternating_zero_state == nil then
+  -- we maintain the same start for each distinct row we run this in
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  -- initialize global var for alternating if we are starting out fresh
+  -- OR if we just moved to a new row
+  if vim.g.alternating_zero_state == nil or row ~= vim.g.alternating_zero_row then
+    vim.g.alternating_zero_row = row
     vim.g.alternating_zero_state = 1
   end
 
-  -- three states: start of line, start of non-spaces, first after comment
-  local behaviors = {
-    function()
-      vim.api.nvim_feedkeys("0", 'n', false)
-    end,
-    function()
-      vim.api.nvim_feedkeys("^", 'n', false)
-    end,
-    function()
-      M.go_to_start_of_comment()
-    end,
-  }
-
-  behaviors[vim.g.alternating_zero_state]()
+  alternating_zero_behaviors[vim.g.alternating_zero_state]()
   vim.g.alternating_zero_state = vim.g.alternating_zero_state + 1
   if vim.g.alternating_zero_state > 3 then
     vim.g.alternating_zero_state = 1
@@ -37,7 +41,7 @@ function M.alternating_zero()
 end
 
 function M.smarter_shift_i()
-  local syns = vim.inspect_pos()  -- assume default: current buffer, on cursor
+  local syns = vim.inspect_pos() -- assume default: current buffer, on cursor
   for _, syn in ipairs(syns['treesitter']) do
     print(vim.inspect(syn))
     if syn['capture'] == 'comment' then

@@ -112,6 +112,7 @@ safe_require'noice'.setup {
       lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
       help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
       telescope = { pattern = "^:%s*Telescope%s+", icon = "", kind = "search" },
+      edit = { pattern = "^:%s*e%s+", icon = "󱇧" },
       input = {}, -- Used by input()
       -- lua = false, -- to disable a format, set to `false`
     },

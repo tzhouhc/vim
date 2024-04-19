@@ -14,7 +14,7 @@ function M.runtime_files(opts)
   local files = vim.api.nvim_get_runtime_file("*.vim", true)
   opts = opts or {}
   pickers.new(opts, {
-    prompt_title = "Runtime Files",
+    prompt_title = " Runtime Files",
     finder = finders.new_table {
       results = files,
     },
@@ -35,7 +35,7 @@ end
 
 function M.find_configs()
   builtin.find_files {
-    prompt_title = " Neovim Configs",
+    prompt_title = " Neovim Configs",
     results_title = "Config Files Results",
     path_display = { "smart" },
     search_dirs = {
@@ -48,7 +48,7 @@ end
 
 function M.find_dotfiles()
   builtin.find_files {
-    prompt_title = " Dotfiles",
+    prompt_title = " Dotfiles",
     results_title = "Config Files Results",
     path_display = { "smart" },
     search_dirs = {

@@ -100,11 +100,12 @@ nmap("[w", "<c-w><left>")
 nmap("]w", "<c-w><right>")
 
 -- replace currently selected text with default register
--- without yanking it
-vmap("<leader>p", "\"_dP")
+-- without yanking it.
+-- vmap("<leader>p", "\"_dP")
 
 -- use telescopes for registers invocation instead
-nmap("\"", ":Telescope registers<cr>")
+nmap("<leader>p", ":Telescope registers<cr>")
+vmap("<leader>p", "\"_d<esc>:Telescope registers<cr>")
 
 -- meta+f to select and go to one specific letter on screen
 nmap('<m-f>', '<Plug>(easymotion-bd-f)')

@@ -9,11 +9,16 @@ end
 function NullSetup.load_extension(...)
 end
 
+-- protected call for loading plugins but not failing the entire script if
+-- any individual thing should fail.
+-- returns the module normally, or a NullSetup in case of failure. The NullSetup
+-- object will run `setup` and `load_extension` functions with any params.
 function M.safe_require(name)
   local ok, module = pcall(require, name)
   if ok then
     return module
   else
+    -- won't be silenced: this will invoke a hit-enter event
     print("Error loading module: "..name)
   end
   return NullSetup

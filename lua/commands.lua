@@ -6,34 +6,38 @@ local c = safe_require('commander')
 local function makeSimple(name, com)
   return {
     desc = name,
-    cmd = ":" .. com .. "<cr>",
+    cmd = com
   }
 end
 
-local table = {
-  "SymbolsOutline",
-  "Runfiles",
+local commands_table = {
+  "Runtimes",
   "Telescope",
   "Twilight",
   "Nerdy",
   "Lazy",
   "Trouble",
   "Mason",
-  { name = "File Tree", com = "NvimTreeToggle" },
-  { name = "VimConfigs", cat = "Configs" },
-  { name = "Dotfiles", cat = "Configs" },
-  { name = "Ctags Config", com = "e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },
-  { name = "Unfold All", com = "zR", cat = "Folding" },
-  { name = "Fold All", com = "zM", cat = "Folding" },
-  { name = 'Colorizer', com = 'ColorizerToggle' },
-  { name = "Edit Working Directory as Buffer", com = "Oil --float<cr>" },
+  { "Unfold All",                       com = "zR",                          cat = "Folding" },
+  { "Fold All",                         com = "zM",                          cat = "Folding" },
+  { "Symbols Outline",                  com = "<CMD>SymbolsOutline<cr>" },
+  { "Format Code",                      com = "<CMD>LspZeroFormat<cr>" },
+  { "File Tree",                        com = "<CMD>NvimTreeToggle<cr>" },
+  { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
+  { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },
+  { "Ctags Config",                     com = "<CMD>e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },
+  { 'Colorizer',                        com = "<CMD>ColorizerToggle<cr>" },
+  { "Edit Working Directory as Buffer", com = "<CMD>Oil --float<cr>" },
+  { "Tags",                             com = "<CMD>Telescope tags<cr>" },
+  { "Registers",                        com = "<CMD>Telescope registers<cr>" },
 }
 
-for _, com in pairs(table) do
+for _, com in pairs(commands_table) do
   if type(com) == 'table' then
+    local name = com[1]
     local cat = com['cat'] or 'Tools'
-    local command = com['com'] or com['name']
-    c.add({ makeSimple(com['name'], command) }, { cat = cat })
+    local command = com['com'] or name
+    c.add({ makeSimple(name, command) }, { cat = cat })
   else
     c.add({ makeSimple(com, com) }, { cat = 'Tools' })
   end
