@@ -103,6 +103,9 @@ nmap("]w", "<c-w><right>")
 -- without yanking it
 vmap("<leader>p", "\"_dP")
 
+-- use telescopes for registers invocation instead
+nmap("\"", ":Telescope registers<cr>")
+
 -- meta+f to select and go to one specific letter on screen
 nmap('<m-f>', '<Plug>(easymotion-bd-f)')
 vmap('<m-f>', '<Plug>(easymotion-bd-f)')

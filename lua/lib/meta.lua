@@ -10,13 +10,13 @@ function NullSetup.load_extension(...)
 end
 
 function M.safe_require(name)
-  local status, module = pcall(require, name)
-  if status then
+  local ok, module = pcall(require, name)
+  if ok then
     return module
   else
     print("Error loading module: "..name)
-    return NullSetup
   end
+  return NullSetup
 end
 
 return M

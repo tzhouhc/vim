@@ -26,16 +26,14 @@ local table = {
   { name = "Unfold All", com = "zR", cat = "Folding" },
   { name = "Fold All", com = "zM", cat = "Folding" },
   { name = 'Colorizer', com = 'ColorizerToggle' },
-  { name = "Edit Working Directory as Buffer", com = ":Oil --float<cr>" },
+  { name = "Edit Working Directory as Buffer", com = "Oil --float<cr>" },
 }
 
 for _, com in pairs(table) do
   if type(com) == 'table' then
-    if com['com'] ~= nil then
-      c.add({ makeSimple(com['name'], com['com']) }, { cat = com['cat'] or 'Tools' })
-    else
-      c.add({ makeSimple(com['name'], com['name']) }, { cat = com['cat'] or 'Tools' })
-    end
+    local cat = com['cat'] or 'Tools'
+    local command = com['com'] or com['name']
+    c.add({ makeSimple(com['name'], command) }, { cat = cat })
   else
     c.add({ makeSimple(com, com) }, { cat = 'Tools' })
   end

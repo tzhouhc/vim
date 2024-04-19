@@ -74,6 +74,11 @@ safe_require('lazy').setup({
   'mhinz/vim-signify',
   -- smarter folding
   { 'kevinhwang91/nvim-ufo',  dependencies = 'kevinhwang91/promise-async' },
+  -- notifications
+  { 'folke/noice.nvim', dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  }} ,
 
   -- languages
   { 'preservim/vim-markdown', branch = 'master' },
@@ -83,8 +88,6 @@ safe_require('lazy').setup({
   { 'windwp/nvim-autopairs',  config = true },
   -- y/d/s for pairs at once
   { 'kylechui/nvim-surround', config = true },
-  -- use pcre for searching (replacement uses S instead of s)
-  'othree/eregex.vim',
   -- removing trailing whitespaces on save
   'bronson/vim-trailing-whitespace',
   -- kill buffer but keep split
