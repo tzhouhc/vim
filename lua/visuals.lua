@@ -2,7 +2,6 @@
 
 ---@diagnostic disable: missing-fields
 -- theme
-vim.cmd("colorscheme nord")
 local safe_require = require('lib.meta').safe_require
 
 -- other options

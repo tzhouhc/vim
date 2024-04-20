@@ -172,3 +172,6 @@ vim.g.gutentags_cache_dir                = os.getenv("HOME") .. "/.vim/tags"
 vim.g.gutentags_file_list_command        = "gutentagger"
 vim.g.gutentags_resolve_symlinks         = 1
 vim.g.gutentags_define_advanced_commands = 1
+
+-- IME switching based on context
+vim.g.macosime_cjk_ime = 'com.sogou.inputmethod.sogou.pinyin'

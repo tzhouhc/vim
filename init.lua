@@ -47,7 +47,12 @@ safe_require('lazy').setup({
   -- scrollbar for checking location in file
   { 'petertriho/nvim-scrollbar', config = true },
   -- nord theme
-  'nordtheme/vim',
+  { 'nordtheme/vim', lazy = false, priority = 1000,
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme nord]])
+    end,
+  },
   -- smooth scrolling
   { 'karb94/neoscroll.nvim',     config = true },
   -- rainbow colors for parens/brackets for easier depth determination
@@ -103,6 +108,8 @@ safe_require('lazy').setup({
   },
   -- automated ctagging
   'ludovicchabant/vim-gutentags',
+  -- automatically switch IME for Chinese
+  { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' }},
 
   -- tools
   -- multiple cursors
