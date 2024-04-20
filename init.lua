@@ -25,6 +25,9 @@ vim.opt.termguicolors = true
 vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")
 
 safe_require('lazy').setup({
+  defaults = {
+    lazy = true,
+  },
   -- motion
   -- text targets like "inside quotes"
   'wellle/targets.vim',
@@ -135,18 +138,25 @@ safe_require('lazy').setup({
     'sindrets/diffview.nvim',
     config = {
       enhanced_diff_hl = true,
-    }
+    },
+    cmd = 'DiffviewOpen',
   },
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim',                    config = true },
+  { 'numToStr/Comment.nvim',         config = true },
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands
-  { 'FeiyouG/commander.nvim',                   config = true },
+  { 'FeiyouG/commander.nvim',        config = true },
   -- tree-like code intel for current buffer
-  { 'simrat39/symbols-outline.nvim',            config = true },
+  { 'simrat39/symbols-outline.nvim', config = true },
   -- tool for searching stuff
-  { 'nvim-telescope/telescope.nvim',            tag = '0.1.6' },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.6',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
   -- with fzf
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   -- semantic parser
@@ -166,11 +176,16 @@ safe_require('lazy').setup({
     opts = {},
     config = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = 'Oil',
   },
 
   -- applications
   -- filesystem sidebar
-  { 'nvim-tree/nvim-tree.lua',           config = true },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = true,
+    cmd = 'NvimTreeToggle'
+  },
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
@@ -190,8 +205,8 @@ safe_require('lazy').setup({
   },
 
   -- LSPs
-  { 'williamboman/mason.nvim',           config = true },
-  { 'williamboman/mason-lspconfig.nvim', config = true },
+  { 'williamboman/mason.nvim',                  config = true },
+  { 'williamboman/mason-lspconfig.nvim',        config = true },
   'rafamadriz/friendly-snippets',
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
@@ -206,7 +221,7 @@ safe_require('lazy').setup({
   'saadparwaiz1/cmp_luasnip',
   'VonHeikemen/lsp-zero.nvim',
   'nvim-tree/nvim-web-devicons',
-  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, cmd = 'TroubleToggle' },
 
   -- nvim configuration development
   { 'folke/neodev.nvim',  config = true },
