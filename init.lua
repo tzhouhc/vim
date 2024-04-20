@@ -21,6 +21,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.termguicolors = true
 
+-- runtime
+vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")
+
 safe_require('lazy').setup({
   -- motion
   -- text targets like "inside quotes"
@@ -47,7 +50,10 @@ safe_require('lazy').setup({
   -- scrollbar for checking location in file
   { 'petertriho/nvim-scrollbar', config = true },
   -- nord theme
-  { 'nordtheme/vim', lazy = false, priority = 1000,
+  {
+    'nordtheme/vim',
+    lazy = false,
+    priority = 1000,
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme nord]])
@@ -58,9 +64,16 @@ safe_require('lazy').setup({
   -- rainbow colors for parens/brackets for easier depth determination
   'HiPhish/rainbow-delimiters.nvim',
   -- 'tabs'
-  'akinsho/bufferline.nvim',
+  {
+    'akinsho/bufferline.nvim',
+    config = {
+      options = {
+        show_buffer_close_icons = false,
+      }
+    },
+  },
   -- status bar
-  'nvim-lualine/lualine.nvim',
+  { 'nvim-lualine/lualine.nvim',   config = { options = { theme = 'nord' } } },
   -- highlight hex colors
   { 'norcalli/nvim-colorizer.lua', config = true },
   -- mark unsaved chages in buffer in gutter
@@ -68,7 +81,7 @@ safe_require('lazy').setup({
   -- highlight TODOs
   'folke/todo-comments.nvim',
   -- smart dimming of unrelated contextual code
-  { 'folke/twilight.nvim',         config = true },
+  { 'folke/twilight.nvim',   config = true },
   -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
   -- text objects
@@ -78,12 +91,15 @@ safe_require('lazy').setup({
   -- add signs to gutter for marking diffs
   'mhinz/vim-signify',
   -- smarter folding
-  { 'kevinhwang91/nvim-ufo',  dependencies = 'kevinhwang91/promise-async' },
+  { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
   -- notifications
-  { 'folke/noice.nvim', dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-  }} ,
+  {
+    'folke/noice.nvim',
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  },
 
   -- languages
   { 'preservim/vim-markdown', branch = 'master' },
@@ -98,7 +114,7 @@ safe_require('lazy').setup({
   -- kill buffer but keep split
   'qpkorr/vim-bufkill',
   -- helps remembering things like registers
-  { 'folke/which-key.nvim',  config = true },
+  { 'folke/which-key.nvim',   config = true },
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",
@@ -109,19 +125,24 @@ safe_require('lazy').setup({
   -- automated ctagging
   'ludovicchabant/vim-gutentags',
   -- automatically switch IME for Chinese
-  { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' }},
+  { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' } },
 
   -- tools
   -- multiple cursors
   'mg979/vim-visual-multi',
   -- git differ
-  'sindrets/diffview.nvim',
+  {
+    'sindrets/diffview.nvim',
+    config = {
+      enhanced_diff_hl = true,
+    }
+  },
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim', config = true },
+  { 'numToStr/Comment.nvim',                    config = true },
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands
-  'FeiyouG/commander.nvim',
+  { 'FeiyouG/commander.nvim',                   config = true },
   -- tree-like code intel for current buffer
   { 'simrat39/symbols-outline.nvim',            config = true },
   -- tool for searching stuff
@@ -191,12 +212,20 @@ safe_require('lazy').setup({
   { 'folke/neodev.nvim',  config = true },
 })
 
-safe_require('plugins')
+-- the following do not make require calls:
+-- visual effects
 safe_require('visuals')
-safe_require('mappings')
-safe_require('settings')
-safe_require('lsp')
-safe_require('auto')
+-- autocommands
+safe_require('autocmds')
 
--- runtime
-vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")
+-- the following involves requiring other modules:
+-- plugin configurations
+safe_require('plugins')
+-- keymaps
+safe_require('mappings')
+-- vim options
+safe_require('settings')
+-- completion and language services
+safe_require('lsp')
+-- commander
+safe_require('commands')

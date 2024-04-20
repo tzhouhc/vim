@@ -71,7 +71,18 @@ nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
 nmap("<leader>ft", ":NvimTreeToggle<CR>")
-nmap("<leader>dv", ":DiffviewFileHistory<CR>")
+
+-- diffview
+local toggle_diffview = function()
+  if next(safe_require('diffview.lib').views) == nil then
+    vim.cmd('DiffviewOpen')
+  else
+    vim.o.hidden = true
+    vim.cmd('DiffviewClose')
+    vim.o.hidden = false
+  end
+end
+vim.keymap.set('n', "<leader>dv", toggle_diffview)
 
 -- -- faster movement
 nmap("<c-Up>", "10k")
