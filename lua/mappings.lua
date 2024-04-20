@@ -101,7 +101,7 @@ nmap("]w", "<c-w><right>")
 
 -- replace currently selected text with default register
 -- without yanking it.
--- vmap("<leader>p", "\"_dP")
+vmap("p", "\"_dP")
 
 -- use telescopes for registers invocation instead
 nmap("<leader>p", ":Telescope registers<cr>")

@@ -8,6 +8,9 @@ end
 -- for telescope extensions
 function NullSetup.load_extension(...)
 end
+-- for luasnip extensions
+function NullSetup.lazy_load(...)
+end
 
 -- protected call for loading plugins but not failing the entire script if
 -- any individual thing should fail.
