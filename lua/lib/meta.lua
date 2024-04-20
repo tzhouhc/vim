@@ -1,5 +1,8 @@
 local M = {}
 
+-- toggle on whether to display load time stack trace if load failed.
+M.debug = true
+
 -- returned in place of normal plugins so that errors are silenced.
 local NullSetup = {}
 -- for the typical plugin's invocation of `setup(opts)`
@@ -17,16 +20,16 @@ end
 -- returns the module normally, or a NullSetup in case of failure. The NullSetup
 -- object will run `setup` and `load_extension` functions with any params.
 function M.safe_require(name)
-  local req_func = function()
-    return require(name)
-  end
-  local ok, res = xpcall(req_func, debug.traceback)
-  -- local ok, module = pcall(require, name)
+  local ok, res = pcall(require, name)
   if ok then
     return res
   else
     -- won't be silenced: this will invoke a hit-enter event
-    print("Error loading module: "..name.."\n"..res)
+    if M.debug then
+      print("Error loading module: "..name.."\n"..res)
+    else
+      print("Error loading module: "..name)
+    end
   end
   return NullSetup
 end
