@@ -15,8 +15,14 @@ local function hex_to_table(h)
   return {r, g, b}
 end
 
+-- mix a _single_ color among r, g, and b.
 local function mix_color(a, b, pa)
-  local res = string.format("%x", math.floor(a * pa) + math.floor(b * (1 - pa)))
+  -- a linear combination of a and b with weight pa for a.
+  local num = math.floor(a * pa) + math.floor(b * (1 - pa))
+  -- keep between 2 hex digits.
+  local adjusted = math.min(math.max(num, 0), 255)
+  -- convert to hex string
+  local res = string.format("%x", adjusted)
   return res
 end
 

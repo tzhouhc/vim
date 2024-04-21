@@ -15,23 +15,22 @@ end
 function NullSetup.lazy_load(...)
 end
 
--- protected call for loading plugins but not failing the entire script if
--- any individual thing should fail.
--- returns the module normally, or a NullSetup in case of failure. The NullSetup
--- object will run `setup` and `load_extension` functions with any params.
+--- protected call for loading plugins but not failing the entire script if
+--- any individual thing should fail.
+--- returns the module normally, or a NullSetup in case of failure. The NullSetup
+--- object will run `setup` and `load_extension` functions with any params.
+---@param name string the name of the module being loaded.
 function M.safe_require(name)
   local ok, res = pcall(require, name)
-  if ok then
-    return res
-  else
-    -- won't be silenced: this will invoke a hit-enter event
+  if not ok then
     if M.debug then
       print("Error loading module: "..name.."\n"..res)
     else
       print("Error loading module: "..name)
     end
+    return NullSetup
   end
-  return NullSetup
+  return res
 end
 
 return M

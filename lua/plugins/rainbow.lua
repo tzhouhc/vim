@@ -32,16 +32,24 @@ end
 -- slightly darker variant
 M.rainbow_dark_groups = {}
 local bg = "#2E3440"
-local blend_factor = 0.3
+local darken_factor = 0.3
 local rainbow_dark_delim_prefix = "RainbowDarkDelim"
 for i, color in ipairs(M.rainbow_colors) do
-  local darker = mix_colors(color, bg, blend_factor)
+  local darker = mix_colors(color, bg, darken_factor)
   highlight(rainbow_dark_delim_prefix..i, "guifg="..darker)
   table.insert(M.rainbow_dark_groups, rainbow_dark_delim_prefix..i)
 end
+M.rainbow_dim_groups = {}
+local dim_factor = 0.85
+local rainbow_dim_delim_prefix = "RainbowDimDelim"
+for i, color in ipairs(M.rainbow_colors) do
+  local dimer = mix_colors(color, bg, dim_factor)
+  highlight(rainbow_dim_delim_prefix..i, "guifg="..dimer)
+  table.insert(M.rainbow_dim_groups, rainbow_dim_delim_prefix..i)
+end
 
 vim.g.rainbow_delimiters = {
-  highlight = M.rainbow_groups
+  highlight = M.rainbow_dim_groups
 }
 
 -- ibl
