@@ -43,13 +43,8 @@ safe_require('lazy').setup({
   },
 
   -- visuals
-  {
-    -- create vertical lines to mark indentation.
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('ibl').setup()
-    end,
-  },
+  -- create vertical lines to mark indentation.
+  'lukas-reineke/indent-blankline.nvim',
   -- scrollbar for checking location in file
   { 'petertriho/nvim-scrollbar', config = true },
   -- nord theme
@@ -62,8 +57,6 @@ safe_require('lazy').setup({
       vim.cmd([[colorscheme nord]])
     end,
   },
-  -- smooth scrolling
-  { 'karb94/neoscroll.nvim',     config = true },
   -- rainbow colors for parens/brackets for easier depth determination
   'HiPhish/rainbow-delimiters.nvim',
   -- 'tabs'
@@ -78,13 +71,13 @@ safe_require('lazy').setup({
   -- status bar
   { 'nvim-lualine/lualine.nvim',   config = { options = { theme = 'nord' } } },
   -- highlight hex colors
-  { 'norcalli/nvim-colorizer.lua', config = true },
+  { 'norcalli/nvim-colorizer.lua', config = true, cmd = 'ColorizerToggle' },
   -- mark unsaved chages in buffer in gutter
   'chrisbra/changesPlugin',
   -- highlight TODOs
   'folke/todo-comments.nvim',
   -- smart dimming of unrelated contextual code
-  { 'folke/twilight.nvim',   config = true },
+  { 'folke/twilight.nvim',   config = true, cmd = 'Twilight' },
   -- keep top of code context on screen when scrolling past
   'nvim-treesitter/nvim-treesitter-context',
   -- text objects
@@ -214,11 +207,9 @@ safe_require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-vsnip',
   'hrsh7th/vim-vsnip',
-  'hrsh7th/vim-vsnip-integ',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-path',
   'onsails/lspkind.nvim',
-  'saadparwaiz1/cmp_luasnip',
   'VonHeikemen/lsp-zero.nvim',
   'nvim-tree/nvim-web-devicons',
   { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, cmd = 'TroubleToggle' },

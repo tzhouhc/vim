@@ -71,6 +71,7 @@ nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
 nmap("<leader>ft", ":NvimTreeToggle<CR>")
+nmap("<leader>q", ":BD<cr>")
 
 -- diffview
 local toggle_diffview = function()

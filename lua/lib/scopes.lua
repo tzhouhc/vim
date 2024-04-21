@@ -59,4 +59,17 @@ function M.find_dotfiles()
   }
 end
 
+function M.find_snippets()
+  builtin.find_files {
+    prompt_title = " Snippets",
+    results_title = "Snippet Files Results",
+    path_display = { "smart" },
+    search_dirs = {
+      "~/.config/nvim/snippets",
+    },
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.65, width = 0.75 },
+  }
+end
+
 return M

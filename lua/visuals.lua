@@ -6,6 +6,10 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
+-- fold column
+-- relative line number, sign column, custom folding, spacer
+vim.o.statuscolumn = '%=%r%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
+
 local function highclear(name)
   vim.cmd("hi clear "..name)
 end
@@ -31,38 +35,6 @@ if vim.api.nvim_win_get_option(0, "diff") then
   vim.opt.diffopt="filler,context:1000000"
 end
 
--- rainbow delimiters
-highlight("RainbowDelim0", "guifg=#F6ED56")
-highlight("RainbowDelim1", "guifg=#A6C955")
-highlight("RainbowDelim2", "guifg=#4BA690")
-highlight("RainbowDelim3", "guifg=#4191C9")
-highlight("RainbowDelim4", "guifg=#2258A0")
-highlight("RainbowDelim5", "guifg=#654997")
-highlight("RainbowDelim6", "guifg=#994D95")
-highlight("RainbowDelim7", "guifg=#D45196")
-highlight("RainbowDelim8", "guifg=#DB3A35")
-highlight("RainbowDelim9", "guifg=#E5783A")
-highlight("RainbowDelim10", "guifg=#EC943F")
-highlight("RainbowDelim11", "guifg=#F7C247")
-
----@type rainbow_delimiters.config
-vim.g.rainbow_delimiters = {
-  highlight = {
-    'RainbowDelim0',
-    'RainbowDelim1',
-    'RainbowDelim2',
-    'RainbowDelim3',
-    'RainbowDelim4',
-    'RainbowDelim5',
-    'RainbowDelim6',
-    'RainbowDelim7',
-    'RainbowDelim8',
-    'RainbowDelim9',
-    'RainbowDelim10',
-    'RainbowDelim11',
-  }
-}
-
 -- diffview highlight groups
 vim.opt.fillchars:append("diff:/")
 local diffChangedForeground = "#F6ED56"
@@ -83,3 +55,5 @@ highlight("DiffAdd", "guibg="..diffAddedColor)
 highlight("DiffChange", "guibg="..diffChangedColor)
 highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
 highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
+
+return M

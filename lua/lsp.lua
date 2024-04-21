@@ -37,6 +37,10 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 -- theoretically, lsp-zero setups the following for us
 cmp.setup({
   sources = cmp.config.sources({
@@ -45,7 +49,6 @@ cmp.setup({
   }, {
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'cmdline' },
   }),
   snippet = {
     expand = function(args)
@@ -68,9 +71,14 @@ cmp.setup({
   },
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      local has_words = has_words_before()
+      -- enables typing multiple tabs even if autocomplete already triggered.
+      -- why the hell is autocomplete triggering on empty stuff though?
+      if cmp.visible() and has_words then
         cmp.select_next_item()
-      elseif has_words_before() then
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words then
         cmp.complete()
       else
         fallback()
@@ -79,6 +87,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
       else
         fallback()
       end
@@ -98,9 +108,9 @@ cmp.setup({
 -- lang specific
 cmp.setup.filetype('sh', {
   sources = cmp.config.sources({
-    { name = 'cmdline' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-    { name = 'path' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-    { name = 'vsnip' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    { name = 'cmdline' },
+    { name = 'path' },
+    { name = 'vsnip' },
   })
 })
 
