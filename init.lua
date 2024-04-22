@@ -34,7 +34,7 @@ safe_require('lazy').setup({
   -- % to jump to matching "pair"
   'andymass/vim-matchup',
   -- overall better movement methods
-  { 'folke/flash.nvim', config = true },
+  { 'folke/flash.nvim', config = { modes = { search = { enabled = false } } } },
 
   -- visuals
   -- create vertical lines to mark indentation.
