@@ -7,10 +7,18 @@ local function extract_plugin(line)
 end
 
 function M.popup(content)
-  -- require("noice").redirect(function()
-  --   print(content)
-  -- end, { view = "cmdline_popup" })
-  require("noice").notify(content, 0)
+  require("noice").notify(content, "󰍡")
+end
+
+function M.hover(content)
+  require("noice").redirect(function()
+    print(content) -- always a msg_show event
+  end, {
+    {
+      view = "temp_hover",
+      filter = { event = "msg_show" },
+    },
+  })
 end
 
 function M.get_current_line_plugin()

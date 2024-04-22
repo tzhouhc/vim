@@ -75,7 +75,7 @@ safe_require('lazy').setup({
   -- mark unsaved chages in buffer in gutter
   'chrisbra/changesPlugin',
   -- highlight TODOs
-  'folke/todo-comments.nvim',
+  { 'folke/todo-comments.nvim', config = true },
   -- smart dimming of unrelated contextual code
   { 'folke/twilight.nvim',   config = true, cmd = 'Twilight' },
   -- keep top of code context on screen when scrolling past
@@ -98,7 +98,7 @@ safe_require('lazy').setup({
   },
 
   -- languages
-  { 'preservim/vim-markdown', branch = 'master' },
+  { 'preservim/vim-markdown', branch = 'master', ft = 'markdown' },
   { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
 
   -- passives

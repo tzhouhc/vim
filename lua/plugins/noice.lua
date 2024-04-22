@@ -197,7 +197,16 @@ safe_require'noice'.setup {
   ---@type NoiceConfigViews
   views = noice_views, ---@see section on views
   ---@type NoiceRouteConfig[]
-  routes = {}, --- @see section on routes
+  routes = {
+    {
+      filter = {
+        event = "msg_show",
+        min_length = 50,
+        min_height = 5,
+      },
+      view = 'popup',
+    },
+  }, --- @see section on routes
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
   ---@type NoiceFormatOptions
