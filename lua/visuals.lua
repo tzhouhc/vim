@@ -6,7 +6,9 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
--- fold column
+local bg = "#2E3440"
+
+-- fold columd
 -- relative line number, sign column, custom folding, spacer
 vim.o.statuscolumn = '%=%r%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
 
@@ -16,6 +18,10 @@ end
 
 local function highlight(name, vis)
   vim.cmd("highlight " .. name .. " " .. vis)
+end
+
+local function highlink(name, other)
+  vim.cmd("hi def link "..name.." "..other)
 end
 
 -- italics
@@ -56,4 +62,8 @@ highlight("DiffChange", "guibg="..diffChangedColor)
 highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
 highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
 
-return M
+-- flash.nvim jumping highlight
+highclear("FlashMatch")
+highlight("FlashMatch", "guifg=#81a1c1 gui=underline")
+highclear("FlashLabel")
+highlight("FlashLabel", "guibg=#A3BE8C guifg="..bg)

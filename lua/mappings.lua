@@ -7,7 +7,7 @@ local key_utils = safe_require('lib.key_utils')
 local ufo = safe_require('ufo')
 
 local function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 local function nmap(shortcut, command)
@@ -120,8 +120,10 @@ nmap("<leader>p", ":Telescope registers<cr>")
 vmap("<leader>p", "\"_d<esc>:Telescope registers<cr>")
 
 -- meta+f to select and go to one specific letter on screen
-nmap('<m-f>', '<Plug>(easymotion-bd-f)')
-vmap('<m-f>', '<Plug>(easymotion-bd-f)')
+-- nmap('<m-f>', '<Plug>(easymotion-bd-f)')
+-- vmap('<m-f>', '<Plug>(easymotion-bd-f)')
+nmap('<m-f>', require("flash").jump)
+vmap('<m-f>', require("flash").jump)
 
 -- Telescope
 -- for local files and local tags

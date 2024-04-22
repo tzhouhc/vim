@@ -30,6 +30,7 @@ local commands_table = {
   "Lazy",
   "Trouble",
   "Mason",
+  "ZenMode",
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },
   { "Fold All",                         com = "zM",                                   cat = "Folding" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },

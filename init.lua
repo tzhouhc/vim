@@ -33,14 +33,8 @@ safe_require('lazy').setup({
   'wellle/targets.vim',
   -- % to jump to matching "pair"
   'andymass/vim-matchup',
-  -- quick jump on screen; supports visual mode
-  'easymotion/vim-easymotion',
-  -- better f/F and t/T
-  {
-    'ggandor/flit.nvim',
-    config = true,
-    dependencies = { 'ggandor/leap.nvim' },
-  },
+  -- overall better movement methods
+  { 'folke/flash.nvim', config = true },
 
   -- visuals
   -- create vertical lines to mark indentation.
@@ -123,8 +117,12 @@ safe_require('lazy').setup({
   'ludovicchabant/vim-gutentags',
   -- automatically switch IME for Chinese
   { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' } },
+  -- highlights certain patterns
+  { "folke/paint.nvim", config = true },
 
   -- tools
+  -- zen mode
+  { "folke/zen-mode.nvim", cmd = "ZenMode", config = true },
   -- multiple cursors
   'mg979/vim-visual-multi',
   -- git differ
