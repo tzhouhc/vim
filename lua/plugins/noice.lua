@@ -2,6 +2,7 @@
 
 local safe_require = require('lib.meta').safe_require
 ---@diagnostic disable: missing-fields
+local noice_views = safe_require("plugins.noice_views").views
 
 safe_require'noice'.setup {
   cmdline = {
@@ -31,7 +32,7 @@ safe_require'noice'.setup {
     -- NOTE: If you enable messages, then the cmdline is enabled automatically.
     -- This is a current Neovim limitation.
     enabled = true, -- enables the Noice messages UI
-    view = "mini", -- default view for messages
+    view = "minish", -- default view for messages
     view_error = "mini", -- view for errors
     view_warn = "mini", -- view for warnings
     view_history = "messages", -- view for :messages
@@ -100,7 +101,7 @@ safe_require'noice'.setup {
     -- The default routes will forward notifications to nvim-notify
     -- Benefit of using Noice for this is the routing and consistent history view
     enabled = true,
-    view = "mini",
+    view = "temp_popup",
   },
   lsp = {
     progress = {
@@ -194,7 +195,7 @@ safe_require'noice'.setup {
   },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
-  views = {}, ---@see section on views
+  views = noice_views, ---@see section on views
   ---@type NoiceRouteConfig[]
   routes = {}, --- @see section on routes
   ---@type table<string, NoiceFilter>

@@ -99,6 +99,7 @@ safe_require('lazy').setup({
 
   -- languages
   { 'preservim/vim-markdown', branch = 'master' },
+  { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
 
   -- passives
   -- automatically close/add pairs

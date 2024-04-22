@@ -32,6 +32,9 @@ end)
 -- wrap up setup
 lsp_zero.setup()
 
+safe_require("mason").setup()
+safe_require("mason-lspconfig").setup()
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -134,6 +137,9 @@ lspconfig.lua_ls.setup {
 lspconfig.marksman.setup {
   capabilities = capabilities,
 }
+
+-- rust-analyzer
+-- *NOT* done via lspconfig due to rustaceanvim handling it instead.
 
 -- symbols
 vim.fn.sign_define('DiagnosticSignError', { text = 'x', texthl = 'DiagnosticSignError' })
