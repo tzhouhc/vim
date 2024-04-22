@@ -10,6 +10,7 @@ safe_require('plugins.telescope')
 safe_require('plugins.treesitter')
 safe_require('plugins.rainbow')
 safe_require('plugins.zen')
+safe_require('plugins.highlights')
 
 safe_require('ufo').setup({
   provider_selector = function(_, _, _)

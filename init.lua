@@ -118,11 +118,11 @@ safe_require('lazy').setup({
   -- automatically switch IME for Chinese
   { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' } },
   -- highlights certain patterns
-  { "folke/paint.nvim", config = true },
+  "folke/paint.nvim",
 
   -- tools
   -- zen mode
-  { "folke/zen-mode.nvim", cmd = "ZenMode", config = true },
+  "folke/zen-mode.nvim",
   -- multiple cursors
   'mg979/vim-visual-multi',
   -- git differ
