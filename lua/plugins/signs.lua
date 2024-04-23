@@ -24,3 +24,20 @@ vim.g.changes_add_sign = '┃'
 vim.g.changes_delete_sign = '┃'
 vim.g.changes_modified_sign = '┃'
 
+-- scrollbar -- sure, on the right, but still sort of like a sign column :)
+safe_require('scrollbar').setup({
+  show_in_active_only = true,
+  hide_if_all_visible = true, -- Hides everything if all lines are visible
+  excluded_buftypes = {
+      "terminal",
+  },
+  excluded_filetypes = {
+    "",
+    "cmp_docs",
+    "cmp_menu",
+    "noice",
+    "prompt",
+    "TelescopePrompt",
+  },
+})
+

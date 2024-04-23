@@ -21,6 +21,8 @@ safe_require('plugins.highlights')
 safe_require('plugins.lualine')
 -- sign-column
 safe_require('plugins.signs')
+-- bookmarks
+safe_require('plugins.arrow')
 
 -- gutentags
 vim.g.gutentags_cache_dir                = os.getenv("HOME") .. "/.vim/tags"

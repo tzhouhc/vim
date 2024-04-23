@@ -154,7 +154,7 @@ safe_require('lazy').setup({
   -- - toggle a line to have a mark
   -- - telescope search through marks
   -- - NOT require remembering or even involving letters
-
+  "otavioschwanck/arrow.nvim",
   -- tool for searching stuff
   {
     'nvim-telescope/telescope.nvim',
