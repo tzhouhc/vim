@@ -33,8 +33,8 @@ safe_require'noice'.setup {
     -- This is a current Neovim limitation.
     enabled = true, -- enables the Noice messages UI
     view = "minish", -- default view for messages
-    view_error = "mini", -- view for errors
-    view_warn = "mini", -- view for warnings
+    view_error = "topright_mini", -- view for errors
+    view_warn = "topright_mini", -- view for warnings
     view_history = "messages", -- view for :messages
     view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
   },
@@ -145,7 +145,7 @@ safe_require'noice'.setup {
     message = {
       -- Messages shown by lsp servers
       enabled = true,
-      view = "mini",
+      view = "minish",
       opts = {},
     },
     -- defaults for hover and signature help

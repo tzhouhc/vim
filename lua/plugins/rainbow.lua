@@ -49,7 +49,10 @@ for i, color in ipairs(M.rainbow_colors) do
 end
 
 vim.g.rainbow_delimiters = {
-  highlight = M.rainbow_dim_groups
+  highlight = M.rainbow_dim_groups,
+  blacklist = {
+    "dashboard",
+  },
 }
 
 -- ibl
@@ -61,7 +64,10 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 safe_require('ibl').setup({
-  indent = { char = "", highlight = M.rainbow_dark_groups },
+  indent = { char = "",
+    highlight = M.rainbow_dark_groups,
+  },
+  exclude = { filetypes = {'dashboard'} },
   scope = { char = "", highlight = M.rainbow_groups },
 })
 

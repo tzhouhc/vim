@@ -63,7 +63,7 @@ safe_require('lazy').setup({
     },
   },
   -- status bar
-  { 'nvim-lualine/lualine.nvim',   config = { options = { theme = 'nord' } } },
+  'nvim-lualine/lualine.nvim',
   -- highlight hex colors
   { 'norcalli/nvim-colorizer.lua', config = true, cmd = 'ColorizerToggle' },
   -- mark unsaved chages in buffer in gutter
@@ -89,6 +89,15 @@ safe_require('lazy').setup({
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
+  },
+  -- startup
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = {
+      shortcut_type = "number",
+    },
+    dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
   -- languages
@@ -118,11 +127,11 @@ safe_require('lazy').setup({
   -- automatically switch IME for Chinese
   { 'laishulu/vim-macos-ime', ft = { 'text', 'markdown' } },
   -- highlights certain patterns
-  "folke/paint.nvim",
+  { "folke/paint.nvim", ft = { 'markdown' }},
 
   -- tools
   -- zen mode
-  "folke/zen-mode.nvim",
+  { "folke/zen-mode.nvim", cmd = "ZenMode" },
   -- multiple cursors
   'mg979/vim-visual-multi',
   -- git differ
@@ -140,7 +149,12 @@ safe_require('lazy').setup({
   -- custom commands
   { 'FeiyouG/commander.nvim',        config = true },
   -- tree-like code intel for current buffer
-  { 'simrat39/symbols-outline.nvim', config = true },
+  { 'simrat39/symbols-outline.nvim', config = true, cmd = "SymbolsOutline" },
+  -- TODO: Find a tool that would perform the following
+  -- - toggle a line to have a mark
+  -- - telescope search through marks
+  -- - NOT require remembering or even involving letters
+
   -- tool for searching stuff
   {
     'nvim-telescope/telescope.nvim',

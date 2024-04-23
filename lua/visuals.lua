@@ -6,8 +6,6 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
-local bg = "#2E3440"
-
 -- fold columd
 -- relative line number, sign column, custom folding, spacer
 vim.o.statuscolumn = '%=%r%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
@@ -20,10 +18,6 @@ local function highlight(name, vis)
   vim.cmd("highlight " .. name .. " " .. vis)
 end
 
-local function highlink(name, other)
-  vim.cmd("hi def link "..name.." "..other)
-end
-
 -- italics
 highlight("Special", "gui=italic")
 highlight("Comment", "gui=italic")
@@ -31,6 +25,9 @@ highlight("Italic", "gui=italic")
 highlight("Bold", "gui=bold")
 highlight("mkdBold", "gui=bold")
 highlight("htmlItalic", "gui=italic")
+
+-- hide trailing whitespace marker
+highclear("ExtraWhitespace")
 
 -- signify
 highlight("SignifySignAdd", "guifg=#2dd671")
@@ -66,4 +63,4 @@ highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForegrou
 highclear("FlashMatch")
 highlight("FlashMatch", "guifg=#81a1c1 gui=underline")
 highclear("FlashLabel")
-highlight("FlashLabel", "guibg=#A3BE8C guifg="..bg)
+highlight("FlashLabel", "guifg=#A3BE8C")

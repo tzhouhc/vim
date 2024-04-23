@@ -32,6 +32,35 @@ M.views = {
       },
     },
   },
+  -- customized version of mini that goes to the top-right of the screen
+  topright_mini = {
+    backend = "mini",
+    relative = "editor",
+    align = "message-right",
+    timeout = 3000, -- 3 seconds
+    reverse = true,
+    focusable = false,
+    position = {
+      row = 1,  -- don't overlay the bufferline
+      col = "100%",
+    },
+    size = "auto",
+    border = {
+      style = "none",
+    },
+    zindex = 60,
+    win_options = {
+      winbar = "",
+      foldenable = false,
+      winblend = 30,
+      winhighlight = {
+        Normal = "NoiceMini",
+        IncSearch = "",
+        CurSearch = "",
+        Search = "",
+      },
+    },
+  },
   -- temporary popup that soon disappears
   temp_popup = {
     backend = "popup",

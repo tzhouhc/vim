@@ -5,35 +5,22 @@
 ---@diagnostic disable: missing-fields
 local safe_require = require('lib.meta').safe_require
 
+-- notification framework
 safe_require('plugins.noice')
+-- telescope fuzzy selection
 safe_require('plugins.telescope')
+-- syntax parser
 safe_require('plugins.treesitter')
+-- rainbow delimiter and indentation
 safe_require('plugins.rainbow')
+-- zen-mode
 safe_require('plugins.zen')
+-- custom highlighting
 safe_require('plugins.highlights')
-
-safe_require('ufo').setup({
-  provider_selector = function(_, _, _)
-    return {'treesitter', 'indent'}
-  end
-})
-
--- signify
-vim.g.signify_sign_change = '┃'
-vim.g.signify_sign_add = '┃'
-vim.g.signify_sign_delete_first_line = '▔'
-vim.g.signify_sign_delete_change = '┃'
-vim.g.signify_sign_delete_change_delete = '┣'
-vim.g.signify_vcs_cmds = {
-  perforce = 'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
-  git = 'git diff --no-color --no-ext-diff -U0 -- %f',
-  hg = 'hg diff --color=never --config aliases.diff= --nodates -U0 -- %f'
-}
-
--- changes
-vim.g.changes_add_sign = '┃'
-vim.g.changes_delete_sign = '┃'
-vim.g.changes_modified_sign = '┃'
+-- bottom status line
+safe_require('plugins.lualine')
+-- sign-column
+safe_require('plugins.signs')
 
 -- gutentags
 vim.g.gutentags_cache_dir                = os.getenv("HOME") .. "/.vim/tags"

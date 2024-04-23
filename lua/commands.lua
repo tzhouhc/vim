@@ -11,6 +11,8 @@ vim.api.nvim_create_user_command('VimConfigs', scopes.find_configs, {})
 vim.api.nvim_create_user_command('Dotfiles', scopes.find_dotfiles, {})
 vim.api.nvim_create_user_command('Snippets', scopes.find_snippets, {})
 
+vim.api.nvim_create_user_command('Marks', safe_require('telescope.builtin').marks, {})
+
 vim.api.nvim_create_user_command('GetPluginLink', misc.get_current_line_plugin, {})
 
 -- Commander
@@ -31,6 +33,7 @@ local commands_table = {
   "Trouble",
   "Mason",
   "ZenMode",
+  "Marks",
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },
   { "Fold All",                         com = "zM",                                   cat = "Folding" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },

@@ -38,6 +38,7 @@ api.nvim_create_autocmd({ "BufEnter" }, {
     "noice",
     "Trouble",
     "checkhealth",
+    "man",
   },
   callback = function()
     api.nvim_buf_set_keymap(api.nvim_get_current_buf(),
