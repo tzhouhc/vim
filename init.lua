@@ -40,7 +40,7 @@ safe_require('lazy').setup({
   -- create vertical lines to mark indentation.
   'lukas-reineke/indent-blankline.nvim',
   -- scrollbar for checking location in file
-  { 'petertriho/nvim-scrollbar', config = true },
+  'petertriho/nvim-scrollbar',
   -- nord theme
   {
     'nordtheme/vim',
@@ -66,8 +66,10 @@ safe_require('lazy').setup({
   'nvim-lualine/lualine.nvim',
   -- highlight hex colors
   { 'norcalli/nvim-colorizer.lua', config = true, cmd = 'ColorizerToggle' },
-  -- mark unsaved chages in buffer in gutter
+  -- mark unsaved chages in buffer in gutter; diffs pending changes
   'chrisbra/changesPlugin',
+  -- add signs to gutter for marking diffs; only diffs written
+  'mhinz/vim-signify',
   -- highlight TODOs
   { 'folke/todo-comments.nvim', config = true },
   -- smart dimming of unrelated contextual code
@@ -78,8 +80,6 @@ safe_require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-textobjects',
   -- highlight same token as currently cursored-over
   'RRethy/vim-illuminate',
-  -- add signs to gutter for marking diffs
-  'mhinz/vim-signify',
   -- smarter folding
   { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
   -- notifications
@@ -191,23 +191,6 @@ safe_require('lazy').setup({
     'nvim-tree/nvim-tree.lua',
     config = true,
     cmd = 'NvimTreeToggle'
-  },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "Vault",
-          path = "~/Documents/Vault",
-        },
-      },
-    },
   },
 
   -- LSPs
