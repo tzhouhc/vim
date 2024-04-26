@@ -150,10 +150,7 @@ safe_require('lazy').setup({
   { 'FeiyouG/commander.nvim',        config = true },
   -- tree-like code intel for current buffer
   { 'simrat39/symbols-outline.nvim', config = true, cmd = "SymbolsOutline" },
-  -- TODO: Find a tool that would perform the following
-  -- - toggle a line to have a mark
-  -- - telescope search through marks
-  -- - NOT require remembering or even involving letters
+  -- quick jump to locally or globally recorded locations
   "otavioschwanck/arrow.nvim",
   -- tool for searching stuff
   {
