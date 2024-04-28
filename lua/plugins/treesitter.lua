@@ -18,6 +18,7 @@ safe_require 'nvim-treesitter.configs'.setup {
     "yaml",
     "json",
     "java",
+    "just",
   },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

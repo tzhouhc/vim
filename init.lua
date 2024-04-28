@@ -103,6 +103,7 @@ safe_require('lazy').setup({
   -- languages
   { 'preservim/vim-markdown', branch = 'master', ft = 'markdown' },
   { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
+  { 'LhKipp/nvim-nu', ft = 'nu', config = { use_lsp_features = false } },
 
   -- passives
   -- automatically close/add pairs
@@ -216,6 +217,8 @@ safe_require('lazy').setup({
 safe_require('visuals')
 -- autocommands
 safe_require('autocmds')
+-- filetypes recognition
+safe_require('files')
 
 -- the following involves requiring other modules:
 -- plugin configurations
