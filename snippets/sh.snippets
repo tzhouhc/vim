@@ -10,3 +10,11 @@ snippet iffile "check if file exists" b
 snippet ifdir "check if folder exists" b
 	if [[ -d '${1:dir}']]; then
 	fi
+
+snippet ifenv "check if env var is not empty" b
+	if [[ \$${1} != '' ]]; then
+	fi
+
+snippet ifcmd "check if cmd returned 0" b
+	if $1; then
+	fi

@@ -47,8 +47,8 @@ nmap("<Up>", "gk")
 -- horizontal
 nmap("<silent>", "<C-Left> ^")
 nmap("<silent>", "<C-Right> $")
--- cancel search highlight
-nmap("<esc>", ":noh<CR>")
+-- cancel search/flash highlight
+nmap("<esc>", "<esc>:noh<CR>")
 
 -- mimicking sublime's selection enclose behavior
 vmap("]", "<esc>`>a]<esc>`<i[<esc>")
