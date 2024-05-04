@@ -9,7 +9,9 @@ plugin
 *.old
 .mypy_cache
 vim_history
+tags
 tags/*
+local
 local/*
 vim-plug
 lazy-lock.json

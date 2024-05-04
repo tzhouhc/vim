@@ -96,6 +96,10 @@ safe_require('lazy').setup({
     event = 'VimEnter',
     config = {
       shortcut_type = "number",
+      config = {
+        project = { enable = false },
+        mru = { limit = 9 },
+      },
     },
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },

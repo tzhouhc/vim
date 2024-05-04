@@ -1,3 +1,5 @@
+local safe_require = require('lib.meta').safe_require
+
 vim.filetype.add({
   extension = {
     nu = 'nu',
@@ -8,3 +10,6 @@ vim.filetype.add({
     ['notes'] = 'markdown',
   },
 })
+
+local ft = safe_require('Comment.ft')
+ft.kdl = '// %s'
