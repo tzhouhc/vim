@@ -90,19 +90,6 @@ safe_require('lazy').setup({
       "rcarriga/nvim-notify",
     }
   },
-  -- startup
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = {
-      shortcut_type = "number",
-      config = {
-        project = { enable = false },
-        mru = { limit = 9 },
-      },
-    },
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  },
 
   -- languages
   { 'preservim/vim-markdown', branch = 'master', ft = 'markdown' },

@@ -49,6 +49,9 @@ vim.opt.foldcolumn = '1'
 vim.opt.foldlevelstart = 20
 vim.opt.foldmethod="indent"
 
+-- disable swapfiles
+vim.opt.swapfile = false
+
 -- switch buffer without saving
 vim.opt.hidden = true
 

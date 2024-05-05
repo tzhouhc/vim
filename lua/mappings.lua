@@ -66,7 +66,7 @@ vmap("}", "i}")
 -- ==== leader actions ====
 -- quickly modify vimrc file
 nmap("<leader>ev", ":e $MYVIMRC<cr>")
-nmap("<leader>en", ":e $XDG_CONFIG_HOME/notes<cr>")
+nmap("<leader>en", ":e $HOME/.notes<cr>")
 nmap("<leader>ep", ":e ~/.vim/configs/plugs.vim<cr>")
 nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")

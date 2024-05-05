@@ -7,7 +7,7 @@ vim.filetype.add({
   filename = {
     ['justfile'] = 'just',
     ['.justfile'] = 'just',
-    ['notes'] = 'markdown',
+    ['.notes'] = 'markdown',
   },
 })
 
