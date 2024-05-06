@@ -8,6 +8,6 @@ safe_require('lualine').setup({
     lualine_c = {'filename'},
     lualine_x = {},
     lualine_y = {'filetype'},
-    lualine_z = {'progress', 'location'}
+    lualine_z = {'fancy_macro', 'progress', 'location'}
   },
 })

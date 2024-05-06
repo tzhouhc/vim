@@ -39,6 +39,8 @@ safe_require('lazy').setup({
   -- visuals
   -- create vertical lines to mark indentation.
   'lukas-reineke/indent-blankline.nvim',
+  -- icons
+  'nvim-tree/nvim-web-devicons',
   -- scrollbar for checking location in file
   'petertriho/nvim-scrollbar',
   -- nord theme
@@ -63,7 +65,7 @@ safe_require('lazy').setup({
     },
   },
   -- status bar
-  'nvim-lualine/lualine.nvim',
+  { 'nvim-lualine/lualine.nvim', dependencies = {"meuter/lualine-so-fancy.nvim"}},
   -- highlight hex colors
   { 'norcalli/nvim-colorizer.lua', config = true, cmd = 'ColorizerToggle' },
   -- mark unsaved chages in buffer in gutter; diffs pending changes
@@ -196,7 +198,7 @@ safe_require('lazy').setup({
   'hrsh7th/cmp-path',
   'onsails/lspkind.nvim',
   'VonHeikemen/lsp-zero.nvim',
-  'nvim-tree/nvim-web-devicons',
+  'nvimtools/none-ls.nvim',
   { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, cmd = 'TroubleToggle' },
 
   -- nvim configuration development

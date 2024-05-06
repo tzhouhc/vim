@@ -142,10 +142,10 @@ lspconfig.lua_ls.setup {
       },
       workspace = {
         library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-            -- hammerspoon
-            ['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          -- hammerspoon
+          ['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
         },
       },
     }
@@ -165,3 +165,16 @@ vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSi
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+
+---- NULL-LS ----
+local null_ls = safe_require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.hover.dictionary,
+    null_ls.builtins.hover.printenv.with({
+      extra_filetypes = { 'zsh' },
+    })
+  },
+})

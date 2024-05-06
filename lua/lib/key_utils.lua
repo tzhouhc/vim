@@ -1,3 +1,5 @@
+local safe_require = require('lib.meta').safe_require
+
 local M = {}
 
 function M.go_to_start_of_comment()
@@ -51,6 +53,16 @@ function M.smarter_shift_i()
     end
   end
   vim.api.nvim_feedkeys("I", 'n', false)
+end
+
+function M.toggle_diffview()
+  if next(safe_require('diffview.lib').views) == nil then
+    vim.cmd('DiffviewOpen')
+  else
+    vim.o.hidden = true
+    vim.cmd('DiffviewClose')
+    vim.o.hidden = false
+  end
 end
 
 return M

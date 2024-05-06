@@ -7,161 +7,107 @@ local key_utils = safe_require('lib.key_utils')
 local ufo = safe_require('ufo')
 local flash = safe_require('flash')
 
-local function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
-end
+-- For automating setting key maps.
+-- Usage: highest level keys are modes;
+--        individual lines are ["<key>"] = "command" || lua.function
+local key_configs = {
+  -- Normal mode
+  n = {
+    -- cancel search/flash highlight
+    ["<esc>"] = "<esc>:noh<CR>",
+    -- ==== leader actions ====
+    ["<leader>ev"] = ":e $MYVIMRC<cr>",
+    ["<leader>en"] = ":e $HOME/.notes<cr>",
+    ["<leader>ft"] = ":NvimTreeToggle<CR>",
+    ["<leader>q"] = ":BD<cr>",
 
-local function nmap(shortcut, command)
-  map('n', shortcut, command)
-end
+    -- lsp actions
+    ["<leader>fc"] = ':LspZeroFormat<cr>',
+    ["<leader>rn"] = '<cmd>lua vim.lsp.buf.rename()<cr>',
+    ["<leader>tr"] = ':TroubleToggle<cr>',
 
-local function vmap(shortcut, command)
-  map('v', shortcut, command)
-end
+    -- diffview
+    ["<leader>dv"] = key_utils.toggle_diffview,
 
--- ===========================
--- keymaps
--- ===========================
---
--- Guideing Philosophy --
--- * g for movement or code change
---   * gl for formatting
---   " gs for switch
---   * ga for alignment
---   * gc for commenting
---   * gq for rewrap
---   * gd for go to definition
---   * gr for go to references
---
--- * ctrl for common actions
---   * fzf operations
---   * find
---   * revert changes
--- * leader for plugin actions or file operations
--- * meta for what cmd/ctrl in other common text editors would do...?
---   * e.g. change tabs, select all, etc
+    -- use telescopes for registers invocation instead
+    ["<leader>p"] = ":Telescope registers<cr>",
 
--- vertical movement
-nmap("<Down>", "gj")
-nmap("<Up>", "gk")
--- horizontal
-nmap("<silent>", "<C-Left> ^")
-nmap("<silent>", "<C-Right> $")
--- cancel search/flash highlight
-nmap("<esc>", "<esc>:noh<CR>")
+    -- buffer movement
+    ["[b"] = ":bprev<cr>",
+    ["]b"] = ":bnext<cr>",
+    ["<PageUp>"] = ":bprev<cr>",
+    ["<PageDown>"] = ":bnext<cr>",
+    ["[t"] = ":tabp<cr>",
+    ["]t"] = ":tabn<cr>",
 
--- mimicking sublime's selection enclose behavior
-vmap("]", "<esc>`>a]<esc>`<i[<esc>")
-vmap(")", "<esc>`>a)<esc>`<i(<esc>")
-vmap("}", "<esc>`>a}<esc>`<i{<esc>")
-vmap("`", "<esc>`>a`<esc>`<i`<esc>")
+    -- tmux-like splitting
+    ["<c-w>%"] = ":vsplit<cr>",
+    ["<c-w>\""] = ":split<cr>",
+    ["<c-w>z"] = ":only<cr>",
+    -- alternate window movement
+    ["[w"] = "<c-w><left>",
+    ["]w"] = "<c-w><right>",
 
--- select whole words by default
-vmap("w", "iw")
-vmap("W", "iW")
-vmap(")", "i)")
-vmap("]", "i]")
-vmap("}", "i}")
+    -- Telescope
+    -- for local files and local tags
+    ["<c-o>"] = ":Telescope find_files<cr>",
+    -- lines in current buffer
+    ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
+    -- lines in all local files
+    ["<c-g>"] = ":Telescope live_grep<cr>",
+    -- local symbols based on treesitter
+    ["<c-k>"] = ":Telescope treesitter<cr>",
+    -- local symbols based on ctags
+    ["<m-k>"] = ":Telescope tags<cr>",
+    -- git changes
+    ["<c-p>"] = ":Telescope oldfiles<cr>",
+    -- commander
+    ["<m-space>"] = ":Telescope commander<cr>",
 
--- ==== leader actions ====
--- quickly modify vimrc file
-nmap("<leader>ev", ":e $MYVIMRC<cr>")
-nmap("<leader>en", ":e $HOME/.notes<cr>")
-nmap("<leader>ep", ":e ~/.vim/configs/plugs.vim<cr>")
-nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
-nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
-nmap("<leader>sv", ":source $MYVIMRC<cr>")
-nmap("<leader>ft", ":NvimTreeToggle<CR>")
-nmap("<leader>q", ":BD<cr>")
+    -- folding
+    ['zR'] = ufo.openAllFolds,
+    ['zM'] = ufo.closeAllFolds,
 
--- diffview
-local toggle_diffview = function()
-  if next(safe_require('diffview.lib').views) == nil then
-    vim.cmd('DiffviewOpen')
-  else
-    vim.o.hidden = true
-    vim.cmd('DiffviewClose')
-    vim.o.hidden = false
+    -- smarter shift I
+    ['I'] = key_utils.smarter_shift_i,
+  },
+  -- Visual mode
+  v = {
+    -- select whole words by default
+    ["w"] = "iw",
+    ["W"] = "iW",
+    [")"] = "i)",
+    ["]"] = "i]",
+    ["\""] = "i\"",
+
+    -- replace currently selected text with default register
+    -- without yanking it.
+    ["p"] = "\"_dP",
+
+    -- same as normal but also does a non-yanking deletion first
+    ["<leader>p"] = "\"_d<esc>:Telescope registers<cr>",
+  },
+  [{'n', 'v'}] = {
+    -- faster movement
+    ["<c-Up>"] = "10k",
+    ["<c-Down>"] = "10j",
+    -- meta+f to select and go to one specific letter on screen
+    ['<m-f>'] = flash.jump,
+    -- better cutting (`x` no longer yanks due to cutlass,
+    -- but it doesn't delete the whole line.)
+    ["X"] = '"_dd',
+    -- jump to first position after the first space (to avoid comment prefixes).
+    ['0'] = key_utils.alternating_zero,
+  },
+  -- Terminal mode
+  t = {
+    -- terminal mode exit
+    ['<esc>'] = "<C-\\><C-n>",
+  }
+}
+
+for mode, conf in pairs(key_configs) do
+  for key, command in pairs(conf) do
+    vim.keymap.set(mode, key, command, { noremap = true, silent = true })
   end
 end
-vim.keymap.set('n', "<leader>dv", toggle_diffview)
-
--- -- faster movement
-nmap("<c-Up>", "10k")
-nmap("<c-Down>", "10j")
-nmap("<c-Up>", "10k")
-nmap("<c-Down>", "10j")
-vmap("<c-Up>", "10k")
-vmap("<c-Down>", "10j")
-vmap("<c-Up>", "10k")
-vmap("<c-Down>", "10j")
-
--- -- switch buffer/tabs
-nmap("[b", ":bprev<cr>")
-nmap("]b", ":bnext<cr>")
-nmap("<PageUp>", ":bprev<cr>")
-nmap("<PageDown>", ":bnext<cr>")
-nmap("[t", ":tabp<cr>")
-nmap("]t", ":tabn<cr>")
-
--- tmux-like splitting
-nmap("<c-w>%", ":vsplit<cr>")
-nmap("<c-w>\"", ":split<cr>")
-nmap("<c-w>z", ":only<cr>")
--- alternate window movement
-nmap("[w", "<c-w><left>")
-nmap("]w", "<c-w><right>")
-
--- replace currently selected text with default register
--- without yanking it.
-vmap("p", "\"_dP")
-
--- use telescopes for registers invocation instead
-nmap("<leader>p", ":Telescope registers<cr>")
-vmap("<leader>p", "\"_d<esc>:Telescope registers<cr>")
-
--- meta+f to select and go to one specific letter on screen
--- nmap('<m-f>', '<Plug>(easymotion-bd-f)')
--- vmap('<m-f>', '<Plug>(easymotion-bd-f)')
-nmap('<m-f>', flash.jump)
-vmap('<m-f>', flash.jump)
-
--- Telescope
--- for local files and local tags
-nmap("<c-o>", ":Telescope find_files<cr>")
--- lines in current buffer
-nmap("<c-f>", ":Telescope current_buffer_fuzzy_find<cr>")
--- lines in all local files
-nmap("<c-g>", ":Telescope live_grep<cr>")
--- local symbols based on treesitter
-nmap("<c-k>", ":Telescope treesitter<cr>")
--- local symbols based on ctags
-nmap("<m-k>", ":Telescope tags<cr>")
--- git changes
-nmap("<c-p>", ":Telescope oldfiles<cr>")
--- commander
-nmap("<m-space>", ":Telescope commander<cr>")
-nmap("<m-p>", ":Telescope registers<cr>")
-vmap("<m-p>", "d<esc>:Telescope registers<cr>")
-
--- terminal mode exit
-vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })
-
--- better cutting (`x` no longer yanks due to cutlass, but it doesn't delete the whole line.)
-nmap("X", '"_dd')
-vmap("X", '"_dd')
-
--- folding
-vim.keymap.set('n', 'zR', ufo.openAllFolds)
-vim.keymap.set('n', 'zM', ufo.closeAllFolds)
-
--- jump to first position after the first space (to avoid comment prefixes).
-vim.keymap.set('n', '0', key_utils.alternating_zero, { noremap = true, silent = true })
-vim.keymap.set('v', '0', key_utils.alternating_zero, { noremap = true, silent = true })
-
-vim.keymap.set('n', 'I', key_utils.smarter_shift_i, { noremap = true, silent = true })
-
--- lsp actions
-nmap("<leader>fc", ':LspZeroFormat<cr>')
-nmap("<leader>rn", '<cmd>lua vim.lsp.buf.rename()<cr>')
-nmap("<leader>tr", ':TroubleToggle<cr>')
