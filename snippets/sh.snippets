@@ -18,3 +18,7 @@ snippet ifenv "check if env var is not empty" b
 snippet ifcmd "check if cmd returned 0" b
 	if $1; then
 	fi
+
+snippet ifosx "check if current os is darwin" b
+	if uname -a | grep -i darwin > /dev/null; then
+	fi
