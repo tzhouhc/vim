@@ -22,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.opt.termguicolors = true
 
 -- runtime
-vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")
+vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 
 safe_require('lazy').setup({
   defaults = {

@@ -84,4 +84,4 @@ safe_require('fallback.settings')
 safe_require('fallback.auto')
 
 -- runtime
-vim.opt.runtimepath:append(",~/.vim,~/.vim/after,~/.vim/local")
+vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")

@@ -11,7 +11,7 @@ local cmp_autopairs = safe_require('nvim-autopairs.completion.cmp')
 local lspconfig = safe_require('lspconfig')
 local lspkind = safe_require('lspkind')
 
-vim.g.vsnip_snippet_dir = "~/.vim/snippets"
+vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
 -- LSP Zero presets
 -- lsp_zero.extend_lspconfig()

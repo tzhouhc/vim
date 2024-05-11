@@ -25,7 +25,7 @@ safe_require('plugins.signs')
 safe_require('plugins.arrow')
 
 -- gutentags
-vim.g.gutentags_cache_dir                = os.getenv("HOME") .. "/.vim/tags"
+vim.g.gutentags_cache_dir                = os.getenv("VIM_HOME") .. "/tags"
 -- custom tag file list using fd; see rest of dotfiles
 vim.g.gutentags_file_list_command        = "gutentagger"
 vim.g.gutentags_resolve_symlinks         = 1

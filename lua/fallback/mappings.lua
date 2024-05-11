@@ -65,8 +65,6 @@ vmap("}", "i}")
 -- quickly modify vimrc file
 nmap("<leader>ev", ":e $MYVIMRC<cr>")
 nmap("<leader>ev", ":e $MYVIMRC<cr>")
-nmap("<leader>ep", ":e ~/.vim/configs/plugs.vim<cr>")
-nmap("<leader>ef", ":e ~/.vim/ftplugin/<C-R>=&filetype<CR>.vim<CR>")
 nmap("<leader>ez", ":e $HOME/.dotfiles/zshrc<cr>")
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
 nmap("<leader>ft", ":NvimTreeToggle<CR>")

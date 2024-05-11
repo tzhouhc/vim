@@ -63,7 +63,7 @@ vim.opt.shortmess= "aFc"
 -- Keep undo history across sessions by storing it in a file
 vim.opt.undofile = true
 
-vim.opt.tags = "~/.vim/tags"
+vim.opt.tags = "$VIM_HOME/tags"
 
 -- ShaDa file -- controlling viminfo behavior
 -- ' -> marked files (file history)
@@ -81,4 +81,4 @@ vim.opt.tags = "~/.vim/tags"
 --   arguments)
 -- c -> convert the text using 'encoding'
 -- n -> name used for the ShaDa file (must be the last option)
-vim.opt.shada="'50,f1,<500,:100,@40,/20,n~/.vim/main.shada"
+vim.opt.shada="'50,f1,<500,:100,@40,/20,n$VIM_HOME/main.shada"
