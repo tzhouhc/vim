@@ -29,6 +29,9 @@ lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
+-- -- skip rust if using rustacean
+-- lsp_zero.skip_server_setup({'rust_analyzer'})
+
 -- wrap up setup
 lsp_zero.setup()
 
@@ -158,7 +161,10 @@ lspconfig.marksman.setup {
 }
 
 -- rust-analyzer
--- *NOT* done via lspconfig due to rustaceanvim handling it instead.
+-- comment out if using rustacean
+lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
+}
 
 -- symbols
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })

@@ -57,7 +57,7 @@ end
 
 function M.toggle_diffview()
   if next(safe_require('diffview.lib').views) == nil then
-    vim.cmd('DiffviewFileHistory')
+    vim.cmd('DiffviewFileHistory %')
   else
     vim.o.hidden = true
     vim.cmd('DiffviewClose')

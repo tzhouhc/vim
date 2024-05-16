@@ -95,7 +95,8 @@ safe_require('lazy').setup({
 
   -- languages
   { 'preservim/vim-markdown', branch = 'master', ft = 'markdown' },
-  { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
+  -- for advanced usage
+  -- { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
   { 'LhKipp/nvim-nu', ft = 'nu', config = { use_lsp_features = false } },
 
   -- passives
@@ -208,12 +209,12 @@ safe_require('lazy').setup({
 -- the following do not make require calls:
 -- visual effects
 safe_require('visuals')
+
+-- the following involves requiring other modules:
 -- autocommands
 safe_require('autocmds')
 -- filetypes recognition
 safe_require('files')
-
--- the following involves requiring other modules:
 -- plugin configurations
 safe_require('plugins')
 -- keymaps
