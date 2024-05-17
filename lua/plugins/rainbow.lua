@@ -23,30 +23,27 @@ M.rainbow_colors = {
   "#F7C247",
 }
 
-M.rainbow_groups = {}
-local rainbow_delim_prefix = "RainbowDelim"
-for i, color in ipairs(M.rainbow_colors) do
-  highlight(rainbow_delim_prefix..i, "guifg="..color)
-  table.insert(M.rainbow_groups, rainbow_delim_prefix..i)
-end
--- slightly darker variant
-M.rainbow_dark_groups = {}
+-- default background color for nord theme
 local bg = "#2E3440"
-local darken_factor = 0.3
-local rainbow_dark_delim_prefix = "RainbowDarkDelim"
-for i, color in ipairs(M.rainbow_colors) do
-  local darker = mix_colors(color, bg, darken_factor)
-  highlight(rainbow_dark_delim_prefix..i, "guifg="..darker)
-  table.insert(M.rainbow_dark_groups, rainbow_dark_delim_prefix..i)
+
+local make_rainbow = function(colors, prefix, bg, darken)
+  local out = {}
+  for i, color in ipairs(colors) do
+    local darker = mix_colors(color, bg, darken)
+    vim.api.nvim_set_hl(0, prefix..i, { fg = darker })
+    table.insert(out, prefix..i)
+  end
+  return out
 end
-M.rainbow_dim_groups = {}
-local dim_factor = 0.85
-local rainbow_dim_delim_prefix = "RainbowDimDelim"
-for i, color in ipairs(M.rainbow_colors) do
-  local dimer = mix_colors(color, bg, dim_factor)
-  highlight(rainbow_dim_delim_prefix..i, "guifg="..dimer)
-  table.insert(M.rainbow_dim_groups, rainbow_dim_delim_prefix..i)
-end
+
+-- vanilla version of the colors
+M.rainbow_groups = make_rainbow(M.rainbow_colors, "RainbowDelim", bg, 0)
+
+-- significantly darker variant
+M.rainbow_dark_groups = make_rainbow(M.rainbow_colors, "RainbowDarkDelim", bg, 0.3)
+
+-- slightly dim variant for less sharp colors
+M.rainbow_dim_groups = make_rainbow(M.rainbow_colors, "RainbowDimDelim", bg, 0.85)
 
 vim.g.rainbow_delimiters = {
   highlight = M.rainbow_dim_groups,
@@ -58,9 +55,8 @@ vim.g.rainbow_delimiters = {
 -- ibl
 local hooks = safe_require "ibl.hooks"
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  for i, color in ipairs(M.rainbow_colors) do
-    vim.api.nvim_set_hl(0, rainbow_delim_prefix..i, { fg = color })
-  end
+  make_rainbow(M.rainbow_colors, "RainbowDelim", bg, 0)
+  make_rainbow(M.rainbow_colors, "RainbowDarkDelim", bg, 0.3)
 end)
 
 safe_require('ibl').setup({
@@ -72,6 +68,5 @@ safe_require('ibl').setup({
 })
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-
 
 return M

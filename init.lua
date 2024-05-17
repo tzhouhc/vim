@@ -138,7 +138,10 @@ safe_require('lazy').setup({
     cmd = 'DiffviewOpen',
   },
   -- quickly toggle line comment
-  { 'numToStr/Comment.nvim',         config = true },
+  { 'numToStr/Comment.nvim',         config = true, enabled = function()
+    -- neovim 0.10.0 introduces commenting natively
+    return vim.version().minor < 10
+  end},
   -- library code
   'nvim-lua/plenary.nvim',
   -- custom commands

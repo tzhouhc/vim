@@ -10,6 +10,3 @@ vim.filetype.add({
     ['.notes'] = 'markdown',
   },
 })
-
-local ft = safe_require('Comment.ft')
-ft.kdl = '// %s'

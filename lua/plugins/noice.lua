@@ -72,7 +72,7 @@ safe_require'noice'.setup {
     },
     -- :Noice last
     last = {
-      view = "popup",
+      view = "split",
       opts = { enter = true, format = "details" },
       filter = {
         any = {
@@ -88,7 +88,7 @@ safe_require'noice'.setup {
     -- :Noice errors
     errors = {
       -- options for the message history that you get with `:Noice`
-     view = "popup",
+     view = "split",
       opts = { enter = true, format = "details" },
       filter = { error = true },
       filter_opts = { reverse = true },
@@ -204,7 +204,7 @@ safe_require'noice'.setup {
         min_length = 50,
         min_height = 5,
       },
-      view = 'popup',
+      view = 'split',
     },
   }, --- @see section on routes
   ---@type table<string, NoiceFilter>
