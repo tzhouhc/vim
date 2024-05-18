@@ -179,6 +179,21 @@ safe_require('lazy').setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = 'Oil',
   },
+  {
+    -- query devdocs inside vim
+    "luckasRanarison/nvim-devdocs",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {},
+    config = {
+      wrap = true,
+      previewer_cmd = "bat",
+      cmd_args = {"-p"},
+    }
+  },
 
   -- applications
   -- filesystem sidebar

@@ -12,6 +12,10 @@ function M.go_to_start_of_comment()
   vim.api.nvim_feedkeys("$[tf l", 'M', false)
 end
 
+function M.get_word_under_cursor()
+  return vim.fn.expand("<cword>")
+end
+
 -- three states: start of line, start of non-spaces, first after comment
 local alternating_zero_behaviors = {
   function()

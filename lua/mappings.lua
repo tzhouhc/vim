@@ -20,6 +20,7 @@ local key_configs = {
     ["<leader>en"] = ":e $HOME/.notes<cr>",
     ["<leader>ft"] = ":NvimTreeToggle<CR>",
     ["<leader>q"] = ":BD<cr>",
+    ["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
 
     -- lsp actions
     ["<leader>fc"] = ':LspZeroFormat<cr>',
