@@ -22,3 +22,6 @@ snippet ifcmd "check if cmd returned 0" b
 snippet ifosx "check if current os is darwin" b
 	if uname -a | grep -i darwin > /dev/null; then
 	fi
+
+snippet read< "multiple assignment" b
+	read -r $2 <<<\$($1)

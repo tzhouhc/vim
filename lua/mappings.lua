@@ -100,6 +100,12 @@ local key_configs = {
     -- jump to first position after the first space (to avoid comment prefixes).
     ['0'] = key_utils.alternating_zero,
   },
+  [{'i', 's'}] = {
+    -- fallback value of these commands are hardcoded to tab and s-tab, so
+    -- change the corresponding func if changed here.
+    ["<c-right>"] = { key_utils.vsnip_jump_forward, { expr = true } },
+    ["<c-left>"] = { key_utils.vsnip_jump_backward, { expr = true } },
+  },
   -- Terminal mode
   t = {
     -- terminal mode exit
@@ -108,7 +114,13 @@ local key_configs = {
 }
 
 for mode, conf in pairs(key_configs) do
-  for key, command in pairs(conf) do
-    vim.keymap.set(mode, key, command, { noremap = true, silent = true })
+  for key, val in pairs(conf) do
+    if type(val) == "string" or type(val) == "function" then
+      -- default configuration
+      vim.keymap.set(mode, key, val, { noremap = true, silent = true })
+    else
+      local command, opts = unpack(val)
+      vim.keymap.set(mode, key, command, opts)
+    end
   end
 end

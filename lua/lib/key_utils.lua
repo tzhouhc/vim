@@ -69,4 +69,20 @@ function M.toggle_diffview()
   end
 end
 
+function M.vsnip_jump_forward()
+  if vim.fn["vsnip#jumpable"](1) == 1 then
+    return'<plug>(vsnip-jump-next)'
+  else
+    return "<c-right>"
+  end
+end
+
+function M.vsnip_jump_backward()
+  if vim.fn["vsnip#jumpable"](1) == 1 then
+    return'<plug>(vsnip-jump-prev)'
+  else
+    return "<c-left>"
+  end
+end
+
 return M
