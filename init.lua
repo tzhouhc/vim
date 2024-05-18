@@ -45,7 +45,8 @@ safe_require('lazy').setup({
   'petertriho/nvim-scrollbar',
   -- nord theme
   {
-    'nordtheme/vim',
+    -- the nvim version of nord theme has better compatibility
+    'shaunsingh/nord.nvim',
     lazy = false,
     priority = 1000,
     config = function()
