@@ -6,10 +6,6 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
--- fold columd
--- relative line number, sign column, custom folding, spacer
-vim.o.statuscolumn = '%=%r%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
-
 local function highclear(name)
   vim.cmd("hi clear "..name)
 end
@@ -53,6 +49,9 @@ local hlToClear = {
 for _, c in pairs(hlToClear) do
   highclear(c)
 end
+
+-- TODO: Better visual effects to distinguish Visual selection
+highlight("Visual", "gui=underline")
 
 highlight("DiffAdd", "guibg="..diffAddedColor)
 highlight("DiffChange", "guibg="..diffChangedColor)
