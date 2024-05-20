@@ -6,60 +6,74 @@ vim.opt.concealcursor="nc"
 vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
-local function highclear(name)
-  vim.cmd("hi clear "..name)
-end
-
-local function highlight(name, vis)
-  vim.cmd("highlight " .. name .. " " .. vis)
-end
-
--- italics
-highlight("Special", "gui=italic")
-highlight("Comment", "gui=italic")
-highlight("Italic", "gui=italic")
-highlight("Bold", "gui=bold")
-highlight("mkdBold", "gui=bold")
-highlight("htmlItalic", "gui=italic")
-
--- hide trailing whitespace marker
-highclear("ExtraWhitespace")
-
--- signify
-highlight("SignifySignAdd", "guifg=#2dd671")
-highlight("SignifySignDelete", "guifg=#d94a0d")
-highlight("SignifySignChange", "guifg=#e6bf12")
-
-if vim.api.nvim_win_get_option(0, "diff") then
-  vim.opt.diffopt="filler,context:1000000"
-end
-
 -- diffview highlight groups
 vim.opt.fillchars:append("diff:/")
-local diffChangedForeground = "#F6ED56"
-local diffChangedColor = "#41423F"
-local diffAddedColor = "#38463F"
-local diffRemovedColor = "#41343A"
-local hlToClear = {
+
+-- all following highlight groups will be cleared
+local hiclear = {
+  -- hide trailing whitespace marker
+  "ExtraWhitespace",
+  "IlluminatedWordRead",
+  "IlluminatedWordWrite",
+  "IlluminatedWordText",
+
   "DiffAdd",
   "DiffChange",
   "DiffDelete",
   "DiffText",
+
+  "FlashMatch",
+  "FlashLabel",
 }
-for _, c in pairs(hlToClear) do
-  highclear(c)
+
+-- custom colors
+
+local signifyAdd = "#2DD671"
+local signifyDel = "#d94a0d"
+local signifyChange = "#e6bf12"
+
+local diffChangedForeground = "#F6ED56"
+local diffChangedColor = "#41423F"
+local diffAddedColor = "#38463F"
+local diffRemovedColor = "#41343A"
+
+local flashMatch = "#81a1c1"
+local flashLabel = "#A3BE8C"
+
+local hilight = {
+  -- italics
+  Special = "gui=italic",
+  Comment = "gui=italic",
+  Italic = "gui=italic",
+  Bold = "gui=bold",
+  mkdBold = "gui=bold",
+  htmlItalic = "gui=italic",
+
+  -- signify
+  SignifySignAdd = "guifg=" .. signifyAdd,
+  SignifySignDelete = "guifg=" .. signifyDel,
+  SignifySignChange = "guifg=" .. signifyChange,
+
+  -- illuminate word -- it tends confusing when visual selecting
+  IlluminatedWordRead = "gui=underline",
+  IlluminatedWordWrite = "gui=underline",
+  IlluminatedWordText = "gui=underline",
+
+  -- softer colors for diffing and diffview
+  DiffAdd = "guibg="..diffAddedColor,
+  DiffChange = "guibg="..diffChangedColor,
+  DiffDelete = "guibg="..diffRemovedColor.." gui=strikethrough",
+  DiffText = "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold",
+
+  -- flash.nvim jumping highlight
+  FlashMatch = "guifg=" .. flashMatch .. " gui=underline",
+  FlashLabel = "guifg=" .. flashLabel,
+}
+
+for _, hc in ipairs(hiclear) do
+  vim.cmd("hi clear "..hc)
 end
 
--- TODO: Better visual effects to distinguish Visual selection
-highlight("Visual", "gui=underline")
-
-highlight("DiffAdd", "guibg="..diffAddedColor)
-highlight("DiffChange", "guibg="..diffChangedColor)
-highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
-highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
-
--- flash.nvim jumping highlight
-highclear("FlashMatch")
-highlight("FlashMatch", "guifg=#81a1c1 gui=underline")
-highclear("FlashLabel")
-highlight("FlashLabel", "guifg=#A3BE8C")
+for hg, gui in pairs(hilight) do
+  vim.cmd("hi " .. hg .. " " .. gui)
+end
