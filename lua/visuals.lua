@@ -7,7 +7,7 @@ vim.opt.foldlevelstart=99
 vim.opt.colorcolumn="80"
 
 -- diffview highlight groups
-vim.opt.fillchars:append("diff:/")
+vim.opt.fillchars:append("diff:╱")
 
 -- all following highlight groups will be cleared
 local hiclear = {

@@ -27,6 +27,8 @@ safe_require('plugins.arrow')
 safe_require('plugins.devdocs')
 -- regex explainer
 safe_require('plugins.regexexplainer')
+-- diffview
+safe_require('plugins.diffview')
 
 -- gutentags
 vim.g.gutentags_cache_dir                = os.getenv("VIM_HOME") .. "/tags"

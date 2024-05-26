@@ -16,7 +16,7 @@ vim.api.nvim_create_user_command('Marks', safe_require('telescope.builtin').mark
 
 vim.api.nvim_create_user_command('GetPluginLink', misc.get_current_line_plugin, {})
 
-vim.api.nvim_create_user_command('LazyGit', terms.lazy_git, {})
+vim.api.nvim_create_user_command('Git', terms.lazy_git, {})
 vim.api.nvim_create_user_command('Yazi', terms.yazi, {})
 
 -- Commander
@@ -34,7 +34,7 @@ local commands_table = {
   "Twilight",
   "Nerdy",
   "Lazy",
-  "LazyGit",
+  "Git",
   "Trouble",
   "Mason",
   "Yazi",

@@ -21,6 +21,7 @@ local key_configs = {
     ["<leader>ft"] = ":NvimTreeToggle<CR>",
     ["<leader>q"] = ":BD<cr>",
     ["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
+    ["<leader>lg"] = ":Git<cr>",
 
     -- lsp actions
     ["<leader>fc"] = ':LspZeroFormat<cr>',

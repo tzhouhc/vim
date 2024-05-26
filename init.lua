@@ -139,10 +139,7 @@ safe_require('lazy').setup({
   -- git differ
   {
     'sindrets/diffview.nvim',
-    config = {
-      enhanced_diff_hl = true,
-    },
-    cmd = 'DiffviewOpen',
+    cmd = {'DiffviewOpen', 'DiffviewFileHistory'},
   },
   -- quickly toggle line comment
   { 'numToStr/Comment.nvim',         config = true, enabled = function()
