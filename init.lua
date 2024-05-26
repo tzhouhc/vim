@@ -188,19 +188,13 @@ safe_require('lazy').setup({
   },
   {
     -- query devdocs inside vim
-    "luckasRanarison/nvim-devdocs",
+    "tzhouhc/nvim-devdocs",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {},
     cmd = "DevdocsOpenCurrentFloat",
-    config = {
-      wrap = true,
-      previewer_cmd = "bat",
-      cmd_args = {"-p"},
-    }
   },
 
   -- applications

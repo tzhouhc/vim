@@ -23,6 +23,8 @@ safe_require('plugins.lualine')
 safe_require('plugins.signs')
 -- bookmarks
 safe_require('plugins.arrow')
+-- devdocs
+safe_require('plugins.devdocs')
 -- regex explainer
 safe_require('plugins.regexexplainer')
 

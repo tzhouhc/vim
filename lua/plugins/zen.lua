@@ -41,7 +41,7 @@ safe_require("zen-mode").setup({
     },
   },
   -- callback where you can add custom code when the Zen window opens
-  on_open = function(win)
+  on_open = function(_)
     vim.o.statuscolumn = ' '
     vim.cmd("ScrollbarHide")
     vim.opt.colorcolumn=""
