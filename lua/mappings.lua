@@ -109,7 +109,7 @@ local key_configs = {
   -- Terminal mode
   t = {
     -- terminal mode exit
-    ['<esc>'] = "<C-\\><C-n>",
+    ['<c-w><esc>'] = "<C-\\><C-n>",
   }
 }
 

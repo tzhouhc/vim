@@ -5,6 +5,7 @@ local safe_require = require('lib.meta').safe_require
 -- Custom Commands
 local scopes = safe_require('lib.scopes')
 local misc = safe_require('lib.misc')
+local terms = safe_require('plugins.terms')
 
 vim.api.nvim_create_user_command('Runtimes', scopes.runtime_files, {})
 vim.api.nvim_create_user_command('VimConfigs', scopes.find_configs, {})
@@ -14,6 +15,9 @@ vim.api.nvim_create_user_command('Snippets', scopes.find_snippets, {})
 vim.api.nvim_create_user_command('Marks', safe_require('telescope.builtin').marks, {})
 
 vim.api.nvim_create_user_command('GetPluginLink', misc.get_current_line_plugin, {})
+
+vim.api.nvim_create_user_command('LazyGit', terms.lazy_git, {})
+vim.api.nvim_create_user_command('Yazi', terms.yazi, {})
 
 -- Commander
 local c = safe_require('commander')
@@ -30,8 +34,10 @@ local commands_table = {
   "Twilight",
   "Nerdy",
   "Lazy",
+  "LazyGit",
   "Trouble",
   "Mason",
+  "Yazi",
   "ZenMode",
   "Marks",
   { "DevDocs",                          com = "<CMD>DevdocsOpenCurrentFloat<cr>",     cat = "Documentation" },

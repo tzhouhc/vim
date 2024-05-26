@@ -134,6 +134,8 @@ safe_require('lazy').setup({
   'mbbill/undotree',
   -- regex explainer
   'bennypowers/nvim-regexplainer',
+  -- floating terminal
+  { 'voldikss/vim-floaterm', cmd = 'FloatermNew' },
   -- git differ
   {
     'sindrets/diffview.nvim',
