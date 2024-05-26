@@ -16,6 +16,7 @@ safe_require 'nvim-treesitter.configs'.setup {
     "just",
     "lua",
     "python",
+    "regex",
     "ruby",
     "vim",
     "vimdoc",

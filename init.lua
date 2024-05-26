@@ -132,6 +132,8 @@ safe_require('lazy').setup({
   'mg979/vim-visual-multi',
   -- unto tree
   'mbbill/undotree',
+  -- regex explainer
+  'bennypowers/nvim-regexplainer',
   -- git differ
   {
     'sindrets/diffview.nvim',

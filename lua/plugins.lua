@@ -23,6 +23,8 @@ safe_require('plugins.lualine')
 safe_require('plugins.signs')
 -- bookmarks
 safe_require('plugins.arrow')
+-- regex explainer
+safe_require('plugins.regexexplainer')
 
 -- gutentags
 vim.g.gutentags_cache_dir                = os.getenv("VIM_HOME") .. "/tags"
