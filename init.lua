@@ -130,6 +130,8 @@ safe_require('lazy').setup({
   { "folke/zen-mode.nvim", cmd = "ZenMode" },
   -- multiple cursors
   'mg979/vim-visual-multi',
+  -- unto tree
+  'mbbill/undotree',
   -- git differ
   {
     'sindrets/diffview.nvim',
@@ -189,6 +191,7 @@ safe_require('lazy').setup({
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {},
+    cmd = "DevdocsOpenCurrentFloat",
     config = {
       wrap = true,
       previewer_cmd = "bat",

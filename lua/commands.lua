@@ -34,6 +34,8 @@ local commands_table = {
   "Mason",
   "ZenMode",
   "Marks",
+  { "DevDocs",                          com = "<CMD>DevdocsOpenCurrentFloat<cr>",     cat = "Documentation" },
+  { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },
   { "Fold All",                         com = "zM",                                   cat = "Folding" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },

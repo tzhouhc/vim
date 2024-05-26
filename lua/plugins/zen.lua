@@ -12,13 +12,13 @@ safe_require("zen-mode").setup({
     -- by default, no options are changed for the Zen window
     -- uncomment any of the options below, or add other vim.wo options you want to apply
     options = {
-      -- signcolumn = "no", -- disable signcolumn
+      signcolumn = "no", -- disable signcolumn
       number = false, -- disable number column
       relativenumber = false, -- disable relative numbers
-      -- cursorline = false, -- disable cursorline
+      cursorline = false, -- disable cursorline
       cursorcolumn = false, -- disable cursor column
       foldcolumn = "0", -- disable fold column
-      -- list = false, -- disable whitespace characters
+      list = false, -- disable whitespace characters
     },
   },
   plugins = {
@@ -35,33 +35,21 @@ safe_require("zen-mode").setup({
     twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
-    -- this will change the font size on kitty when in zen mode
-    -- to make this work, you need to set the following kitty options:
-    -- - allow_remote_control socket-only
-    -- - listen_on unix:/tmp/kitty
-    kitty = {
-      enabled = false,
-      font = "+4", -- font size increment
-    },
-    -- this will change the font size on alacritty when in zen mode
-    -- requires  Alacritty Version 0.10.0 or higher
-    -- uses `alacritty msg` subcommand to change font size
-    alacritty = {
-      enabled = false,
-      font = "14", -- font size
-    },
-    -- this will change the font size on wezterm when in zen mode
-    -- See alse also the Plugins/Wezterm section in this projects README
     wezterm = {
-      enabled = false,
-      -- can be either an absolute font size or the number of incremental steps
-      font = "+4", -- (10% increase per step)
+      enabled = true,
+      font = "+2",
     },
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
+    vim.o.statuscolumn = ' '
+    vim.cmd("ScrollbarHide")
+    vim.opt.colorcolumn=""
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
+    vim.o.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum}%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
+    vim.cmd("ScrollbarShow")
+    vim.opt.colorcolumn="80"
   end,
 })
