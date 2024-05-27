@@ -34,7 +34,7 @@ safe_require('lazy').setup({
   -- % to jump to matching "pair"
   'andymass/vim-matchup',
   -- overall better movement methods
-  { 'folke/flash.nvim', config = { modes = { search = { enabled = false } } } },
+  { 'folke/flash.nvim', opts = { modes = { search = { enabled = false } } } },
 
   -- visuals
   -- create vertical lines to mark indentation.
@@ -59,7 +59,7 @@ safe_require('lazy').setup({
   -- 'tabs'
   {
     'akinsho/bufferline.nvim',
-    config = {
+    opts = {
       options = {
         show_buffer_close_icons = false,
       }
@@ -98,7 +98,7 @@ safe_require('lazy').setup({
   { 'preservim/vim-markdown', branch = 'master', ft = 'markdown' },
   -- for advanced usage
   -- { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
-  { 'LhKipp/nvim-nu', ft = 'nu', config = { use_lsp_features = false } },
+  { 'LhKipp/nvim-nu', ft = 'nu', opts = { use_lsp_features = false } },
 
   -- passives
   -- automatically close/add pairs
