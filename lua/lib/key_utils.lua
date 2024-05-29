@@ -2,6 +2,8 @@ local safe_require = require('lib.meta').safe_require
 
 local M = {}
 
+-- WARN: doesn't quite work well enough if line doesn't contain comment or TS
+-- doesn't recognize comments for current context
 function M.go_to_start_of_comment()
   -- this _does_ require remapping from tree-sitter's text object seeking.
   -- we go to end of line the seek backwards since we want to avoid the
@@ -25,7 +27,7 @@ local alternating_zero_behaviors = {
     vim.api.nvim_feedkeys("^", 'n', false)
   end,
   function()
-    M.go_to_start_of_comment()
+    vim.api.nvim_feedkeys("f l", 'n', false)
   end,
 }
 
