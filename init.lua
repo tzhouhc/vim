@@ -40,7 +40,13 @@ safe_require('lazy').setup({
   -- create vertical lines to mark indentation.
   'lukas-reineke/indent-blankline.nvim',
   -- icons
-  'nvim-tree/nvim-web-devicons',
+  (function()
+    if os.getenv("NERDFONT") == "2" then
+      return { 'nvim-tree/nvim-web-devicons', tag = 'nerd-v2-compat' }
+    else
+      return 'nvim-tree/nvim-web-devicons'
+    end
+  end)(),
   -- scrollbar for checking location in file
   'petertriho/nvim-scrollbar',
   -- nord theme
