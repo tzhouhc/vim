@@ -49,6 +49,14 @@ local key_configs = {
     -- alternate window movement
     ["[w"] = "<c-w><left>",
     ["]w"] = "<c-w><right>",
+    -- quicklist movement
+    ["[q"] = ":cprev<cr>",
+    ["]q"] = ":cnext<cr>",
+    ["[Q"] = ":cfirst<cr>",
+    ["]Q"] = ":clast<cr>",
+    -- create empty lines without moving
+    ["[<space>"] = key_utils.add_blank_line_before,
+    ["]<space>"] = key_utils.add_blank_line_after,
 
     -- Telescope
     -- for local files and local tags

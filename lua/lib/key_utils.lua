@@ -87,4 +87,14 @@ function M.vsnip_jump_backward()
   end
 end
 
+function M.add_blank_line_after()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_buf_set_lines(0, row, row, false, {""})
+end
+
+function M.add_blank_line_before()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, {""})
+end
+
 return M
