@@ -80,6 +80,7 @@ local key_configs = {
 
     -- smarter shift I
     ['I'] = key_utils.smarter_shift_i,
+    ['<m-i>'] = key_utils.smart_move_to_start_and_insert,
   },
   -- Visual mode
   v = {
@@ -108,6 +109,10 @@ local key_configs = {
     ["X"] = '"_dd',
     -- jump to first position after the first space (to avoid comment prefixes).
     ['0'] = key_utils.alternating_zero,
+    -- jump to start of text object, be situationally aware
+    ['<m-0>'] = key_utils.smart_move_to_start,
+    ['<m-left>'] = key_utils.smart_move_to_start,
+    ['<m-right>'] = key_utils.smart_move_to_end,
   },
   [{'i', 's'}] = {
     -- fallback value of these commands are hardcoded to tab and s-tab, so

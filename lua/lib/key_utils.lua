@@ -1,4 +1,6 @@
 local safe_require = require('lib.meta').safe_require
+local misc = safe_require('lib.misc')
+local ts = require 'nvim-treesitter.ts_utils'
 
 local M = {}
 
@@ -59,6 +61,47 @@ function M.smarter_shift_i()
     end
   end
   vim.api.nvim_feedkeys("I", 'n', false)
+end
+
+local meta_i_surround = {
+  string = true,
+  arguments = true,
+  parenthesized_expression = true,
+  -- bracket_index_expression = true,  -- range is outside of the bracket area
+  comment_content = true,
+}
+
+-- a smarter "go to the start" key, which
+--   - if in a word, move to start of word
+--   - if in a string or comment, move to start of string
+--   - if in arguments list, go to after the opening parens
+-- TODO: better thought out logic for the "smarter" suit of movements.
+function M.smart_move_to_start()
+  local node = ts.get_node_at_cursor()
+  if node == nil then
+    return
+  elseif meta_i_surround[node:type()] then
+    local row, col = node:range()
+    vim.fn.cursor(row + 1, col + 2)
+  else  -- defaults to go to start of range
+    local row, col = node:range()
+    vim.fn.cursor(row + 1, col + 1)
+  end
+end
+
+function M.smart_move_to_end()
+  local node = ts.get_node_at_cursor()
+  if node == nil then
+    return
+  else
+    local _, _, row, col = node:range()
+    vim.fn.cursor(row + 1, col + 1)
+  end
+end
+
+function M.smart_move_to_start_and_insert()
+  M.smart_move_to_start()
+  vim.cmd.startinsert()
 end
 
 function M.toggle_diffview()

@@ -54,7 +54,7 @@ safe_require 'nvim-treesitter.configs'.setup {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["az"] = { query = "@fold", query_group = "folds", desc = "Entire fold" },
+        ["ac"] = "@comment.outer",
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
