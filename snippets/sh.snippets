@@ -30,3 +30,6 @@ snippet cwd "go to directory containing the script" b
 	cwd="$(dirname "$0")"
 	cd cwd
 
+snippet forline "for each line in input" b
+	for line in \$(<$1); do
+	done

@@ -15,7 +15,9 @@ local key_configs = {
 	n = {
 		-- cancel search/flash highlight
 		["<esc>"] = "<esc>:noh<CR>",
-		-- ==== leader actions ====
+		-- close all non-main windows
+		["<esc><esc>"] = ":only<CR>",
+		-- leader actions
 		["<leader>ev"] = ":e $MYVIMRC<cr>",
 		["<leader>en"] = ":e $HOME/.notes<cr>",
 		["<leader>ft"] = ":NvimTreeToggle<CR>",
@@ -23,7 +25,7 @@ local key_configs = {
 		["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
 		["<leader>lg"] = ":Git<cr>",
 
-    -- trouble
+		-- trouble
 		["<leader>tr"] = ":Trouble diagnostics toggle filter.buf=0<cr>",
 
 		-- diffview
@@ -117,6 +119,9 @@ local key_configs = {
 		-- change the corresponding func if changed here.
 		["<c-right>"] = { key_utils.vsnip_jump_forward, { expr = true } },
 		["<c-left>"] = { key_utils.vsnip_jump_backward, { expr = true } },
+
+		-- enter new line but don't keep commenting if currently in comment block
+		["<s-cr>"] = "<esc>o<esc>cc",
 	},
 	-- Terminal mode
 	t = {
