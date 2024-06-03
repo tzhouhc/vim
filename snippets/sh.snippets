@@ -25,3 +25,8 @@ snippet ifosx "check if current os is darwin" b
 
 snippet read< "multiple assignment" b
 	read -r $2 <<<\$($1)
+
+snippet cwd "go to directory containing the script" b
+	cwd="$(dirname "$0")"
+	cd cwd
+

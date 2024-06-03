@@ -34,7 +34,7 @@ vim.opt.mouse = "a"
 vim.opt.whichwrap = "<,>,[,]"
 
 -- encoding
-vim.opt.encoding="UTF-8"
+vim.opt.encoding = "UTF-8"
 
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
@@ -45,9 +45,9 @@ vim.opt.cursorline = true
 -- folding (note -- number due to effect of plugin "ufo")
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 20
-vim.opt.foldcolumn = '1'
+vim.opt.foldcolumn = "1"
 vim.opt.foldlevelstart = 20
-vim.opt.foldmethod="indent"
+vim.opt.foldmethod = "indent"
 
 -- disable swapfiles
 vim.opt.swapfile = false
@@ -61,7 +61,7 @@ vim.opt.diffopt:append("algorithm:patience")
 -- command area height and 'hit-enter' message prevention
 vim.opt.cmdheight = 1
 vim.opt.shortmess = "laoOAIcCF"
-vim.opt.shortmess= "aFc"
+vim.opt.shortmess = "aFc"
 
 -- Keep undo history across sessions by storing it in a file
 vim.opt.undofile = true
@@ -84,4 +84,4 @@ vim.opt.tags = "$VIM_HOME/tags"
 --   arguments)
 -- c -> convert the text using 'encoding'
 -- n -> name used for the ShaDa file (must be the last option)
-vim.opt.shada="'50,f1,<500,:100,@40,/20,n$VIM_HOME/main.shada"
+vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$VIM_HOME/main.shada"

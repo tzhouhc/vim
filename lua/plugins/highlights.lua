@@ -1,4 +1,4 @@
-local safe_require = require('lib.meta').safe_require
+local safe_require = require("lib.meta").safe_require
 
 -- safe_require("paint").setup({
 --   highlights = {

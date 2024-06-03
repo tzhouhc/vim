@@ -2,19 +2,19 @@
 
 vim.g.mapleader = "\\"
 
-local safe_require = require('lib.meta').safe_require
-local key_utils = safe_require('lib.key_utils')
+local safe_require = require("lib.meta").safe_require
+local key_utils = safe_require("lib.key_utils")
 
 local function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 local function nmap(shortcut, command)
-  map('n', shortcut, command)
+	map("n", shortcut, command)
 end
 
 local function vmap(shortcut, command)
-  map('v', shortcut, command)
+	map("v", shortcut, command)
 end
 
 -- ===========================
@@ -90,7 +90,7 @@ nmap("]t", ":tabn<cr>")
 
 -- tmux-like splitting
 nmap("<c-w>%", ":vsplit<cr>")
-nmap("<c-w>\"", ":split<cr>")
+nmap('<c-w>"', ":split<cr>")
 nmap("<c-w>z", ":only<cr>")
 -- alternate window movement
 nmap("[w", "<c-w><left>")
@@ -98,15 +98,15 @@ nmap("]w", "<c-w><right>")
 
 -- replace currently selected text with default register
 -- without yanking it.
-vmap("p", "\"_dP")
+vmap("p", '"_dP')
 
 -- use telescopes for registers invocation instead
 nmap("<leader>p", ":Telescope registers<cr>")
-vmap("<leader>p", "\"_d<esc>:Telescope registers<cr>")
+vmap("<leader>p", '"_d<esc>:Telescope registers<cr>')
 
 -- meta+f to select and go to one specific letter on screen
-nmap('<m-f>', '<Plug>(easymotion-bd-f)')
-vmap('<m-f>', '<Plug>(easymotion-bd-f)')
+nmap("<m-f>", "<Plug>(easymotion-bd-f)")
+vmap("<m-f>", "<Plug>(easymotion-bd-f)")
 
 -- Telescope
 -- for local files and local tags
@@ -127,19 +127,19 @@ nmap("<m-p>", ":Telescope registers<cr>")
 vmap("<m-p>", "d<esc>:Telescope registers<cr>")
 
 -- terminal mode exit
-vim.api.nvim_set_keymap('t', '<esc>', "<C-\\><C-n>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 -- better cutting (`x` no longer yanks due to cutlass, but it doesn't delete the whole line.)
 nmap("X", '"_dd')
 vmap("X", '"_dd')
 
 -- jump to first position after the first space (to avoid comment prefixes).
-vim.keymap.set('n', '0', key_utils.alternating_zero, { noremap = true, silent = true })
-vim.keymap.set('v', '0', key_utils.alternating_zero, { noremap = true, silent = true })
+vim.keymap.set("n", "0", key_utils.alternating_zero, { noremap = true, silent = true })
+vim.keymap.set("v", "0", key_utils.alternating_zero, { noremap = true, silent = true })
 
-vim.keymap.set('n', 'I', key_utils.smarter_shift_i, { noremap = true, silent = true })
+vim.keymap.set("n", "I", key_utils.smarter_shift_i, { noremap = true, silent = true })
 
 -- lsp actions
-nmap("<leader>fc", ':LspZeroFormat<cr>')
-nmap("<leader>rn", '<cmd>lua vim.lsp.buf.rename()<cr>')
-nmap("<leader>tr", ':TroubleToggle<cr>')
+nmap("<leader>fc", ":LspZeroFormat<cr>")
+nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
+nmap("<leader>tr", ":TroubleToggle<cr>")

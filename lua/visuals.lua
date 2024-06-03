@@ -1,29 +1,29 @@
 -- Visual Experience Configurations
 
 -- other options
-vim.opt.conceallevel=2
-vim.opt.concealcursor="nc"
-vim.opt.foldlevelstart=99
-vim.opt.colorcolumn="80"
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+vim.opt.foldlevelstart = 99
+vim.opt.colorcolumn = "80"
 
 -- diffview highlight groups
 vim.opt.fillchars:append("diff:╱")
 
 -- all following highlight groups will be cleared
 local hiclear = {
-  -- hide trailing whitespace marker
-  "ExtraWhitespace",
-  "IlluminatedWordRead",
-  "IlluminatedWordWrite",
-  "IlluminatedWordText",
+	-- hide trailing whitespace marker
+	"ExtraWhitespace",
+	"IlluminatedWordRead",
+	"IlluminatedWordWrite",
+	"IlluminatedWordText",
 
-  "DiffAdd",
-  "DiffChange",
-  "DiffDelete",
-  "DiffText",
+	"DiffAdd",
+	"DiffChange",
+	"DiffDelete",
+	"DiffText",
 
-  "FlashMatch",
-  "FlashLabel",
+	"FlashMatch",
+	"FlashLabel",
 }
 
 -- custom colors
@@ -41,39 +41,39 @@ local flashMatch = "#81a1c1"
 local flashLabel = "#A3BE8C"
 
 local hilight = {
-  -- italics
-  Special = "gui=italic",
-  Comment = "gui=italic",
-  Italic = "gui=italic",
-  Bold = "gui=bold",
-  mkdBold = "gui=bold",
-  htmlItalic = "gui=italic",
+	-- italics
+	Special = "gui=italic",
+	Comment = "gui=italic",
+	Italic = "gui=italic",
+	Bold = "gui=bold",
+	mkdBold = "gui=bold",
+	htmlItalic = "gui=italic",
 
-  -- signify
-  SignifySignAdd = "guifg=" .. signifyAdd,
-  SignifySignDelete = "guifg=" .. signifyDel,
-  SignifySignChange = "guifg=" .. signifyChange,
+	-- signify
+	SignifySignAdd = "guifg=" .. signifyAdd,
+	SignifySignDelete = "guifg=" .. signifyDel,
+	SignifySignChange = "guifg=" .. signifyChange,
 
-  -- illuminate word -- it tends confusing when visual selecting
-  IlluminatedWordRead = "gui=underline",
-  IlluminatedWordWrite = "gui=underline",
-  IlluminatedWordText = "gui=underline",
+	-- illuminate word -- it tends confusing when visual selecting
+	IlluminatedWordRead = "gui=underline",
+	IlluminatedWordWrite = "gui=underline",
+	IlluminatedWordText = "gui=underline",
 
-  -- softer colors for diffing and diffview
-  DiffAdd = "guibg="..diffAddedColor,
-  DiffChange = "guibg="..diffChangedColor,
-  DiffDelete = "guibg="..diffRemovedColor.." gui=strikethrough",
-  DiffText = "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold",
+	-- softer colors for diffing and diffview
+	DiffAdd = "guibg=" .. diffAddedColor,
+	DiffChange = "guibg=" .. diffChangedColor,
+	DiffDelete = "guibg=" .. diffRemovedColor .. " gui=strikethrough",
+	DiffText = "guibg=" .. diffChangedColor .. " guifg=" .. diffChangedForeground .. " gui=bold",
 
-  -- flash.nvim jumping highlight
-  FlashMatch = "guifg=" .. flashMatch .. " gui=underline",
-  FlashLabel = "guifg=" .. flashLabel,
+	-- flash.nvim jumping highlight
+	FlashMatch = "guifg=" .. flashMatch .. " gui=underline",
+	FlashLabel = "guifg=" .. flashLabel,
 }
 
 for _, hc in ipairs(hiclear) do
-  vim.cmd("hi clear "..hc)
+	vim.cmd("hi clear " .. hc)
 end
 
 for hg, gui in pairs(hilight) do
-  vim.cmd("hi " .. hg .. " " .. gui)
+	vim.cmd("hi " .. hg .. " " .. gui)
 end

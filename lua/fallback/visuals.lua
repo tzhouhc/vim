@@ -3,20 +3,20 @@
 ---@diagnostic disable: missing-fields
 -- theme
 vim.cmd("colorscheme nord")
-local safe_require = require('lib.meta').safe_require
+local safe_require = require("lib.meta").safe_require
 
 -- other options
-vim.opt.conceallevel=2
-vim.opt.concealcursor="nc"
-vim.opt.foldlevelstart=99
-vim.opt.colorcolumn="80"
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+vim.opt.foldlevelstart = 99
+vim.opt.colorcolumn = "80"
 
 local function highclear(name)
-  vim.cmd("hi clear "..name)
+	vim.cmd("hi clear " .. name)
 end
 
 local function highlight(name, vis)
-  vim.cmd("highlight " .. name .. " " .. vis)
+	vim.cmd("highlight " .. name .. " " .. vis)
 end
 
 -- italics
@@ -33,7 +33,7 @@ highlight("SignifySignDelete", "guifg=#d94a0d")
 highlight("SignifySignChange", "guifg=#e6bf12")
 
 if vim.api.nvim_win_get_option(0, "diff") then
-  vim.opt.diffopt="filler,context:1000000"
+	vim.opt.diffopt = "filler,context:1000000"
 end
 
 -- diffview
@@ -43,16 +43,16 @@ local diffChangedColor = "#41423F"
 local diffAddedColor = "#38463F"
 local diffRemovedColor = "#41343A"
 local hlToClear = {
-  "DiffAdd",
-  "DiffChange",
-  "DiffDelete",
-  "DiffText",
+	"DiffAdd",
+	"DiffChange",
+	"DiffDelete",
+	"DiffText",
 }
 for _, c in pairs(hlToClear) do
-  highclear(c)
+	highclear(c)
 end
 
-highlight("DiffAdd", "guibg="..diffAddedColor)
-highlight("DiffChange", "guibg="..diffChangedColor)
-highlight("DiffDelete", "guibg="..diffRemovedColor.." gui=strikethrough")
-highlight("DiffText", "guibg="..diffChangedColor.." guifg="..diffChangedForeground.." gui=bold")
+highlight("DiffAdd", "guibg=" .. diffAddedColor)
+highlight("DiffChange", "guibg=" .. diffChangedColor)
+highlight("DiffDelete", "guibg=" .. diffRemovedColor .. " gui=strikethrough")
+highlight("DiffText", "guibg=" .. diffChangedColor .. " guifg=" .. diffChangedForeground .. " gui=bold")

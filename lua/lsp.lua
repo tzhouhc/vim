@@ -1,32 +1,32 @@
 -- LSP configurations
 
 ---@diagnostic disable: missing-fields
-local safe_require = require('lib.meta').safe_require
+local safe_require = require("lib.meta").safe_require
 
-local cmp = safe_require('cmp')
-local lsp_zero = safe_require('lsp-zero').preset({})
-local cmp_action = safe_require('lsp-zero').cmp_action()
-local capabilities = safe_require('cmp_nvim_lsp').default_capabilities()
-local cmp_autopairs = safe_require('nvim-autopairs.completion.cmp')
-local lspconfig = safe_require('lspconfig')
-local lspkind = safe_require('lspkind')
+local cmp = safe_require("cmp")
+local lsp_zero = safe_require("lsp-zero").preset({})
+local cmp_action = safe_require("lsp-zero").cmp_action()
+local capabilities = safe_require("cmp_nvim_lsp").default_capabilities()
+local cmp_autopairs = safe_require("nvim-autopairs.completion.cmp")
+local lspconfig = safe_require("lspconfig")
+local lspkind = safe_require("lspkind")
 
 vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
 -- LSP Zero presets
 -- lsp_zero.extend_lspconfig()
 lsp_zero.on_attach(function(_, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
+	-- see :help lsp-zero-keybindings
+	-- to learn the available actions
 
-  -- K: display hover
-  -- gd: go to definition
-  -- gD: go to declaration
-  -- gi: list all implementations
-  -- go: go to type definition
-  -- gr: list all references
-  -- gs: show signature info
-  lsp_zero.default_keymaps({ buffer = bufnr })
+	-- K: display hover
+	-- gd: go to definition
+	-- gD: go to declaration
+	-- gi: list all implementations
+	-- go: go to type definition
+	-- gr: list all references
+	-- gs: show signature info
+	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 -- -- skip rust if using rustacean
@@ -39,148 +39,145 @@ safe_require("mason").setup()
 safe_require("mason-lspconfig").setup()
 
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
 -- theoretically, lsp-zero setups the following for us
 cmp.setup({
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  }, {
-    { name = 'buffer' },
-    { name = 'path' },
-  }),
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      -- can also be a function to dynamically calculate max width such as
-      -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-      ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-    })
-  },
-  mapping = {
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      local has_words = has_words_before()
-      -- enables typing multiple tabs even if autocomplete already triggered.
-      -- why the hell is autocomplete triggering on empty stuff though?
-      if cmp.visible() and has_words then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-  },
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "vsnip" },
+	}, {
+		{ name = "buffer" },
+		{ name = "path" },
+	}),
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = "symbol", -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			-- can also be a function to dynamically calculate max width such as
+			-- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+		}),
+	},
+	mapping = {
+		["<Tab>"] = cmp.mapping(function(fallback)
+			local has_words = has_words_before()
+			-- enables typing multiple tabs even if autocomplete already triggered.
+			-- why the hell is autocomplete triggering on empty stuff though?
+			if cmp.visible() and has_words then
+				cmp.select_next_item()
+			elseif vim.fn["vsnip#available"](1) == 1 then
+				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			elseif has_words then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+				feedkey("<Plug>(vsnip-jump-prev)", "")
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable,
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<C-f>"] = cmp_action.luasnip_jump_forward(),
+		["<C-b>"] = cmp_action.luasnip_jump_backward(),
+	},
 })
 
 -- lang specific
-cmp.setup.filetype('sh', {
-  sources = cmp.config.sources({
-    { name = 'cmdline' },
-    { name = 'path' },
-    { name = 'vsnip' },
-  })
+cmp.setup.filetype("sh", {
+	sources = cmp.config.sources({
+		{ name = "cmdline" },
+		{ name = "path" },
+		{ name = "vsnip" },
+	}),
 })
 
 -- autopair
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- python
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-}
+lspconfig.pyright.setup({
+	capabilities = capabilities,
+})
 
-lspconfig.pylsp.setup {
-  capabilities = capabilities,
-}
+lspconfig.pylsp.setup({
+	capabilities = capabilities,
+})
 
 -- lua
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim', 'hs' }
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-          -- hammerspoon
-          ['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
-        },
-      },
-    }
-  }
-}
+lspconfig.lua_ls.setup({
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim", "hs" },
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+					-- hammerspoon
+					["/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/"] = true,
+				},
+			},
+		},
+	},
+})
 
 -- markdown
-lspconfig.marksman.setup {
-  capabilities = capabilities,
-}
+lspconfig.marksman.setup({
+	capabilities = capabilities,
+})
 
 -- rust-analyzer
 -- comment out if using rustacean
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-}
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+})
 
 -- symbols
-vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 ---- NULL-LS ----
 local null_ls = safe_require("null-ls")
 null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    -- null_ls.builtins.completion.spell,
-    null_ls.builtins.hover.dictionary,
-    null_ls.builtins.hover.printenv.with({
-      extra_filetypes = { 'zsh' },
-    })
-  },
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		-- null_ls.builtins.completion.spell,
+		null_ls.builtins.hover.dictionary,
+		null_ls.builtins.hover.printenv.with({
+			extra_filetypes = { "zsh" },
+		}),
+	},
 })
