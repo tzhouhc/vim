@@ -23,9 +23,7 @@ local key_configs = {
 		["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
 		["<leader>lg"] = ":Git<cr>",
 
-		-- lsp actions
-		["<leader>fc"] = ":LspZeroFormat<cr>",
-		["<leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
+    -- trouble
 		["<leader>tr"] = ":Trouble diagnostics toggle filter.buf=0<cr>",
 
 		-- diffview

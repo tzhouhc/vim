@@ -225,7 +225,6 @@ safe_require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-path",
 	"onsails/lspkind.nvim",
-	"VonHeikemen/lsp-zero.nvim",
 	"nvimtools/none-ls.nvim",
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "Trouble", opts = {} },
 
@@ -248,7 +247,9 @@ safe_require("plugins")
 safe_require("mappings")
 -- vim options
 safe_require("settings")
--- completion and language services
+-- language services
 safe_require("lsp")
+-- completions via nvim-cmp
+safe_require("completions")
 -- commander
 safe_require("commands")
