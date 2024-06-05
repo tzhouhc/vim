@@ -190,7 +190,7 @@ safe_require("noice").setup({
 		-- you can also add custom presets that you can enable/disable with enabled=true
 		bottom_search = false, -- use a classic bottom cmdline for search
 		command_palette = true, -- position the cmdline and popupmenu together
-		long_message_to_split = true, -- long messages will be sent to a split
+		long_message_to_split = false, -- long messages will be sent to a split
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 	throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
@@ -198,13 +198,30 @@ safe_require("noice").setup({
 	views = noice_views, ---@see section on views
 	---@type NoiceRouteConfig[]
 	routes = {
+    {
+      -- don't show grep stdout.
+      filter = {
+        event = "msg_show",
+        find = " grep"
+      },
+      opts = { skip = true },
+    },
 		{
-			filter = {
+      -- for "msg_show" that is too long, throw into a temp hover in the top
+      -- right of screen.
+ 			filter = {
 				event = "msg_show",
-				min_length = 50,
 				min_height = 5,
 			},
-			view = "split",
+			view = "temp_corner_popup",
+		},
+		{
+      -- similar to above, but length-wise.
+ 			filter = {
+				event = "msg_show",
+				min_length = 100,
+			},
+			view = "temp_corner_popup",
 		},
 	}, --- @see section on routes
 	---@type table<string, NoiceFilter>

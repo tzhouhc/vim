@@ -85,3 +85,10 @@ vim.opt.tags = "$VIM_HOME/tags"
 -- c -> convert the text using 'encoding'
 -- n -> name used for the ShaDa file (must be the last option)
 vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$VIM_HOME/main.shada"
+
+-- grepprg
+if vim.fn.executable("rg") then
+  -- show each match on a separate line; use PCRE2; don't use coloring
+  vim.opt.grepprg = 'rg --vimgrep -P --color=never'
+  vim.opt.grepformat = "%f:%l:%c:%m"
+end

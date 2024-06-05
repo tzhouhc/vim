@@ -61,6 +61,42 @@ M.views = {
 			},
 		},
 	},
+	-- temporary popup in the top right corner that soon disappears
+	temp_corner_popup = {
+		backend = "popup",
+		relative = "editor",
+		focusable = true,
+		timeout = 5000, -- 5 seconds
+		enter = false,
+		zindex = 200,
+		position = {
+			row = "5%",
+			col = "95%",
+		},
+		size = {
+			width = "auto",
+			height = "auto",
+			max_height = "20",
+			max_width = "80",
+		},
+		border = {
+			style = "rounded",
+			padding = { 0, 1 },
+		},
+		win_options = {
+			winhighlight = {
+				Normal = "NoiceCmdlinePopup",
+				FloatTitle = "NoiceCmdlinePopupTitle",
+				FloatBorder = "NoiceCmdlinePopupBorder",
+				IncSearch = "",
+				CurSearch = "",
+				Search = "",
+			},
+			winbar = "",
+			foldenable = true,
+			cursorline = false,
+		},
+	},
 	-- temporary popup that soon disappears
 	temp_popup = {
 		backend = "popup",
