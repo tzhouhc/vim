@@ -54,6 +54,9 @@ local key_configs = {
 		["]q"] = ":cnext<cr>",
 		["[Q"] = ":cfirst<cr>",
 		["]Q"] = ":clast<cr>",
+    -- trouble movement
+    ["[e"] = key_utils.jump_to_prev_trouble_item,
+    ["]e"] = key_utils.jump_to_next_trouble_item,
 		-- create empty lines without moving
 		["[<space>"] = key_utils.add_blank_line_before,
 		["]<space>"] = key_utils.add_blank_line_after,

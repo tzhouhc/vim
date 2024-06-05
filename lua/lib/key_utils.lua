@@ -1,6 +1,7 @@
 local safe_require = require("lib.meta").safe_require
 local misc = safe_require("lib.misc")
 local ts = require("nvim-treesitter.ts_utils")
+local trouble = safe_require("trouble")
 
 local M = {}
 
@@ -138,6 +139,16 @@ end
 function M.add_blank_line_before()
 	local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
 	vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { "" })
+end
+
+function M.jump_to_prev_trouble_item()
+  trouble.prev()
+  trouble.jump_only()
+end
+
+function M.jump_to_next_trouble_item()
+  trouble.next()
+  trouble.jump_only()
 end
 
 return M

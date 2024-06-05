@@ -1,5 +1,5 @@
 -- Init.vim
--- Ting's custom NeoVim configurations.
+-- Ting's custom Neovim configurations.
 
 -- initialize
 -- setup "safe_require" so that nvim doesn't break if any one plugin was
@@ -47,20 +47,20 @@ safe_require("lazy").setup({
 			return "nvim-tree/nvim-web-devicons"
 		end
 	end)(),
-	-- scrollbar for checking location in file
+	-- scroll-bar for checking location in file
 	"petertriho/nvim-scrollbar",
 	-- nord theme
 	{
-		-- the nvim version of nord theme has better compatibility
+		-- the Neovim version of `nord` theme has better compatibility
 		"shaunsingh/nord.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			-- load the colorscheme here
+			-- load the color-scheme here
 			vim.cmd([[colorscheme nord]])
 		end,
 	},
-	-- rainbow colors for parens/brackets for easier depth determination
+	-- rainbow colors for parentheses/brackets for easier depth determination
 	"HiPhish/rainbow-delimiters.nvim",
 	-- 'tabs'
 	{
@@ -75,7 +75,7 @@ safe_require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim", dependencies = { "meuter/lualine-so-fancy.nvim" } },
 	-- highlight hex colors
 	{ "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
-	-- mark unsaved chages in buffer in gutter; diffs pending changes
+	-- mark unsaved changes in buffer in gutter; diffs pending changes
 	"chrisbra/changesPlugin",
 	-- add signs to gutter for marking diffs; only diffs written
 	"mhinz/vim-signify",
@@ -87,7 +87,7 @@ safe_require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-context",
 	-- text objects
 	"nvim-treesitter/nvim-treesitter-textobjects",
-	-- highlight same token as currently cursored-over
+	-- highlight same token as the cursor is currently hovering over
 	"RRethy/vim-illuminate",
 	-- smarter folding
 	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
@@ -103,7 +103,6 @@ safe_require("lazy").setup({
 	-- languages
 	{ "preservim/vim-markdown", branch = "master", ft = "markdown" },
 	-- for advanced usage
-	-- { 'mrcjkb/rustaceanvim', version = '^4', ft = 'rust' },
 	{ "LhKipp/nvim-nu", ft = "nu", opts = { use_lsp_features = false } },
 
 	-- passives
@@ -111,7 +110,7 @@ safe_require("lazy").setup({
 	{ "windwp/nvim-autopairs", config = true },
 	-- y/d/s for pairs at once
 	{ "kylechui/nvim-surround", config = true },
-	-- removing trailing whitespaces on save
+	-- removing trailing whitespace on save
 	"bronson/vim-trailing-whitespace",
 	-- kill buffer but keep split
 	"qpkorr/vim-bufkill",
@@ -152,7 +151,7 @@ safe_require("lazy").setup({
 		"numToStr/Comment.nvim",
 		config = true,
 		enabled = function()
-			-- neovim 0.10.0 introduces commenting natively
+			-- Neovim 0.10.0 introduces commenting natively
 			return vim.version().minor < 10
 		end,
 	},
@@ -177,7 +176,7 @@ safe_require("lazy").setup({
 	-- semantic parser
 	"nvim-treesitter/nvim-treesitter",
 	{
-		-- nerdfont glyph telescope
+		-- Nerd Fonts glyph telescope
 		"2kabhishek/nerdy.nvim",
 		dependencies = {
 			"stevearc/dressing.nvim",
@@ -194,7 +193,7 @@ safe_require("lazy").setup({
 		cmd = "Oil",
 	},
 	{
-		-- query devdocs inside vim
+		-- query Devdocs inside vim
 		"tzhouhc/nvim-devdocs",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -205,7 +204,7 @@ safe_require("lazy").setup({
 	},
 
 	-- applications
-	-- filesystem sidebar
+	-- file system sidebar
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = true,
@@ -213,8 +212,8 @@ safe_require("lazy").setup({
 	},
 
 	-- LSPs
-	{ "williamboman/mason.nvim", config = true },
-	{ "williamboman/mason-lspconfig.nvim", config = true },
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
 	"rafamadriz/friendly-snippets",
 	"neovim/nvim-lspconfig",
 	"hrsh7th/nvim-cmp",
@@ -228,7 +227,7 @@ safe_require("lazy").setup({
 	"nvimtools/none-ls.nvim",
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "Trouble", opts = {} },
 
-	-- nvim configuration development
+	-- Neovim configuration development
 	{ "folke/neodev.nvim", config = true },
 })
 
