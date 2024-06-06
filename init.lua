@@ -225,7 +225,7 @@ safe_require("lazy").setup({
 	"hrsh7th/cmp-path",
 	"onsails/lspkind.nvim",
 	"nvimtools/none-ls.nvim",
-	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "Trouble", opts = {} },
+	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "Trouble" },
 
 	-- Neovim configuration development
 	{ "folke/neodev.nvim", config = true },

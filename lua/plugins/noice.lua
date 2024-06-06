@@ -41,7 +41,7 @@ safe_require("noice").setup({
 	popupmenu = {
 		enabled = true, -- enables the Noice popupmenu UI
 		---@type 'nui'|'cmp'
-		backend = "nui", -- backend to use to show regular cmdline completions
+		backend = "cmp", -- backend to use to show regular cmdline completions
 		---@type NoicePopupmenuItemKind|false
 		-- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
 		kind_icons = {}, -- set to `false` to disable icons
@@ -198,30 +198,32 @@ safe_require("noice").setup({
 	views = noice_views, ---@see section on views
 	---@type NoiceRouteConfig[]
 	routes = {
-    {
-      -- don't show grep stdout.
-      filter = {
-        event = "msg_show",
-        find = " grep"
-      },
-      opts = { skip = true },
-    },
 		{
-      -- for "msg_show" that is too long, throw into a temp hover in the top
-      -- right of screen.
- 			filter = {
+			-- for "msg_show" that is too long, throw into a temp hover in the top
+			-- right of screen.
+			filter = {
 				event = "msg_show",
 				min_height = 5,
 			},
 			view = "temp_corner_popup",
+			opts = {
+				close = {
+					events = "CursorMoved",
+				},
+			},
 		},
 		{
-      -- similar to above, but length-wise.
- 			filter = {
+			-- similar to above, but length-wise.
+			filter = {
 				event = "msg_show",
 				min_length = 100,
 			},
 			view = "temp_corner_popup",
+			opts = {
+				close = {
+					events = "CursorMoved",
+				},
+			},
 		},
 	}, --- @see section on routes
 	---@type table<string, NoiceFilter>

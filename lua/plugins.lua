@@ -21,6 +21,8 @@ safe_require("plugins.highlights")
 safe_require("plugins.lualine")
 -- sign-column
 safe_require("plugins.signs")
+-- errors, hints, etc
+safe_require("plugins.diagnostics")
 -- bookmarks
 safe_require("plugins.arrow")
 -- devdocs

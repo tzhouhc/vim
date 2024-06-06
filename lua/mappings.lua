@@ -22,6 +22,7 @@ local key_configs = {
 		["<leader>en"] = ":e $HOME/.notes<cr>",
 		["<leader>ft"] = ":NvimTreeToggle<CR>",
 		["<leader>q"] = ":BD<cr>",
+		["<leader>ql"] = key_utils.toggle_quickfix,
 		["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
 		["<leader>lg"] = ":Git<cr>",
 

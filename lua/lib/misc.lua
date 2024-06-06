@@ -20,21 +20,40 @@ function M.dump(o)
 	end
 end
 
+---Setup autocmd to close a window on cursor move. Suitable for use with
+---nvim.notify.
+---@param win integer
+function M.window_auto_close(win)
+	vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+		callback = function()
+      vim.api.nvim_win_close(win, true)
+		end,
+		once = true,
+	})
+end
+
 function M.popup(content)
 	require("noice").notify(content, "󰍡")
 end
 
-function M.hover(content)
+function M.noice_hover(content)
 	require("noice").redirect(function()
 		print(content) -- always a msg_show event
 	end, {
 		{
-			view = "temp_hover",
+			view = "timid_hover",
 			filter = { event = "msg_show" },
 		},
 	})
 end
 
+function M.notify_hover(content)
+  require("notify").notify(content, "info", {
+    on_open = M.window_auto_close
+  })
+end
+
+---look for patterns matching a GitHub repo and open it in the browser.
 function M.get_current_line_plugin()
 	local line = vim.api.nvim_get_current_line()
 	local plugin = extract_plugin(line)
@@ -45,6 +64,19 @@ function M.get_current_line_plugin()
 		-- create popup with the link so user can do whatever
 		M.popup("https://github.com/" .. plugin)
 	end
+end
+
+---check for windows with specific key properties, e.g. "quickfix"
+---@param type string
+---@return boolean
+function M.has_win_of_type(type)
+	local windows = vim.fn.getwininfo()
+	for _, win in pairs(windows) do
+		if win[type] == 1 then
+			return true
+		end
+	end
+	return false
 end
 
 return M

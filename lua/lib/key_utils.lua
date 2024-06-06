@@ -142,13 +142,21 @@ function M.add_blank_line_before()
 end
 
 function M.jump_to_prev_trouble_item()
-  trouble.prev()
-  trouble.jump_only()
+	trouble.prev()
+	trouble.jump_only()
 end
 
 function M.jump_to_next_trouble_item()
-  trouble.next()
-  trouble.jump_only()
+	trouble.next()
+	trouble.jump_only()
+end
+
+function M.toggle_quickfix()
+	if misc.has_win_of_type("quickfix") then
+		vim.cmd.cclose()
+		return
+	end
+	vim.cmd.copen()
 end
 
 return M
