@@ -108,6 +108,7 @@ local null_ls = safe_require("null-ls")
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.prettier,
 		-- null_ls.builtins.completion.spell,
 		null_ls.builtins.hover.dictionary,
 		null_ls.builtins.hover.printenv.with({

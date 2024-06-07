@@ -42,6 +42,9 @@ vim.opt.clipboard = "unnamedplus"
 -- highlight line with cursor
 vim.opt.cursorline = true
 
+-- don't conceal on cursor line
+vim.opt.concealcursor = ""
+
 -- folding (note -- number due to effect of plugin "ufo")
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 20
