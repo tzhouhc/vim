@@ -84,7 +84,7 @@ vim.opt.tags = "$VIM_HOME/tags"
 --   arguments)
 -- c -> convert the text using 'encoding'
 -- n -> name used for the ShaDa file (must be the last option)
-vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$VIM_HOME/main.shada"
+vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$HOME/.config/nvim/main.shada"
 
 -- grepprg
 if vim.fn.executable("rg") then

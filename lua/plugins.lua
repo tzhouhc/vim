@@ -31,13 +31,8 @@ safe_require("plugins.devdocs")
 safe_require("plugins.regexexplainer")
 -- diffview
 safe_require("plugins.diffview")
-
--- gutentags
-vim.g.gutentags_cache_dir = os.getenv("VIM_HOME") .. "/tags"
--- custom tag file list using fd; see rest of dotfiles
-vim.g.gutentags_file_list_command = "gutentagger"
-vim.g.gutentags_resolve_symlinks = 1
-vim.g.gutentags_define_advanced_commands = 1
+-- tags
+safe_require("plugins.tags")
 
 -- IME switching based on context
 if vim.fn.has("macunix") then
