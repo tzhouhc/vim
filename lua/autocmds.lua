@@ -49,7 +49,8 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 -- visuals.lua get colorizer started automatically on file open
 api.nvim_create_autocmd({ "BufRead" }, {
 	pattern = {
-		"visuals.lua",
+		"visuals.lua",  -- vim / wezterm visual configs
+    "prompt.json",  -- oh-my-posh prompt configs
 	},
 	callback = function()
 		vim.cmd("ColorizerToggle")

@@ -1,6 +1,6 @@
 # run if '${1:bin-name}' exists on path
 snippet ifbin "check if binary exists" b
-	if type $1 >/dev/null 2>&1; then
+	if type $1 &>/dev/null; then
 	fi
 
 snippet iffile "check if file exists" b
@@ -20,7 +20,7 @@ snippet ifcmd "check if cmd returned 0" b
 	fi
 
 snippet ifosx "check if current os is darwin" b
-	if uname -a | grep -i darwin > /dev/null; then
+	if uname -a | grep -i darwin &>/dev/null; then
 	fi
 
 snippet read< "multiple assignment" b
@@ -33,3 +33,11 @@ snippet cwd "go to directory containing the script" b
 snippet forline "for each line in input" b
 	for line in \$(<$1); do
 	done
+
+snippet devnull "pipe to /dev/null" b
+	&>/dev/null
+
+snippet #--- "comment chunk" b
+	# --------------
+	# $1
+	# --------------

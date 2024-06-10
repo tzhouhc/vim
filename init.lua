@@ -216,6 +216,10 @@ safe_require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 	"rafamadriz/friendly-snippets",
 	"neovim/nvim-lspconfig",
+	"onsails/lspkind.nvim",
+	"nvimtools/none-ls.nvim",
+
+  -- completions
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/cmp-buffer",
@@ -223,8 +227,8 @@ safe_require("lazy").setup({
 	"hrsh7th/vim-vsnip",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-path",
-	"onsails/lspkind.nvim",
-	"nvimtools/none-ls.nvim",
+
+  -- diagnostics
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "Trouble" },
 
 	-- Neovim configuration development
