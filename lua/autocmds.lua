@@ -57,3 +57,12 @@ api.nvim_create_autocmd({ "BufRead" }, {
 	end,
 	group = "Misc",
 })
+
+-- write oldfiles to disk before exiting vim
+api.nvim_create_autocmd({ "VimLeavePre" }, {
+	pattern = { "*.*" },
+  callback = function()
+    vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
+  end,
+  group = "Misc",
+})
