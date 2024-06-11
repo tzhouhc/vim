@@ -21,6 +21,8 @@ safe_require("plugins.highlights")
 safe_require("plugins.lualine")
 -- sign-column
 safe_require("plugins.signs")
+-- nvim tree
+safe_require("plugins.nvimtree")
 -- errors, hints, etc
 safe_require("plugins.diagnostics")
 -- bookmarks

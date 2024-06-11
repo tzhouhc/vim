@@ -207,7 +207,6 @@ safe_require("lazy").setup({
 	-- file system sidebar
 	{
 		"nvim-tree/nvim-tree.lua",
-		config = true,
 		cmd = "NvimTreeToggle",
 	},
 
