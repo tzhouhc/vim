@@ -37,8 +37,6 @@ if os.getenv("NERDFONT") == "2" then
   cmdline_format = nfv2_format
 end
 
-
-
 safe_require("noice").setup({
 	cmdline = {
 		enabled = true, -- enables the Noice cmdline UI

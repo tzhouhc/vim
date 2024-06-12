@@ -79,4 +79,12 @@ function M.has_win_of_type(type)
 	return false
 end
 
+---check whether current file is under a git repo
+---@return boolean
+function M.is_git()
+  -- remember: system calls return include a newline character
+  local git = vim.fn.system("git rev-parse --is-inside-work-tree")
+  return git:match("true") == "true"
+end
+
 return M

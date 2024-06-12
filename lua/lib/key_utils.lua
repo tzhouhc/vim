@@ -159,4 +159,12 @@ function M.toggle_quickfix()
 	vim.cmd.copen()
 end
 
+function M.local_or_repo_files()
+  if misc.is_git() then
+    vim.cmd("Telescope git_files")
+    return
+  end
+  vim.cmd("Telescope find_files")
+end
+
 return M
