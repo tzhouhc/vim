@@ -1,11 +1,10 @@
 -- Completion configurations
 
 ---@diagnostic disable: missing-fields
-local safe_require = require("lib.meta").safe_require
 
-local cmp = safe_require("cmp")
-local cmp_autopairs = safe_require("nvim-autopairs.completion.cmp")
-local lspkind = safe_require("lspkind")
+local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local lspkind = require("lspkind")
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))

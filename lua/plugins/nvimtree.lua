@@ -1,4 +1,3 @@
-local safe_require = require('lib.meta').safe_require
 local nvimtree = require("nvim-tree")
 nvimtree.setup({
   update_focused_file = {

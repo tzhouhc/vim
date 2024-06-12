@@ -2,10 +2,9 @@
 
 vim.g.mapleader = "\\"
 
-local safe_require = require("lib.meta").safe_require
-local key_utils = safe_require("lib.key_utils")
-local ufo = safe_require("ufo")
-local flash = safe_require("flash")
+local key_utils = require("lib.key_utils")
+local ufo = require("ufo")
+local flash = require("flash")
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;

@@ -1,7 +1,6 @@
-local safe_require = require("lib.meta").safe_require
-local misc = safe_require("lib.misc")
+local misc = require("lib.misc")
 local ts = require("nvim-treesitter.ts_utils")
-local trouble = safe_require("trouble")
+local trouble = require("trouble")
 
 local M = {}
 
@@ -106,7 +105,7 @@ function M.smart_move_to_start_and_insert()
 end
 
 function M.toggle_diffview()
-	if next(safe_require("diffview.lib").views) == nil then
+	if next(require("diffview.lib").views) == nil then
 		vim.cmd("DiffviewFileHistory %")
 	else
 		vim.o.hidden = true

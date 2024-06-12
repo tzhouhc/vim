@@ -1,8 +1,6 @@
 -- Treesitter plugin configurations
 
-local safe_require = require("lib.meta").safe_require
-
-safe_require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup({
 	modules = { "highlight" },
 	-- A list of parser names, or "all"
 	ensure_installed = {

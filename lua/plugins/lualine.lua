@@ -1,6 +1,4 @@
-local safe_require = require("lib.meta").safe_require
-
-safe_require("lualine").setup({
+require("lualine").setup({
 	options = { theme = "nord" },
 	sections = {
 		lualine_a = { "mode" },

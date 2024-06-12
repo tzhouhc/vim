@@ -1,18 +1,16 @@
 -- Command Palette Customizations
 
-local safe_require = require("lib.meta").safe_require
-
 -- Custom Commands
-local scopes = safe_require("lib.scopes")
-local misc = safe_require("lib.misc")
-local terms = safe_require("plugins.terms")
+local scopes = require("lib.scopes")
+local misc = require("lib.misc")
+local terms = require("plugins.terms")
 
 vim.api.nvim_create_user_command("Runtimes", scopes.runtime_files, {})
 vim.api.nvim_create_user_command("VimConfigs", scopes.find_configs, {})
 vim.api.nvim_create_user_command("Dotfiles", scopes.find_dotfiles, {})
 vim.api.nvim_create_user_command("Snippets", scopes.find_snippets, {})
 
-vim.api.nvim_create_user_command("Marks", safe_require("telescope.builtin").marks, {})
+vim.api.nvim_create_user_command("Marks", require("telescope.builtin").marks, {})
 
 vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, {})
 
@@ -20,7 +18,7 @@ vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
 vim.api.nvim_create_user_command("Yazi", terms.yazi, {})
 
 -- Commander
-local c = safe_require("commander")
+local c = require("commander")
 
 local function makeSimple(name, com)
 	return {

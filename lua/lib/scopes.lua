@@ -1,11 +1,9 @@
-local safe_require = require("lib.meta").safe_require
-
-local pickers = safe_require("telescope.pickers")
-local finders = safe_require("telescope.finders")
-local builtin = safe_require("telescope.builtin")
-local conf = safe_require("telescope.config").values
-local actions = safe_require("telescope.actions")
-local action_state = safe_require("telescope.actions.state")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local builtin = require("telescope.builtin")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 local M = {}
 

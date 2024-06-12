@@ -1,10 +1,9 @@
 -- LSP configurations
 
 ---@diagnostic disable: missing-fields
-local safe_require = require("lib.meta").safe_require
 
-local capabilities = safe_require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = safe_require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
 
 vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
@@ -39,8 +38,8 @@ local default_setup = function(server)
 end
 
 -- mason
-safe_require("mason").setup()
-safe_require("mason-lspconfig").setup({
+require("mason").setup()
+require("mason-lspconfig").setup({
 	ensure_installed = {
     "ast_grep",
     "bashls",
@@ -104,7 +103,7 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 ---- NULL-LS ----
-local null_ls = safe_require("null-ls")
+local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,

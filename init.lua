@@ -1,11 +1,6 @@
 -- Init.vim
 -- Ting's custom Neovim configurations.
 
--- initialize
--- setup "safe_require" so that nvim doesn't break if any one plugin was
--- slightly misconfigured.
-local safe_require = require("lib.meta").safe_require
-
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -24,7 +19,7 @@ vim.opt.termguicolors = true
 -- runtime
 vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 
-safe_require("lazy").setup({
+require("lazy").setup({
 	defaults = {
 		lazy = true,
 	},
@@ -236,22 +231,22 @@ safe_require("lazy").setup({
 
 -- the following do not make require calls:
 -- visual effects
-safe_require("visuals")
+require("visuals")
 
 -- the following involves requiring other modules:
 -- autocommands
-safe_require("autocmds")
+require("autocmds")
 -- filetypes recognition
-safe_require("files")
+require("files")
 -- plugin configurations
-safe_require("plugins")
+require("plugins")
 -- keymaps
-safe_require("mappings")
+require("mappings")
 -- vim options
-safe_require("settings")
+require("settings")
 -- language services
-safe_require("lsp")
+require("lsp")
 -- completions via nvim-cmp
-safe_require("completions")
+require("completions")
 -- commander
-safe_require("commands")
+require("commands")

@@ -1,8 +1,7 @@
 -- Noice notification setup
 
-local safe_require = require("lib.meta").safe_require
 ---@diagnostic disable: missing-fields
-local noice_views = safe_require("plugins.noice_views").views
+local noice_views = require("plugins.noice_views").views
 
 local cmdline_format = {
   -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -37,7 +36,7 @@ if os.getenv("NERDFONT") == "2" then
   cmdline_format = nfv2_format
 end
 
-safe_require("noice").setup({
+require("noice").setup({
 	cmdline = {
 		enabled = true, -- enables the Noice cmdline UI
 		view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
@@ -181,7 +180,7 @@ safe_require("noice").setup({
 	markdown = {
 		hover = {
 			["|(%S-)|"] = vim.cmd.help, -- vim help links
-			["%[.-%]%((%S-)%)"] = safe_require("noice.util").open, -- markdown links
+			["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
 		},
 		highlights = {
 			["|%S-|"] = "@text.reference",

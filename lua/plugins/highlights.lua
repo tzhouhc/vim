@@ -1,6 +1,4 @@
-local safe_require = require("lib.meta").safe_require
-
--- safe_require("paint").setup({
+-- require("paint").setup({
 --   highlights = {
 --     {
 --       -- filter can be a table of buffer options that should match,

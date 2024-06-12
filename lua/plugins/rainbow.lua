@@ -1,9 +1,4 @@
-local safe_require = require("lib.meta").safe_require
 local mix_colors = require("lib.colors").mix_colors
-
-local function highlight(name, vis)
-	vim.cmd("highlight " .. name .. " " .. vis)
-end
 
 local M = {}
 
@@ -55,13 +50,13 @@ vim.g.rainbow_delimiters = {
 }
 
 -- ibl
-local hooks = safe_require("ibl.hooks")
+local hooks = require("ibl.hooks")
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 	make_rainbow(M.rainbow_colors, "RainbowDelim", 1)
 	make_rainbow(M.rainbow_colors, "RainbowDarkDelim", 0.3)
 end)
 
-safe_require("ibl").setup({
+require("ibl").setup({
 	indent = {
 		char = "┇",
 		highlight = M.rainbow_dark_groups,

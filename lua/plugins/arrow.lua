@@ -1,6 +1,4 @@
-local safe_require = require("lib.meta").safe_require
-
-safe_require("arrow").setup({
+require("arrow").setup({
 	show_icons = true,
 	always_show_path = false,
 	separate_by_branch = false, -- Bookmarks will be separated by git branch

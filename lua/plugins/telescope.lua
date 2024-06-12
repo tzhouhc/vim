@@ -1,13 +1,11 @@
 -- Telescope plugin configurations
 
-local safe_require = require("lib.meta").safe_require
-
 -- telescope / fzf
-safe_require("telescope").setup({
+require("telescope").setup({
 	defaults = {
 		mappings = {
 			i = {
-				["<esc>"] = safe_require("telescope.actions").close,
+				["<esc>"] = require("telescope.actions").close,
 			},
 		},
 	},
@@ -23,5 +21,5 @@ safe_require("telescope").setup({
 })
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-safe_require("telescope").load_extension("fzf")
-safe_require("telescope").load_extension("nerdy")
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("nerdy")

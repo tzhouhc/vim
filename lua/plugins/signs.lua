@@ -1,12 +1,10 @@
-local safe_require = require("lib.meta").safe_require
-
 -- overall status column config
 -- relative line number, sign column, custom folding, spacer
 vim.o.statuscolumn =
 	'%=%{v:relnum?v:relnum:v:lnum}%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
 
 -- folding
-safe_require("ufo").setup({
+require("ufo").setup({
 	provider_selector = function(_, _, _)
 		return { "treesitter", "indent" }
 	end,
@@ -30,7 +28,7 @@ vim.g.changes_delete_sign = "┃"
 vim.g.changes_modified_sign = "┃"
 
 -- scrollbar -- sure, on the right, but still sort of like a sign column :)
-safe_require("scrollbar").setup({
+require("scrollbar").setup({
 	show_in_active_only = true,
 	hide_if_all_visible = true, -- Hides everything if all lines are visible
 	excluded_buftypes = {
