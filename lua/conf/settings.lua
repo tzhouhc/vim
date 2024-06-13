@@ -14,11 +14,13 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 --
 -- saves time by not frequently redrawing stuff
-vim.opt.lazyredraw = true
 vim.opt.showmatch = true
 -- pwd is always current file -- helpful for ctrl-o
 -- (doesn't always work well with telescope?)
 vim.opt.autochdir = true
+
+-- causes issues with Noice; disabled
+-- vim.opt.lazyredraw = true
 
 -- searching
 vim.opt.incsearch = true
@@ -71,6 +73,10 @@ vim.opt.undofile = true
 
 vim.opt.tags = "$VIM_HOME/tags"
 
+-- relative line number, sign column, custom folding, spacer
+vim.o.statuscolumn =
+	'%=%{v:relnum?v:relnum:v:lnum}%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
+
 -- ShaDa file -- controlling viminfo behavior
 -- ' -> marked files (file history)
 -- f -> global marks?
@@ -91,7 +97,7 @@ vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$HOME/.config/nvim/main.shada"
 
 -- grepprg
 if vim.fn.executable("rg") then
-  -- show each match on a separate line; use PCRE2; don't use coloring
-  vim.opt.grepprg = 'rg --vimgrep -P --color=never'
-  vim.opt.grepformat = "%f:%l:%c:%m"
+	-- show each match on a separate line; use PCRE2; don't use coloring
+	vim.opt.grepprg = "rg --vimgrep -P --color=never"
+	vim.opt.grepformat = "%f:%l:%c:%m"
 end

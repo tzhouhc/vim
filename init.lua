@@ -1,6 +1,7 @@
 -- Init.vim
 -- Ting's custom Neovim configurations.
 
+-- set leader as Lazy expects it before setting up plugins
 vim.g.mapleader = "\\"
 
 -- Lazy
@@ -21,26 +22,9 @@ vim.opt.termguicolors = true
 -- runtime
 vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 
+-- setup various plugins with autoreload
 require("lazy").setup("plugins")
-
--- the following do not make require calls:
--- visual effects
-require("visuals")
-
--- the following involves requiring other modules:
--- autocommands
-require("autocmds")
--- filetypes recognition
-require("files")
+-- general vim settings unrelated to plugins
+require("conf")
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
--- keymaps
-require("mappings")
--- vim options
-require("settings")
--- language services
-require("lsp")
--- completions via nvim-cmp
-require("completions")
--- commander
-require("commands")

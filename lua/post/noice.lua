@@ -1,7 +1,7 @@
 -- Noice notification setup
 
 ---@diagnostic disable: missing-fields
-local noice_views = require("post.noice_views").views
+local noice_views = require("lib.noice_views").views
 
 local cmdline_format = {
   -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.

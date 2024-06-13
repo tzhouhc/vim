@@ -2,33 +2,6 @@ return {
 	-- visuals
 	-- create vertical lines to mark indentation.
 	"lukas-reineke/indent-blankline.nvim",
-	-- icons
-	(function()
-		if os.getenv("NERDFONT") == "2" then
-			return { "nvim-tree/nvim-web-devicons", tag = "nerd-v2-compat" }
-		else
-			return "nvim-tree/nvim-web-devicons"
-		end
-	end)(),
-	-- scroll-bar for checking location in file
-	{
-		"petertriho/nvim-scrollbar",
-		opts = {
-			show_in_active_only = true,
-			hide_if_all_visible = true, -- Hides everything if all lines are visible
-			excluded_buftypes = {
-				"terminal",
-			},
-			excluded_filetypes = {
-				"",
-				"cmp_docs",
-				"cmp_menu",
-				"noice",
-				"prompt",
-				"TelescopePrompt",
-			},
-		},
-	},
 	-- nord theme
 	{
 		-- the Neovim version of `nord` theme has better compatibility
@@ -42,15 +15,6 @@ return {
 	},
 	-- rainbow colors for parentheses/brackets for easier depth determination
 	"HiPhish/rainbow-delimiters.nvim",
-	-- 'tabs'
-	{
-		"akinsho/bufferline.nvim",
-		opts = {
-			options = {
-				show_buffer_close_icons = false,
-			},
-		},
-	},
 	-- highlight hex colors
 	{ "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
 	-- mark unsaved changes in buffer in gutter; diffs pending changes
