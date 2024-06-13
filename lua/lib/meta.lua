@@ -20,16 +20,16 @@ function NullSetup.lazy_load(...) end
 --- object will run `setup` and `load_extension` functions with any params.
 ---@param name string the name of the module being loaded.
 function M.safe_require(name)
-	local ok, res = pcall(require, name)
-	if not ok then
-		if M.debug then
-			print("Error loading module: " .. name .. "\n" .. res)
-		else
-			print("Error loading module: " .. name)
-		end
-		return NullSetup
-	end
-	return res
+  local ok, res = pcall(require, name)
+  if not ok then
+    if M.debug then
+      print("Error loading module: " .. name .. "\n" .. res)
+    else
+      print("Error loading module: " .. name)
+    end
+    return NullSetup
+  end
+  return res
 end
 
 return M

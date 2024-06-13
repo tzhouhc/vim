@@ -5,9 +5,9 @@ vim.g.signify_sign_delete_first_line = "▔"
 vim.g.signify_sign_delete_change = "┃"
 vim.g.signify_sign_delete_change_delete = "┣"
 vim.g.signify_vcs_cmds = {
-	perforce = 'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
-	git = "git diff --no-color --no-ext-diff -U0 -- %f",
-	hg = "hg diff --color=never --config aliases.diff= --nodates -U0 -- %f",
+  perforce = 'env DIFF=%d" -U0" citcdiff %f || [[ $? == 1 ]]',
+  git = "git diff --no-color --no-ext-diff -U0 -- %f",
+  hg = "hg diff --color=never --config aliases.diff= --nodates -U0 -- %f",
 }
 
 -- changes

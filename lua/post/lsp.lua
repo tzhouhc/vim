@@ -9,68 +9,68 @@ vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
 -- LSP dedicated key mappings
 vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP actions",
-	callback = function(event)
-		local opts = { buffer = event.buf }
+  desc = "LSP actions",
+  callback = function(event)
+    local opts = { buffer = event.buf }
 
-		vim.lsp.inlay_hint.enable(true)
+    vim.lsp.inlay_hint.enable(true)
 
-		-- these will be buffer-local keybindings
-		-- because they only work if you have an active language server
-		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-		vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-		vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-		vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-		vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-		vim.keymap.set({ "n", "x" }, "<leader>fc", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-	end,
+    -- these will be buffer-local keybindings
+    -- because they only work if you have an active language server
+    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+    vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+    vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+    vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    vim.keymap.set({ "n", "x" }, "<leader>fc", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+  end,
 })
 
 -- avoids having to individually configure lsps with default capabilities.
 local default_setup = function(server)
-	require("lspconfig")[server].setup({
-		capabilities = capabilities,
-	})
+  require("lspconfig")[server].setup({
+    capabilities = capabilities,
+  })
 end
 
 -- mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {
+  ensure_installed = {
     "ast_grep",
     "bashls",
-		"lua_ls",
-		"pylsp",
+    "lua_ls",
+    "pylsp",
     "pyright",
-		"rust_analyzer",
-	},
-	handlers = {
-		default_setup,
-	},
+    "rust_analyzer",
+  },
+  handlers = {
+    default_setup,
+  },
 })
 
 -- lua
 lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim", "hs" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-					-- hammerspoon
-					["/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/"] = true,
-				},
-			},
-		},
-	},
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "hs" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+          -- hammerspoon
+          ["/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/"] = true,
+        },
+      },
+    },
+  },
 })
 
 -- harper grammar checker; unused
@@ -104,13 +104,15 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 ---- NULL-LS ----
 local null_ls = require("null-ls")
 null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
-		-- null_ls.builtins.completion.spell,
-		null_ls.builtins.hover.dictionary,
-		null_ls.builtins.hover.printenv.with({
-			extra_filetypes = { "zsh" },
-		}),
-	},
+  sources = {
+    null_ls.builtins.formatting.stylua.with({
+      extra_args = { "--indent_type=Spaces", "--indent_width=2" },
+    }),
+    null_ls.builtins.formatting.prettier,
+    -- null_ls.builtins.completion.spell,
+    null_ls.builtins.hover.dictionary,
+    null_ls.builtins.hover.printenv.with({
+      extra_filetypes = { "zsh" },
+    }),
+  },
 })

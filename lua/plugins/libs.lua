@@ -1,4 +1,4 @@
 return {
-	-- library code
-	"nvim-lua/plenary.nvim",
+  -- library code
+  "nvim-lua/plenary.nvim",
 }

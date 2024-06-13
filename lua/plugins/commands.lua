@@ -1,4 +1,4 @@
 return {
-	-- custom commands
-	{ "FeiyouG/commander.nvim", config = true },
+  -- custom commands
+  { "FeiyouG/commander.nvim", config = true },
 }
