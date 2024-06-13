@@ -1,7 +1,5 @@
 -- Keyboard Mapping Configurations
 
-vim.g.mapleader = "\\"
-
 local key_utils = require("lib.key_utils")
 local ufo = require("ufo")
 local flash = require("flash")
