@@ -47,7 +47,6 @@ require("mason-lspconfig").setup({
 		"pylsp",
     "pyright",
 		"rust_analyzer",
-		"harper_ls",
 	},
 	handlers = {
 		default_setup,
@@ -74,8 +73,8 @@ lspconfig.lua_ls.setup({
 	},
 })
 
--- harper grammar checker
-lspconfig.harper_ls.setup({
+-- harper grammar checker; unused
+local harper_conf = {
   settings = {
     ["harper-ls"] = {
       linters = {
@@ -94,7 +93,7 @@ lspconfig.harper_ls.setup({
       }
     }
   },
-})
+}
 
 -- symbols
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })

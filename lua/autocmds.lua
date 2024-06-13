@@ -51,6 +51,7 @@ api.nvim_create_autocmd({ "BufRead" }, {
 	pattern = {
 		"visuals.lua",  -- vim / wezterm visual configs
     "prompt.json",  -- oh-my-posh prompt configs
+    "rainbow.lua",
 	},
 	callback = function()
 		vim.cmd("ColorizerToggle")

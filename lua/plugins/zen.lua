@@ -35,20 +35,26 @@ require("zen-mode").setup({
 		tmux = { enabled = false }, -- disables the tmux statusline
 		wezterm = {
 			enabled = true,
-			font = "+2",
+			font = "+1",
 		},
 	},
 	-- callback where you can add custom code when the Zen window opens
 	on_open = function(_)
+    vim.g.statuscolumn_bk = vim.o.statuscolumn
 		vim.o.statuscolumn = " "
 		vim.cmd("ScrollbarHide")
+		vim.cmd("IBLDisable")
+    vim.g.colorcolumn_bk = vim.o.colorcolumn
 		vim.opt.colorcolumn = ""
 	end,
 	-- callback where you can add custom code when the Zen window closes
 	on_close = function()
-		vim.o.statuscolumn =
-			'%=%{v:relnum?v:relnum:v:lnum}%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
+		vim.o.statuscolumn = vim.g.statuscolumn_bk
 		vim.cmd("ScrollbarShow")
-		vim.opt.colorcolumn = "80"
+		vim.cmd("IBLEnable")
+		vim.opt.colorcolumn = vim.g.colorcolumn_bk
 	end,
 })
+
+print("asdfasdf")
+return {}
