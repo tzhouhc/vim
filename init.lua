@@ -17,10 +17,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.opt.termguicolors = true
-
--- runtime
-vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 
 -- setup various plugins with autoreload
 require("lazy").setup({

@@ -27,6 +27,7 @@ require('telescope').setup {
     mappings = {
       i = {
         ['<CR>'] = select_one_or_multi,
+        ["<esc>"] = require("telescope.actions").close,
       }
     }
   }

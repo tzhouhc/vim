@@ -7,13 +7,6 @@ return {
       "nvim-lua/plenary.nvim",
     },
     opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<esc>"] = require("telescope.actions").close,
-          },
-        },
-      },
       extensions = {
         fzf = {
           fuzzy = true,                   -- false will only do exact matching

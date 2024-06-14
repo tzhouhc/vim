@@ -1,5 +1,8 @@
 -- NeoVim Global Keyed Options
 
+vim.opt.termguicolors = true
+vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
+
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2

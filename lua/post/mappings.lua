@@ -34,7 +34,8 @@ local key_configs = {
 
     -- Telescope
     -- for local files and local tags
-    ["<c-o>"] = key_utils.local_or_repo_files,
+    ["<c-o>"] = ":Telescope find_files<cr>",
+    ["<m-o>"] = key_utils.local_or_repo_files,
     -- lines in current buffer
     ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
     -- lines in all local files
