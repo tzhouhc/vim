@@ -14,4 +14,8 @@ function M.yazi()
   vim.cmd(":FloatermNew yazi")
 end
 
+function M.right_side_term()
+  vim.cmd(":FloatermNew --height=0.9 --width=0.4 --position=right --title=Term --autoclose=2")
+end
+
 return M

@@ -23,6 +23,7 @@ end, {})
 -- Popup terminals
 vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
 vim.api.nvim_create_user_command("Yazi", terms.yazi, {})
+vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 
 -- Commander
 local c = require("commander")
