@@ -87,14 +87,4 @@ local key_configs = {
   }
 }
 
-for mode, conf in pairs(key_configs) do
-  for key, val in pairs(conf) do
-    if type(val) == "string" or type(val) == "function" then
-      -- default configuration
-      vim.keymap.set(mode, key, val, { noremap = true, silent = true })
-    else
-      local command, opts = unpack(val)
-      vim.keymap.set(mode, key, command, opts)
-    end
-  end
-end
+require("lib.misc").batch_set_keymap(key_configs)

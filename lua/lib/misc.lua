@@ -1,3 +1,7 @@
+-- Miscellaneous functions for general usage
+
+-- WARN: do no include any plugin dependencies.
+
 local M = {}
 
 local function extract_plugin(line)
@@ -29,27 +33,6 @@ function M.window_auto_close(win)
       vim.api.nvim_win_close(win, true)
     end,
     once = true,
-  })
-end
-
-function M.popup(content)
-  require("noice").notify(content, "󰍡")
-end
-
-function M.noice_hover(content)
-  require("noice").redirect(function()
-    print(content) -- always a msg_show event
-  end, {
-    {
-      view = "timid_hover",
-      filter = { event = "msg_show" },
-    },
-  })
-end
-
-function M.notify_hover(content)
-  require("notify").notify(content, "info", {
-    on_open = M.window_auto_close
   })
 end
 
@@ -85,6 +68,23 @@ function M.is_git()
   -- remember: system calls return include a newline character
   local git = vim.fn.system("git rev-parse --is-inside-work-tree")
   return git:match("true") == "true"
+end
+
+---Batch set mappings. Expects a table where the top level are tables keyed by
+---modes, and tables contain lhs string keys to rhs string or function values.
+---@param mappings table
+function M.batch_set_keymap(mappings)
+  for mode, conf in pairs(mappings) do
+    for key, val in pairs(conf) do
+      if type(val) == "string" or type(val) == "function" then
+        -- default configuration
+        vim.keymap.set(mode, key, val, { noremap = true, silent = true })
+      else
+        local command, opts = unpack(val)
+        vim.keymap.set(mode, key, command, opts)
+      end
+    end
+  end
 end
 
 return M
