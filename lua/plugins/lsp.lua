@@ -16,4 +16,13 @@ return {
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-path",
   "PhilippFeO/cmp-help-tags",
+
+  -- symbol analysis
+  {
+    'stevearc/aerial.nvim',
+    dependencies = {
+       "nvim-treesitter/nvim-treesitter",
+       "nvim-tree/nvim-web-devicons"
+    },
+  }
 }

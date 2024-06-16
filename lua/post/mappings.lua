@@ -15,6 +15,7 @@ local key_configs = {
     ["<leader>ql"] = key_utils.toggle_quickfix,
     ["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
     ["<leader>lg"] = ":Git<cr>",
+    ["<leader>ar"] = ":AerialToggle!<cr>",
 
     -- trouble
     ["<leader>tr"] = ":Trouble diagnostics toggle filter.buf=0<cr>",

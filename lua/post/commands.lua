@@ -25,7 +25,7 @@ end, {})
 vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
 vim.api.nvim_create_user_command("Yazi", terms.yazi, {})
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
-vim.api.nvim_create_user_command("H", popups.help_popup, { nargs="?", complete="help"})
+vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
 
 -- Commander
 local c = require("commander")
@@ -48,6 +48,7 @@ local commands_table = {
   "Yazi",
   "ZenMode",
   "Marks",
+  { "Aerial",                           com = "<CMD>AerialToggle!<cr>",               cat = "Analysis" },
   { "DevDocs",                          com = "<CMD>DevdocsOpenCurrentFloat<cr>",     cat = "Documentation" },
   { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },

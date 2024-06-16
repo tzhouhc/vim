@@ -41,4 +41,15 @@ return {
       end,
     },
   },
+  -- navic
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = "neovim/nvim-lspconfig",
+    config = true,
+  },
+  -- status bar
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "meuter/lualine-so-fancy.nvim" },
+  },
 }

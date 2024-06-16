@@ -4,6 +4,7 @@
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
+local navic = require("nvim-navic")
 
 vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
@@ -34,6 +35,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local default_setup = function(server)
   require("lspconfig")[server].setup({
     capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+      end
+    end
   })
 end
 
@@ -117,4 +123,14 @@ null_ls.setup({
       extra_filetypes = { "zsh" },
     }),
   },
+})
+
+---- symbol analysis and movement
+require("aerial").setup({
+  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+  end,
 })

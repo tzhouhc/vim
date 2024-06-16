@@ -29,6 +29,7 @@ function M.help_popup(t)
     vim.api.nvim_win_close(0, true)
   end)
   popup:map('n', '<enter>', '<c-]>')
+  popup:map('c', 'bd', 'bw')
   vim.api.nvim_set_current_win(popup.winid)
   -- this is the smart bit: help will open in existing windows that are of the
   -- help type!
