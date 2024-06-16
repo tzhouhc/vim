@@ -15,6 +15,7 @@ local cmdline_format = {
   filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
   lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
   help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
+  help_custom = { pattern = "^:%s*H%s+", icon = "󰋖" },
   telescope = { pattern = "^:%s*Telescope%s+", icon = "", kind = "search" },
   edit = { pattern = "^:%s*e%s+", icon = "󱇧" },
   input = {}, -- Used by input()

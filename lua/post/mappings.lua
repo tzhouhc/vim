@@ -81,6 +81,10 @@ local key_configs = {
   -- Terminal mode
   t = {
   },
+  -- Command mode, abbrev
+  ca = {
+    ["h"] = "H",
+  }
 }
 
 for mode, conf in pairs(key_configs) do
