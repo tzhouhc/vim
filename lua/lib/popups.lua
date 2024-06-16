@@ -4,9 +4,10 @@ local event = require("nui.utils.autocmd").event
 
 local M = {}
 
----create a nui popup and open the help topic in it
----@param topic string
-function M.help_popup(topic)
+---create a nui popup and open the help topic in it.
+---@param t any
+function M.help_popup(t)
+  print(t.args)
   local popup = Popup({
     enter = true,
     focusable = true,
@@ -34,7 +35,7 @@ function M.help_popup(topic)
   vim.opt_local.filetype = "help"
   vim.opt_local.buftype = "help"
   -- vim.api.nvim_set_current_buf(popup.bufnr)
-  vim.fn.execute("help " .. topic)
+  vim.fn.execute("help " .. t.args)
 end
 
 return M

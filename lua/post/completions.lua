@@ -103,5 +103,12 @@ cmp.setup.cmdline(':', {
   matching = { disallow_symbol_nonprefix_matching = false }
 })
 
+cmp.setup.cmdline({ ':H' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'cmp_help_tags' },
+  }
+})
+
 -- autopair
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
