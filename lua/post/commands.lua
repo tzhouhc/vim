@@ -53,6 +53,7 @@ local commands_table = {
   { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },
   { "Fold All",                         com = "zM",                                   cat = "Folding" },
+  { "Changed Files in Repo",            com = "<CMD>Easypick changed_files<cr>",      cat = "Tools" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
   { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },
   { "Snippet files",                    com = "<CMD>Snippets<cr>",                    cat = "Configs" },

@@ -29,4 +29,6 @@ return {
     },
     cmd = "Nerdy",
   },
+  -- easily create custom telescope picker
+  { 'axkirillov/easypick.nvim' },
 }

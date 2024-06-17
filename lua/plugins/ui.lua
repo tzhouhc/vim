@@ -17,10 +17,6 @@ return {
   "HiPhish/rainbow-delimiters.nvim",
   -- highlight hex colors
   { "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
-  -- mark unsaved changes in buffer in gutter; diffs pending changes
-  "chrisbra/changesPlugin",
-  -- add signs to gutter for marking diffs; only diffs written
-  "mhinz/vim-signify",
   -- highlight TODOs
   { "folke/todo-comments.nvim",    config = true },
   -- smart dimming of unrelated contextual code
