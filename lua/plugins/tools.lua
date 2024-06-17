@@ -4,6 +4,8 @@ return {
   "mg979/vim-visual-multi",
   -- unto tree
   "mbbill/undotree",
+  -- custom commands
+  { "FeiyouG/commander.nvim", config = true },
   -- regex explainer
   {
     "bennypowers/nvim-regexplainer",

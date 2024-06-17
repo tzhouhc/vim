@@ -1,4 +1,4 @@
-middle_signs = {
+local middle_signs = {
         add          = { text = '┃' },
         change       = { text = '┃' },
         delete       = { text = '▁' },
@@ -7,7 +7,7 @@ middle_signs = {
         untracked    = { text = '┆' },
       }
 
-right_signs = {
+local right_signs = {
         add          = { text = '🮇' },
         change       = { text = '🮇' },
         delete       = { text = '▁' },

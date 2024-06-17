@@ -66,7 +66,8 @@ local key_configs = {
     ["<c-w><esc>"] = "<C-\\><C-n>",
   },
   ca = {
-    ["bd"] = "BD!"
+    ["bd"] = "BD!",
+    ["waq"] = "wa | q",
   }
 }
 
