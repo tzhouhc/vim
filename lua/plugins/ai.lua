@@ -1,0 +1,5 @@
+return {
+  {
+    "huggingface/llm.nvim",
+  },
+}
