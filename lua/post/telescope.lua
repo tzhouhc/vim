@@ -42,8 +42,13 @@ easypick.setup({
     -- diff current branch with base_branch and show files that changed with respective diffs in preview
     {
       name = "changed_files",
-      command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )",
+      command = "git status --porcelain | cut -d \" \" -f 3 | rargs readlink -f {}",
       previewer = easypick.previewers.branch_diff({ base_branch = base_branch })
+    },
+    {
+      name = "git_files",
+      command = "fd . $(git rev-parse --show-toplevel)",
+      previewer = easypick.previewers.default()
     },
   }
 })
