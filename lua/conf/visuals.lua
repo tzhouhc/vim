@@ -54,6 +54,26 @@ local hilight = {
   SignifySignDelete = "guifg=" .. signifyDel,
   SignifySignChange = "guifg=" .. signifyChange,
 
+  -- gitsigns
+  GitSignsAdd = "guifg=" .. signifyAdd,
+  GitSignsAddLn = "guifg=" .. signifyAdd,
+  GitSignsAddNr = "guifg=" .. signifyAdd,
+  GitSignsDelete = "guifg=" .. signifyDel,
+  GitSignsDeleteLn = "guifg=" .. signifyDel,
+  GitSignsDeleteNr = "guifg=" .. signifyDel,
+  GitSignsChange = "guifg=" .. signifyChange,
+  GitSignsChangeLn = "guifg=" .. signifyChange,
+  GitSignsChangeNr = "guifg=" .. signifyChange,
+  GitSignsStagedAdd = "guifg=" .. diffAddedColor,
+  GitSignsStagedAddLn = "guifg=" .. diffAddedColor,
+  GitSignsStagedAddNr = "guifg=" .. diffAddedColor,
+  GitSignsStagedDelete = "guifg=" .. diffRemovedColor,
+  GitSignsStagedDeleteLn = "guifg=" .. diffRemovedColor,
+  GitSignsStagedDeleteNr = "guifg=" .. diffRemovedColor,
+  GitSignsStagedChange = "guifg=" .. diffChangedColor,
+  GitSignsStagedChangeLn = "guifg=" .. diffChangedColor,
+  GitSignsStagedChangeNr = "guifg=" .. diffChangedColor,
+
   -- illuminate word -- it tends confusing when visual selecting
   IlluminatedWordRead = "gui=underline",
   IlluminatedWordWrite = "gui=underline",
