@@ -32,6 +32,9 @@ local key_configs = {
     -- create empty lines without moving
     ["[<space>"] = key_utils.add_blank_line_before,
     ["]<space>"] = key_utils.add_blank_line_after,
+    -- move between change hunks
+    ["[c"] = key_utils.prev_hunk,
+    ["]c"] = key_utils.next_hunk,
 
     -- Telescope
     -- for local files and local tags
@@ -86,6 +89,10 @@ local key_configs = {
   -- Command mode, abbrev
   ca = {
     ["h"] = "H",
+  },
+  -- selection by textobject
+  [{ "o", "x" }] = {
+    ["ih"] = ":<C-U>Gitsigns select_hunk<CR>",
   }
 }
 
