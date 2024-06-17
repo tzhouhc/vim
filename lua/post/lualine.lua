@@ -2,7 +2,7 @@ local lines = require("lib.lines")
 
 require("lualine").setup({
   options = {
-    theme = "nord",
+    theme = vim.g.theme,
     component_separators = { "▎", "🮇" },
     section_separators = { "▎", "🮇" },
     always_divide_middle = true,

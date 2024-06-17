@@ -23,6 +23,7 @@ return {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs                             = middle_signs,
+      signs_staged                      = middle_signs,
       signcolumn                        = true,  -- Toggle with `:Gitsigns toggle_signs`
       numhl                             = false, -- Toggle with `:Gitsigns toggle_numhl`
       linehl                            = false, -- Toggle with `:Gitsigns toggle_linehl`

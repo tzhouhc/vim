@@ -2,17 +2,6 @@ return {
   -- visuals
   -- create vertical lines to mark indentation.
   "lukas-reineke/indent-blankline.nvim",
-  -- nord theme
-  {
-    -- the Neovim version of `nord` theme has better compatibility
-    "shaunsingh/nord.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      -- load the color-scheme here
-      vim.cmd([[colorscheme nord]])
-    end,
-  },
   -- rainbow colors for parentheses/brackets for easier depth determination
   "HiPhish/rainbow-delimiters.nvim",
   -- highlight hex colors

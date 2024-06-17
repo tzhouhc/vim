@@ -2,6 +2,8 @@
 -- Here are the more complicated setups for plugins that cannot be done
 -- directly via the `opts` in lazy loading.
 
+-- visual theme
+require("post.theme")
 -- key mappings using plugins
 require("post.mappings")
 -- notification framework
