@@ -17,6 +17,10 @@ return {
   "HiPhish/rainbow-delimiters.nvim",
   -- highlight hex colors
   { "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
+
+  -- custom sign column
+  { "luukvbaal/statuscol.nvim" },
+
   -- highlight TODOs
   { "folke/todo-comments.nvim",    config = true },
   -- smart dimming of unrelated contextual code

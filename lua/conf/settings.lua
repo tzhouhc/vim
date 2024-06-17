@@ -51,11 +51,13 @@ vim.opt.cursorline = true
 vim.opt.concealcursor = ""
 
 -- folding (note -- number due to effect of plugin "ufo")
+vim.opt.signcolumn = "yes"
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = "1"
 vim.opt.foldlevelstart = 20
 vim.opt.foldmethod = "indent"
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- disable swapfiles
 vim.opt.swapfile = false
@@ -75,10 +77,6 @@ vim.opt.shortmess = "aFc"
 vim.opt.undofile = true
 
 vim.opt.tags = "$VIM_HOME/tags"
-
--- relative line number, sign column, custom folding, spacer
-vim.o.statuscolumn =
-'%=%{v:relnum?v:relnum:v:lnum}%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " "} '
 
 -- ShaDa file -- controlling viminfo behavior
 -- ' -> marked files (file history)
