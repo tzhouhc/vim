@@ -6,6 +6,7 @@ vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
+vim.opt.numberwidth = 3  -- 1 is used for a space though
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.stal = 2
