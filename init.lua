@@ -4,9 +4,6 @@
 -- set leader as Lazy expects it before setting up plugins
 vim.g.mapleader = "\\"
 
--- set colortheme
-vim.g.theme = "nord"
-
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

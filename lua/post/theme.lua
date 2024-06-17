@@ -59,3 +59,11 @@ if vim.g.theme == "catppuccin" then
     },
   })
 end
+
+local global_color = os.getenv("COLORSCHEME")
+
+if global_color ~= nil then
+  vim.cmd("colorscheme " .. global_color)
+else
+  vim.cmd("colorscheme nord")
+end
