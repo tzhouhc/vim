@@ -4,6 +4,7 @@ local builtin = require("telescope.builtin")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local misc = require("lib.misc")
 
 local M = {}
 
@@ -69,6 +70,13 @@ function M.find_snippets()
     },
     layout_strategy = "horizontal",
     layout_config = { preview_width = 0.65, width = 0.75 },
+  })
+end
+
+function M.live_grep_across_repo()
+  builtin.live_grep({
+    prompt_title = "Searching Across Repository",
+    search_dirs = { misc.git_repo_root() },
   })
 end
 

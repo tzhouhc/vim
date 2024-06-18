@@ -70,6 +70,13 @@ function M.is_git()
   return git:match("true") == "true"
 end
 
+---get the root of the current repo
+---@return string
+function M.git_repo_root()
+  local match, _ = vim.fn.system("git rev-parse --show-toplevel"):gsub("\n$", "")
+  return match
+end
+
 ---Batch set mappings. Expects a table where the top level are tables keyed by
 ---modes, and tables contain lhs string keys to rhs string or function values.
 ---@param mappings table

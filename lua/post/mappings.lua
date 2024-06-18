@@ -3,6 +3,7 @@
 local key_utils = require("lib.key_utils")
 local ufo = require("ufo")
 local flash = require("flash")
+local scopes = require("lib.scopes")
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
@@ -43,7 +44,9 @@ local key_configs = {
     ["<m-p>"] = ":Easypick changed_files<cr>",
     -- lines in current buffer
     ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
-    -- lines in all local files
+    -- lines across the repo
+    ["<m-g>"] = scopes.live_grep_across_repo,
+    -- lines in all local dir files
     ["<c-g>"] = ":Telescope live_grep<cr>",
     -- local symbols based on treesitter
     ["<c-k>"] = ":Telescope treesitter<cr>",
