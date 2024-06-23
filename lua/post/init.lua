@@ -4,6 +4,8 @@
 
 -- visual theme
 require("post.theme")
+-- startup page
+require("post.startup")
 -- key mappings using plugins
 require("post.mappings")
 -- notification framework

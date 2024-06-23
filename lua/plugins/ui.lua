@@ -1,5 +1,10 @@
 return {
   -- visuals
+  -- startup page
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
   -- create vertical lines to mark indentation.
   "lukas-reineke/indent-blankline.nvim",
   -- rainbow colors for parentheses/brackets for easier depth determination
