@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete
 -- Commander
 local c = require("commander")
 
-local function makeSimple(name, com)
+local function make_simple(name, com)
   return {
     desc = name,
     cmd = com,
@@ -75,8 +75,8 @@ for _, com in pairs(commands_table) do
     local name = com[1]
     local cat = com["cat"] or "Tools"
     local command = com["com"] or name
-    c.add({ makeSimple(name, command) }, { cat = cat })
+    c.add({ make_simple(name, command) }, { cat = cat })
   else
-    c.add({ makeSimple(com, ":" .. com .. "<cr>") }, { cat = "Tools" })
+    c.add({ make_simple(com, ":" .. com .. "<cr>") }, { cat = "Tools" })
   end
 end

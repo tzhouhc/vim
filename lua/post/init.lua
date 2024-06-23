@@ -12,6 +12,8 @@ require("post.noice")
 require("post.telescope")
 -- rainbow delimiter and indentation
 require("post.rainbow")
+-- highlighting and other visual effects
+require("post.visuals")
 -- sign-column
 require("post.signs")
 -- lualine customization

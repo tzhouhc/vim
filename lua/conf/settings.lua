@@ -58,7 +58,7 @@ vim.opt.foldlevelstart = 20
 vim.opt.foldcolumn = "1"
 vim.opt.foldlevelstart = 20
 vim.opt.foldmethod = "indent"
-vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 
 -- disable swapfiles
 vim.opt.swapfile = false
