@@ -16,8 +16,6 @@ require("post.telescope")
 require("post.rainbow")
 -- highlighting and other visual effects
 require("post.visuals")
--- sign-column
-require("post.signs")
 -- lualine customization
 require("post.lualine")
 -- errors, hints, etc
