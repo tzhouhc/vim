@@ -40,7 +40,7 @@ llm.setup({
     repository = "codellama/CodeLlama-13b-hf",
   },                                   -- cf Tokenizer paragraph
   context_window = 4096,               -- max number of tokens for the context window
-  enable_suggestions_on_startup = true,
+  enable_suggestions_on_startup = false,
   enable_suggestions_on_files = "*",   -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
   disable_url_path_completion = false, -- cf Backend
 })

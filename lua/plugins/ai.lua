@@ -1,5 +1,5 @@
 return {
   {
-    "huggingface/llm.nvim",
+    "huggingface/llm.nvim", cmd = "LLMSuggestion",
   },
 }
