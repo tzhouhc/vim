@@ -32,5 +32,3 @@ require("post.completions")
 require("post.commands")
 -- ime
 require("post.ime")
--- ai code completion
-require("post.ai")
