@@ -8,8 +8,6 @@ require("post.theme")
 require("post.startup")
 -- key mappings using plugins
 require("post.mappings")
--- notification framework
-require("post.noice")
 -- telescope fuzzy selection
 require("post.telescope")
 -- rainbow delimiter and indentation

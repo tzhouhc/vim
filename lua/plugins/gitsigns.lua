@@ -3,7 +3,7 @@ local middle_signs = {
         change       = { text = '┃' },
         delete       = { text = '▁' },
         topdelete    = { text = '▔' },
-        changedelete = { text = '░' },
+        changedelete = { text = '┇' },
         untracked    = { text = '┆' },
       }
 
@@ -12,7 +12,7 @@ local right_signs = {
         change       = { text = '🮇' },
         delete       = { text = '▁' },
         topdelete    = { text = '▔' },
-        changedelete = { text = '░' },
+        changedelete = { text = '🮇' },
         untracked    = { text = '▕' },
       }
 
