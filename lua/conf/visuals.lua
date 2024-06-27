@@ -23,18 +23,10 @@ local hilight = {
   ["@string"] = "gui=NONE",
 }
 
-local hilink = {
-  LspInlayHint = "Comment"
-}
-
 for _, hc in ipairs(hiclear) do
   vim.cmd("hi clear " .. hc)
 end
 
 for hg, gui in pairs(hilight) do
   vim.cmd("hi " .. hg .. " " .. gui)
-end
-
-for hg, tg in pairs(hilink) do
-  vim.cmd("hi def link " .. hg .. " " .. tg)
 end
