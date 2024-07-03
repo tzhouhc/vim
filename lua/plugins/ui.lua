@@ -5,6 +5,13 @@ return {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+  -- transparent background
+  {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      extra_groups = { "ColorColumn" }
+    }
+  },
   -- create vertical lines to mark indentation.
   "lukas-reineke/indent-blankline.nvim",
   -- rainbow colors for parentheses/brackets for easier depth determination
@@ -24,9 +31,15 @@ return {
             sign = { namespace = { "diagnostic/signs" }, maxwidth = 1, auto = true },
             click = "v:lua.ScSa"
           },
-          { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
+          {
+            text = { builtin.lnumfunc },
+            click = "v:lua.ScLa",
+          },
           { sign = { namespace = { "gitsigns" }, maxwidth = 1, auto = false } },
-          { text = { builtin.foldfunc }, click = "v:lua.ScFa", },
+          {
+            text = { builtin.foldfunc },
+            click = "v:lua.ScFa",
+          },
         }
       })
     end
