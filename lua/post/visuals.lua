@@ -69,6 +69,10 @@ local hilight = {
   -- flash.nvim jumping highlight
   FlashMatch = "guifg=" .. flashMatch .. " gui=underline",
   FlashLabel = "guifg=" .. flashLabel,
+
+  -- remove italics
+  ["@property"] = "gui=NONE",
+  ["@string"] = "gui=NONE",
 }
 
 local hilink = {

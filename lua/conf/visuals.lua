@@ -18,9 +18,6 @@ local hilight = {
   Bold = "gui=bold",
   mkdBold = "gui=bold",
   htmlItalic = "gui=italic",
-  -- remove italics
-  ["@property"] = "gui=NONE",
-  ["@string"] = "gui=NONE",
 }
 
 for _, hc in ipairs(hiclear) do
