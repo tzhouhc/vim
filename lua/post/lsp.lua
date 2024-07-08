@@ -79,6 +79,19 @@ lspconfig.lua_ls.setup({
   },
 })
 
+lspconfig.rust_analyzer.setup({
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      },
+      rustfmt = {
+        extraArgs = { "--config", "tab_spaces=2" },
+      }
+    }
+  }
+})
+
 -- harper grammar checker; unused
 local harper_conf = {
   settings = {
