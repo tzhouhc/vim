@@ -9,7 +9,7 @@ local key_configs = {
     -- cancel search/flash highlight
     ["<esc>"] = "<esc>:noh<CR>",
     -- close all non-main windows
-    ["<esc><esc>"] = ":only<CR>",
+    ["<leader><esc>"] = ":only<CR>",
     -- leader actions
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
     ["<leader>en"] = ":e $HOME/.notes<cr>",
