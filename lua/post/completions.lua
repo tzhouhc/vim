@@ -73,6 +73,26 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ["<Up>"] = cmp.mapping(function(fallback)
+      local has_words = has_words_before()
+      -- enables typing multiple tabs even if autocomplete already triggered.
+      -- why the hell is autocomplete triggering on empty stuff though?
+      if cmp.visible() and has_words then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<Down>"] = cmp.mapping(function(fallback)
+      local has_words = has_words_before()
+      -- enables typing multiple tabs even if autocomplete already triggered.
+      -- why the hell is autocomplete triggering on empty stuff though?
+      if cmp.visible() and has_words then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
 })
 
