@@ -22,6 +22,10 @@ cmp.setup({
   }, {
     { name = "buffer" },
     { name = "path" },
+    { name = "calc" },
+  }, {
+    { name = "emoji" },
+    { name = "nerdfont" },
   }),
   snippet = {
     expand = function(args)

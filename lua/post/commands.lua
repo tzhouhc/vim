@@ -41,7 +41,6 @@ end
 local commands_table = {
   "Runtimes",
   "Twilight",
-  "Nerdy",
   "Lazy",
   "Git",
   "Trouble",

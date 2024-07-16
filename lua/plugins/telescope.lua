@@ -20,15 +20,6 @@ return {
   },
   -- with fzf
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  {
-    -- Nerd Fonts glyph telescope
-    "2kabhishek/nerdy.nvim",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    cmd = "Nerdy",
-  },
   -- easily create custom telescope picker
   { 'axkirillov/easypick.nvim' },
 }
