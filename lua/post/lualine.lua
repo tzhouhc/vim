@@ -37,7 +37,14 @@ require("lualine").setup({
   winbar = {
     lualine_b = {
       {
-        function() return lines.navic_status() end
+        lines.navic_status
+      },
+    },
+  },
+  inactive_winbar = {
+    lualine_b = {
+      {
+        lines.navic_status
       },
     },
   }
