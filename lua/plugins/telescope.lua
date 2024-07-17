@@ -20,6 +20,4 @@ return {
   },
   -- with fzf
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  -- easily create custom telescope picker
-  { 'axkirillov/easypick.nvim' },
 }

@@ -161,7 +161,7 @@ end
 
 function M.local_or_repo_files()
   if misc.is_git() then
-    vim.cmd("Easypick git_files")
+    vim.cmd("FilesInRepo")
     return
   end
   vim.cmd("Telescope find_files")

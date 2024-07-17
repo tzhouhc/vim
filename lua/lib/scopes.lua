@@ -75,7 +75,23 @@ end
 
 function M.live_grep_across_repo()
   builtin.live_grep({
-    prompt_title = "Searching Across Repository",
+    prompt_title = "󰊢 Searching Across Repository",
+    search_dirs = { misc.git_repo_root() },
+  })
+end
+
+function M.files_in_repo()
+  builtin.find_files({
+    prompt_title = "󰊢 Files in Repository",
+    search_dirs = { misc.git_repo_root() },
+  })
+end
+
+-- This uses a custom git tool `git-dirt` from the dotfiles repo.
+function M.changed_files_in_repo()
+  builtin.find_files({
+    prompt_title = "󰊢 Changed Files in Repository",
+    find_command = {"git-dirt",},
     search_dirs = { misc.git_repo_root() },
   })
 end

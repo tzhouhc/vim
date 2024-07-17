@@ -21,33 +21,15 @@ end
 
 -- make it so telescope multiple-select in file-selection actually works
 -- as imagined.
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<CR>'] = select_one_or_multi,
-        ["<esc>"] = require("telescope.actions").close,
-      }
-    }
+local default_mapping = {
+  i = {
+    ['<CR>'] = select_one_or_multi,
+    ["<esc>"] = require("telescope.actions").close,
   }
 }
 
-local easypick = require("easypick")
-local get_default_branch = "git rev-parse --symbolic-full-name refs/remotes/origin/HEAD | sed 's!.*/!!'"
-local base_branch = vim.fn.system(get_default_branch) or "main"
-
-easypick.setup({
-  pickers = {
-    -- diff current branch with base_branch and show files that changed with respective diffs in preview
-    {
-      name = "changed_files",
-      command = "git status --porcelain | cut -d \" \" -f 3 | rargs readlink -f {}",
-      previewer = easypick.previewers.branch_diff({ base_branch = base_branch })
-    },
-    {
-      name = "git_files",
-      command = "fd . $(git rev-parse --show-toplevel)",
-      previewer = easypick.previewers.default()
-    },
+require('telescope').setup {
+  defaults = {
+    mappings = default_mapping,
   }
-})
+}

@@ -12,6 +12,8 @@ vim.api.nvim_create_user_command("VimConfigs", scopes.find_configs, {})
 vim.api.nvim_create_user_command("Dotfiles", scopes.find_dotfiles, {})
 vim.api.nvim_create_user_command("Snippets", scopes.find_snippets, {})
 vim.api.nvim_create_user_command("GrepAcrossRepo", scopes.live_grep_across_repo, {})
+vim.api.nvim_create_user_command("FilesInRepo", scopes.files_in_repo, {})
+vim.api.nvim_create_user_command("ChangedInRepo", scopes.changed_files_in_repo, {})
 
 -- Telescope shortcuts
 vim.api.nvim_create_user_command("Marks", require("telescope.builtin").marks, {})
@@ -54,7 +56,8 @@ local commands_table = {
   { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
   { "Unfold All",                       com = "zR",                                   cat = "Folding" },
   { "Fold All",                         com = "zM",                                   cat = "Folding" },
-  { "Changed Files in Repo",            com = "<CMD>Easypick changed_files<cr>",      cat = "Tools" },
+  { "Files in Repo",                    com = "<CMD>FilesInRepo<cr>",                 cat = "Tools" },
+  { "Changed Files in Repo",            com = "<CMD>ChangedInRepo<cr>",               cat = "Tools" },
   { "Grep Across Repository",           com = "<CMD>GrepAcrossRepo<cr>",              cat = "Tools" },
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
   { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },

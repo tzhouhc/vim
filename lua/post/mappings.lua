@@ -41,7 +41,7 @@ local key_configs = {
     -- for local files and local tags
     ["<c-o>"] = ":Telescope find_files<cr>",
     ["<m-o>"] = key_utils.local_or_repo_files,
-    ["<m-p>"] = ":Easypick changed_files<cr>",
+    ["<m-p>"] = ":ChangedInRepo<cr>",
     -- lines in current buffer
     ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
     -- lines across the repo
