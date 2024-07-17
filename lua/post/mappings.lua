@@ -26,8 +26,6 @@ local key_configs = {
 
     -- use telescopes for registers invocation instead
     ["<leader>p"] = ":Telescope registers<cr>",
-    -- toggle transparency
-    ["<leader>tr"] = ":TransparentToggle<cr>",
 
     -- trouble movement
     ["[e"] = key_utils.jump_to_prev_trouble_item,

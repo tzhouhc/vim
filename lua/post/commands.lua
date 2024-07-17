@@ -48,6 +48,7 @@ local commands_table = {
   "Yazi",
   "ZenMode",
   "Marks",
+  { "Toggle Transparency",              com = "<CMD>TransparentToggle<cr>",           cat = "UI" },
   { "Aerial",                           com = "<CMD>AerialToggle!<cr>",               cat = "Analysis" },
   { "DevDocs",                          com = "<CMD>DevdocsOpenCurrentFloat<cr>",     cat = "Documentation" },
   { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
