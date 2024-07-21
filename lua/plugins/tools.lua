@@ -51,4 +51,8 @@ return {
   },
   -- floating terminal
   { "voldikss/vim-floaterm", cmd = "FloatermNew" },
+  {
+    'MagicDuck/grug-far.nvim',
+    config = true,
+  },
 }
