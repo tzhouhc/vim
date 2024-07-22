@@ -77,6 +77,9 @@ vim.opt.shortmess = "aFc"
 -- Keep undo history across sessions by storing it in a file
 vim.opt.undofile = true
 
+-- Session options
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
+
 vim.opt.tags = "$VIM_HOME/tags"
 
 -- ShaDa file -- controlling viminfo behavior

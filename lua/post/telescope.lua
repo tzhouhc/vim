@@ -4,6 +4,7 @@
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("repo")
+require("telescope").load_extension("persisted")
 
 local select_one_or_multi = function(prompt_bufnr)
   local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)

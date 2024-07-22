@@ -29,9 +29,9 @@ dashboard.section.buttons.val = {
   dashboard.button("1", "  New File", ":ene <BAR> startinsert <CR>"),
   dashboard.button("2", "󰍉  Find File", ":Telescope find_files<CR>"),
   dashboard.button("3", "  Recent Files", ":Telescope oldfiles<CR>"),
-  dashboard.button("4", "󰏗  Last Session", ":LoadLastSession<CR>"),
+  dashboard.button("4", "󰏗  Last Session", ":SessionLoadLast<CR>"),
 
-  dashboard.button("s", "󰏗  Select Session", ":LoadSelectedSession<CR>"),
+  dashboard.button("s", "󰏗  Select Session", ":Telescope persisted<CR>"),
   dashboard.button("g", "󰊢  Repositories", ":SelectFromRepositories<CR>"),
   dashboard.button("z", "󰚥  Lazy", ":Lazy<CR>"),
   dashboard.button("q", "󰠚  Quit NVIM", ":qa<CR>"),
