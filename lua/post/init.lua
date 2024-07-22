@@ -14,6 +14,8 @@ require("post.telescope")
 require("post.rainbow")
 -- highlighting and other visual effects
 require("post.visuals")
+-- highlighting and other visual effects
+require("post.bufferline")
 -- lualine customization
 require("post.lualine")
 -- errors, hints, etc
