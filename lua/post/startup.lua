@@ -26,10 +26,12 @@ dashboard.section.header.val = {
 
 -- Set menu
 dashboard.section.buttons.val = {
-  dashboard.button("e", "  New File", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("1", "  New File", ":ene <BAR> startinsert <CR>"),
   dashboard.button("2", "󰍉  Find File", ":Telescope find_files<CR>"),
   dashboard.button("3", "  Recent Files", ":Telescope oldfiles<CR>"),
   dashboard.button("4", "  Settings", ":VimConfigs<CR>"),
+  dashboard.button("5", "󰏗  Last Session", ":LoadLastSession<CR>"),
+  dashboard.button("6", "󰏗  Select Session", ":LoadSelectedSession<CR>"),
   dashboard.button("z", "󰚥  Lazy", ":Lazy<CR>"),
   dashboard.button("q", "󰠚  Quit NVIM", ":qa<CR>"),
 }

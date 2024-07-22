@@ -5,6 +5,7 @@ local scopes = require("lib.scopes")
 local misc = require("lib.misc")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
+local sessions = require("persistence")
 
 -- Finding common files
 vim.api.nvim_create_user_command("Runtimes", scopes.runtime_files, {})
@@ -29,6 +30,11 @@ vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
 vim.api.nvim_create_user_command("Yazi", terms.yazi, {})
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
+
+-- Persistence
+vim.api.nvim_create_user_command("LoadLocalSession", sessions.load, {})
+vim.api.nvim_create_user_command("LoadLastSession", function() sessions.load({last = true}) end, {})
+vim.api.nvim_create_user_command("LoadSelectedSession", sessions.select, {})
 
 -- Commander
 local c = require("commander")
