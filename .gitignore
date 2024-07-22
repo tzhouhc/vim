@@ -11,7 +11,8 @@ plugin
 vim_history
 tags
 tags/*
-local
-local/*
+/local
+/local/*
+/lua/local/*
 vim-plug
 lazy-lock.json

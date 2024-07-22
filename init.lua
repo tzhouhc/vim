@@ -29,5 +29,7 @@ require("lazy").setup({
 })
 -- general vim settings unrelated to plugins
 require("conf")
+-- specific local configurations that should not be version-controlled
+require("local")
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
