@@ -20,4 +20,5 @@ return {
   },
   -- with fzf
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "cljoly/telescope-repo.nvim" },
 }

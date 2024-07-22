@@ -6,6 +6,7 @@ local misc = require("lib.misc")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
 local sessions = require("persistence")
+local ts = require("telescope")
 
 -- Finding common files
 vim.api.nvim_create_user_command("Runtimes", scopes.runtime_files, {})
@@ -33,8 +34,21 @@ vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete
 
 -- Persistence
 vim.api.nvim_create_user_command("LoadLocalSession", sessions.load, {})
-vim.api.nvim_create_user_command("LoadLastSession", function() sessions.load({last = true}) end, {})
+vim.api.nvim_create_user_command("LoadLastSession", function() sessions.load({ last = true }) end, {})
 vim.api.nvim_create_user_command("LoadSelectedSession", sessions.select, {})
+
+-- Telescope
+local repo_ignore = {
+  file_ignore_patterns = {
+    "%.Trash/",
+    "%.local/",
+    "%.cache/",
+    "%.zgen/",
+    "%.cargo/",
+    "nvim/lazy",
+  },
+}
+vim.api.nvim_create_user_command("SelectFromRepositories", function() ts.extensions.repo.cached_list(repo_ignore) end, {})
 
 -- Commander
 local c = require("commander")
