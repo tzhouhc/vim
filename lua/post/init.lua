@@ -26,5 +26,3 @@ require("post.lsp")
 require("post.completions")
 -- commander
 require("post.commands")
--- ime
-require("post.ime")

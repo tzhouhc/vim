@@ -17,8 +17,6 @@ return {
       cut_key = "d",
     },
   },
-  -- automatically switch IME for Chinese
-  { "laishulu/vim-macos-ime", ft = { "text", "markdown" } },
   -- highlights certain patterns
   { "folke/paint.nvim",       ft = { "markdown" } },
 }
