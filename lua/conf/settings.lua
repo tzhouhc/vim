@@ -80,8 +80,6 @@ vim.opt.undofile = true
 -- Session options
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
 
-vim.opt.tags = "$VIM_HOME/tags"
-
 -- ShaDa file -- controlling viminfo behavior
 -- ' -> marked files (file history)
 -- f -> global marks?

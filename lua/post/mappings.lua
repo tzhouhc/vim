@@ -38,9 +38,12 @@ local key_configs = {
     ["]c"] = key_utils.next_hunk,
 
     -- Telescope
-    -- for local files and local tags
+
+    -- local files
     ["<c-o>"] = ":Telescope find_files<cr>",
+    -- files in the entire repo
     ["<m-o>"] = key_utils.local_or_repo_files,
+    -- files in the repo that have changed
     ["<m-p>"] = ":ChangedInRepo<cr>",
     -- lines in current buffer
     ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
