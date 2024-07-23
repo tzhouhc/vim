@@ -17,8 +17,6 @@ return {
       cut_key = "d",
     },
   },
-  -- automated ctagging
-  "ludovicchabant/vim-gutentags",
   -- automatically switch IME for Chinese
   { "laishulu/vim-macos-ime", ft = { "text", "markdown" } },
   -- highlights certain patterns

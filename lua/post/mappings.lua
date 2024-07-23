@@ -50,8 +50,8 @@ local key_configs = {
     ["<c-g>"] = ":Telescope live_grep<cr>",
     -- local symbols based on treesitter
     ["<c-k>"] = ":Telescope treesitter<cr>",
-    -- local symbols based on ctags
-    ["<m-k>"] = ":Telescope tags<cr>",
+    -- local symbols based on LSP symbols
+    ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
     -- git changes
     ["<c-p>"] = ":Telescope oldfiles<cr>",
     -- commander

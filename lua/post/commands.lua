@@ -76,14 +76,12 @@ local commands_table = {
   { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
   { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },
   { "Snippet files",                    com = "<CMD>Snippets<cr>",                    cat = "Configs" },
-  { "Ctags Config",                     com = "<CMD>e ~/.dotfiles/configs/ctags<cr>", cat = "Configs" },
   { "Symbols Outline",                  com = "<CMD>SymbolsOutline<cr>" },
   { "Format Code",                      com = "<CMD>LspZeroFormat<cr>" },
   { "File Tree",                        com = "<CMD>NvimTreeToggle<cr>" },
   { "Colorizer",                        com = "<CMD>ColorizerToggle<cr>" },
   { "Edit Working Directory as Buffer", com = "<CMD>Oil --float<cr>" },
   { "Telescope",                        com = "<CMD>Telescope<cr>" },
-  { "Tags",                             com = "<CMD>Telescope tags<cr>" },
   { "Registers",                        com = "<CMD>Telescope registers<cr>" },
 }
 

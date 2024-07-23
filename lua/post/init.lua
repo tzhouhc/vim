@@ -20,8 +20,6 @@ require("post.bufferline")
 require("post.lualine")
 -- errors, hints, etc
 require("post.diagnostics")
--- tags
-require("post.tags")
 -- language services
 require("post.lsp")
 -- completions via nvim-cmp
