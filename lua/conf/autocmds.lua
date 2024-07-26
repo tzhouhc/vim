@@ -67,3 +67,10 @@ api.nvim_create_autocmd({ "VimLeavePre" }, {
   end,
   group = "Misc",
 })
+
+-- use EN IME on leaving Insert
+api.nvim_create_autocmd({ "InsertLeave" }, {
+  pattern = { "*.*" },
+  callback = require("lib.ime").switch_to_en_ime,
+  group = "Misc",
+})

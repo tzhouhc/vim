@@ -4,3 +4,7 @@ snippet safereq
 
 snippet hslogger
 	local logger = hs.logger.new("$1", "debug")
+
+snippet ifmac "Conditional for macos"
+	if vim.fn.has("macunix") then
+	end
