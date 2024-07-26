@@ -10,6 +10,8 @@ local key_configs = {
     ["<esc>"] = "<esc>:noh<CR>",
     -- close all non-main windows
     ["<leader><esc>"] = ":only<CR>",
+    -- close this window
+    ["<m-esc>"] = ":q<CR>",
     -- leader actions
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
     ["<leader>en"] = ":e $HOME/.notes<cr>",
