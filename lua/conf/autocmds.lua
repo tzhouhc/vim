@@ -2,6 +2,7 @@
 
 local api = vim.api
 local fn = vim.fn
+local ime = require("lib.ime")
 
 local function cd()
   local path = fn.expand("%:h") .. "/"
@@ -71,6 +72,16 @@ api.nvim_create_autocmd({ "VimLeavePre" }, {
 -- use EN IME on leaving Insert
 api.nvim_create_autocmd({ "InsertLeave" }, {
   pattern = { "*.*" },
-  callback = require("lib.ime").switch_to_en_ime,
+  callback = ime.switch_to_en_ime,
+  group = "Misc",
+})
+
+api.nvim_create_autocmd({ "InsertEnter" }, {
+  pattern = { "*.*" },
+  callback = function()
+    if ime.context_is_cn() then
+      ime.switch_to_cn_ime()
+    end
+  end,
   group = "Misc",
 })
