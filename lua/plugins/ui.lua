@@ -19,6 +19,9 @@ return {
   -- highlight hex colors
   { "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
 
+  -- better default selection tools
+  { "stevearc/dressing.nvim", },
+
   -- custom sign column
   {
     "luukvbaal/statuscol.nvim",
