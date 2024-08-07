@@ -2,9 +2,6 @@
 local hiclear = {
   -- hide trailing whitespace marker
   "ExtraWhitespace",
-  "IlluminatedWordRead",
-  "IlluminatedWordWrite",
-  "IlluminatedWordText",
 
   "DiffAdd",
   "DiffChange",
