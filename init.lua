@@ -34,3 +34,6 @@ require("lazy").setup({
 require("conf")
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
+-- specific local configurations that should not be version-controlled, but
+-- requires plugins
+require("local_post")

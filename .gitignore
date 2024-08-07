@@ -11,5 +11,6 @@ vim_history
 /local
 /local/*
 /lua/local/*
+/lua/local_post/*
 vim-plug
 lazy-lock.json
