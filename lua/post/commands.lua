@@ -6,6 +6,7 @@ local misc = require("lib.misc")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
 local ts = require("telescope")
+local ilu = require('illuminate')
 
 -- Finding common files
 vim.api.nvim_create_user_command("Runtimes", scopes.runtime_files, {})
@@ -46,6 +47,11 @@ local repo_ignore = {
   },
 }
 vim.api.nvim_create_user_command("SelectFromRepositories", function() ts.extensions.repo.cached_list(repo_ignore) end, {})
+
+
+-- Freeze illuminate highlights
+vim.api.nvim_create_user_command("FreezeIlluminated", ilu.freeze_buf, {})
+vim.api.nvim_create_user_command("UnfreezeIlluminated", ilu.freeze_buf, {})
 
 -- Commander
 local c = require("commander")
