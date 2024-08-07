@@ -2,6 +2,8 @@ return {
   -- quick jump to locally or globally recorded locations
   {
     "otavioschwanck/arrow.nvim",
+    lazy = true,
+    keys = { { ";", mode = "n" }, { ",", mode = "n" } },
     opts = {
       show_icons = true,
       always_show_path = false,

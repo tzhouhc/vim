@@ -18,6 +18,9 @@ vim.api.nvim_create_user_command("ChangedInRepo", scopes.changed_files_in_repo, 
 
 -- Telescope shortcuts
 vim.api.nvim_create_user_command("Marks", require("telescope.builtin").marks, {})
+vim.api.nvim_create_user_command("SelectSession", function()
+  vim.cmd("Telescope persisted")
+end, {})
 
 -- Tooling shortcuts
 vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, {})

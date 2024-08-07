@@ -17,6 +17,4 @@ return {
       cut_key = "d",
     },
   },
-  -- highlights certain patterns
-  { "folke/paint.nvim",       ft = { "markdown" } },
 }

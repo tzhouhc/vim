@@ -4,6 +4,9 @@
 -- set leader as Lazy expects it before setting up plugins
 vim.g.mapleader = "\\"
 
+-- specific local configurations that should not be version-controlled
+require("local")
+
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -29,7 +32,5 @@ require("lazy").setup({
 })
 -- general vim settings unrelated to plugins
 require("conf")
--- specific local configurations that should not be version-controlled
-require("local")
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
