@@ -8,3 +8,15 @@ snippet hslogger
 snippet ifmac "Conditional for macos"
 	if vim.fn.has("macunix") then
 	end
+
+snippet autocmd "Autocommands"
+	vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	  pattern = { "*.*" },
+	  callback = function()
+	  end,
+	  group = "Misc",
+	})
+
+snippet autogr "Autocommand Groups"
+	vim.api.nvim_create_augroup("$1", { clear = true })
+

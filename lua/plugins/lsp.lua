@@ -1,6 +1,6 @@
 return {
   -- LSPs
-  "williamboman/mason.nvim",
+  { "williamboman/mason.nvim", cmd = "Mason" },
   "williamboman/mason-lspconfig.nvim",
   "rafamadriz/friendly-snippets",
   "neovim/nvim-lspconfig",
@@ -24,8 +24,8 @@ return {
   {
     'stevearc/aerial.nvim',
     dependencies = {
-       "nvim-treesitter/nvim-treesitter",
-       "nvim-tree/nvim-web-devicons"
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
     },
   }
 }

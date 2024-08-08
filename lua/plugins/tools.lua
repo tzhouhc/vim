@@ -3,9 +3,9 @@ return {
   -- multiple cursors
   "mg979/vim-visual-multi",
   -- unto tree
-  "mbbill/undotree",
+  { "mbbill/undotree",        cmd = "UndotreeToggle" },
   -- custom commands
-  { "FeiyouG/commander.nvim", config = true },
+  { "FeiyouG/commander.nvim", config = true,         keys = { { "<m-space>", "n" } } },
   -- regex explainer
   {
     "bennypowers/nvim-regexplainer",
@@ -54,5 +54,6 @@ return {
   {
     'MagicDuck/grug-far.nvim',
     config = true,
+    cmd = "GrugFar",
   },
 }

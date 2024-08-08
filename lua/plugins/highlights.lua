@@ -5,6 +5,7 @@ return {
   -- highlight words under cursor
   {
     "Mr-LLLLL/interestingwords.nvim",
+    keys = { { "<leader>k", "n" }, { "<leader>m", "n" } },
     opts = {
       colors = { '#8fbcbb', '#88c0d0', '#bf616a', '#d08770', '#ebcb8b', '#a3be8c' },
       search_count = true,
