@@ -54,10 +54,4 @@ return {
     config = true,
     cmd = "GrugFar",
   },
-  -- file explorer
-  {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    config = true,
-  }
 }

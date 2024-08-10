@@ -44,7 +44,6 @@ local default_setup = function(server)
 end
 
 -- mason
-require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "ast_grep",
@@ -138,12 +137,3 @@ null_ls.setup({
   },
 })
 
----- symbol analysis and movement
-require("aerial").setup({
-  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
-  on_attach = function(bufnr)
-    -- Jump forwards/backwards with '{' and '}'
-    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-  end,
-})

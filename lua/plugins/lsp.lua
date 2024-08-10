@@ -1,24 +1,33 @@
 return {
   -- LSPs
-  { "williamboman/mason.nvim", cmd = "Mason" },
-  "williamboman/mason-lspconfig.nvim",
-  "rafamadriz/friendly-snippets",
   "neovim/nvim-lspconfig",
   "onsails/lspkind.nvim",
-  "nvimtools/none-ls.nvim",
 
-  -- completions
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-calc",
-  "hrsh7th/cmp-emoji",
-  "chrisgrieser/cmp-nerdfont",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-path",
-  "PhilippFeO/cmp-help-tags",
+  -- mason
+  { "williamboman/mason.nvim", cmd = "Mason", config = true },
+  "williamboman/mason-lspconfig.nvim",
+  -- null-ls
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua.with({
+            extra_args = { "--indent_type=Spaces", "--indent_width=2" },
+          }),
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.formatting.black,
+          -- null_ls.builtins.completion.spell,
+          null_ls.builtins.hover.dictionary,
+          null_ls.builtins.hover.printenv.with({
+            extra_filetypes = { "zsh" },
+          }),
+        },
+      })
+    end,
+  },
 
   -- symbol analysis
   {
@@ -26,6 +35,15 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
+    },
+    cmd = { "AerialPrev", "AerialNext", "AerialToggle" },
+    opts = {
+      -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+      on_attach = function(bufnr)
+        -- Jump forwards/backwards with '{' and '}'
+        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+        vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+      end,
     },
   }
 }

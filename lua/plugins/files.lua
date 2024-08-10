@@ -21,4 +21,10 @@ return {
       },
     },
   },
+  -- file explorer
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    config = true,
+  }
 }
