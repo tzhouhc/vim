@@ -2,8 +2,6 @@
 -- Here are the more complicated setups for plugins that cannot be done
 -- directly via the `opts` in lazy loading.
 
--- visual theme
-require("post.theme")
 -- startup page
 require("post.startup")
 -- key mappings using plugins
