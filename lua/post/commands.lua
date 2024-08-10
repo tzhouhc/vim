@@ -30,7 +30,6 @@ end, {})
 
 -- Popup terminals
 vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
-vim.api.nvim_create_user_command("Yazi", terms.yazi, {})
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
 
@@ -64,7 +63,6 @@ local commands_table = {
   "Git",
   "Trouble",
   "Mason",
-  "Yazi",
   "ZenMode",
   "Marks",
   { "Toggle Transparency",              com = "<CMD>TransparentToggle<cr>",           cat = "UI" },

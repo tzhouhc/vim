@@ -31,6 +31,7 @@ dashboard.section.buttons.val = {
   dashboard.button("3", "  Recent Files", ":Telescope oldfiles<CR>"),
   dashboard.button("4", "󰏗  Last Session", ":SessionLoadLast<CR>"),
 
+  dashboard.button("y", "󰇥  File Explorer", ":Yazi<CR>"),
   dashboard.button("s", "󰏗  Select Session", ":Telescope persisted<CR>"),
   dashboard.button("g", "󰊢  Repositories", ":SelectFromRepositories<CR>"),
   dashboard.button("z", "󰚥  Lazy", ":Lazy<CR>"),

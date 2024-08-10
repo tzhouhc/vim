@@ -1,5 +1,4 @@
 return {
-  -- tools
   -- multiple cursors
   "mg979/vim-visual-multi",
   -- unto tree
@@ -51,9 +50,16 @@ return {
   },
   -- floating terminal
   { "voldikss/vim-floaterm", cmd = "FloatermNew" },
+  -- bulk find/replace tool
   {
-    'MagicDuck/grug-far.nvim',
+    "MagicDuck/grug-far.nvim",
     config = true,
     cmd = "GrugFar",
   },
+  -- file explorer
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    config = true,
+  }
 }

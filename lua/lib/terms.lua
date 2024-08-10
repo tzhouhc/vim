@@ -10,6 +10,8 @@ function M.lazy_git()
   )
 end
 
+-- This version of Yazi integration opens in a _split_. Yuck.
+-- Using a plugin for this purpose instead.
 function M.yazi()
   vim.cmd(":FloatermNew yazi")
 end
