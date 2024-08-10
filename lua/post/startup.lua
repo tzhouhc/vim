@@ -32,7 +32,7 @@ dashboard.section.buttons.val = {
   dashboard.button("4", "󰏗  Last Session", ":SessionLoadLast<CR>"),
 
   dashboard.button("y", "󰇥  File Explorer", ":Yazi<CR>"),
-  dashboard.button("s", "󰏗  Select Session", ":Telescope persisted<CR>"),
+  dashboard.button("s", "󰏗  Select Session", ":SelectSession<CR>"),
   dashboard.button("g", "󰊢  Repositories", ":SelectFromRepositories<CR>"),
   dashboard.button("z", "󰚥  Lazy", ":Lazy<CR>"),
   dashboard.button("q", "󰠚  Quit NVIM", ":qa<CR>"),
