@@ -19,6 +19,12 @@ vim.api.nvim_create_user_command("Marks", require("telescope.builtin").marks, {}
 vim.api.nvim_create_user_command("SelectSession", function()
   require("persistence").select()
 end, {})
+vim.api.nvim_create_user_command("SessionLoadLast", function()
+  require("persistence").load({ last = true })
+end, {})
+vim.api.nvim_create_user_command("SessionLoadHere", function()
+  require("persistence").load()
+end, {})
 
 -- Tooling shortcuts
 vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, {})
