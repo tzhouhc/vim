@@ -24,5 +24,5 @@ require("post.diagnostics")
 require("post.lsp")
 -- completions via nvim-cmp
 require("post.completions")
--- commander
+-- custom commands
 require("post.commands")

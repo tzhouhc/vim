@@ -69,8 +69,6 @@ local key_configs = {
     ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
     -- git changes
     ["<c-p>"] = ":Telescope oldfiles<cr>",
-    -- commander
-    ["<m-space>"] = ":Telescope commander<cr>",
 
     -- folding
     ["zR"] = ufo.openAllFolds,

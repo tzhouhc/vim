@@ -3,8 +3,6 @@ return {
   "mg979/vim-visual-multi",
   -- unto tree
   { "mbbill/undotree",        cmd = "UndotreeToggle" },
-  -- custom commands
-  { "FeiyouG/commander.nvim", config = true,         keys = { { "<m-space>", "n" } } },
   -- regex explainer
   {
     "bennypowers/nvim-regexplainer",

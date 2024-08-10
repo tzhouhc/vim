@@ -1,5 +1,3 @@
--- Command Palette Customizations
-
 -- Custom Commands
 local scopes = require("lib.scopes")
 local misc = require("lib.misc")
@@ -45,54 +43,3 @@ local repo_ignore = {
   },
 }
 vim.api.nvim_create_user_command("SelectFromRepositories", function() ts.extensions.repo.cached_list(repo_ignore) end, {})
-
--- Commander
-local c = require("commander")
-
-local function make_simple(name, com)
-  return {
-    desc = name,
-    cmd = com,
-  }
-end
-
-local commands_table = {
-  "Runtimes",
-  "Twilight",
-  "Lazy",
-  "Git",
-  "Trouble",
-  "Mason",
-  "ZenMode",
-  "Marks",
-  { "Toggle Transparency",              com = "<CMD>TransparentToggle<cr>",           cat = "UI" },
-  { "Aerial",                           com = "<CMD>AerialToggle!<cr>",               cat = "Analysis" },
-  { "DevDocs",                          com = "<CMD>DevdocsOpenCurrentFloat<cr>",     cat = "Documentation" },
-  { "UndoTree",                         com = "<CMD>UndotreeToggle<cr>",              cat = "Tools" },
-  { "Unfold All",                       com = "zR",                                   cat = "Folding" },
-  { "Fold All",                         com = "zM",                                   cat = "Folding" },
-  { "Files in Repo",                    com = "<CMD>FilesInRepo<cr>",                 cat = "Tools" },
-  { "Changed Files in Repo",            com = "<CMD>ChangedInRepo<cr>",               cat = "Tools" },
-  { "Grep Across Repository",           com = "<CMD>GrepAcrossRepo<cr>",              cat = "Tools" },
-  { "Vim Configs",                      com = "<CMD>VimConfigs<cr>",                  cat = "Configs" },
-  { "Dot files",                        com = "<CMD>Dotfiles<cr>",                    cat = "Configs" },
-  { "Snippet files",                    com = "<CMD>Snippets<cr>",                    cat = "Configs" },
-  { "Symbols Outline",                  com = "<CMD>SymbolsOutline<cr>" },
-  { "Format Code",                      com = "<CMD>LspZeroFormat<cr>" },
-  { "File Tree",                        com = "<CMD>NvimTreeToggle<cr>" },
-  { "Colorizer",                        com = "<CMD>ColorizerToggle<cr>" },
-  { "Edit Working Directory as Buffer", com = "<CMD>Oil --float<cr>" },
-  { "Telescope",                        com = "<CMD>Telescope<cr>" },
-  { "Registers",                        com = "<CMD>Telescope registers<cr>" },
-}
-
-for _, com in pairs(commands_table) do
-  if type(com) == "table" then
-    local name = com[1]
-    local cat = com["cat"] or "Tools"
-    local command = com["com"] or name
-    c.add({ make_simple(name, command) }, { cat = cat })
-  else
-    c.add({ make_simple(com, ":" .. com .. "<cr>") }, { cat = "Tools" })
-  end
-end
