@@ -4,6 +4,7 @@ local key_utils = require("lib.key_utils")
 local ufo = require("ufo")
 local flash = require("flash")
 local scopes = require("lib.scopes")
+local terms = require("lib.terms")
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
@@ -23,6 +24,12 @@ local key_configs = {
 
     -- diffview
     ["<leader>dv"] = key_utils.toggle_diffview,
+
+    -- quake term
+    ["<m-e>"] = terms.quake_term,
+
+    -- run job in new float term
+    ["#"] = terms.run_job_term,
 
     -- use telescopes for registers invocation instead
     ["<leader>p"] = ":Telescope registers<cr>",
@@ -60,7 +67,7 @@ local key_configs = {
     -- lines in current buffer
     ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
     -- lines across the repo
-    ["<m-g>"] = scopes.live_grep_across_repo,
+    ["<m-f>"] = scopes.live_grep_across_repo,
     -- lines in all local dir files
     ["<c-g>"] = ":Telescope live_grep<cr>",
     -- local symbols based on treesitter
@@ -85,7 +92,7 @@ local key_configs = {
   },
   [{ "n", "v" }] = {
     -- meta+f to select and go to one specific letter on screen
-    ["<m-f>"] = flash.jump,
+    ["<c-j>"] = flash.jump,
     -- jump to first position after the first space (to avoid comment prefixes).
     ["0"] = key_utils.alternating_zero,
     -- jump to start of text object, be situationally aware

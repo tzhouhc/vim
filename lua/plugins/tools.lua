@@ -47,7 +47,7 @@ return {
     },
   },
   -- floating terminal
-  { "voldikss/vim-floaterm", cmd = "FloatermNew" },
+  { "voldikss/vim-floaterm", cmd = { "FloatermNew", "FloatermToggle" } },
   -- bulk find/replace tool
   {
     "MagicDuck/grug-far.nvim",

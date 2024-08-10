@@ -20,3 +20,7 @@ snippet autocmd "Autocommands"
 snippet autogr "Autocommand Groups"
 	vim.api.nvim_create_augroup("$1", { clear = true })
 
+snippet viminput "Vim Input UI"
+	vim.ui.input({ prompt = "$1" }, function(input)
+	end)
+
