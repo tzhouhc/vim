@@ -18,6 +18,7 @@ local hilight = {
   Bold = "gui=bold",
   mkdBold = "gui=bold",
   htmlItalic = "gui=italic",
+  ["@markup.strikethrough"] = "cterm=strikethrough term=strikethrough gui=strikethrough",
 }
 
 for _, hc in ipairs(hiclear) do

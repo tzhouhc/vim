@@ -77,3 +77,18 @@ The `snippets` directory contians snippets in the "hrsh7th/vim-vsnip" format.
 * Floating terminals and integrated floating apps
 * Multiple-cursor support
 * ...
+
+## Notes
+
+### Strikethrough
+
+If strikethrough doesn't render correctly while using terminals that support it,
+try the following:
+
+```
+infocmp $TERM > myterm.info
+vim myterm.info # add `smxx=\E[9m, rmxx=\E[29m,`
+tic -x myterm.info
+```
+
+[Source](https://github.com/neovim/neovim/discussions/24346#discussioncomment-9197378)
