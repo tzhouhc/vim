@@ -1,6 +1,5 @@
 local misc = require("lib.misc")
 local ts = require("nvim-treesitter.ts_utils")
-local trouble = require("trouble")
 local gitsigns = require("gitsigns")
 
 local M = {}
@@ -142,11 +141,13 @@ function M.add_blank_line_before()
 end
 
 function M.jump_to_prev_trouble_item()
+  local trouble = require("trouble")
   trouble.prev()
   trouble.jump_only()
 end
 
 function M.jump_to_next_trouble_item()
+  local trouble = require("trouble")
   trouble.next()
   trouble.jump_only()
 end

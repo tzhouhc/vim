@@ -44,3 +44,15 @@ snippet #--- "comment chunk" b
 
 snippet base "source common PATH setup"
 	source \$HOME/.zsh/base.zsh
+
+snippet ifstr "check if string has content"
+	if [[ -n "$1" ]]; then
+	fi
+
+snippet ifempty "check if string has content"
+	if [[ -z "$1" ]]; then
+	fi
+
+snippet ifregex "check if string matches regex"
+	if [[ "$1" =~ "$2" ]]; then
+	fi

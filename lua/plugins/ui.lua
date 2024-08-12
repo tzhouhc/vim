@@ -6,10 +6,10 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   -- better default selection tools
-  { "stevearc/dressing.nvim", },
+  { "stevearc/dressing.nvim" },
 
   -- highlight TODOs
-  { "folke/todo-comments.nvim",    config = true },
+  { "folke/todo-comments.nvim", config = true },
   -- keep top of code context on screen when scrolling past
   "nvim-treesitter/nvim-treesitter-context",
   -- text objects

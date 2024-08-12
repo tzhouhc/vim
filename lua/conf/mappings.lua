@@ -14,7 +14,6 @@ local key_configs = {
     ["<m-esc>"] = ":q<CR>",
     -- leader actions
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
-    ["<leader>en"] = ":e $HOME/.notes<cr>",
 
     -- buffer movement
     ["[b"] = ":bprev<cr>",

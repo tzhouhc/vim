@@ -10,6 +10,8 @@ return {
   "qpkorr/vim-bufkill",
   -- helps remembering things like registers
   { "folke/which-key.nvim",   config = true },
+  -- follow symlinks
+  "aymericbeaumet/vim-symlink",
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",

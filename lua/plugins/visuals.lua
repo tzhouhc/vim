@@ -4,7 +4,7 @@ return {
     "xiyaowong/transparent.nvim",
     opts = {
       extra_groups = { "ColorColumn" }
-    }
+    },
   },
   -- create vertical lines to mark indentation.
   "lukas-reineke/indent-blankline.nvim",
