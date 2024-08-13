@@ -10,6 +10,10 @@ local hiclear = {
 
   "FlashMatch",
   "FlashLabel",
+
+  "IlluminatedWordRead",
+  "IlluminatedWordWrite",
+  "IlluminatedWordText",
 }
 
 -- custom colors for plugin effects

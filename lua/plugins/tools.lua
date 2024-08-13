@@ -14,7 +14,23 @@ local regex_langs = {
 
 return {
   -- multiple cursors
-  "mg979/vim-visual-multi",
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    init = function()
+      vim.g.VM_maps = {
+        ["Select Cursor Down"] = "<M-Down>", -- start selecting down
+        ["Select Cursor Up"]   = "<M-Up>",   -- start selecting up
+        ["Select Operator"]    = "",
+        ["Goto Next"]          = "}",
+        ["Goto Prev"]          = "{",
+      }
+    end,
+    config = function()
+      vim.g.VM_mouse_mappings = 1
+      vim.cmd [[VMDebug]] -- fixes the  ctrl+n in visuala mode
+    end,
+  },
   -- unto tree
   { "mbbill/undotree",       cmd = "UndotreeToggle" },
   -- regex explainer
