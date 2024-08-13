@@ -15,7 +15,7 @@ return {
       cancel_search_key = "<leader>M",
       color_key = "<leader>k",
       cancel_color_key = "<leader>K",
-      select_mode = "random",   -- random or loop
+      select_mode = "random", -- random or loop
     }
   },
 }

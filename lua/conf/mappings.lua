@@ -15,6 +15,9 @@ local key_configs = {
     -- leader actions
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
 
+    -- disable cmdline window
+    ["q:"] = "",
+
     -- buffer movement
     ["[b"] = ":bprev<cr>",
     ["]b"] = ":bnext<cr>",

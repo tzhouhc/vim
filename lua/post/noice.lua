@@ -67,7 +67,7 @@ local conf = {
       format = "lsp_progress",
       --- @type NoiceFormat|string
       format_done = "lsp_progress_done",
-      throttle = 1000 / 30,   -- frequency to update lsp progress message
+      throttle = 1000 / 30, -- frequency to update lsp progress message
       view = "mini",
     },
     override = {
@@ -134,9 +134,9 @@ local conf = {
     excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
   },
   ---@type NoicePresets
-  throttle = 1000 / 30,            -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+  throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type table<string, NoiceFilter>
-  status = {}, --- @see section on statusline components
+  status = {},          --- @see section on statusline components
   ---@type NoiceFormatOptions
-  format = {}, --- @see section on formatting
+  format = {},          --- @see section on formatting
 }
