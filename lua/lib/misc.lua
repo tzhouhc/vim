@@ -4,6 +4,8 @@
 
 local M = {}
 
+local sets = {{97, 122}, {65, 90}, {48, 57}} -- a-z, A-Z, 0-9
+
 local function extract_plugin(line)
   -- first string literal in the line
   return line:match("[\"']([^'\"]+)[\"']")
@@ -129,6 +131,24 @@ function M.batch_set_keymap(mappings)
       end
     end
   end
+end
+
+--- generate a random string
+---@param length integer
+local function random_str(chars)
+	local str = ""
+	for i = 1, chars do
+		math.randomseed(os.clock() ^ 5)
+		local charset = sets[ math.random(1, #sets) ]
+		str = str .. string.char(math.random(charset[1], charset[2]))
+	end
+	return str
+end
+
+--- create a temp file with filename.
+function M.make_scratch()
+  local name = random_str(8)
+  vim.cmd("e /tmp/vim-scratch-" .. name)
 end
 
 return M

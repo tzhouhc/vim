@@ -26,6 +26,7 @@ dashboard.section.header.val = {
 
 -- Set menu
 dashboard.section.buttons.val = {
+  dashboard.button("0", "  Scratch File", ":Scratch<CR>"),
   dashboard.button("1", "  New File", ":ene <BAR> startinsert <CR>"),
   dashboard.button("2", "󰍉  Find File", ":Telescope find_files<CR>"),
   dashboard.button("3", "  Recent Files", ":Telescope oldfiles<CR>"),

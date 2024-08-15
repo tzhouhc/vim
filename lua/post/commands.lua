@@ -37,6 +37,8 @@ vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
 
+vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
+
 -- Telescope
 local repo_ignore = {
   file_ignore_patterns = {
