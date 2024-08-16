@@ -1,10 +1,5 @@
 return {
   -- visuals
-  -- startup page
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
   -- better default selection tools
   { "stevearc/dressing.nvim" },
 
@@ -29,10 +24,5 @@ return {
     "SmiteshP/nvim-navic",
     dependencies = "neovim/nvim-lspconfig",
     config = true,
-  },
-  -- status bar
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "meuter/lualine-so-fancy.nvim" },
   },
 }
