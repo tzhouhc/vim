@@ -19,8 +19,9 @@ return {
     lazy = false,
     init = function()
       vim.g.VM_maps = {
-        ["Select Cursor Down"] = "<M-Down>", -- start selecting down
-        ["Select Cursor Up"]   = "<M-Up>",   -- start selecting up
+        ["Select Cursor Down"] = "<M-Down>",   -- start selecting down
+        ["Select Cursor Up"]   = "<M-Up>",     -- start selecting up
+        ["Add Cursor At Pos"]  = "<M-Space>",  -- start selecting here
         ["Select Operator"]    = "",
         ["Goto Next"]          = "}",
         ["Goto Prev"]          = "{",

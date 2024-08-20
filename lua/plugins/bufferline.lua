@@ -12,12 +12,13 @@ return {
           },
         }
       else
+        conf = {
+          options = {
+            show_buffer_close_icons = false,
+          },
+        }
       end
-      require("bufferline").setup({
-        options = {
-          show_buffer_close_icons = false,
-        },
-      })
+      require("bufferline").setup(conf)
     end,
   },
 }
