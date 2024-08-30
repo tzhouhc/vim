@@ -7,8 +7,6 @@ return {
   { "folke/todo-comments.nvim", config = true },
   -- keep top of code context on screen when scrolling past
   "nvim-treesitter/nvim-treesitter-context",
-  -- text objects
-  "nvim-treesitter/nvim-treesitter-textobjects",
   -- smarter folding
   {
     "kevinhwang91/nvim-ufo",
