@@ -29,8 +29,8 @@ end
 --- Mixes two RGB color strings with an optional ratio.
 ---@param a string The first color.
 ---@param b string The second color.
----@param pa float The mixture ratio for a, should be a number between 0 and 1. The mixture
--- of b is automatically (1 - a).
+---@param pa number The mixture ratio for a, should be a number between 0 and 1. The mixture
+---of b is automatically (1 - a).
 ---@return string
 function M.mix_colors(a, b, pa)
   local color_a = hex_to_table(strip_hash(a))

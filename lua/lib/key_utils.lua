@@ -35,7 +35,7 @@ local alternating_zero_behaviors = {
 
 function M.alternating_zero()
   -- we maintain the same start for each distinct row we run this in
-  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   -- initialize global var for alternating if we are starting out fresh
   -- OR if we just moved to a new row
   if vim.g.alternating_zero_state == nil or row ~= vim.g.alternating_zero_row then
@@ -131,12 +131,12 @@ function M.vsnip_jump_backward()
 end
 
 function M.add_blank_line_after()
-  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_lines(0, row, row, false, { "" })
 end
 
 function M.add_blank_line_before()
-  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { "" })
 end
 

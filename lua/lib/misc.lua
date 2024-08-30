@@ -4,6 +4,8 @@
 
 local M = {}
 
+table.unpack = table.unpack or unpack
+
 local sets = {{97, 122}, {65, 90}, {48, 57}} -- a-z, A-Z, 0-9
 
 local function extract_plugin(line)
@@ -126,7 +128,7 @@ function M.batch_set_keymap(mappings)
         -- default configuration
         vim.keymap.set(mode, key, val, { noremap = true, silent = true })
       else
-        local command, opts = unpack(val)
+        local command, opts = table.unpack(val)
         vim.keymap.set(mode, key, command, opts)
       end
     end
@@ -134,7 +136,7 @@ function M.batch_set_keymap(mappings)
 end
 
 --- generate a random string
----@param length integer
+---@param chars integer
 local function random_str(chars)
 	local str = ""
 	for i = 1, chars do

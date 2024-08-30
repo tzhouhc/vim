@@ -1,3 +1,4 @@
+-- not used but kept in case it's needed later.
 local local_llm_plugin =
 {
   "huggingface/llm.nvim",
@@ -52,8 +53,7 @@ return {
   -- { "David-Kunz/gen.nvim" },
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
+    cmd = "AvanteAsk",
     opts = {
       provider = "openai",
       openai = {
@@ -64,7 +64,6 @@ return {
         max_tokens = 4096,
         ["local"] = false,
       },
-      -- add any opts here
     },
     keys = {
       { "<leader>aa", function() require("avante.api").ask() end,     desc = "avante: ask",    mode = { "n", "v" } },
@@ -75,10 +74,8 @@ return {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
-        -- Make sure to setup it properly if you have lazy=true
         'MeanderingProgrammer/render-markdown.nvim',
         opts = {
           file_types = { "markdown", "Avante" },

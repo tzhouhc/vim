@@ -1,7 +1,7 @@
 return {
   -- visuals
   -- better default selection tools
-  { "stevearc/dressing.nvim" },
+  { "stevearc/dressing.nvim", event = "VeryLazy" },
 
   -- highlight TODOs
   { "folke/todo-comments.nvim", config = true },
@@ -10,6 +10,7 @@ return {
   -- smarter folding
   {
     "kevinhwang91/nvim-ufo",
+    event = "VeryLazy",
     dependencies = "kevinhwang91/promise-async",
     opts = {
       provider_selector = function(_, ft, _)
