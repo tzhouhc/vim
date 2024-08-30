@@ -11,7 +11,6 @@ local terms = require("lib.terms")
 local key_configs = {
   -- Normal mode
   n = {
-    ["<leader>ft"] = ":NvimTreeToggle<CR>",
     ["<leader>q"] = ":BD<cr>",
     ["<leader>ql"] = key_utils.toggle_quickfix,
     ["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",

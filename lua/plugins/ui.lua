@@ -12,9 +12,15 @@ return {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     opts = {
-      provider_selector = function(_, _, _)
+      provider_selector = function(_, ft, _)
+        if ft == "python" then
+          return { "indent" }
+        end
         return { "treesitter", "indent" }
       end,
+      close_fold_kinds_for_ft = {
+        default = { 'imports', 'comment' },
+      },
     },
   },
   -- navic

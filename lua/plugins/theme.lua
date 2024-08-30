@@ -61,7 +61,6 @@ return {
           diffview = true,
           noice = true,
           nvimtree = true,
-          which_key = true,
           lsp_trouble = true,
           rainbow_delimiters = true,
           markdown = true,
