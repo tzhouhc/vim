@@ -3,8 +3,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.6",
-    lazy = true,
-    cmd = "Telescope",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -50,7 +49,33 @@ return {
           mappings = default_mapping,
         },
       })
+
+      local scopes = require("lib.scopes")
+      local key_configs = {
+        n = {
+          -- local files
+          ["<c-o>"] = ":Telescope find_files<cr>",
+          -- files in the entire repo
+          ["<m-o>"] = scopes.local_or_repo_files,
+          -- files in the repo that have changed
+          ["<m-p>"] = scopes.changed_files_in_repo,
+          -- lines in current buffer
+          ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
+          -- lines across the repo
+          ["<m-f>"] = scopes.live_grep_across_repo,
+          -- lines in all local dir files
+          ["<c-g>"] = ":Telescope live_grep<cr>",
+          -- local symbols based on treesitter
+          ["<c-k>"] = ":Telescope treesitter<cr>",
+          -- local symbols based on LSP symbols
+          ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
+          -- git changes
+          ["<c-p>"] = ":Telescope oldfiles<cr>",
+        }
+      }
+      require("lib.misc").batch_set_keymap(key_configs)
     end
+
   },
   -- },
   -- with fzf

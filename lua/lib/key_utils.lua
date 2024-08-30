@@ -160,14 +160,6 @@ function M.toggle_quickfix()
   vim.cmd.copen()
 end
 
-function M.local_or_repo_files()
-  if misc.is_git() then
-    vim.cmd("FilesInRepo")
-    return
-  end
-  vim.cmd("Telescope find_files")
-end
-
 function M.prev_hunk()
   if vim.wo.diff then
     vim.cmd.normal({ ']c', bang = true })

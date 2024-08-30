@@ -8,6 +8,25 @@ local misc = require("lib.misc")
 
 local M = {}
 
+local repo_ignore = {
+  file_ignore_patterns = {
+    "%.Trash/",
+    "%.local/",
+    "%.cache/",
+    "%.zgen/",
+    "%.cargo/",
+    "nvim/lazy",
+  },
+}
+
+function M.local_or_repo_files()
+  if misc.is_git() then
+    vim.cmd("FilesInRepo")
+    return
+  end
+  vim.cmd("Telescope find_files")
+end
+
 -- finds all standalone vim scripts in runtime path and source them.
 function M.runtime_files(opts)
   local files = vim.api.nvim_get_runtime_file("*.vim", true)
@@ -95,5 +114,18 @@ function M.changed_files_in_repo()
     search_dirs = { misc.git_repo_root() },
   })
 end
+
+-- Telescope shortcuts
+vim.api.nvim_create_user_command("Marks", builtin.marks, {})
+-- Finding common files
+vim.api.nvim_create_user_command("Runtimes", M.runtime_files, {})
+vim.api.nvim_create_user_command("VimConfigs", M.find_configs, {})
+vim.api.nvim_create_user_command("Dotfiles", M.find_dotfiles, {})
+vim.api.nvim_create_user_command("Snippets", M.find_snippets, {})
+vim.api.nvim_create_user_command("GrepAcrossRepo", M.live_grep_across_repo, {})
+vim.api.nvim_create_user_command("FilesInRepo", M.files_in_repo, {})
+vim.api.nvim_create_user_command("ChangedInRepo", M.changed_files_in_repo, {})
+vim.api.nvim_create_user_command("SelectFromRepositories",
+  function() require("telescope").extensions.repo.cached_list(repo_ignore) end, {})
 
 return M

@@ -3,7 +3,6 @@
 local key_utils = require("lib.key_utils")
 local ufo = require("ufo")
 local flash = require("flash")
-local scopes = require("lib.scopes")
 local terms = require("lib.terms")
 
 -- For automating setting key maps.
@@ -55,27 +54,6 @@ local key_configs = {
     ["<leader>8"] = "<Cmd>BufferLineGoToBuffer 8<CR>",
     ["<leader>9"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
     ["<leader>$"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
-
-    -- Telescope
-
-    -- local files
-    ["<c-o>"] = ":Telescope find_files<cr>",
-    -- files in the entire repo
-    ["<m-o>"] = key_utils.local_or_repo_files,
-    -- files in the repo that have changed
-    ["<m-p>"] = ":ChangedInRepo<cr>",
-    -- lines in current buffer
-    ["<c-f>"] = ":Telescope current_buffer_fuzzy_find<cr>",
-    -- lines across the repo
-    ["<m-f>"] = scopes.live_grep_across_repo,
-    -- lines in all local dir files
-    ["<c-g>"] = ":Telescope live_grep<cr>",
-    -- local symbols based on treesitter
-    ["<c-k>"] = ":Telescope treesitter<cr>",
-    -- local symbols based on LSP symbols
-    ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
-    -- git changes
-    ["<c-p>"] = ":Telescope oldfiles<cr>",
 
     -- folding
     ["zR"] = ufo.openAllFolds,
