@@ -95,21 +95,15 @@ return {
       })
     end,
     keys = {
-      { "<leader>aa", function() require("avante.api").ask() end,     desc = "avante: ask",    mode = { "n", "v" } },
-      { "<leader>ae", function() require("avante.api").edit() end,    desc = "avante: edit",   mode = "v" },
+      { "<leader>aa", function() require("avante.api").ask() end,  desc = "avante: ask",  mode = { "n", "v" } },
+      { "<leader>ae", function() require("avante.api").edit() end, desc = "avante: edit", mode = "v" },
     },
     dependencies = {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      {
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      "MeanderingProgrammer/render-markdown.nvim",
     },
   },
   {

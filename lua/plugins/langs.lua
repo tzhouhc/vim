@@ -1,30 +1,29 @@
 return {
   -- languages
+  { "preservim/vim-markdown" },
   {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown", -- If you decide to lazy-load anyway
-    dependencies = {
-      -- You will not need this if you installed the
-      -- parsers manually
-      -- Or if the parsers are in your $RUNTIMEPATH
-      "nvim-treesitter/nvim-treesitter",
-
-      "nvim-tree/nvim-web-devicons"
-    },
+    'MeanderingProgrammer/render-markdown.nvim',
     opts = {
-      modes = { "n", "no", "c" }, -- Change these modes
-      -- to what you need
-
-      hybrid_modes = { "n" }, -- Uses this feature on
-      -- normal mode
-      -- This is nice to have
-      callbacks = {
-        on_enable = function(_, win)
-          vim.wo[win].conceallevel = 2;
-          vim.wo[win].concealcursor = "c";
-        end
-      }
-    }
+      file_types = { "Avante", "markdown" },
+      heading = {
+        width = "block",
+        min_width = 1,
+        right_pad = 1,
+        icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰲦 ", "󰲨 ", "󰲪 " },
+      },
+      code = {
+        width = 'block',
+        left_pad = 2,
+        right_pad = 2,
+        language_pad = 2,
+        min_width = 40,
+      },
+      sign = {
+        enabled = true,
+      },
+      pipe_table = { preset = 'heavy' },
+    },
+    ft = { "Avante", "markdown" },
   },
   -- for advanced usage
   { "LhKipp/nvim-nu", ft = "nu", opts = { use_lsp_features = false } },
