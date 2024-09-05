@@ -9,6 +9,5 @@
 
 local ok, res = pcall(require, "local.local")
 if not ok then
-  print("Error loading local module:\n" .. res)
   require("local.default")
 end

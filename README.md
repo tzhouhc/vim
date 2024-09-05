@@ -92,3 +92,7 @@ tic -x myterm.info
 ```
 
 [Source](https://github.com/neovim/neovim/discussions/24346#discussioncomment-9197378)
+
+### Failure to Install `pylsp`
+
+Run `sudo apt install python3-venv`
