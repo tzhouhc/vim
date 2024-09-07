@@ -58,6 +58,12 @@ require("mason-lspconfig").setup({
   },
 })
 
+-- c
+-- Note that clangd requires manual installation on some architectures.
+lspconfig.clangd.setup({
+  cmd = { "clangd", "--background-index", "--clang-tidy", },
+})
+
 -- lua
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
