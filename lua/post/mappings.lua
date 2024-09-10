@@ -68,8 +68,9 @@ local key_configs = {
     ["<leader>p"] = '"_d<esc>:Telescope registers<cr>',
   },
   [{ "n", "v" }] = {
-    -- meta+f to select and go to one specific letter on screen
+    -- ctrl/meta+j to select and go to one specific letter on screen
     ["<c-j>"] = flash.jump,
+    ["<m-j>"] = flash.jump,
     -- jump to first position after the first space (to avoid comment prefixes).
     ["0"] = key_utils.alternating_zero,
     -- jump to start of text object, be situationally aware
