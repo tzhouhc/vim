@@ -21,10 +21,26 @@ return {
       sign = {
         enabled = true,
       },
+      checkbox = {
+        enabled = true,
+        position = 'inline',
+        unchecked = {
+          icon = '󰄱',
+          highlight = 'RenderMarkdownUnchecked',
+        },
+        checked = {
+          icon = '󰱒',
+          highlight = 'RenderMarkdownChecked',
+        },
+        custom = {
+          todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
+          unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownTodo' },
+        },
+      },
       pipe_table = { preset = 'heavy' },
     },
     ft = { "Avante", "markdown" },
   },
   -- for advanced usage
-  { "LhKipp/nvim-nu", ft = "nu", opts = { use_lsp_features = false } },
+  { "LhKipp/nvim-nu",        ft = "nu", opts = { use_lsp_features = false } },
 }
