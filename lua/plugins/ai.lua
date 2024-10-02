@@ -54,6 +54,7 @@ return {
   {
     "yetone/avante.nvim",
     cmd = "AvanteAsk",
+		build = "make",
     config = function()
       require("avante").setup({
         provider = "openrouter",
