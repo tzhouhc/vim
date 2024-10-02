@@ -18,6 +18,7 @@ local cmdline_format = {
   help_custom = { pattern = "^:%s*H%s+", icon = "󰋖" },
   telescope = { pattern = "^:%s*Telescope%s+", icon = "", kind = "search" },
   edit = { pattern = "^:%s*e%s+", icon = "󱇧" },
+  calculator = { pattern = "^=", icon = "", lang = "vimnormal" },
   input = {}, -- Used by input()
   -- lua = false, -- to disable a format, set to `false`
 }
