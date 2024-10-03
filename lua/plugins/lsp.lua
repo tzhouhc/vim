@@ -9,6 +9,7 @@ return {
   -- null-ls
   {
     "nvimtools/none-ls.nvim",
+    cond = false,
     config = function()
       local null_ls = require("null-ls")
       null_ls.setup({

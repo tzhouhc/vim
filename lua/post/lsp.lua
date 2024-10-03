@@ -27,7 +27,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    vim.keymap.set({ "n", "x" }, "<leader>fc", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
   end,
 })
 
@@ -39,7 +38,7 @@ local default_setup = function(server)
       if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
       end
-    end
+    end,
   })
 end
 
@@ -61,7 +60,7 @@ require("mason-lspconfig").setup({
 -- c
 -- Note that clangd requires manual installation on some architectures.
 lspconfig.clangd.setup({
-  cmd = { "clangd", "--background-index", "--clang-tidy", },
+  cmd = { "clangd", "--background-index", "--clang-tidy" },
 })
 
 -- lua
@@ -84,17 +83,29 @@ lspconfig.lua_ls.setup({
   },
 })
 
+lspconfig.pylsp.setup({
+  settings = {
+    pylsp = {
+      plugins = {
+        flake8 = {
+          maxLineLength = 80,
+        },
+      },
+    },
+  },
+})
+
 lspconfig.rust_analyzer.setup({
   settings = {
-    ['rust-analyzer'] = {
+    ["rust-analyzer"] = {
       diagnostics = {
         enable = false,
       },
       rustfmt = {
         extraArgs = { "--config", "tab_spaces=2" },
-      }
-    }
-  }
+      },
+    },
+  },
 })
 
 -- harper grammar checker; unused
@@ -114,8 +125,8 @@ local harper_conf = {
         matcher = true,
         correct_number_suffix = true,
         number_suffix_capitalization = true,
-      }
-    }
+      },
+    },
   },
 }
 
@@ -126,20 +137,20 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 ---- NULL-LS ----
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua.with({
-      extra_args = { "--indent_type=Spaces", "--indent_width=2" },
-    }),
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.sql_formatter,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.black,
-    -- null_ls.builtins.completion.spell,
-    null_ls.builtins.hover.dictionary,
-    null_ls.builtins.hover.printenv.with({
-      extra_filetypes = { "zsh" },
-    }),
-  },
-})
+-- local null_ls = require("null-ls")
+-- null_ls.setup({
+--   sources = {
+--     null_ls.builtins.formatting.stylua.with({
+--       extra_args = { "--indent_type=Spaces", "--indent_width=2" },
+--     }),
+--     null_ls.builtins.formatting.prettier,
+--     null_ls.builtins.formatting.sql_formatter,
+--     null_ls.builtins.formatting.isort,
+--     null_ls.builtins.formatting.black,
+--     -- null_ls.builtins.completion.spell,
+--     null_ls.builtins.hover.dictionary,
+--     null_ls.builtins.hover.printenv.with({
+--       extra_filetypes = { "zsh" },
+--     }),
+--   },
+-- })
