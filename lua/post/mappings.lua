@@ -1,6 +1,7 @@
 -- Keyboard Mapping Configurations, with Plugins
 
 local key_utils = require("lib.key_utils")
+local tools = require("lib.tools")
 local ufo = require("ufo")
 local flash = require("flash")
 local terms = require("lib.terms")
@@ -53,6 +54,9 @@ local key_configs = {
     ["<leader>8"] = "<Cmd>BufferLineGoToBuffer 8<CR>",
     ["<leader>9"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
     ["<leader>$"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
+
+    -- formatting
+    ["<leader>fc"] = tools.smart_format,
 
     -- folding
     ["zR"] = ufo.openAllFolds,
