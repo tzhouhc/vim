@@ -1,3 +1,10 @@
 snippet ifmain "Python if-main idiom" b
 	if __name__ == "__main__":
 		main()
+
+snippet repl "Go into REPL mode"
+	import code
+	# Set up the interactive interpreter
+	variables = locals().copy()
+	console = code.InteractiveConsole(variables)
+	console.interact()
