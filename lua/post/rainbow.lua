@@ -58,11 +58,11 @@ end)
 
 require("ibl").setup({
   indent = {
-    char = "┇",
+    char = "┊",
     highlight = M.rainbow_dark_groups,
   },
   exclude = { filetypes = { "dashboard" } },
-  scope = { char = "┇", highlight = M.rainbow_groups },
+  scope = { char = "┊", highlight = M.rainbow_groups },
 })
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)

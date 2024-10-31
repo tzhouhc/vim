@@ -135,22 +135,3 @@ vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-
----- NULL-LS ----
--- local null_ls = require("null-ls")
--- null_ls.setup({
---   sources = {
---     null_ls.builtins.formatting.stylua.with({
---       extra_args = { "--indent_type=Spaces", "--indent_width=2" },
---     }),
---     null_ls.builtins.formatting.prettier,
---     null_ls.builtins.formatting.sql_formatter,
---     null_ls.builtins.formatting.isort,
---     null_ls.builtins.formatting.black,
---     -- null_ls.builtins.completion.spell,
---     null_ls.builtins.hover.dictionary,
---     null_ls.builtins.hover.printenv.with({
---       extra_filetypes = { "zsh" },
---     }),
---   },
--- })
