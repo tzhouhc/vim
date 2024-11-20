@@ -20,7 +20,11 @@ vim.api.nvim_create_user_command("FormatCode", function()
 end, {})
 
 -- Popup terminals
+-- Git Tools
 vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
+vim.api.nvim_create_user_command("GitLinesLogs", terms.git_lines_log, { range = true })
+vim.api.nvim_create_user_command("GitLinesBlame", terms.git_lines_blame, { range = true })
+-- Others
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
 

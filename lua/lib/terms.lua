@@ -1,4 +1,5 @@
 local win = require("lib.windows")
+local misc = require("lib.misc")
 
 local M = {}
 
@@ -40,6 +41,24 @@ function M.run_job_term()
     M.quake_term()
     vim.cmd("FloatermSend " .. input)
   end)
+end
+
+function M.git_lines_log()
+  local start_line, end_line = misc.get_visual_selection_lines()
+  local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+  vim.cmd(
+    "FloatermNew --height=0.9 --width=0.9 --wintype=float --title=logs --name=LineLogs --autoclose=2 git log -L" ..
+    start_line .. "," .. end_line .. ":'" .. file .. "' | delta --paging=always"
+  )
+end
+
+function M.git_lines_blame()
+  local start_line, end_line = misc.get_visual_selection_lines()
+  local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+  vim.cmd(
+    "FloatermNew --height=0.9 --width=0.9 --wintype=float --title=logs --name=LineLogs --autoclose=2 git blame -w -CCC -L" ..
+    start_line .. "," .. end_line .. " '" .. file .. "' | delta --paging=always"
+  )
 end
 
 return M

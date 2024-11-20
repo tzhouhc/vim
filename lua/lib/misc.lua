@@ -6,7 +6,7 @@ local M = {}
 
 table.unpack = table.unpack or unpack
 
-local sets = {{97, 122}, {65, 90}, {48, 57}} -- a-z, A-Z, 0-9
+local sets = { { 97, 122 }, { 65, 90 }, { 48, 57 } } -- a-z, A-Z, 0-9
 
 local function extract_plugin(line)
   -- first string literal in the line
@@ -138,19 +138,31 @@ end
 --- generate a random string
 ---@param chars integer
 local function random_str(chars)
-	local str = ""
-	for i = 1, chars do
-		math.randomseed(os.clock() ^ 5)
-		local charset = sets[ math.random(1, #sets) ]
-		str = str .. string.char(math.random(charset[1], charset[2]))
-	end
-	return str
+  local str = ""
+  for i = 1, chars do
+    math.randomseed(os.clock() ^ 5)
+    local charset = sets[math.random(1, #sets)]
+    str = str .. string.char(math.random(charset[1], charset[2]))
+  end
+  return str
 end
 
 --- create a temp file with filename.
 function M.make_scratch()
   local name = random_str(8)
   vim.cmd("e /tmp/vim-scratch-" .. name)
+end
+
+-- Function to get start and end lines of visual selection
+function M.get_visual_selection_lines()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+
+  -- start_pos[2] and end_pos[2] contain the line numbers
+  local start_line = start_pos[2]
+  local end_line = end_pos[2]
+
+  return start_line, end_line
 end
 
 return M
