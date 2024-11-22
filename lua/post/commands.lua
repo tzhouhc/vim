@@ -2,22 +2,21 @@
 local misc = require("lib.misc")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
+local tools = require("lib.tools")
 
 vim.api.nvim_create_user_command("SelectSession", function()
-  require("persistence").select()
+	require("persistence").select()
 end, {})
 vim.api.nvim_create_user_command("SessionLoadLast", function()
-  require("persistence").load({ last = true })
+	require("persistence").load({ last = true })
 end, {})
 vim.api.nvim_create_user_command("SessionLoadHere", function()
-  require("persistence").load()
+	require("persistence").load()
 end, {})
 
 -- Tooling shortcuts
 vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, {})
-vim.api.nvim_create_user_command("FormatCode", function()
-  vim.lsp.buf.format({ async = true })
-end, {})
+vim.api.nvim_create_user_command("FormatCode", tools.smart_format, { range = true })
 
 -- Popup terminals
 -- Git Tools

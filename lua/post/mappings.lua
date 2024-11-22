@@ -56,7 +56,7 @@ local key_configs = {
     ["<leader>$"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
 
     -- formatting
-    ["<leader>fc"] = tools.smart_format,
+    ["<leader>fc"] = "<Cmd>FormatCode<cr>",
 
     -- folding
     ["zR"] = ufo.openAllFolds,
@@ -70,6 +70,8 @@ local key_configs = {
   v = {
     -- same as normal but also does a non-yanking deletion first
     ["<leader>p"] = '"_d<esc>:Telescope registers<cr>',
+    -- formatting
+    ["<leader>fc"] = "<Cmd>FormatCode<cr>",
   },
   [{ "n", "v" }] = {
     -- ctrl/meta+j to select and go to one specific letter on screen
