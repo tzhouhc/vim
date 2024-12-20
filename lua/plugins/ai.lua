@@ -63,7 +63,7 @@ return {
             api_key_name = "OPENROUTER_API_KEY",
             endpoint = "https://openrouter.ai/api/v1/chat/completions",
             -- model = "anthropic/claude-3.5-sonnet",
-            model = "deepseek/deepseek-coder",
+            model = "deepseek/deepseek-chat",
             parse_curl_args = function(opts, code_opts)
               return {
                 url = opts.endpoint,
@@ -73,7 +73,7 @@ return {
                 },
                 body = {
                   model = opts.model,
-                  messages = require("avante.providers").openai.parse_message(code_opts), -- you can make your own message, but this is very advanced
+                  messages = require("avante.providers").openai.parse_messages(code_opts), -- you can make your own message, but this is very advanced
                   temperature = 0,
                   max_tokens = 4096,
                   stream = true,
