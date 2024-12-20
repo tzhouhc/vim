@@ -14,7 +14,6 @@ local key_configs = {
   n = {
     ["<leader>q"] = ":BD<cr>",
     ["<leader>ql"] = key_utils.toggle_quickfix,
-    ["<leader>dd"] = ":DevdocsOpenCurrentFloat<cr>",
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>ar"] = ":AerialToggle!<cr>",
 
