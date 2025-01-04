@@ -6,8 +6,6 @@ return {
       extra_groups = { "ColorColumn" }
     },
   },
-  -- create vertical lines to mark indentation.
-  "lukas-reineke/indent-blankline.nvim",
   -- rainbow colors for parentheses/brackets for easier depth determination
   "HiPhish/rainbow-delimiters.nvim",
   -- highlight hex colors
