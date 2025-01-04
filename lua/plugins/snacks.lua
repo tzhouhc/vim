@@ -62,6 +62,10 @@ return {
         }
       },
       input = { enabled = true },
+      lazygit = {
+        enabled = true,
+        configure = true,
+      },
       -- notifier = { enabled = true },
       quickfile = { enabled = true },
       scroll = { enabled = true },

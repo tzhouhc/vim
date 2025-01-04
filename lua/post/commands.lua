@@ -3,6 +3,7 @@ local misc = require("lib.misc")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
 local tools = require("lib.tools")
+local lazygit = require("snacks.lazygit")
 
 vim.api.nvim_create_user_command("SelectSession", function()
 	require("persistence").select()
@@ -20,7 +21,7 @@ vim.api.nvim_create_user_command("FormatCode", tools.smart_format, { range = tru
 
 -- Popup terminals
 -- Git Tools
-vim.api.nvim_create_user_command("Git", terms.lazy_git, {})
+vim.api.nvim_create_user_command("Git", function() lazygit.open() end, {})
 vim.api.nvim_create_user_command("GitLinesLogs", terms.git_lines_log, { range = true })
 vim.api.nvim_create_user_command("GitLinesBlame", terms.git_lines_blame, { range = true })
 -- Others
