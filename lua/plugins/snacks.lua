@@ -1,3 +1,34 @@
+local term_keys = {
+  q = "hide",
+  gf = function(self)
+    local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
+    if f == "" then
+      Snacks.notify.warn("No file under cursor")
+    else
+      self:hide()
+      vim.schedule(function()
+        vim.cmd("e " .. f)
+      end)
+    end
+  end,
+  term_normal = {
+    "<esc>",
+    function(self)
+      self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+      if self.esc_timer:is_active() then
+        self.esc_timer:stop()
+        vim.cmd("stopinsert")
+      else
+        self.esc_timer:start(200, 0, function() end)
+        return "<esc>"
+      end
+    end,
+    mode = "t",
+    expr = true,
+    desc = "Double escape to normal mode",
+  },
+}
+
 local function dashboard_key_conf(key, icon, text, action)
   local res = {
     key = key,
@@ -62,7 +93,7 @@ return {
         },
         sections = {
           { section = "header" },
-          { section = "keys", gap = 1, padding = 1 },
+          { section = "keys",   gap = 1, padding = 1 },
           { section = "startup" },
         },
       },
@@ -128,6 +159,31 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       -- words = { enabled = true },
+      styles = {
+        terminal = {
+          border = "rounded",
+          bo = {
+            filetype = "snacks_terminal",
+          },
+          wo = {},
+          keys = term_keys,
+          fixbuf = true,
+        },
+        right_term = {
+          height = 0.9,
+          width = 0.45,
+          col = 0.5,
+          row = 0.025,
+          position = "float",
+          border = "rounded",
+          bo = {
+            filetype = "snacks_terminal",
+          },
+          wo = {},
+          keys = term_keys,
+          fixbuf = true,
+        }
+      }
     },
   }
 }

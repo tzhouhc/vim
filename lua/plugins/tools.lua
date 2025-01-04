@@ -81,15 +81,6 @@ return {
 		},
 		cmd = { "RegexplainerToggle", "RegexplainerShow" },
 	},
-	-- floating terminal
-	{
-		"voldikss/vim-floaterm",
-		cmd = { "FloatermNew", "FloatermToggle" },
-		init = function()
-			vim.g.floaterm_opener = 'edit'
-			vim.g.floaterm_autoclose = 0
-		end,
-	},
 	-- bulk find/replace tool
 	{
 		"MagicDuck/grug-far.nvim",

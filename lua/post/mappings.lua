@@ -26,9 +26,6 @@ local key_configs = {
     -- quake term
     ["<m-e>"] = terms.quake_term,
 
-    -- run job in new float term
-    ["#"] = terms.run_job_term,
-
     -- use telescopes for registers invocation instead
     ["<leader>p"] = ":Telescope registers<cr>",
 
