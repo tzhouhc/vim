@@ -98,20 +98,24 @@ return {
         },
         scope = {
           char = "┆",
+          only_current = true,
+          -- no idea why but the scope-based highlighting seems to be skipping
+          -- groups? If the color ever goes back wrong again see if this was
+          -- fixed.
           hl = {
             "RainbowDelim1",
-            "RainbowDelim2",
-            "RainbowDelim3",
-            "RainbowDelim4",
-            "RainbowDelim5",
-            "RainbowDelim6",
             "RainbowDelim7",
+            "RainbowDelim2",
             "RainbowDelim8",
+            "RainbowDelim3",
             "RainbowDelim9",
+            "RainbowDelim4",
             "RainbowDelim10",
+            "RainbowDelim5",
             "RainbowDelim11",
+            "RainbowDelim6",
             "RainbowDelim12",
-          }
+          },
         }
       },
       input = { enabled = true },

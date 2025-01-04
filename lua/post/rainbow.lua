@@ -40,7 +40,7 @@ M.rainbow_groups = make_rainbow(M.rainbow_colors, "RainbowDelim", 1)
 M.rainbow_dim_groups = make_rainbow(M.rainbow_colors, "RainbowDimDelim", 0.85)
 
 -- significantly darker variant
-M.rainbow_dark_groups = make_rainbow(M.rainbow_colors, "RainbowDarkDelim", 0.3)
+M.rainbow_dark_groups = make_rainbow(M.rainbow_colors, "RainbowDarkDelim", 0.2)
 
 vim.g.rainbow_delimiters = {
   highlight = M.rainbow_dim_groups,
