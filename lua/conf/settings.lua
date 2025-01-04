@@ -53,12 +53,6 @@ vim.opt.cursorline = true
 vim.opt.concealcursor = ""
 
 -- folding (note -- number due to effect of plugin "ufo")
-vim.opt.signcolumn = "yes"
-vim.opt.foldenable = true
-vim.opt.foldlevelstart = 20
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevelstart = 20
-vim.opt.foldmethod = "indent"
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]]
 
 -- disable swapfiles

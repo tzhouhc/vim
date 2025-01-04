@@ -1,3 +1,13 @@
+local function dashboard_key_conf(key, icon, text, action)
+  local res = {
+    key = key,
+    icon = icon,
+    desc = text,
+    action = action,
+  }
+  return res
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -12,7 +22,50 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
       bigfile = { enabled = true },
-      -- dashboard = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          header =
+              "        ██            ██                          \n" ..
+              "      ██░░██        ██░░██                        \n" ..
+              "      ██░░▒▒████████▒▒░░██                ████    \n" ..
+              "    ██▒▒░░░░▒▒▒▒░░▒▒░░░░▒▒██            ██░░░░██  \n" ..
+              "    ██░░░░░░░░░░░░░░░░░░░░██            ██  ░░██  \n" ..
+              "  ██▒▒░░░░░░░░░░░░░░░░░░░░▒▒████████      ██▒▒██  \n" ..
+              "  ██░░  ██  ░░██░░  ██  ░░  ▒▒  ▒▒  ██    ██░░██  \n" ..
+              "  ██░░░░░░░░██░░██░░░░░░░░░░▒▒░░▒▒░░░░██████▒▒██  \n" ..
+              "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n" ..
+              "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n" ..
+              "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
+              "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
+              "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
+              "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██      \n" ..
+              "    ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██        \n" ..
+              "      ██▒▒░░▒▒▒▒░░▒▒░░░░░░▒▒░░▒▒▒▒░░▒▒██          \n" ..
+              "        ██░░████░░██████████░░████░░██            \n" ..
+              "        ██▓▓░░  ▓▓██░░  ░░██▓▓  ░░▓▓██            \n",
+          -- [[string]] does not play nicely with uneven lengthed strings,
+          -- and auto-fix-whitespace won't let me leave spaces at the end.
+          keys = {
+            dashboard_key_conf("0", "", "Scratch File", ":Scratch"),
+            dashboard_key_conf("1", "", "New File", ":ene <BAR> startinsert "),
+            dashboard_key_conf("2", "󰍉", "Find File", ":Telescope find_files"),
+            dashboard_key_conf("3", "", "Recent Files", ":Telescope oldfiles"),
+            dashboard_key_conf("4", "󰏗", "Last Session", ":SessionLoadLast"),
+            dashboard_key_conf("5", "󰏗", "Local Session", ":SessionLoadHere"),
+            dashboard_key_conf("y", "󰇥", "File Explorer", ":Yazi"),
+            dashboard_key_conf("s", "󰏗", "Select Session", ":SelectSession"),
+            dashboard_key_conf("g", "󰊢", "Repositories", ":SelectFromRepositories"),
+            dashboard_key_conf("z", "󰚥", "Lazy", ":Lazy"),
+            dashboard_key_conf("q", "󰠚", "Quit NVIM", ":qa"),
+          }
+        },
+        sections = {
+          { section = "header" },
+          { section = "keys", gap = 1, padding = 1 },
+          { section = "startup" },
+        },
+      },
       indent = {
         enabled = true,
         char = "┆",
@@ -69,7 +122,7 @@ return {
       -- notifier = { enabled = true },
       quickfile = { enabled = true },
       scroll = { enabled = true },
-      -- statuscolumn = { enabled = true },
+      statuscolumn = { enabled = true },
       -- words = { enabled = true },
     },
   }

@@ -1,11 +1,12 @@
 return {
   -- custom sign column
-  {
+  --[[ {
     "luukvbaal/statuscol.nvim",
     config = function()
       local builtin = require("statuscol.builtin")
       require("statuscol").setup({
         -- configuration goes here, for example:
+        ft_ignore = { "dashboard" },
         segments = {
           {
             sign = { namespace = { "diagnostic/signs" }, maxwidth = 1, auto = true },
@@ -23,5 +24,5 @@ return {
         }
       })
     end
-  },
+  }, ]]
 }
