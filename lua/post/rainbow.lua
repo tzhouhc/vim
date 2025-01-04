@@ -49,22 +49,4 @@ vim.g.rainbow_delimiters = {
   },
 }
 
--- ibl
-local hooks = require("ibl.hooks")
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  make_rainbow(M.rainbow_colors, "RainbowDelim", 1)
-  make_rainbow(M.rainbow_colors, "RainbowDarkDelim", 0.3)
-end)
-
-require("ibl").setup({
-  indent = {
-    char = "┊",
-    highlight = M.rainbow_dark_groups,
-  },
-  exclude = { filetypes = { "dashboard" } },
-  scope = { char = "┊", highlight = M.rainbow_groups },
-})
-
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-
 return M
