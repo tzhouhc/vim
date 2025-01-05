@@ -10,6 +10,7 @@ return {
     config = function()
       local ts = require("telescope")
       ts.load_extension("repo")
+      ts.load_extension("ui-select")
 
       local select_one_or_multi = function(prompt_bufnr)
         local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
@@ -68,4 +69,5 @@ return {
 
   },
   { "cljoly/telescope-repo.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
 }

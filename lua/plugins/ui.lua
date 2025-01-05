@@ -1,8 +1,5 @@
 return {
   -- visuals
-  -- better default selection tools
-  { "stevearc/dressing.nvim", event = "VeryLazy" },
-
   -- highlight TODOs
   {
     "folke/todo-comments.nvim",

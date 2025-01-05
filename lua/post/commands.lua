@@ -4,6 +4,7 @@ local terms = require("lib.terms")
 local popups = require("lib.popups")
 local tools = require("lib.tools")
 local lazygit = require("snacks.lazygit")
+local rename = require("snacks.rename")
 
 vim.api.nvim_create_user_command("SelectSession", function()
 	require("persistence").select()
@@ -29,3 +30,6 @@ vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
 
 vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
+
+-- Snacks
+vim.api.nvim_create_user_command("RenameFile", rename.rename_file, {})
