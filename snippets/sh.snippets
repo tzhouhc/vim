@@ -55,3 +55,9 @@ snippet ifempty "check if string has content"
 snippet ifregex "check if string matches regex"
 	if [[ "$1" =~ "$2" ]]; then
 	fi
+
+snippet color "ANSI color vars"
+	GREEN='\033[0;32m'
+	RED='\033[0;31m'
+	YELLOW='\033[0;33m'
+	NC='\033[0m'
