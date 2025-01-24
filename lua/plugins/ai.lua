@@ -7,10 +7,23 @@ return {
           "/opt/homebrew/bin/age", "-d", "-i", vim.fn.expand("$HOME") .. "/.ssh/id_rsa",
           vim.fn.expand("$HOME") .. "/.credentials/openai_key"
         },
-        -- For customization, refer to Install > Configuration in the Documentation/Readme
+        providers = {
+          -- NOTE:
+          -- OpenRouter has wildly unstable first-token latencies, so
+          -- it's probably unfit for local edit usage.
+          openrouter = {
+            endpoint = "https://openrouter.ai/api/v1/chat/completions",
+            secret = os.getenv("OPENROUTER_API_KEY"),
+          },
+          ollama = {
+            endpoint = "http://localhost:11434/v1/chat/completions",
+            secret = "dummy_secret",
+          },
+        },
+        agents = {
+        }
       }
       require("gp").setup(conf)
-      -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
     end,
   },
   {
@@ -23,16 +36,6 @@ return {
             vim.fn.expand("$HOME") .. "/.credentials/openai_key",
         openai_params = {
           -- NOTE: model can be a function returning the model name
-          -- this is useful if you want to change the model on the fly
-          -- using commands
-          -- Example:
-          -- model = function()
-          --     if some_condition() then
-          --         return "gpt-4-1106-preview"
-          --     else
-          --         return "gpt-3.5-turbo"
-          --     end
-          -- end,
           model = "gpt-4o-mini",
           frequency_penalty = 0,
           presence_penalty = 0,
