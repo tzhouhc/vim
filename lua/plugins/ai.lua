@@ -7,6 +7,8 @@ return {
           "/opt/homebrew/bin/age", "-d", "-i", vim.fn.expand("$HOME") .. "/.ssh/id_rsa",
           vim.fn.expand("$HOME") .. "/.credentials/openai_key"
         },
+        default_command_agent = "gpt-4o-mini",
+        default_chat_agent = "gpt-4o",
         providers = {
           -- NOTE:
           -- OpenRouter has wildly unstable first-token latencies, so
@@ -21,6 +23,38 @@ return {
           },
         },
         agents = {
+          {
+            provider = "openai",
+            name = "gpt-4o-mini",
+            chat = false,
+            command = true,
+            model = { model = "gpt-4o-mini" },
+            system_prompt = require("gp.defaults").code_system_prompt,
+          },
+          {
+            provider = "openai",
+            name = "gpt-4o",
+            chat = true,
+            command = false,
+            model = { model = "gpt-4o" },
+            system_prompt = require("gp.defaults").chat_system_prompt,
+          },
+          {
+            provider = "ollama",
+            name = "ollama-deepseek-r1-code",
+            chat = false,
+            command = true,
+            model = { model = "deepseek-r1", stop = "<think></think>" },
+            system_prompt = require("gp.defaults").code_system_prompt,
+          },
+          {
+            provider = "ollama",
+            name = "ollama-deepseek-r1-chat",
+            chat = true,
+            command = false,
+            model = { model = "deepseek-r1", stop = "<think></think>" },
+            system_prompt = require("gp.defaults").chat_system_prompt,
+          },
         }
       }
       require("gp").setup(conf)

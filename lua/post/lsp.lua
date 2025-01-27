@@ -51,6 +51,7 @@ require("mason-lspconfig").setup({
     "pylsp",
     "pyright",
     "rust_analyzer",
+    "marksman",
   },
   handlers = {
     default_setup,
