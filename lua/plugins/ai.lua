@@ -5,41 +5,29 @@ return {
     build = "make",
     config = function()
       require("avante").setup({
-        provider = "openrouter",
+        provider = "deepseek",
         vendors = {
           openrouter = {
             api_key_name = "OPENROUTER_API_KEY",
             endpoint = "https://openrouter.ai/api/v1/chat/completions",
             -- model = "anthropic/claude-3.5-sonnet",
             model = "deepseek/deepseek-chat",
-            parse_curl_args = function(opts, code_opts)
-              return {
-                url = opts.endpoint,
-                headers = {
-                  ["Content-Type"] = "application/json",
-                  ["Authorization"] = "Bearer " .. os.getenv(opts.api_key_name),
-                },
-                body = {
-                  model = opts.model,
-                  messages = require("avante.providers").openai.parse_messages(code_opts), -- you can make your own message, but this is very advanced
-                  temperature = 0,
-                  max_tokens = 4096,
-                  stream = true,
-                },
-              }
-            end,
-            parse_response_data = function(data_stream, event_state, opts)
-              require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-            end,
+            __inherited_from = "openai",
           },
-        },
-        openai = {
-          endpoint = "https://api.openai.com/v1",
-          model = "gpt-3.5-turbo",
-          timeout = 30000, -- Timeout in milliseconds
-          temperature = 0,
-          max_tokens = 4096,
-          ["local"] = false,
+          openai = {
+            endpoint = "https://api.openai.com/v1",
+            model = "gpt-3.5-turbo",
+            timeout = 30000, -- Timeout in milliseconds
+            temperature = 0,
+            max_tokens = 4096,
+            ["local"] = false,
+          },
+          deepseek = {
+            api_key_name = "DEEPSEEK_API_KEY",
+            endpoint = "https://api.deepseek.com",
+            model = "deepseek-reasoner",
+            __inherited_from = "openai",
+          },
         },
       })
     end,
