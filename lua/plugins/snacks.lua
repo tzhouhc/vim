@@ -81,7 +81,7 @@ return {
     opts = {
       -- https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
       -- for more components to enable
-      bigfile = { enabled = true },
+      bigfile = { enabled = false },
       dashboard = {
         enabled = true,
         preset = {
