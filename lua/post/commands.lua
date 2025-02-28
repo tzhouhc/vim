@@ -33,3 +33,6 @@ vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 
 -- Snacks
 vim.api.nvim_create_user_command("RenameFile", rename.rename_file, {})
+
+-- Diagnostics
+vim.api.nvim_create_user_command("Diagnostics", "Trouble diagnostics win.type=split win.position=right win.size.width=80", {})

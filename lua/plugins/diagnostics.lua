@@ -5,6 +5,13 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Trouble",
     config = true,
+    opts = {
+      win = {
+        wo = {
+          wrap = true,
+        },
+      },
+    },
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
