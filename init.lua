@@ -24,7 +24,13 @@ vim.opt.rtp:prepend(lazypath)
 -- setup various plugins with autoreload
 require("lazy").setup({
   spec = {
-    { import = "plugins" },
+    { import = "plugins.ui" },
+    { import = "plugins.passive" },
+    { import = "plugins.visual" },
+    { import = "plugins.git" },
+    { import = "plugins.editing" },
+    { import = "plugins.intel" },
+    { import = "plugins.tools" },
   },
   profiling = {
     require = true,
