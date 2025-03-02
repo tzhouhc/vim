@@ -19,6 +19,74 @@ local repo_ignore = {
   },
 }
 
+function M.open_file_history_selector(opts)
+  -- Get current file path
+  local current_file = vim.fn.expand('%:p')
+
+  if opts and opts.branch then
+    -- First, select a branch using Telescope
+    require('telescope.builtin').git_branches({
+      attach_mappings = function(_, map)
+        map('i', '<CR>', function(prompt_bufnr)
+          -- Get selected branch
+          local branch_selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
+          require('telescope.actions').close(prompt_bufnr)
+
+          if branch_selection then
+            local branch_name = branch_selection.name or branch_selection.value
+
+            -- Now, show commits from the selected branch
+            require('telescope.builtin').git_commits({
+              -- Specify the branch to get commits from
+              git_command = { "git", "log", "--pretty=oneline", "--abbrev-commit", branch_name },
+
+              attach_mappings = function(_, inner_map)
+                inner_map('i', '<CR>', function(inner_prompt_bufnr)
+                  -- Get selected commit
+                  local commit_selection = require('telescope.actions.state').get_selected_entry(inner_prompt_bufnr)
+                  require('telescope.actions').close(inner_prompt_bufnr)
+
+                  if commit_selection and commit_selection.value then
+                    -- Open diffview with the selected commit
+                    vim.cmd(string.format('DiffviewOpen %s --selected-file=%s -- %s',
+                      commit_selection.value, current_file, current_file))
+                  end
+
+                  return true
+                end)
+                return true
+              end
+            })
+          end
+
+          return true
+        end)
+        return true
+      end
+    })
+  else
+    -- Simple commit picker from current branch
+    require('telescope.builtin').git_commits({
+      attach_mappings = function(_, map)
+        map('i', '<CR>', function(prompt_bufnr)
+          -- Get selected commit
+          local selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
+          require('telescope.actions').close(prompt_bufnr)
+
+          if selection and selection.value then
+            -- Open diffview with the selected commit
+            vim.cmd(string.format('DiffviewOpen %s --selected-file=%s -- %s',
+              selection.value, current_file, current_file))
+          end
+
+          return true
+        end)
+        return true
+      end
+    })
+  end
+end
+
 function M.local_or_repo_files()
   if misc.is_git() then
     vim.cmd("FilesInRepo")
@@ -127,5 +195,11 @@ vim.api.nvim_create_user_command("FilesInRepo", M.files_in_repo, {})
 vim.api.nvim_create_user_command("ChangedInRepo", M.changed_files_in_repo, {})
 vim.api.nvim_create_user_command("SelectFromRepositories",
   function() require("telescope").extensions.repo.cached_list(repo_ignore) end, {})
+
+-- Create a command to trigger the function
+vim.api.nvim_create_user_command('FileHistory', M.open_file_history_selector, {})
+vim.api.nvim_create_user_command('FileBranchHistory', function()
+  M.open_file_history_selector({ branch = true })
+end, {})
 
 return M
