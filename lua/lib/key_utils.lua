@@ -142,13 +142,13 @@ end
 
 function M.jump_to_prev_trouble_item()
   local trouble = require("trouble")
-  trouble.prev()
+  trouble.prev('diagnostics')
   trouble.jump_only()
 end
 
 function M.jump_to_next_trouble_item()
   local trouble = require("trouble")
-  trouble.next()
+  trouble.next('diagnostics')
   trouble.jump_only()
 end
 
