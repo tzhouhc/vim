@@ -11,6 +11,7 @@ return {
           -- You can customize some of the format options for the filetype (:help conform.format)
           rust = { "rustfmt", lsp_format = "fallback" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
+          json = { "prettierd", "prettier", stop_after_first = true },
           html = { "prettier" },
           sql = { "sql_formatter" },
           markdown = { "prettier" },
