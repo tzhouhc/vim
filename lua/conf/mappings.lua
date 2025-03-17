@@ -38,6 +38,10 @@ local key_configs = {
     ["]q"] = ":cnext<cr>",
     ["[Q"] = ":cfirst<cr>",
     ["]Q"] = ":clast<cr>",
+
+    -- increment/decrement number
+    ["+"] = "<c-a>",
+    ["-"] = "<c-x>",
   },
   -- Visual mode
   v = {

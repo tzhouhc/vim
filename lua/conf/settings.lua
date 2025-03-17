@@ -91,7 +91,7 @@ vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
 --   arguments)
 -- c -> convert the text using 'encoding'
 -- n -> name used for the ShaDa file (must be the last option)
-vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$HOME/.local/state/nvim/main.shada"
+vim.opt.shada = "'50,f1,<500,:100,@40,/20,n$HOME/.local/share/nvim/main.shada"
 
 -- grepprg
 if vim.fn.executable("rg") then
