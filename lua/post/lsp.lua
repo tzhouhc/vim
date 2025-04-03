@@ -45,13 +45,13 @@ end
 -- mason
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "ast_grep",
-    "bashls",
-    "lua_ls",
-    "pylsp",
-    "pyright",
-    "rust_analyzer",
-    "marksman",
+    -- "ast_grep",
+    -- "bashls",
+    -- "lua_ls",
+    -- "pylsp",
+    -- "pyright",
+    -- "rust_analyzer",
+    -- "marksman",
   },
   handlers = {
     default_setup,
