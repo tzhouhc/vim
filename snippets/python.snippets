@@ -52,6 +52,24 @@ snippet logging "Setup a logger"
 	    logger.addHandler(ch)
 	    return logger
 
+snippet file-logger "File Logger"
+	def setup_file_logger(name: str) -> logging.Logger:
+	    """
+	    Setup logging based on verbosity.
+
+	    name: str, informs what to name the log file
+	    """
+	    logger = logging.getLogger('dvr-file')
+	    logger.setLevel(logging.INFO)
+
+	    handler = logging.FileHandler(f"log_{name}.txt", mode="w")
+	    formatter = logging.Formatter('%(message)s')
+	    handler.setFormatter(formatter)
+	    logger.addHandler(handler)
+	    logger.propagate = False
+	    return logger
+
+
 
 snippet boolarg "Boolean argument"
 	    parser.add_argument('-f', '--flag', action='store_true',
@@ -72,3 +90,5 @@ snippet dataclass "Dataclass"
 		  def __post_init__(self):
 		      pass
 
+snippet reuse-socket
+	      sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
