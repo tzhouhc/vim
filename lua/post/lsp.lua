@@ -5,6 +5,7 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 local navic = require("nvim-navic")
+local ts = require("telescope.builtin")
 
 vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
@@ -19,11 +20,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- these will be buffer-local keybindings
     -- because they only work if you have an active language server
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-    vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+    vim.keymap.set("n", "gd", ts.lsp_definitions, opts)
+    vim.keymap.set("n", "gi", ts.lsp_implementations, opts)
+    vim.keymap.set("n", "go", ts.lsp_type_definitions, opts)
+    vim.keymap.set("n", "gr", ts.lsp_references, opts)
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
@@ -36,6 +36,8 @@ local default_setup = function(server)
     capabilities = capabilities,
     on_attach = function(client, bufnr)
       if client.server_capabilities.documentSymbolProvider then
+        -- NOTE: this part has issues with nvim-0.10 after it incorporate 0.11
+        -- compatibility
         navic.attach(client, bufnr)
       end
     end,
@@ -44,15 +46,6 @@ end
 
 -- mason
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    -- "ast_grep",
-    -- "bashls",
-    -- "lua_ls",
-    -- "pylsp",
-    -- "pyright",
-    -- "rust_analyzer",
-    -- "marksman",
-  },
   handlers = {
     default_setup,
   },

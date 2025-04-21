@@ -7,6 +7,9 @@ vim.g.mapleader = "\\"
 -- specific local configurations that should not be version-controlled
 require("local")
 
+-- silence deprecation warnings
+vim.deprecate = function() end
+
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
