@@ -39,6 +39,13 @@ return {
         defaults = {
           mappings = default_mapping,
         },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_cursor {
+              -- even more opts
+            }
+          }
+        }
       })
 
       local scopes = require("lib.scopes")
