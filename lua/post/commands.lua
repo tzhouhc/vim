@@ -5,7 +5,6 @@ local popups = require("lib.popups")
 local tools = require("lib.tools")
 local lazygit = require("snacks.lazygit")
 local rename = require("snacks.rename")
-local ts = require("telescope.builtin")
 
 vim.api.nvim_create_user_command("SelectSession", function()
   require("persistence").select()
@@ -36,8 +35,3 @@ vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 vim.api.nvim_create_user_command("RenameFile", rename.rename_file, {})
 
 -- Telescopes
-vim.api.nvim_create_user_command("Symbols", ts.lsp_document_symbols, {})
-vim.api.nvim_create_user_command("WorkspaceSymbols", ts.lsp_workspace_symbols, {})
-vim.api.nvim_create_user_command("Registers", ts.registers, {})
-vim.api.nvim_create_user_command("Highlights", ts.highlights, {})
-vim.api.nvim_create_user_command("Manpages", ts.man_pages, {})

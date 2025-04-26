@@ -48,6 +48,7 @@ return {
       ts.load_extension("ui-select")
 
       local scopes = require("lib.scopes")
+			-- key binds
       local key_configs = {
         n = {
           -- local files
@@ -68,8 +69,21 @@ return {
           ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
           -- git changes
           ["<c-p>"] = ":Telescope oldfiles<cr>",
-        }
+					-- use telescopes for registers invocation instead
+					["<leader>p"] = ":Telescope registers<cr>",
+        },
+				v = {
+					["<leader>p"] = ":Telescope registers<cr>",
+				}
       }
+			-- commands
+			local tsb = require("telescope.builtin")
+			vim.api.nvim_create_user_command("Symbols", tsb.lsp_document_symbols, {})
+			vim.api.nvim_create_user_command("WorkspaceSymbols", tsb.lsp_workspace_symbols, {})
+			vim.api.nvim_create_user_command("Registers", tsb.registers, {})
+			vim.api.nvim_create_user_command("Highlights", tsb.highlights, {})
+			vim.api.nvim_create_user_command("Manpages", tsb.man_pages, {})
+
       require("lib.misc").batch_set_keymap(key_configs)
     end
 

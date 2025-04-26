@@ -23,9 +23,6 @@ local key_configs = {
     -- quake term
     ["<m-e>"] = terms.quake_term,
 
-    -- use telescopes for registers invocation instead
-    ["<leader>p"] = ":Telescope registers<cr>",
-
     -- trouble movement
     ["[e"] = key_utils.jump_to_prev_trouble_item,
     ["]e"] = key_utils.jump_to_next_trouble_item,
@@ -57,8 +54,6 @@ local key_configs = {
   },
   -- Visual mode
   v = {
-    -- same as normal but also does a non-yanking deletion first
-    ["<leader>p"] = '"_d<esc>:Telescope registers<cr>',
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
   },
