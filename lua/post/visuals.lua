@@ -23,9 +23,13 @@ local signifyDel = "#d94a0d"
 local signifyChange = "#e6bf12"
 
 local diffChangedForeground = "#F6ED56"
-local diffChangedColor = "#41423F"
+
+local stagedAddedColor = "#297F56"
+local stagedRemovedColor = "#9D3E1C"
+local stagedChangedColor = "#B69557"
 local diffAddedColor = "#38463F"
 local diffRemovedColor = "#41343A"
+local diffChangedColor = "#41423F"
 
 local flashMatch = "#81a1c1"
 local flashLabel = "#A3BE8C"
@@ -46,15 +50,15 @@ local hilight = {
   GitSignsChange = "guifg=" .. signifyChange,
   GitSignsChangeLn = "guifg=" .. signifyChange,
   GitSignsChangeNr = "guifg=" .. signifyChange,
-  GitSignsStagedAdd = "guifg=" .. diffAddedColor,
-  GitSignsStagedAddLn = "guifg=" .. diffAddedColor,
-  GitSignsStagedAddNr = "guifg=" .. diffAddedColor,
-  GitSignsStagedDelete = "guifg=" .. diffRemovedColor,
-  GitSignsStagedDeleteLn = "guifg=" .. diffRemovedColor,
-  GitSignsStagedDeleteNr = "guifg=" .. diffRemovedColor,
-  GitSignsStagedChange = "guifg=" .. diffChangedColor,
-  GitSignsStagedChangeLn = "guifg=" .. diffChangedColor,
-  GitSignsStagedChangeNr = "guifg=" .. diffChangedColor,
+  GitSignsStagedAdd = "guifg=" .. stagedAddedColor,
+  GitSignsStagedAddLn = "guifg=" .. stagedAddedColor,
+  GitSignsStagedAddNr = "guifg=" .. stagedAddedColor,
+  GitSignsStagedDelete = "guifg=" .. stagedRemovedColor,
+  GitSignsStagedDeleteLn = "guifg=" .. stagedRemovedColor,
+  GitSignsStagedDeleteNr = "guifg=" .. stagedRemovedColor,
+  GitSignsStagedChange = "guifg=" .. stagedChangedColor,
+  GitSignsStagedChangeLn = "guifg=" .. stagedChangedColor,
+  GitSignsStagedChangeNr = "guifg=" .. stagedChangedColor,
 
   -- illuminate word -- it tends confusing when visual selecting
   IlluminatedWordRead = "gui=underline",
