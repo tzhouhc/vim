@@ -43,5 +43,4 @@ return {
   },
   -- for advanced usage
   { "LhKipp/nvim-nu",        ft = "nu", opts = { use_lsp_features = false } },
-	{ "mmarchini/bpftrace.vim" },
 }

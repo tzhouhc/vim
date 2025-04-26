@@ -27,24 +27,28 @@ return {
       },
     }
   },
-  -- keep top of code context on screen when scrolling past
-  "nvim-treesitter/nvim-treesitter-context",
   -- smarter folding
   {
     "kevinhwang91/nvim-ufo",
     event = "VeryLazy",
     dependencies = "kevinhwang91/promise-async",
-    opts = {
-      provider_selector = function(_, ft, _)
-        if ft == "python" then
-          return { "indent" }
-        end
-        return { "treesitter", "indent" }
-      end,
-      close_fold_kinds_for_ft = {
-        default = { 'imports', 'comment' },
-      },
-    },
+    config = function()
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      require("ufo").setup(
+        {
+          provider_selector = function(_, ft, _)
+            if ft == "python" then
+              return { "indent" }
+            end
+            return { "treesitter", "indent" }
+          end,
+          close_fold_kinds_for_ft = {
+            default = { 'imports', 'comment' },
+          },
+        }
+      )
+    end
   },
   -- navic
   {

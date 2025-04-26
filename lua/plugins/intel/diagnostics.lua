@@ -7,9 +7,10 @@ return {
     config = true,
     opts = {
       win = {
-        wo = {
-          wrap = true,
-        },
+        type = "float",
+        -- wo = {
+        --   wrap = true,
+        -- },
       },
     },
   },

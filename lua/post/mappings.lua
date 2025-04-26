@@ -2,7 +2,6 @@
 
 local key_utils = require("lib.key_utils")
 local tools = require("lib.tools")
-local ufo = require("ufo")
 local flash = require("flash")
 local terms = require("lib.terms")
 
@@ -53,10 +52,6 @@ local key_configs = {
 
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
-
-    -- folding
-    ["zR"] = ufo.openAllFolds,
-    ["zM"] = ufo.closeAllFolds,
 
     -- smarter shift I
     ["I"] = key_utils.smarter_shift_i,
