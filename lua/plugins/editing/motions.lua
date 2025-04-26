@@ -5,5 +5,14 @@ return {
   -- % to jump to matching "pair"
   { "andymass/vim-matchup", keys = { "%", "n" } },
   -- overall better movement methods
-  { "folke/flash.nvim",     opts = { modes = { search = { enabled = false } } } },
+  {
+    "folke/flash.nvim",
+    config = function()
+      local f = require("flash")
+      f.setup({ modes = { search = { enabled = false } } })
+      -- ctrl/meta+j to select and go to one specific letter on screen
+      vim.keymap.set("n", "<c-j>", f.jump)
+      vim.keymap.set("n", "<m-j>", f.jump)
+    end
+  },
 }

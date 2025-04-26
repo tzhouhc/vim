@@ -1,8 +1,6 @@
 -- Keyboard Mapping Configurations, with Plugins
 
 local key_utils = require("lib.key_utils")
-local tools = require("lib.tools")
-local flash = require("flash")
 local terms = require("lib.terms")
 
 -- For automating setting key maps.
@@ -65,9 +63,6 @@ local key_configs = {
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
   },
   [{ "n", "v" }] = {
-    -- ctrl/meta+j to select and go to one specific letter on screen
-    ["<c-j>"] = flash.jump,
-    ["<m-j>"] = flash.jump,
     -- jump to first position after the first space (to avoid comment prefixes).
     ["0"] = key_utils.alternating_zero,
     -- jump to start of text object, be situationally aware
