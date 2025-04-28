@@ -61,6 +61,29 @@ return {
         },
       })
     end,
-	  event = { "BufReadPost", "BufNewFile", "BufWritePre" }
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" }
   },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = false,
+            keymaps = {
+              ["ac"] = "@comment.outer",
+              ["ic"] = "@comment.inner",
+            },
+            selection_modes = {
+              ['@comment.inner'] = 'v', -- charwise
+              ['@comment.outer'] = 'v', -- linewise
+            },
+            include_surrounding_whitespace = false,
+          },
+        },
+      })
+    end,
+  }
 }
