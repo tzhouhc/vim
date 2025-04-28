@@ -1,6 +1,6 @@
 return {
   -- highlight same token as the cursor is currently hovering over
-  {"RRethy/vim-illuminate", event = "BufEnter" },
+  {"RRethy/vim-illuminate", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 
   -- highlight words under cursor
   {

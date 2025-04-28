@@ -2,7 +2,7 @@ return {
   -- scroll-bar for checking location in file
   {
     "petertriho/nvim-scrollbar",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       show_in_active_only = true,
       hide_if_all_visible = true, -- Hides everything if all lines are visible

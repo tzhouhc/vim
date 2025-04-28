@@ -3,14 +3,14 @@ return {
   -- text targets like "inside quotes"
   {
     "wellle/targets.vim",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   },
   -- % to jump to matching "pair"
   { "andymass/vim-matchup", keys = { "%", "n" } },
   -- overall better movement methods
   {
     "folke/flash.nvim",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
       local f = require("flash")
       f.setup({ modes = { search = { enabled = false } } })

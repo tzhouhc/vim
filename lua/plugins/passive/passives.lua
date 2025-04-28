@@ -1,13 +1,13 @@
 return {
 	-- passives
 	-- automatically close/add pairs
-	{ "windwp/nvim-autopairs",           config = true,     event = "BufEnter" },
+	{ "windwp/nvim-autopairs",           config = true,     event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- y/d/s for pairs at once
-	{ "kylechui/nvim-surround",          config = true,     event = "BufEnter" },
+	{ "kylechui/nvim-surround",          config = true,     event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- removing trailing whitespace on save
-	{ "bronson/vim-trailing-whitespace", event = "BufEnter" },
+	{ "bronson/vim-trailing-whitespace", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- kill buffer but keep split
-	{ "qpkorr/vim-bufkill",              event = "BufEnter" },
+	{ "qpkorr/vim-bufkill",              event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- follow symlinks
 	"aymericbeaumet/vim-symlink",
 	-- don't yank deletion except with 'd'

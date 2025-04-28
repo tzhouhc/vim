@@ -2,7 +2,7 @@ return {
   -- 'tabs'
   {
     "akinsho/bufferline.nvim",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
       local conf
       if vim.g.theme == "catppuccin" then

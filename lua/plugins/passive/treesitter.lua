@@ -61,6 +61,6 @@ return {
         },
       })
     end,
-	  event = "BufEnter"
+	  event = { "BufReadPost", "BufNewFile", "BufWritePre" }
   },
 }

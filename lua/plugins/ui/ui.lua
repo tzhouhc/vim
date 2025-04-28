@@ -3,7 +3,7 @@ return {
   -- highlight TODOs
   {
     "folke/todo-comments.nvim",
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       signs = true,
       sign_priority = 8,
@@ -53,7 +53,7 @@ return {
   },
   -- navic
   {
-    event = "BufEnter",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     "SmiteshP/nvim-navic",
     dependencies = "neovim/nvim-lspconfig",
     config = true,
