@@ -78,8 +78,6 @@ return {
       }
 			-- commands
 			local tsb = require("telescope.builtin")
-			vim.api.nvim_create_user_command("Symbols", tsb.lsp_document_symbols, {})
-			vim.api.nvim_create_user_command("WorkspaceSymbols", tsb.lsp_workspace_symbols, {})
 			vim.api.nvim_create_user_command("Registers", tsb.registers, {})
 			vim.api.nvim_create_user_command("Highlights", tsb.highlights, {})
 			vim.api.nvim_create_user_command("Manpages", tsb.man_pages, {})

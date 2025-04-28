@@ -1,26 +1,28 @@
 return {
   {
     "bassamsdata/namu.nvim",
-    cmd = { "Namu" },
+		event = "LspAttach",
     config = function()
       require("namu").setup({
         -- Enable the modules you want
         namu_symbols = {
           enable = true,
-          options = {}, -- here you can configure namu
+          options = {
+            row_position = ""
+          }, -- here you can configure namu
         },
         -- Optional: Enable other modules if needed
         ui_select = { enable = false }, -- vim.ui.select() wrapper
       })
-      -- === Suggested Keymaps: ===
-      vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
-        desc = "Jump to LSP symbol",
-        silent = true,
-      })
-      vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
-        desc = "LSP Symbols - Workspace",
-        silent = true,
-      })
+
+      vim.api.nvim_create_user_command("Symbols", "Namu symbols", {})
+      vim.api.nvim_create_user_command("WorkspaceSymbols", "Namu workspace", {})
+      vim.api.nvim_create_user_command("Watchtower", "Namu watchtower", {})
+      vim.api.nvim_create_user_command("Diagnostics", "Namu diagnostics", {})
+      vim.api.nvim_create_user_command("Callsites", "Namu call in", {})
+      vim.api.nvim_create_user_command("Invokes", "Namu call out", {})
+
+      vim.keymap.set("n", "<leader>dg", "<cmd>Diagnostics<cr>")
     end,
   }
 }
