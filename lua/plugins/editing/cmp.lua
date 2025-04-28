@@ -1,12 +1,13 @@
 return {
   -- completions
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-calc",
-  "hrsh7th/cmp-emoji",
-  "chrisgrieser/cmp-nerdfont",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-path",
-  "PhilippFeO/cmp-help-tags",
+  { "hrsh7th/nvim-cmp",          event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-cmdline",       event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-buffer",        event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-calc",          event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-emoji",         event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "chrisgrieser/cmp-nerdfont", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-nvim-lsp",      event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "hrsh7th/cmp-path",          event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "PhilippFeO/cmp-help-tags",  event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  { "xzbdmw/colorful-menu.nvim", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 }

@@ -3,7 +3,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		cmd = "Trouble",
+		cmd = { "Trouble", "Diagnostics" },
 		keys = { "<leader>dg" },
 		config = function()
 			require("trouble").setup()

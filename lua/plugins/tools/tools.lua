@@ -108,4 +108,11 @@ return {
     config = true,
     cmd = "GrugFar",
   },
+  -- "time machine" for git history
+  {
+    "fredeeb/tardis.nvim",
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = true,
+    cmd = "Tardis",
+  }
 }

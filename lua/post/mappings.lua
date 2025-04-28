@@ -12,7 +12,7 @@ local key_configs = {
     ["<leader>q"] = ":BD<cr>",
     ["<leader>ql"] = key_utils.toggle_quickfix,
     ["<leader>lg"] = ":Git<cr>",
-    ["<leader>ar"] = ":AerialToggle!<cr>",
+    ["<leader>nm"] = ":Namu symbols<cr>",
 
     -- trouble
     ["<leader>tr"] = ":Trouble diagnostics toggle filter.buf=0<cr>",
