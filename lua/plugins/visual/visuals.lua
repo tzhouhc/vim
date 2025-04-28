@@ -7,9 +7,9 @@ return {
     },
   },
   -- rainbow colors for parentheses/brackets for easier depth determination
-  "HiPhish/rainbow-delimiters.nvim",
+  { "HiPhish/rainbow-delimiters.nvim", event = "BufEnter" },
   -- highlight hex colors
-  { "norcalli/nvim-colorizer.lua", config = true, cmd = "ColorizerToggle" },
+  { "norcalli/nvim-colorizer.lua",     config = true,     cmd = "ColorizerToggle" },
   -- smart dimming of unrelated contextual code
-  { "folke/twilight.nvim",         config = true, cmd = "Twilight" },
+  { "folke/twilight.nvim",             config = true,     cmd = "Twilight" },
 }

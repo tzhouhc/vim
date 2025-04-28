@@ -1,6 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
+    lazy = true,
     config = function()
       local conform = require("conform")
       conform.setup({

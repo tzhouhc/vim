@@ -60,6 +60,7 @@ return {
           },
         },
       })
-    end
+    end,
+	  event = "BufEnter"
   },
 }

@@ -1,6 +1,6 @@
 return {
   -- languages
-  { "preservim/vim-markdown" },
+  { "preservim/vim-markdown", ft = { "markdown" } },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {
@@ -42,5 +42,5 @@ return {
     ft = { "Avante", "markdown" },
   },
   -- for advanced usage
-  { "LhKipp/nvim-nu",        ft = "nu", opts = { use_lsp_features = false } },
+  { "LhKipp/nvim-nu",         ft = "nu",          opts = { use_lsp_features = false } },
 }
