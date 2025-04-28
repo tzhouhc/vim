@@ -33,5 +33,3 @@ vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 
 -- Snacks
 vim.api.nvim_create_user_command("RenameFile", rename.rename_file, {})
-
--- Telescopes
