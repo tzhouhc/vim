@@ -75,10 +75,16 @@ return {
             keymaps = {
               ["ac"] = "@comment.outer",
               ["ic"] = "@comment.inner",
+              ["il"] = "@assignment.lhs",
+              ["ir"] = "@assignment.rhs",
+              ["al"] = "@assignment.lhs",
+              ["ar"] = "@assignment.rhs",
             },
             selection_modes = {
-              ['@comment.inner'] = 'v', -- charwise
-              ['@comment.outer'] = 'v', -- linewise
+              ["@comment.inner"] = "v",
+              ["@comment.outer"] = "v",
+              ["@assignment.lhs"] = "v",
+              ["@assignment.rhs"] = "v",
             },
             include_surrounding_whitespace = false,
           },
