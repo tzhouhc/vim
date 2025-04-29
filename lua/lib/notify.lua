@@ -18,7 +18,7 @@ function M.noice_hover(content)
 end
 
 function M.notify_hover(content)
-  require("notify").notify(content, "info", {
+  require("noice").notify(content, "info", {
     on_open = M.window_auto_close
   })
 end

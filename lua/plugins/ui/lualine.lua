@@ -2,7 +2,7 @@ return {
   -- status bar
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "meuter/lualine-so-fancy.nvim", "SmiteshP/nvim-navic", "f-person/git-blame.nvim" },
+    dependencies = { "SmiteshP/nvim-navic", "f-person/git-blame.nvim" },
     config = function()
 
       local lines = require("lib.lines")
@@ -40,7 +40,7 @@ return {
           } },
           lualine_x = { { gb.get_current_blame_text, cond = gb.is_blame_text_available } },
           lualine_y = { "filetype" },
-          lualine_z = { "fancy_macro", "progress", "location" },
+          lualine_z = { "progress", "location" },
         },
         winbar = {
           lualine_b = {
