@@ -58,4 +58,20 @@ return {
     dependencies = "neovim/nvim-lspconfig",
     config = true,
   },
+  {
+    "sphamba/smear-cursor.nvim",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    opts = {
+      smear_between_buffers = false,
+      cursor_color = "#ff8800",
+      stiffness = 0.4,
+      trailing_stiffness = 0.2,
+      trailing_exponent = 5,
+      never_draw_over_target = true,
+      hide_target_hack = true,
+      gamma = 1,
+      legacy_computing_symbols_support = true,
+      smear_insert_mode = false,
+    },
+  }
 }
