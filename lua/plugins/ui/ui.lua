@@ -60,6 +60,7 @@ return {
   },
   {
     "sphamba/smear-cursor.nvim",
+    enable = vim.g.smear_cursor,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       smear_between_buffers = false,
