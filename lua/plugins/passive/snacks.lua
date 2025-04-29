@@ -143,7 +143,8 @@ return {
       -- disabled since it does not have everything from noice
       quickfile = { enabled = true },
       rename = { enabled = true },
-      scroll = { enabled = true },
+      -- double not to cast as bool
+      scroll = { enabled = not not vim.g.animate_scroll },
       statuscolumn = { enabled = true },
       words = { enabled = true },
       styles = {
