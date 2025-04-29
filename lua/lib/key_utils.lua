@@ -53,7 +53,6 @@ end
 function M.smarter_shift_i()
   local syns = vim.inspect_pos() -- assume default: current buffer, on cursor
   for _, syn in ipairs(syns["treesitter"]) do
-    print(vim.inspect(syn))
     if syn["capture"] == "comment" then
       M.go_to_start_of_comment()
       vim.api.nvim_feedkeys("i", "n", false)

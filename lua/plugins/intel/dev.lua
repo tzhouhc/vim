@@ -1,4 +1,8 @@
 return {
   -- Neovim configuration development
-  { "folke/neodev.nvim", config = true, ft = { "lua" } },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    config = true,
+  },
 }

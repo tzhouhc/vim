@@ -4,7 +4,7 @@
 
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local lspkind = require("lspkind")
+-- local lspkind = require("lspkind")
 
 table.unpack = table.unpack or unpack
 
@@ -21,6 +21,10 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "vsnip" },
+    {
+      name = "lazydev",
+      group_index = 0,   -- set group index to 0 to skip loading LuaLS completions
+    },
   }, {
     { name = "buffer" },
     { name = "path" },
