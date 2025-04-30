@@ -28,6 +28,12 @@ return {
       },
     }
   },
+  -- peek line number
+  {
+    'nacro90/numb.nvim',
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    config = true,
+  },
   -- smarter folding
   {
     "kevinhwang91/nvim-ufo",
