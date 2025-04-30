@@ -67,8 +67,6 @@ return {
       hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
     end
   },
-  -- unto tree
-  { "mbbill/undotree", cmd = "UndotreeToggle" },
   -- regex explainer
   {
     "bennypowers/nvim-regexplainer",

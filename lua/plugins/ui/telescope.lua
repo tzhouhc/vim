@@ -6,6 +6,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "debugloop/telescope-undo.nvim",
     },
     config = function()
       local ts = require("telescope")
@@ -42,10 +43,12 @@ return {
             require("telescope.themes").get_cursor {
               -- even more opts
             }
-          }
+          },
+          undo = {},
         }
       })
       ts.load_extension("ui-select")
+      ts.load_extension("undo")
 
       local scopes = require("lib.scopes")
 			-- key binds
@@ -67,6 +70,8 @@ return {
           ["<c-k>"] = ":Telescope treesitter<cr>",
           -- local symbols based on LSP symbols
           ["<m-k>"] = ":Telescope lsp_document_symbols<cr>",
+          -- undo tree
+          ["<leader>ud"] = ":Telescope undo<cr>",
           -- git changes
           ["<c-p>"] = ":Telescope oldfiles<cr>",
 					-- use telescopes for registers invocation instead
