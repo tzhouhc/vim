@@ -20,7 +20,6 @@ vim.opt.wildmode = "longest:full,full"
 -- saves time by not frequently redrawing stuff
 vim.opt.showmatch = true
 -- pwd is always current file -- helpful for ctrl-o
--- (doesn't always work well with telescope?)
 vim.opt.autochdir = true
 
 -- causes issues with Noice; disabled

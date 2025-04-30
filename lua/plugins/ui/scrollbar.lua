@@ -16,6 +16,7 @@ return {
         "noice",
         "prompt",
         "TelescopePrompt",
+        "fzf",
       },
     },
   },

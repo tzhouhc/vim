@@ -11,9 +11,6 @@ local function cd()
 end
 
 -- automatically update working dir when entering buffer.
--- this helps with telescope and live_grep determining the cwd.
---
--- vim.o.autochdir doesn't work nicely with telescope for some reason.
 api.nvim_create_augroup("WorkingDirectory", { clear = true })
 api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.*" },

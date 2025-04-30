@@ -5,7 +5,6 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 local navic = require("nvim-navic")
-local ts = require("telescope.builtin")
 
 vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
@@ -20,10 +19,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- these will be buffer-local keybindings
     -- because they only work if you have an active language server
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    vim.keymap.set("n", "gd", ts.lsp_definitions, opts)
-    vim.keymap.set("n", "gi", ts.lsp_implementations, opts)
-    vim.keymap.set("n", "go", ts.lsp_type_definitions, opts)
-    vim.keymap.set("n", "gr", ts.lsp_references, opts)
+    vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", opts)
+    vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_implementations<cr>", opts)
+    vim.keymap.set("n", "go", "<cmd>FzfLua lsp_typedefs<cr>", opts)
+    vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>", opts)
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
   end,
