@@ -2,11 +2,10 @@ return {
   -- status bar
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "SmiteshP/nvim-navic", "f-person/git-blame.nvim" },
+    dependencies = { "SmiteshP/nvim-navic" },
     config = function()
 
       local lines = require("lib.lines")
-      local gb = require("gitblame")
 
       require("lualine").setup({
         options = {
@@ -38,7 +37,6 @@ return {
               newfile = '[New]', -- Text to show for newly created file before first write
             }
           } },
-          lualine_x = { { gb.get_current_blame_text, cond = gb.is_blame_text_available } },
           lualine_y = { "filetype" },
           lualine_z = { "progress", "location" },
         },
