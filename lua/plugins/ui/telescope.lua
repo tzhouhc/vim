@@ -3,7 +3,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.6",
-    event = "VeryLazy",
+    cmd = { "Telescope" },
+    keys = { { "<leader>ud", mode = "n" } },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
@@ -62,6 +63,8 @@ return {
           ["<leader>ud"] = ":Telescope undo<cr>",
         },
       }
+
+      require("lib.misc").batch_set_keymap(key_configs)
     end
 
   },
