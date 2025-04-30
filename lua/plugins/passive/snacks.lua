@@ -31,8 +31,8 @@ local dash_header =
 local dash_keys = {
   dashboard_key_conf("0", "", "Scratch File", ":Scratch"),
   dashboard_key_conf("1", "", "New File", ":ene <BAR> startinsert "),
-  dashboard_key_conf("2", "󰍉", "Find File", ":Telescope find_files"),
-  dashboard_key_conf("3", "", "Recent Files", ":Telescope oldfiles"),
+  dashboard_key_conf("2", "󰍉", "Find File", ":FzfLua files"),
+  dashboard_key_conf("3", "", "Recent Files", ":FzfLua oldfiles"),
   dashboard_key_conf("4", "󰏗", "Last Session", ":SessionLoadLast"),
   dashboard_key_conf("5", "󰏗", "Local Session", ":SessionLoadHere"),
   dashboard_key_conf("y", "󰇥", "File Explorer", ":Yazi"),
