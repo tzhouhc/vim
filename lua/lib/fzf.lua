@@ -14,6 +14,9 @@ end
 
 -- grep across repo
 function M.live_grep_across_repo()
+  if not misc.is_git() then
+    vim.cmd("FzfLua live_grep")
+  end
   -- builtin.live_grep({
   --   prompt_title = "󰊢 Searching Across Repository",
   --   search_dirs = { misc.git_repo_root() },
@@ -50,6 +53,9 @@ function M.changed_files_in_repo()
   --   find_command = { "git-dirt", },
   --   search_dirs = { misc.git_repo_root() },
   -- })
+  if not misc.is_git() then
+    return fzf_lua.fzf_exec("ls")
+  end
   local opts = {}
   opts.git_icons = true
   opts.file_icons = true

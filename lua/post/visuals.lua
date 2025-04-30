@@ -75,10 +75,6 @@ local hilight = {
   FlashMatch = "guifg=" .. flashMatch .. " gui=underline",
   FlashLabel = "guifg=" .. flashLabel,
 
-  -- multicursor highlight
-  MultiCursor = "guifg=" .. signifyChange .. " guibg=" .. diffChangedColor,
-  MultiCursorMain = "cterm=bold gui=bold guifg=" .. signifyAdd .. " guibg=" .. diffChangedColor,
-
   -- remove italics
   ["@property"] = "gui=NONE",
   ["@string"] = "gui=NONE",
