@@ -1,3 +1,5 @@
+-- Deprecated in favor of FzfLua
+
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local builtin = require("telescope.builtin")
@@ -182,24 +184,5 @@ function M.changed_files_in_repo()
     search_dirs = { misc.git_repo_root() },
   })
 end
-
--- Telescope shortcuts
-vim.api.nvim_create_user_command("Marks", builtin.marks, {})
--- Finding common files
-vim.api.nvim_create_user_command("Runtimes", M.runtime_files, {})
-vim.api.nvim_create_user_command("VimConfigs", M.find_configs, {})
-vim.api.nvim_create_user_command("Dotfiles", M.find_dotfiles, {})
-vim.api.nvim_create_user_command("Snippets", M.find_snippets, {})
-vim.api.nvim_create_user_command("GrepAcrossRepo", M.live_grep_across_repo, {})
-vim.api.nvim_create_user_command("FilesInRepo", M.files_in_repo, {})
-vim.api.nvim_create_user_command("ChangedInRepo", M.changed_files_in_repo, {})
-vim.api.nvim_create_user_command("SelectFromRepositories",
-  function() require("telescope").extensions.repo.cached_list(repo_ignore) end, {})
-
--- Create a command to trigger the function
-vim.api.nvim_create_user_command('FileHistory', M.open_file_history_selector, {})
-vim.api.nvim_create_user_command('FileBranchHistory', function()
-  M.open_file_history_selector({ branch = true })
-end, {})
 
 return M

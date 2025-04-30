@@ -39,34 +39,16 @@ return {
         defaults = {
           mappings = default_mapping,
         },
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_cursor {
-              -- even more opts
-            }
-          },
-          undo = {},
-        }
       })
-      ts.load_extension("ui-select")
       ts.load_extension("undo")
-
-      local scopes = require("lib.scopes")
-			-- key binds
       local key_configs = {
         n = {
-          -- files in the entire repo
-          ["<m-o>"] = scopes.local_or_repo_files,
-          -- files in the repo that have changed
-          ["<m-p>"] = scopes.changed_files_in_repo,
           -- undo tree
           ["<leader>ud"] = ":Telescope undo<cr>",
         },
       }
-
       require("lib.misc").batch_set_keymap(key_configs)
     end
 
   },
-  { "nvim-telescope/telescope-ui-select.nvim" },
 }
