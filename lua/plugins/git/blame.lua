@@ -48,6 +48,7 @@ return {
 
       require("blame").setup({
         blame_options = { '-w', '-CCC' },
+        date_format = "%Y-%m-%d",
         colors = {
           "#61AFEF",
           "#C678DD",
