@@ -19,4 +19,11 @@ return {
       end, { noremap = true, silent = true })
     end
   },
+  {
+    -- quickly expand or compactify a dict/list/set/...
+    "Wansmer/treesj",
+    keys = { "<space>m", "<space>j", "<space>s" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+    config = true,
+  }
 }
