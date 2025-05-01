@@ -14,18 +14,15 @@ local key_configs = {
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>nm"] = ":Namu symbols<cr>",
 
-    -- trouble
-    ["<leader>tr"] = ":Trouble diagnostics toggle filter.buf=0<cr>",
-
     -- diffview
     ["<leader>dv"] = key_utils.toggle_diffview,
 
     -- quake term
     ["<m-e>"] = terms.quake_term,
 
-    -- trouble movement
-    ["[e"] = key_utils.jump_to_prev_trouble_item,
-    ["]e"] = key_utils.jump_to_next_trouble_item,
+    -- diagnostics movement
+    ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
+    ["]e"] = function() vim.diagnostic.jump({ count = 1 }) end,
     -- create empty lines without moving
     ["[<space>"] = key_utils.add_blank_line_before,
     ["]<space>"] = key_utils.add_blank_line_after,

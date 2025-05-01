@@ -35,7 +35,6 @@ api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = {
     "help",
     "noice",
-    "Trouble",
     "checkhealth",
     "man",
   },

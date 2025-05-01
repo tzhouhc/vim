@@ -139,18 +139,6 @@ function M.add_blank_line_before()
   vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { "" })
 end
 
-function M.jump_to_prev_trouble_item()
-  local trouble = require("trouble")
-  trouble.prev('diagnostics')
-  trouble.jump_only()
-end
-
-function M.jump_to_next_trouble_item()
-  local trouble = require("trouble")
-  trouble.next('diagnostics')
-  trouble.jump_only()
-end
-
 function M.toggle_quickfix()
   if misc.has_win_of_type("quickfix") then
     vim.cmd.cclose()
