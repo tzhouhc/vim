@@ -23,26 +23,39 @@ return {
       -- keymaps
       local key_configs = {
         n = {
+
+          -- f: search for text content
+          -- o: open file
+          -- p: special open file
+
+          -- CTRL group, doesn't have special meaning, can be used in general cases.
           -- local files
           ["<c-o>"] = ":FzfLua files<cr>",
           -- lines in current buffer
           ["<c-f>"] = ":FzfLua blines<cr>",
+          -- recent files
+          ["<c-p>"] = ":FzfLua oldfiles<cr>",
+          -- tags
+          ["<c-k>"] = ":FzfLua btags<cr>",
+
+          -- META group, for git repo or such actions. Have fallback behavior
+          -- if incorrectly invoked.
           -- lines across the repo
           ["<m-f>"] = fv.live_grep_across_repo,
-          -- local symbols based on treesitter
-          ["<c-k>"] = ":FzfLua treesitter<cr>",
           -- files in the entire repo
           ["<m-o>"] = fv.local_or_repo_files,
           -- files in the repo that have changed
           ["<m-p>"] = fv.changed_files_in_repo,
           -- local symbols based on LSP symbols
           ["<m-k>"] = ":FzfLua lsp_document_symbols<cr>",
-          -- git changes
-          ["<c-p>"] = ":FzfLua oldfiles<cr>",
+
           -- registers
           ["<leader>p"] = ":FzfLua registers<cr>",
         },
         v = {
+          -- search for visually selected
+          ["<c-f>"] = ":FzfLua grep_visual<cr>",
+
           ["<leader>p"] = ":FzfLua registers<cr>",
         }
       }

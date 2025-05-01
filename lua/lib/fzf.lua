@@ -17,26 +17,16 @@ function M.live_grep_across_repo()
   if not misc.is_git() then
     vim.cmd("FzfLua live_grep")
   end
-  -- builtin.live_grep({
-  --   prompt_title = "󰊢 Searching Across Repository",
-  --   search_dirs = { misc.git_repo_root() },
-  -- })
   local opts = {}
   opts.prompt = "rg> "
   opts.git_icons = true
   opts.file_icons = true
   opts.color_icons = true
-  -- setup default actions for edit, quickfix, etc
   opts.actions = fzf_lua.defaults.actions.files
-  -- see preview overview for more info on previewers
   opts.previewer = "builtin"
   opts.fn_transform = function(x)
     return fzf_lua.make_entry.file(x, opts)
   end
-  -- we only need 'fn_preprocess' in order to display 'git_icons'
-  -- it runs once before the actual command to get modified files
-  -- 'make_entry.file' uses 'opts.diff_files' to detect modified files
-  -- will probaly make this more straight forward in the future
   opts.fn_preprocess = function(o)
     opts.diff_files = fzf_lua.make_entry.preprocess(o).diff_files
     return opts
@@ -48,11 +38,6 @@ end
 
 -- This uses a custom git tool `git-dirt` from the dotfiles repo.
 function M.changed_files_in_repo()
-  -- builtin.find_files({
-  --   prompt_title = "󰊢 Changed Files in Repository",
-  --   find_command = { "git-dirt", },
-  --   search_dirs = { misc.git_repo_root() },
-  -- })
   if not misc.is_git() then
     return fzf_lua.fzf_exec("ls")
   end
@@ -60,9 +45,7 @@ function M.changed_files_in_repo()
   opts.git_icons = true
   opts.file_icons = true
   opts.color_icons = true
-  -- setup default actions for edit, quickfix, etc
   opts.actions = fzf_lua.defaults.actions.files
-  -- see preview overview for more info on previewers
   opts.previewer = "builtin"
   opts.fn_transform = function(x)
     return fzf_lua.make_entry.file(x, opts)
@@ -75,9 +58,7 @@ function M.all_files()
   opts.git_icons = true
   opts.file_icons = true
   opts.color_icons = true
-  -- setup default actions for edit, quickfix, etc
   opts.actions = fzf_lua.defaults.actions.files
-  -- see preview overview for more info on previewers
   opts.previewer = "builtin"
   opts.fn_transform = function(x)
     return fzf_lua.make_entry.file(x, opts)
