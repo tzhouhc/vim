@@ -70,4 +70,19 @@ function M.changed_files_in_repo()
   return fzf_lua.fzf_exec("git-rdirt", opts)
 end
 
+function M.all_files()
+  local opts = {}
+  opts.git_icons = true
+  opts.file_icons = true
+  opts.color_icons = true
+  -- setup default actions for edit, quickfix, etc
+  opts.actions = fzf_lua.defaults.actions.files
+  -- see preview overview for more info on previewers
+  opts.previewer = "builtin"
+  opts.fn_transform = function(x)
+    return fzf_lua.make_entry.file(x, opts)
+  end
+  return fzf_lua.fzf_exec("fd . \"/Applications/\" --extension app & fd . ~/ --hidden", opts)
+end
+
 return M
