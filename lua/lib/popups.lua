@@ -5,10 +5,10 @@ local M = {}
 
 ---create a nui popup and open the help topic in it.
 ---@param t any
-function M.help_popup(t)
+function M.info_popup_wrapper(cmd, ft, t)
   -- do not create new popup window if one already exists
-  if win.is_win_open_with_type() then
-    vim.fn.execute("help " .. t.args)
+  if win.is_win_open_with_type(ft) then
+    vim.fn.execute(cmd .. " " .. t.args)
     return
   end
 
@@ -38,9 +38,17 @@ function M.help_popup(t)
   vim.api.nvim_set_current_win(popup.winid)
   -- this is the smart bit: help will open in existing windows that are of the
   -- help type!
-  vim.opt_local.filetype = "help"
+  vim.opt_local.filetype = ft
   vim.opt_local.buftype = "help"
-  vim.fn.execute("help " .. t.args)
+  vim.fn.execute(cmd .. " " .. t.args)
+end
+
+function M.help_popup(t)
+  return M.info_popup_wrapper("help", "help", t)
+end
+
+function M.man_popup(t)
+  return M.info_popup_wrapper("Man", "man", t)
 end
 
 return M

@@ -29,6 +29,7 @@ vim.api.nvim_create_user_command("GitLinesBlame", terms.git_lines_blame, { range
 -- Others
 vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
 vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
+vim.api.nvim_create_user_command("M", popups.man_popup, { nargs = "?" })
 vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 
 -- Snacks
