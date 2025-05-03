@@ -16,10 +16,8 @@ return {
     config = function()
       require("iswap").setup({})
 
-      vim.keymap.set('n', "g>", "<cmd>ISwapWithRight<cr>", {})
-      vim.keymap.set('n', "g<", "<cmd>ISwapWithLeft<cr>", {})
-      vim.keymap.set('v', "g>", "<cmd>ISwapWithRight<cr>", {})
-      vim.keymap.set('v', "g<", "<cmd>ISwapWithLeft<cr>", {})
+      vim.keymap.set({ 'n', 'v' }, "g>", "<cmd>ISwapWithRight<cr>", {})
+      vim.keymap.set({ 'n', 'v' }, "g<", "<cmd>ISwapWithLeft<cr>", {})
       vim.keymap.set('n', "<leader>sw", "<cmd>ISwap<cr>", {})
     end
   }
