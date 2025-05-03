@@ -4,8 +4,14 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       local fzf = require("fzf-lua")
+      local actions = require("fzf-lua").actions
       local fv = require("lib.fzf")
       fzf.setup({
+        actions = {
+          files = {
+            ["enter"] = actions.file_edit,
+          },
+        },
         previewers = {
           builtin = {
             ueberzug_scaler = false,
