@@ -47,6 +47,8 @@ return {
           provider_selector = function(_, ft, _)
             if ft == "python" then
               return { "indent" }
+            elseif ft == "markdown" then
+              return { "treesitter" }
             end
             return { "treesitter", "indent" }
           end,

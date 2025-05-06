@@ -7,7 +7,11 @@ return {
   {
     -- annotation / docstrings
     "danymat/neogen",
+    keys = { "<leader>ng" },
     cmd = { "Neogen" },
-    config = true,
+    config = function()
+      require("neogen").setup()
+      vim.keymap.set("n", "<leader>ng", "<cmd>Neogen<cr>", {})
+    end,
   }
 }
