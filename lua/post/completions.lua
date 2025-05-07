@@ -5,6 +5,8 @@
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
+vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
+
 table.unpack = table.unpack or unpack
 
 local has_words_before = function()

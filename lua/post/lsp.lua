@@ -1,13 +1,5 @@
 -- LSP configurations
-
----@diagnostic disable: missing-fields
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
-local navic = require("nvim-navic")
 local fzf = require("fzf-lua")
-
-vim.g.vsnip_snippet_dir = "$VIM_HOME/snippets"
 
 -- LSP dedicated key mappings
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -30,10 +22,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- NOTE: this part has issues with nvim-0.10 after it incorporate 0.11
--- compatibility
--- navic.attach(client, bufnr)
-
 local core_lsps = {
   "lua_ls",
   "clangd",
@@ -47,69 +35,6 @@ require("mason-lspconfig").setup({
   ensure_installed = core_lsps,
   automatic_enable = core_lsps,
 })
-
--- c
--- Note that clangd requires manual installation on some architectures.
-lspconfig.clangd.setup({
-  cmd = { "clangd", "--background-index", "--clang-tidy" },
-})
-
--- lua
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim", "hs" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-          -- hammerspoon
-          ["/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/"] = true,
-        },
-      },
-    },
-  },
-})
-
--- rust
-lspconfig.rust_analyzer.setup({
-  settings = {
-    ["rust-analyzer"] = {
-      diagnostics = {
-        -- I forgot why
-        enable = false,
-      },
-      rustfmt = {
-        extraArgs = { "--config", "tab_spaces=2" },
-      },
-    },
-  },
-})
-
--- harper grammar checker; unused
-local harper_conf = {
-  settings = {
-    ["harper-ls"] = {
-      linters = {
-        spell_check = true,
-        spelled_numbers = false,
-        an_a = true,
-        sentence_capitalization = false,
-        unclosed_quotes = true,
-        wrong_quotes = false,
-        long_sentences = true,
-        repeated_words = true,
-        spaces = true,
-        matcher = true,
-        correct_number_suffix = true,
-        number_suffix_capitalization = true,
-      },
-    },
-  },
-}
 
 -- symbols
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
