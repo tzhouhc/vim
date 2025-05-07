@@ -1,5 +1,6 @@
 -- lua
 return {
+  cmd = { "lua-language-server" },
   settings = {
     Lua = {
       diagnostics = {

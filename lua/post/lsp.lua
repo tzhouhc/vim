@@ -1,6 +1,14 @@
 -- LSP configurations
 local fzf = require("fzf-lua")
 
+local core_lsps = {
+  "lua_ls",
+  "clangd",
+  "basedpyright",
+}
+
+vim.lsp.enable(core_lsps)
+
 -- LSP dedicated key mappings
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP actions",
@@ -20,20 +28,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
   end,
-})
-
-local core_lsps = {
-  "lua_ls",
-  "clangd",
-  "basedpyright",
-}
-
--- mason
-require("mason-lspconfig").setup({
-  -- we might manually install other plugins, but they should not be autorunning
-  -- until approved.
-  ensure_installed = core_lsps,
-  automatic_enable = core_lsps,
 })
 
 -- symbols

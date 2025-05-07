@@ -1,9 +1,15 @@
 return {
 	-- LSPs
 	"neovim/nvim-lspconfig",
-	{ "onsails/lspkind.nvim",    event = "LspAttach" },
+  -- pictograms for completion types
+  { "onsails/lspkind.nvim", event = "LspAttach" },
 
-	-- mason
-	{ "williamboman/mason.nvim", cmd = "Mason",      config = true },
-	"williamboman/mason-lspconfig.nvim",
+  -- mason for managing installing lsp binaries.
+  -- needed on start up to set PATH.
+  {
+    "williamboman/mason.nvim",
+    config = true,
+  },
+  -- by itself mason is fairly lightweight to start. mason-lspconfig, however,
+  -- takes about 30ms.
 }
