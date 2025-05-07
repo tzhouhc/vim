@@ -54,9 +54,9 @@ return {
           enable = true,
           keymaps = {
             -- init_selection = "gnn", -- set to `false` to disable one of the mappings
-            node_incremental = "g]",
+            node_incremental = "<tab>",
             -- scope_incremental = "grc",
-            node_decremental = "g[",
+            node_decremental = "<s-tab>",
           },
         },
       })
@@ -91,5 +91,17 @@ return {
         },
       })
     end,
+  },
+  {
+    "mfussenegger/nvim-treehopper",
+    dependencies = { "hadronized/hop.nvim" },
+    keys = { "<c-h>", "g[", "g]" },
+    config = function()
+      require("hop").setup()
+      local tsht = require("tsht")
+      vim.keymap.set("n", "<c-h>", tsht.nodes)
+      vim.keymap.set("n", "g[", function() tsht.move({ side = "start" }) end)
+      vim.keymap.set("n", "g]", function() tsht.move({ side = "end" }) end)
+    end
   }
 }
