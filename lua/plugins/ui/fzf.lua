@@ -58,6 +58,7 @@ return {
           -- registers
           ["<leader>p"] = ":FzfLua registers<cr>",
           ["<leader>sb"] = ":FzfLua lsp_document_symbols<cr>",
+          ["<leader>dg"] = ":FzfLua lsp_document_diagnostics<cr>",
         },
         v = {
           -- search for visually selected
@@ -75,6 +76,7 @@ return {
       vim.api.nvim_create_user_command("HelpTags", "FzfLua helptags", {})
       vim.api.nvim_create_user_command("FilesInRepo", "FzfLua git_files", {})
       vim.api.nvim_create_user_command("Zoxide", "FzfLua zoxide", {})
+      vim.api.nvim_create_user_command("Diagnostics", "FzfLua lsp_document_diagnostics", {})
       vim.api.nvim_create_user_command("Z", "FzfLua zoxide", {})
 
       -- custom scopes

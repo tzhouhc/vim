@@ -18,11 +18,10 @@ return {
       vim.api.nvim_create_user_command("Symbols", "Namu symbols", {})
       vim.api.nvim_create_user_command("WorkspaceSymbols", "Namu workspace", {})
       vim.api.nvim_create_user_command("Watchtower", "Namu watchtower", {})
-      vim.api.nvim_create_user_command("Diagnostics", "Namu diagnostics", {})
       vim.api.nvim_create_user_command("Callsites", "Namu call in", {})
       vim.api.nvim_create_user_command("Invokes", "Namu call out", {})
 
-      vim.keymap.set("n", "<leader>dg", "<cmd>Diagnostics<cr>")
+      vim.keymap.set("n", "<leader>wt", "<cmd>Watchtower<cr>")
     end,
   }
 }

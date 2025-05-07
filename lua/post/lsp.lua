@@ -30,25 +30,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- avoids having to individually configure lsps with default capabilities.
-local default_setup = function(server)
-  require("lspconfig")[server].setup({
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-      if client.server_capabilities.documentSymbolProvider then
-        -- NOTE: this part has issues with nvim-0.10 after it incorporate 0.11
-        -- compatibility
-        navic.attach(client, bufnr)
-      end
-    end,
-  })
-end
+-- NOTE: this part has issues with nvim-0.10 after it incorporate 0.11
+-- compatibility
+-- navic.attach(client, bufnr)
+
+local core_lsps = {
+  "lua_ls",
+  "clangd",
+  "basedpyright",
+}
 
 -- mason
 require("mason-lspconfig").setup({
-  handlers = {
-    default_setup,
-  },
+  -- we might manually install other plugins, but they should not be autorunning
+  -- until approved.
+  ensure_installed = core_lsps,
+  automatic_enable = core_lsps,
 })
 
 -- c
@@ -77,22 +74,12 @@ lspconfig.lua_ls.setup({
   },
 })
 
-lspconfig.pylsp.setup({
-  settings = {
-    pylsp = {
-      plugins = {
-        flake8 = {
-          maxLineLength = 80,
-        },
-      },
-    },
-  },
-})
-
+-- rust
 lspconfig.rust_analyzer.setup({
   settings = {
     ["rust-analyzer"] = {
       diagnostics = {
+        -- I forgot why
         enable = false,
       },
       rustfmt = {

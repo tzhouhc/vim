@@ -54,29 +54,28 @@ saved to version control.
 
 The `snippets` directory contians snippets in the "hrsh7th/vim-vsnip" format.
 
-
 ## Features
 
-* Support for local LLM code generation
-* Visual elements similar to other modern IDEs (tabs, tagline, mode indicators)
-* Code diagnostics
-* Locally available language documentation
-* File explorer
-* Git file history and Diff view
-* Current file's per-line git change status
-* Language Service Protocol integration
-* Smart completion using LSP and other sources like local paths
-* Improved movement
-* Fancy notification framework
-* Passive features like auto-pairing
-* Saving and restoring sessions
-* Quickly searching through various lists of items (files, lines, tags...)
-* Pretty color schemes
-* Language semantics-based parsing and highlighting via Treesitter
-* Undo Tree
-* Floating terminals and integrated floating apps
-* Multiple-cursor support
-* ...
+- Support for local LLM code generation
+- Visual elements similar to other modern IDEs (tabs, tagline, mode indicators)
+- Code diagnostics
+- Locally available language documentation
+- File explorer
+- Git file history and Diff view
+- Current file's per-line git change status
+- Language Service Protocol integration
+- Smart completion using LSP and other sources like local paths
+- Improved movement
+- Fancy notification framework
+- Passive features like auto-pairing
+- Saving and restoring sessions
+- Quickly searching through various lists of items (files, lines, tags...)
+- Pretty color schemes
+- Language semantics-based parsing and highlighting via Treesitter
+- Undo Tree
+- Floating terminals and integrated floating apps
+- Multiple-cursor support
+- ...
 
 ## Notes
 
