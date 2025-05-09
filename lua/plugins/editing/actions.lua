@@ -1,3 +1,8 @@
+-- high level logic:
+-- <space> would be used to make these sort of edits that are slightlys
+-- sophisticated to do manually but also not quite as trivial as can be done
+-- using regular keystrokes.
+
 return {
   {
     -- quickly expand or compactify a dict/list/set/...
@@ -13,9 +18,9 @@ return {
     config = function()
       require("iswap").setup({})
 
-      vim.keymap.set({ 'n', 'v' }, "g>", "<cmd>ISwapWithRight<cr>", {})
-      vim.keymap.set({ 'n', 'v' }, "g<", "<cmd>ISwapWithLeft<cr>", {})
-      vim.keymap.set('n', "<leader>sw", "<cmd>ISwap<cr>", {})
+      vim.keymap.set({ 'n', 'v' }, "<space><right>", "<cmd>ISwapWithRight<cr>", {})
+      vim.keymap.set({ 'n', 'v' }, "<space><left>", "<cmd>ISwapWithLeft<cr>", {})
+      vim.keymap.set('n', "<space>sw", "<cmd>ISwap<cr>", {})
     end
   }
 }
