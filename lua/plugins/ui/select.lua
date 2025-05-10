@@ -79,6 +79,10 @@ return {
       vim.api.nvim_create_user_command("Zoxide", "FzfLua zoxide", {})
       vim.api.nvim_create_user_command("Diagnostics", "FzfLua lsp_document_diagnostics", {})
       vim.api.nvim_create_user_command("Z", "FzfLua zoxide", {})
+      vim.api.nvim_create_user_command("Symbols", "FzfLua lsp_document_symbols", {})
+      vim.api.nvim_create_user_command("WorkspaceSymbols", "FzfLua lsp_workspace_symbols", {})
+      vim.api.nvim_create_user_command("Callsites", "FzfLua lsp_incoming_calls", {})
+      vim.api.nvim_create_user_command("Invokes", "FzfLua lsp_outgoing_calls", {})
 
       -- custom scopes
       vim.api.nvim_create_user_command("GrepAcrossRepo", fv.live_grep_across_repo, {})
@@ -88,31 +92,6 @@ return {
       -- aliases
       vim.api.nvim_create_user_command("Snippets", "FzfLua files cwd=~/.config/nvim/snippets", {})
     end
-  },
-  {
-    "bassamsdata/namu.nvim",
-    event = "LspAttach",
-    config = function()
-      require("namu").setup({
-        -- Enable the modules you want
-        namu_symbols = {
-          enable = true,
-          options = {
-            row_position = ""
-          }, -- here you can configure namu
-        },
-        -- Optional: Enable other modules if needed
-        ui_select = { enable = false }, -- vim.ui.select() wrapper
-      })
-
-      vim.api.nvim_create_user_command("Symbols", "Namu symbols", {})
-      vim.api.nvim_create_user_command("WorkspaceSymbols", "Namu workspace", {})
-      vim.api.nvim_create_user_command("Watchtower", "Namu watchtower", {})
-      vim.api.nvim_create_user_command("Callsites", "Namu call in", {})
-      vim.api.nvim_create_user_command("Invokes", "Namu call out", {})
-
-      vim.keymap.set("n", "<leader>wt", "<cmd>Watchtower<cr>")
-    end,
   },
   {
     "nvim-telescope/telescope.nvim",
