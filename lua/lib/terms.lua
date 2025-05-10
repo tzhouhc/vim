@@ -44,4 +44,10 @@ function M.repo_live_grep()
   end
 end
 
+function M.global_file_list()
+  if vim.fn.executable('seb') == 1 then
+    term.get("seb_vim")
+  end
+end
+
 return M
