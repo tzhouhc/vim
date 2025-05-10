@@ -56,6 +56,9 @@ local key_configs = {
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
 
+    -- local fuzzy find
+    ["<m-f>"] = terms.repo_live_grep,
+
     -- smarter shift I
     ["I"] = key_utils.smarter_shift_i,
     ["<m-i>"] = key_utils.smart_move_to_start_and_insert,

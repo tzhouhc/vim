@@ -17,6 +17,7 @@ local cmdline_format = {
   help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
   help_custom = { pattern = "^:%s*H%s+", icon = "󰋖" },
   telescope = { pattern = "^:%s*Telescope%s+", icon = "", kind = "search" },
+  fzflua = { pattern = "^:%s*FzfLua%s+", icon = "󰍉", kind = "search" },
   edit = { pattern = "^:%s*e%s+", icon = "󱇧" },
   calculator = { pattern = "^=", icon = "", lang = "vimnormal" },
   input = {}, -- Used by input()

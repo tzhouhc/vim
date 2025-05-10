@@ -48,7 +48,7 @@ return {
           -- META group, for git repo or such actions. Have fallback behavior
           -- if incorrectly invoked.
           -- lines across the repo
-          ["<m-f>"] = fv.live_grep_across_repo,
+          -- ["<m-f>"] = fv.live_fuzzy_grep_across_repo,
           -- files in the entire repo
           ["<m-o>"] = fv.local_or_repo_files,
           -- files in the repo that have changed

@@ -36,4 +36,12 @@ function M.git_lines_blame()
   )
 end
 
+function M.repo_live_grep()
+  if vim.fn.executable('local_live_grep_vim') == 1 then
+    term.get("local_live_grep_vim")
+  else
+    vim.cmd("FzfLua live_grep")
+  end
+end
+
 return M
