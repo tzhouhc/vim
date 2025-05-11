@@ -38,6 +38,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     event = "VeryLazy",
+    enabled = not not vim.g.enable_ufo,
     dependencies = "kevinhwang91/promise-async",
     config = function()
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)

@@ -4,8 +4,6 @@ return {
   { "hrsh7th/cmp-cmdline",       event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   { "hrsh7th/cmp-buffer",        event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   { "hrsh7th/cmp-calc",          event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
-  { "hrsh7th/cmp-emoji",         event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
-  { "chrisgrieser/cmp-nerdfont", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   { "hrsh7th/cmp-nvim-lsp",      event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   { "hrsh7th/cmp-path",          event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
   { "PhilippFeO/cmp-help-tags",  event = { "BufReadPost", "BufNewFile", "BufWritePre" } },

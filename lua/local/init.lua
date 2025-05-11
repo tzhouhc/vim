@@ -7,7 +7,5 @@
 -- actually sourced. `default.lua` is in VCS and serves as a reference sheet.
 -- If `local.lua` fails to load, `default.lua` is loaded instead.
 
-local ok, res = pcall(require, "local.local")
-if not ok then
-  require("local.default")
-end
+require("local.default")
+pcall(require, "local.local")

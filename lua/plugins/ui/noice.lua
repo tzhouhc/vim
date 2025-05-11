@@ -47,6 +47,7 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
+    enabled = not not vim.g.enable_noice,
     opts = {
       cmdline = {
         enabled = true,         -- enables the Noice cmdline UI
