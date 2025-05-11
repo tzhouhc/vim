@@ -1,5 +1,8 @@
 -- NeoVim Global Keyed Options
 
+-- set leader as Lazy expects it before setting up plugins
+vim.g.mapleader = "\\"
+
 vim.opt.termguicolors = true
 vim.opt.runtimepath:append(",$VIM_HOME,$VIM_HOME/after,$VIM_HOME/local")
 
@@ -98,3 +101,6 @@ if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep -P --color=never"
   vim.opt.grepformat = "%f:%l:%c:%m"
 end
+
+---@diagnostic disable-next-line: duplicate-set-field
+vim.deprecate = function() end

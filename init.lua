@@ -1,46 +1,19 @@
--- Init.vim
 -- Ting's custom Neovim configurations.
-
--- set leader as Lazy expects it before setting up plugins
-vim.g.mapleader = "\\"
 
 -- general vim settings unrelated to plugins
 require("conf")
 
--- silence deprecation warnings
----@diagnostic disable-next-line: duplicate-set-field
-vim.deprecate = function() end
-
--- Lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
----@diagnostic disable-next-line: undefined-field
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- setup various plugins with autoreload
-require("lazy").setup({
-  spec = {
-    { import = "plugins.ui" },
-    { import = "plugins.passive" },
-    { import = "plugins.visual" },
-    { import = "plugins.git" },
-    { import = "plugins.editing" },
-    { import = "plugins.intel" },
-    { import = "plugins.tools" },
-  },
-  profiling = {
-    require = true,
-  },
-})
+-- plguins, managed by Lazy.nvim
+require("plugins")
 
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
+
+-- `lua/lib` includes custom logic (with or w/o plugin API usage) that are
+-- not loaded by default, but are imported by their corresponding plugins or
+-- post conf scripts.
+
+-- `lua/after` includes filetype and LSP based configurations that are
+-- automatically loaded by neovim in the right cimcumstances.
+
+-- `snippets` are personal snippets for use with nvim-cmp-vsnip.
