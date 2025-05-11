@@ -8,9 +8,6 @@ plugin
 vim_history
 /data
 /data/*
-/local
-/local/*
-/lua/local/*
-/lua/local_post/*
+lua/conf/local.lua
 vim-plug
 lazy-lock.json

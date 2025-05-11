@@ -4,8 +4,8 @@
 -- set leader as Lazy expects it before setting up plugins
 vim.g.mapleader = "\\"
 
--- specific local configurations that should not be version-controlled
-require("local")
+-- general vim settings unrelated to plugins
+require("conf")
 
 -- silence deprecation warnings
 ---@diagnostic disable-next-line: duplicate-set-field
@@ -41,10 +41,6 @@ require("lazy").setup({
     require = true,
   },
 })
--- general vim settings unrelated to plugins
-require("conf")
+
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
--- specific local configurations that should not be version-controlled, but
--- requires plugins
-require("local_post")
