@@ -24,7 +24,4 @@ require("lazy").setup({
     { import = "plugins.intel" },
     { import = "plugins.tools" },
   },
-  profiling = {
-    require = true,
-  },
 })

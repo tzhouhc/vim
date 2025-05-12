@@ -7,10 +7,4 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Oil",
   },
-  -- file explorer
-  {
-    "mikavilpas/yazi.nvim",
-    config = true,
-    cmd = { "Yazi" },
-  }
 }

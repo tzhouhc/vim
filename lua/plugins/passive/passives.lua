@@ -6,21 +6,12 @@ return {
 	{ "kylechui/nvim-surround",          config = true,     event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- removing trailing whitespace on save
 	{ "bronson/vim-trailing-whitespace", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
-	-- kill buffer but keep split
-	{ "qpkorr/vim-bufkill",              event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
 	-- follow symlinks
 	"aymericbeaumet/vim-symlink",
-	-- don't yank deletion except with 'd'
-	{
-		"gbprod/cutlass.nvim",
-		opts = {
-			cut_key = "d",
-		},
-	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		enabled = false,
+		enabled = true,
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
@@ -35,23 +26,5 @@ return {
 				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
-	},
-	-- handle big files
-	{
-		"LunarVim/bigfile.nvim",
-		opts = {
-			filesize = 2,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
-			pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-			features = {       -- features to disable
-				"indent_blankline",
-				"illuminate",
-				"lsp",
-				"treesitter",
-				"syntax",
-				"matchparen",
-				"vimopts",
-				"filetype",
-			},
-		}
 	},
 }

@@ -2,7 +2,6 @@
 
 local key_utils = require("lib.key_utils")
 local terms = require("lib.terms")
-local popups = require("lib.popups")
 local tree = require("lib.tree")
 
 -- For automating setting key maps.
@@ -15,7 +14,6 @@ local key_configs = {
     ["<leader>ql"] = key_utils.toggle_quickfix,
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>nm"] = ":Namu symbols<cr>",
-    ["<leader>pp"] = popups.toggle_info_popup,
 
     -- diffview
     ["<leader>dv"] = key_utils.toggle_diffview,

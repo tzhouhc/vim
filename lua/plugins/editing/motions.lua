@@ -19,18 +19,6 @@ return {
       vim.keymap.set("n", "<m-j>", f.jump)
     end
   },
-  {
-    "mfussenegger/nvim-treehopper",
-    dependencies = { "hadronized/hop.nvim" },
-    keys = { "<c-h>", "g[", "g]" },
-    config = function()
-      require("hop").setup()
-      local tsht = require("tsht")
-      vim.keymap.set("n", "<c-h>", tsht.nodes)
-      vim.keymap.set("n", "g[", function() tsht.move({ side = "start" }) end)
-      vim.keymap.set("n", "g]", function() tsht.move({ side = "end" }) end)
-    end
-  },
   -- quick jump to locally or globally recorded locations
   {
     "otavioschwanck/arrow.nvim",
