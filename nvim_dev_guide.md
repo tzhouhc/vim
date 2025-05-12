@@ -323,24 +323,10 @@ cmp.setup.cmdline(':', {
 })
 ```
 
-Separately, create the file `after/lsp/clangd.lua` in your nvim config dir (usually
-`XDG_CONFIG_HOME/nvim` = `$HOME/.config/nvim`) with the following content:
-
-```lua
-return {
-  cmd = { "clangd", "--background-index", "--clang-tidy" },
-}
-```
-
-Which _should_ be all you need in nvim version 0.11+ to get LSP functionalities.
-
 At the end, your `$HOME/.config/nvim` should have the following structure:
 
 ```
 .
-├── after
-│   └── lsp
-│       └── clangd.lua
 ├── init.lua
 └── lazy-lock.json  <--- (if you already ran nvim after add init.lua)
 ```
