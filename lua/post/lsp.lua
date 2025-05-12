@@ -2,9 +2,7 @@
 local fzf = require("fzf-lua")
 
 local core_lsps = {
-  "lua_ls",
   "clangd",
-  "basedpyright",
 }
 
 vim.lsp.enable(core_lsps)
