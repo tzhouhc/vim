@@ -324,7 +324,7 @@ cmp.setup.cmdline(':', {
 ```
 
 Separately, create the file `after/lsp/clangd.lua` in your nvim config dir (usually
-`XDG_CONFIG_HOME/nvim`) with the following content:
+`XDG_CONFIG_HOME/nvim` = `$HOME/.config/nvim`) with the following content:
 
 ```lua
 return {
@@ -333,6 +333,17 @@ return {
 ```
 
 Which _should_ be all you need in nvim version 0.11+ to get LSP functionalities.
+
+At the end, your `$HOME/.config/nvim` should have the following structure:
+
+```
+.
+├── after
+│   └── lsp
+│       └── clangd.lua
+├── init.lua
+└── lazy-lock.json  <--- (if you already ran nvim after add init.lua)
+```
 
 ### Brand new Vimmer
 
@@ -393,7 +404,7 @@ get:
   `nbytes` are virtual text intended to show you which variables your parameters
   map to in the function signature.
 - Code intelligence -- signatures (`K` when hovering), go to definition (`gd`),
-  list and goto references (`gr`), list all current file symbols (`:Symbols`).
+  list and goto references (`gr`).
 - Autocompletion: autocomplete using LSP information.
 - Code Action: `<leader>ca` to perform recommended action by the LSP,
   `<leader>rn` to rename a symbol. (Where supported)
