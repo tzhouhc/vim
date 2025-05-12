@@ -439,7 +439,9 @@ of extra stuff on top of the basic `init.lua` config above.
 
 ### Nerdfont
 
-For getting the nice shiny little icons, you should install a font with
+If instead of the minimal `init.lua` above you instead decide to go for the
+sample repo or some other more sophisticated setup, in order to get the nice
+shiny little icons, you should install a font with
 [NerdFont](https://www.nerdfonts.com/) support.
 
 My personal favorite has been [Cascadia Code](https://github.com/microsoft/cascadia-code/releases/tag/v2407.24)
