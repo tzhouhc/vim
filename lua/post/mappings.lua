@@ -2,7 +2,6 @@
 
 local key_utils = require("lib.key_utils")
 local terms = require("lib.terms")
-local tree = require("lib.tree")
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
@@ -42,14 +41,6 @@ local key_configs = {
     ["<c-8>"] = "<Cmd>BufferLineGoToBuffer 8<CR>",
     ["<c-9>"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
     ["<c-0>"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
-
-    -- treesitter based actions
-    ["<space><up>"] = tree.above_ts_node_by_cursor,
-    ["<space><down>"] = tree.below_ts_node_by_cursor,
-    ["<space><left>"] = tree.prev_ts_node_by_cursor,
-    ["<space><right>"] = tree.next_ts_node_by_cursor,
-    ["g<left>"] = tree.swap_with_prev_ts_node_by_cursor,
-    ["g<right>"] = tree.swap_with_next_ts_node_by_cursor,
 
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
