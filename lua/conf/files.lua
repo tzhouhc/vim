@@ -1,10 +1,6 @@
 vim.filetype.add({
   extension = {
-    nu = "nu",
-  },
-  filename = {
-    ["justfile"] = "just",
-    [".justfile"] = "just",
-    [".notes"] = "markdown",
+    -- `.h` normally gets autodetected as cpp instead of c
+    h = "c",
   },
 })
