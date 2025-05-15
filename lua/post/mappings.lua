@@ -5,6 +5,61 @@ local terms = require("lib.terms")
 local popups = require("lib.popups")
 local tree = require("lib.tree")
 
+-- List of "special" filetypes and buftypes to exclude
+local special_filetypes = {
+  "help",
+  "man",
+  "netrw",
+  "NvimTree",
+  "neo-tree",
+  "fzf",
+  "FzfLua",
+  "Telescope",
+  "fugitive",
+  "dashboard",
+  "startify",
+  "alpha",
+  "lspinfo",
+  "oil"
+  -- Add more as needed
+}
+
+local special_buftypes = {
+  "terminal",
+  "nofile",
+  "prompt",
+  "quickfix",
+  "help"
+  -- Add more as needed
+}
+
+-- Set up an autocommand group for your normal buffer mappings
+local normal_buffer_mappings = vim.api.nvim_create_augroup("NormalBufferMappings", { clear = true })
+
+-- Function to determine if a buffer is a "normal" buffer
+local function is_normal_buffer(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+
+  -- Get buffer type/filetype
+  local buf_type = vim.bo[bufnr].buftype
+  local filetype = vim.bo[bufnr].filetype
+
+  -- Check if the buffer is special
+  for _, ft in ipairs(special_filetypes) do
+    if filetype == ft then
+      return false
+    end
+  end
+
+  for _, bt in ipairs(special_buftypes) do
+    if buf_type == bt then
+      return false
+    end
+  end
+
+  return true
+end
+
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
 --        individual lines are ["<key>"] = "command" || lua.function
@@ -95,4 +150,13 @@ local key_configs = {
   }
 }
 
-require("lib.misc").batch_set_keymap(key_configs)
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  group = normal_buffer_mappings,
+  callback = function(args)
+    local bufnr = args.buf
+    if not is_normal_buffer(bufnr) then
+      return
+    end
+    require("lib.misc").batch_set_buf_keymap(key_configs)
+  end,
+})

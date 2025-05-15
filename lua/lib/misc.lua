@@ -119,20 +119,32 @@ function M.git_repo_root()
 end
 
 ---Batch set mappings. Expects a table where the top level are tables keyed by
----modes, and tables contain lhs string keys to rhs string or function values.
+---modes, and tables contain lhs string keys to rhs string or function values;
+---second table contains opts to be set for each keymap.
 ---@param mappings table
-function M.batch_set_keymap(mappings)
+---@param opt table
+local function do_batch_set_keymap(mappings, opt)
   for mode, conf in pairs(mappings) do
     for key, val in pairs(conf) do
       if type(val) == "string" or type(val) == "function" then
         -- default configuration
-        vim.keymap.set(mode, key, val, { noremap = true, silent = true })
+        vim.keymap.set(mode, key, val, opt)
       else
         local command, opts = table.unpack(val)
         vim.keymap.set(mode, key, command, opts)
       end
     end
   end
+end
+
+---Set keymap globally.
+function M.batch_set_keymap(mappings)
+  do_batch_set_keymap(mappings, { noremap = true, silent = true })
+end
+
+---Set keymap local to the buffer.
+function M.batch_set_buf_keymap(mappings)
+  do_batch_set_keymap(mappings, { noremap = true, silent = true, buffer = 0 })
 end
 
 --- generate a random string
