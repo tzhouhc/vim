@@ -87,6 +87,9 @@ end
 
 function M.below_ts_node_by_cursor()
   local node = get_static_node_at_cursor()
+  if not node then
+    return
+  end
   node = get_first_child(node)
   if node then
     ts.goto_node(node, false, true)
@@ -95,6 +98,9 @@ end
 
 function M.next_ts_node_by_cursor()
   local cur = get_static_node_at_cursor()
+  if not cur then
+    return
+  end
   local node = cur and ts.get_next_node(cur, false, true)
 
   while node and node:extra() do
@@ -108,6 +114,9 @@ end
 
 function M.prev_ts_node_by_cursor()
   local cur = get_static_node_at_cursor()
+  if not cur then
+    return
+  end
   local node = cur and ts.get_previous_node(cur, false, true)
 
   while node and node:extra() do
@@ -121,6 +130,9 @@ end
 
 function M.swap_with_next_ts_node_by_cursor()
   local cur = get_static_node_at_cursor()
+  if not cur then
+    return
+  end
   -- prefer more conservative movement when swapping
   local node = ts.get_next_node(cur, false, false)
   if node then
@@ -130,6 +142,9 @@ end
 
 function M.swap_with_prev_ts_node_by_cursor()
   local cur = get_static_node_at_cursor()
+  if not cur then
+    return
+  end
   -- prefer more conservative movement when swapping
   local node = ts.get_previous_node(cur, false, false)
   if node then
