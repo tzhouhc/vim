@@ -57,6 +57,7 @@ return {
           notify = false,
           mason = true,
           leap = true,
+          blink_cmp = true,
           gitsigns = true,
           diffview = true,
           noice = true,
