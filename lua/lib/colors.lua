@@ -43,4 +43,26 @@ function M.mix_colors(a, b, pa)
   return res
 end
 
+local function get_hg_field(group_name, field)
+  local hl_info = vim.api.nvim_get_hl(0, { name = group_name })
+  if hl_info and hl_info[field] then
+    return string.format("#%06x", hl_info[field])
+  else
+    return nil
+  end
+end
+
+--- Find the background color of Neovim itself
+function M.global_bg()
+  return get_hg_field("Normal", "bg")
+end
+
+function M.fg_by_hlgroup(group_name)
+  return get_hg_field(group_name, "fg")
+end
+
+function M.bg_by_hlgroup(group_name)
+  return get_hg_field(group_name, "bg")
+end
+
 return M
