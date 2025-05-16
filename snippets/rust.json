@@ -1,0 +1,6 @@
+{
+  "unittest": {
+    "prefix": "unittest",
+    "body": "#[cfg(test)]\nmod tests {\n  use super::*;\n  #[test]\n  fn test_case() {\n  }\n}"
+  }
+}

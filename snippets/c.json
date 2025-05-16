@@ -1,0 +1,34 @@
+{
+  "/*": {
+    "prefix": "/*",
+    "body": "/* $1 */"
+  },
+  "dexit": {
+    "prefix": "dexit",
+    "body": "#define DEXIT(x)                    \\\n\tdo {                        \\\n\t\tfprintf(stderr, x); \\\n\t\tret = EXIT_FAILURE; \\\n\t\tgoto exit;          \\\n\t} while (0)\n# print current line and func then exit"
+  },
+  "do_or_exit": {
+    "prefix": "do_or_exit",
+    "body": "#define FREE_IF(x)                \\\n\tdo {                      \\\n\t\tif (x) {          \\\n\t\t\tfree(x);  \\\n\t\t\tx = NULL; \\\n\t\t}                 \\\n\t} while (0)\n# rounding"
+  },
+  "dprint": {
+    "prefix": "dprint",
+    "body": "#if DEBUG\n#define DPRINT(fmt, ...)                                                  \\\n\tdo {                                                              \\\n\t\tfprintf(stderr, \"%d:%s(): \" fmt \"\\n\", __LINE__, __func__, \\\n\t\t\t##__VA_ARGS__);                                   \\\n\t} while (0)\n#else\n#define DPRINT(fmt, ...) \\\n\tdo {             \\\n\t} while (0)\n#endif\n# perror and exit"
+  },
+  "eexit": {
+    "prefix": "eexit",
+    "body": "#define EXIT()                                                  \\\n\tdo {                                                    \\\n\t\tfprintf(stderr, \"%d:%s\\n\", __LINE__, __func__); \\\n\t\tret = EXIT_FAILURE;                             \\\n\t\tgoto exit;                                      \\\n\t} while (0)\n# ensure ret value then exit"
+  },
+  "header": {
+    "prefix": "header",
+    "body": "#ifndef __$1_H__\n#define __$1_H__\n#endif  // __$1_H__\n# Debug printing that can be toggled based on #define DEBUG"
+  },
+  "pexit": {
+    "prefix": "pexit",
+    "body": "#define PEXIT(x)                    \\\n\tdo {                        \\\n\t\tperror(x);          \\\n\t\tret = EXIT_FAILURE; \\\n\t\tgoto exit;          \\\n\t} while (0)\n# print message and exit"
+  },
+  "round_up_to_align": {
+    "prefix": "round_up_to_align",
+    "body": "static uint64_t round_up_to_align(uint64_t addr, uint align)\n{\n\tif (addr % align)\n\t\treturn ((addr / align) + 1) * align;\n\treturn addr;\n}\n# comments"
+  }
+}

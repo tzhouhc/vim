@@ -1,0 +1,62 @@
+{
+  "ANSI color vars": {
+    "prefix": "color",
+    "body": "GREEN='\\033[0;32m'\nRED='\\033[0;31m'\nYELLOW='\\033[0;33m'\nNC='\\033[0m'"
+  },
+  "check if binary exists\" b": {
+    "prefix": "ifbin",
+    "body": "if type $1 &>/dev/null; then\nfi"
+  },
+  "check if cmd returned 0\" b": {
+    "prefix": "ifcmd",
+    "body": "if $1; then\nfi"
+  },
+  "check if current os is darwin\" b": {
+    "prefix": "ifosx",
+    "body": "if uname -a | grep -i darwin &>/dev/null; then\nfi"
+  },
+  "check if env var is not empty\" b": {
+    "prefix": "ifenv",
+    "body": "if [[ \\$${1} != '' ]]; then\nfi"
+  },
+  "check if file exists\" b": {
+    "prefix": "iffile",
+    "body": "if [[ -f '${1:file}' ]]; then\nfi"
+  },
+  "check if folder exists\" b": {
+    "prefix": "ifdir",
+    "body": "if [[ -d '${1:dir}' ]]; then\nfi"
+  },
+  "check if string has content": {
+    "prefix": "ifempty",
+    "body": "if [[ -z \"$1\" ]]; then\nfi"
+  },
+  "check if string matches regex": {
+    "prefix": "ifregex",
+    "body": "if [[ \"$1\" =~ \"$2\" ]]; then\nfi"
+  },
+  "comment chunk\" b": {
+    "prefix": "#---",
+    "body": "# --------------\n# $1\n# --------------"
+  },
+  "for each line in input\" b": {
+    "prefix": "forline",
+    "body": "for line in \\$(<$1); do\ndone"
+  },
+  "go to directory containing the script\" b": {
+    "prefix": "cwd",
+    "body": "cd \"\\$(dirname \"\\$0\")\""
+  },
+  "multiple assignment\" b": {
+    "prefix": "read<",
+    "body": "read -r $2 <<<\\$($1)"
+  },
+  "pipe to /dev/null\" b": {
+    "prefix": "devnull",
+    "body": "&>/dev/null"
+  },
+  "source common PATH setup": {
+    "prefix": "base",
+    "body": "source \\$HOME/.zsh/base.zsh"
+  }
+}

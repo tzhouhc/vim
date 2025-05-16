@@ -1,0 +1,22 @@
+{
+  "Autocommand Groups": {
+    "prefix": "autogr",
+    "body": "vim.api.nvim_create_augroup(\"$1\", { clear = true })"
+  },
+  "Autocommands": {
+    "prefix": "autocmd",
+    "body": "vim.api.nvim_create_autocmd({ \"BufEnter\" }, {\n  pattern = { \"*.*\" },\n  callback = function()\n  end,\n  group = \"Misc\",\n})"
+  },
+  "Conditional for macos": {
+    "prefix": "ifmac",
+    "body": "if vim.fn.has(\"macunix\") then\nend"
+  },
+  "Vim Input UI": {
+    "prefix": "viminput",
+    "body": "vim.ui.input({ prompt = \"$1\" }, function(input)\nend)"
+  },
+  "hslogger": {
+    "prefix": "hslogger",
+    "body": "local logger = hs.logger.new(\"$1\", \"debug\")"
+  }
+}

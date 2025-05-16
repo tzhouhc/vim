@@ -1,0 +1,22 @@
+{
+  "Note callout": {
+    "prefix": ">note",
+    "body": "> [!NOTE]\n>"
+  },
+  "Important callout": {
+    "prefix": ">imp",
+    "body": "> [!IMPORTANT]\n>"
+  },
+  "Note callout": {
+    "prefix": ">cau",
+    "body": "> [!CAUTION]\n>"
+  },
+  "Warning callout": {
+    "prefix": ">warn",
+    "body": "> [!WARNING]\n>"
+  },
+  "tip callout": {
+    "prefix": ">tip",
+    "body": "> [!TIP]\n>"
+  }
+}

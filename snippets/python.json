@@ -1,0 +1,42 @@
+{
+  "Boolean argument": {
+    "prefix": "boolarg",
+    "body": "parser.add_argument('-f', '--flag', action='store_true',\n\t\t\thelp=\"Enable flag behavior\")"
+  },
+  "Create an argument parser": {
+    "prefix": "argparser",
+    "body": "def arg_parser() -> ArgumentParser:\n    parser = ArgumentParser()\n    parser.add_argument(\"req\", help=\"Required argument\")\n    parser.add_argument('-v', '--verbose', action='count', default=0,\n                        help=\"Increase verbosity (can be used multiple times)\")\n    parser.add_argument(\"--flag\", action=BooleanOptionalAction)\n    return parser"
+  },
+  "Dataclass": {
+    "prefix": "dataclass",
+    "body": "from dataclasses import dataclass\n      @dataclass\n      class Segment:\n\t  def __post_init__(self):\n\t      pass"
+  },
+  "File Logger": {
+    "prefix": "file-logger",
+    "body": "def setup_file_logger(name: str) -> logging.Logger:\n    \"\"\"\n    Setup logging based on verbosity.\n    name: str, informs what to name the log file\n    \"\"\"\n    logger = logging.getLogger('dvr-file')\n    logger.setLevel(logging.INFO)\n    handler = logging.FileHandler(f\"log_{name}.txt\", mode=\"w\")\n    formatter = logging.Formatter('%(message)s')\n    handler.setFormatter(formatter)\n    logger.addHandler(handler)\n    logger.propagate = False\n    return logger"
+  },
+  "Go into REPL mode": {
+    "prefix": "repl",
+    "body": "import code\n# Set up the interactive interpreter\nvariables = locals().copy()\nconsole = code.InteractiveConsole(variables)\nconsole.interact()"
+  },
+  "Multiple repeatable argument": {
+    "prefix": "narg",
+    "body": "parser.add_argument('-t', '--filter', type=str, action='append',\n\t      help=\"Add additional item\")"
+  },
+  "Python if-main idiom\" b": {
+    "prefix": "ifmain",
+    "body": "if __name__ == \"__main__\":\n\tmain()"
+  },
+  "Setup a logger": {
+    "prefix": "logging",
+    "body": "def setup_logger(verbosity: int) -> logging.Logger:\n    \"\"\"\n    Setup logging based on verbosity.\n    verbosity: int -- 0 for warning only, 1 for info, 2 for all\n    \"\"\"\n    # Create a logger\n    logger = logging.getLogger()\n    # Set the logging level based on verbosity\n    if verbosity == 0:\n        level = logging.WARNING\n    elif verbosity == 1:\n        level = logging.INFO\n    else:\n        level = logging.DEBUG\n    logger.setLevel(level)\n    # Create a console handler and set its level\n    ch = logging.StreamHandler(sys.stderr)\n    ch.setLevel(level)\n    # Create a formatter\n    formatter = logging.Formatter(\n        '%(name)s@%(levelname)s: %(message)s')\n    # Add formatter to ch\n    ch.setFormatter(formatter)\n    # Add ch to logger\n    logger.addHandler(ch)\n    return logger"
+  },
+  "Shebang": {
+    "prefix": "#!",
+    "body": "#!/usr/bin/env python3"
+  },
+  "reuse-socket": {
+    "prefix": "reuse-socket",
+    "body": "sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)"
+  }
+}

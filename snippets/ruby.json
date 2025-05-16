@@ -1,0 +1,10 @@
+{
+  "Frozen String Literal comment\" b": {
+    "prefix": "frozen",
+    "body": "# frozen_string_literal: true"
+  },
+  "Ruby's ifmain clause\" b": {
+    "prefix": "ifmain",
+    "body": "${1:main} if $PROGRAM_NAME == __FILE__"
+  }
+}

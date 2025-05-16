@@ -1,0 +1,6 @@
+{
+  "header": {
+    "prefix": "header",
+    "body": "#ifndef __$1_H__\n#define __$1_H__\n#endif  // __$1_H__"
+  }
+}
