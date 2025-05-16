@@ -7,6 +7,13 @@ return {
     event = events,
     config = true,
     opts = {
+      completion = {
+        list = {
+          selection = {
+            preselect = false,
+          }
+        }
+      },
       keymap = {
         ['<Tab>'] = {
           'select_next',
