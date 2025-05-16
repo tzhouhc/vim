@@ -1,11 +1,12 @@
 -- Keyboard Mapping Configurations, with Plugins
-
 local key_utils = require("lib.key_utils")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
 local tree = require("lib.tree")
 
--- List of "special" filetypes and buftypes to exclude
+---- Generic File Mappings ----
+
+-- to avoid creating mappings in unusual buffers, we exclude them explicitly.
 local special_filetypes = {
   "help",
   "man",
@@ -23,7 +24,6 @@ local special_filetypes = {
   "oil"
   -- Add more as needed
 }
-
 local special_buftypes = {
   "terminal",
   "nofile",
@@ -33,10 +33,8 @@ local special_buftypes = {
   -- Add more as needed
 }
 
--- Set up an autocommand group for your normal buffer mappings
 local normal_buffer_mappings = vim.api.nvim_create_augroup("NormalBufferMappings", { clear = true })
 
--- Function to determine if a buffer is a "normal" buffer
 local function is_normal_buffer(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
@@ -159,4 +157,25 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     end
     require("lib.misc").batch_set_buf_keymap(key_configs)
   end,
+})
+
+---- Mappings specific to Help ----
+-- use help tags as if they are LSP symbols and jump using `g;`
+local help_binds_grp = vim.api.nvim_create_augroup("HelpMappings", { clear = true })
+local help_binds = {
+  n = {
+    ["gd"] = "<c-]>",
+    ["g;"] = "<c-o>",
+  }
+}
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  group = help_binds_grp,
+  callback = function(args)
+    local bufnr = args.buf
+    local filetype = vim.bo[bufnr].filetype
+    if filetype == "help" then
+      require("lib.misc").batch_set_buf_keymap(help_binds)
+    end
+  end
 })
