@@ -27,6 +27,13 @@ local kind_map = {
   TypeParameter = "Type",
 }
 
+local comment_types = {
+  'comment',
+  'comment_content',
+  'line_comment',
+  'block_comment',
+}
+
 return {
   "xzbdmw/colorful-menu.nvim",
   -- completions
@@ -35,7 +42,14 @@ return {
     event = events,
     config = true,
     opts = {
+      signature = { enabled = true },
       completion = {
+        -- Show documentation when selecting a completion item
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        -- Display a preview of the selected item on the current line
+        ghost_text = { enabled = true },
+
+        -- rendering of the actual completion menu
         menu = {
           draw = {
             columns = { { "kind_icon", "kind" }, { "label", gap = 1 } },
@@ -83,6 +97,32 @@ return {
         list = {
           selection = {
             preselect = false,
+          }
+        },
+        sources = {
+          default = function(_)
+            local default = { 'lsp', 'path', 'snippets', 'buffer' }
+            local success, node = pcall(vim.treesitter.get_node)
+            if not success or not node then
+              return default
+            end
+            if vim.tbl_contains(comment_types, node:type()) then
+              return { 'buffer' }
+            else
+              return default
+            end
+          end,
+          providers = {
+            buffer = {
+              opts = {
+                -- or (recommended) filter to only "normal" buffers
+                get_bufnrs = function()
+                  return vim.tbl_filter(function(bufnr)
+                    return vim.bo[bufnr].buftype == ''
+                  end, vim.api.nvim_list_bufs())
+                end
+              }
+            }
           }
         }
       },
