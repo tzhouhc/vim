@@ -42,6 +42,9 @@ return {
     event = events,
     config = true,
     opts = {
+      enabled = function()
+        return require("lib.ft").is_normal_buffer(0)
+      end,
       signature = { enabled = true },
       completion = {
         -- Show documentation when selecting a completion item
