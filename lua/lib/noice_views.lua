@@ -61,13 +61,19 @@ M.views = {
       },
     },
   },
-  -- temporary popup in the top right corner that soon disappears
+  -- popup in the top right corner that disappears upon <esc> or 30 seconds
   temp_corner_popup = {
     backend = "popup",
     relative = "editor",
     focusable = true,
-    timeout = 5000, -- 5 seconds
-    enter = false,
+    timeout = 30000, -- 30 seconds, allowing it to exit naturally
+    enter = true,
+    close = {
+      -- the CursorMoved event is too sensitive and will instantly
+      -- kill the popup if focused.
+      -- events = { "CursorMoved" },
+      keys = { "<esc>" },
+    },
     zindex = 200,
     position = {
       row = "5%",

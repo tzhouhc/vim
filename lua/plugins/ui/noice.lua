@@ -92,11 +92,6 @@ return {
             min_height = 5,
           },
           view = "temp_corner_popup",
-          opts = {
-            close = {
-              events = { "CursorMoved" },
-            },
-          },
         },
         {
           -- similar to above, but length-wise.
@@ -105,11 +100,6 @@ return {
             min_length = 100,
           },
           view = "temp_corner_popup",
-          opts = {
-            close = {
-              events = { "CursorMoved" },
-            },
-          },
         },
       }, --- @see section on routes
       -- you can enable a preset for easier configuration
