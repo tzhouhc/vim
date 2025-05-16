@@ -1,0 +1,57 @@
+{
+  "contributes": {
+    "snippets": [
+      {
+        "path": "./lua.json",
+        "language": [
+          "lua"
+        ]
+      },
+      {
+        "path": "./python.json",
+        "language": [
+          "python"
+        ]
+      },
+      {
+        "path": "./sh.json",
+        "language": [
+          "sh", "bash", "zsh"
+        ]
+      },
+      {
+        "path": "./c.json",
+        "language": [
+          "c"
+        ]
+      },
+      {
+        "path": "./cpp.json",
+        "language": [
+          "cpp"
+        ]
+      },
+      {
+        "path": "./rust.json",
+        "language": [
+          "rust"
+        ]
+      },
+      {
+        "path": "./ruby.json",
+        "language": [
+          "ruby"
+        ]
+      },
+      {
+        "path": "./markdown.json",
+        "language": [
+          "markdown"
+        ]
+      }
+    ]
+  },
+  "name": "my-snippets",
+  "description": "VSCode formatted personalized snippets."
+}
+

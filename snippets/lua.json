@@ -18,5 +18,9 @@
   "hslogger": {
     "prefix": "hslogger",
     "body": "local logger = hs.logger.new(\"$1\", \"debug\")"
+  },
+  "lazyevent": {
+    "prefix": "lazyevent",
+    "body": "event = { \"BufReadPost\", \"BufNewFile\", \"BufWritePre\" },"
   }
 }
