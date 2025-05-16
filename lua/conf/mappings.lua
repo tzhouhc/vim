@@ -18,6 +18,9 @@ local key_configs = {
     -- disable cmdline window
     ["q:"] = "",
 
+    -- mimic right mouse
+    ["g<space>"] = "<cmd>popup PopUp<cr>",
+
     -- buffer movement
     ["[b"] = ":bprev<cr>",
     ["]b"] = ":bnext<cr>",

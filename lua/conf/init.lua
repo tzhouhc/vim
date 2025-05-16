@@ -10,6 +10,8 @@ pcall(require("conf.local"))
 require("conf.visuals")
 -- autocommands
 require("conf.autocmds")
+-- Popup menu items
+require("conf.menus")
 -- vim opts
 require("conf.settings")
 -- keymaps
