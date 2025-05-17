@@ -32,6 +32,7 @@ local comment_types = {
   'line_comment',
   'block_comment',
   'string',
+  'string_content',
 }
 
 local function kind_icon_text(ctx)
@@ -76,7 +77,7 @@ local function all_bufnrs()
 end
 
 local function select_cmp_sources(_)
-  local default = { 'lsp', 'path', 'snippets', 'buffer' }
+  local default = { 'lsp', 'snippets', 'path', 'buffer' }
   local success, node = pcall(vim.treesitter.get_node)
   if not success or not node then
     return default
@@ -98,13 +99,29 @@ local function cancel_and_fallback(cmp)
   return cmp.cancel({ callback = back_to_normal })
 end
 
+local function cmd_sources()
+  local type = vim.fn.getcmdtype()
+  -- Search forward and backward
+  if type == '/' or type == '?' then return { 'buffer' } end
+  -- Commands
+  if type == ':' or type == '@' then
+    return { 'cmdline' }
+  end
+  return {}
+end
+
 return {
   -- color rendering of completion labels
   "xzbdmw/colorful-menu.nvim",
-  -- completions
+  -- completion sources
+  -- completion engine
   {
     "saghen/blink.cmp",
     event = events,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      "mgalliou/blink-cmp-tmux",
+    },
     config = true,
     opts = {
       enabled = function()
@@ -126,7 +143,7 @@ return {
           draw = {
             cursorline_priority = 5000,
             padding = { 0, 1 },
-            columns = { { "kind_icon", "kind" }, { "label", gap = 1 } },
+            columns = { { "kind_icon", "kind" }, { "label", gap = 1 }, { "source_name" } },
             components = {
               kind_icon = {
                 text = kind_icon_text,
@@ -158,7 +175,20 @@ return {
               -- or (recommended) filter to only "normal" buffers
               get_bufnrs = all_bufnrs,
             }
-          }
+          },
+          tmux = {
+            module = "blink-cmp-tmux",
+            name = "tmux",
+            -- default options
+            opts = {
+              all_panes = true,
+              capture_history = true,
+              -- only suggest completions from `tmux` if the `trigger_chars` are
+              -- used
+              triggered_only = false,
+              trigger_chars = { "." }
+            },
+          },
         }
       },
       keymap = {
@@ -174,19 +204,24 @@ return {
         ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
       },
+      cmdline = {
+        sources = cmd_sources,
+        completion = {
+          list = {
+            selection = {
+              preselect = false,
+              -- When `true`, inserts the completion item automatically when selecting it
+              auto_insert = true,
+            },
+          },
+          menu = { auto_show = true },
+        }
+      },
     }
   },
   {
     "saghen/blink.compat",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
     event = events,
-    opts = {
-      sources = {
-        -- remember to enable your providers here
-        default = { 'lsp', 'path', 'snippets', 'buffer' }
-      },
-    }
+    opts = {}
   },
 }
