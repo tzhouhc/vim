@@ -72,7 +72,7 @@ M.views = {
       -- the CursorMoved event is too sensitive and will instantly
       -- kill the popup if focused.
       -- events = { "CursorMoved" },
-      keys = { "<esc>" },
+      keys = { "<esc>", "q" },
     },
     zindex = 200,
     position = {

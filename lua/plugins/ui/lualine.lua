@@ -38,7 +38,7 @@ return {
             }
           } },
           lualine_y = { "filetype" },
-          lualine_z = { "progress", "location" },
+          lualine_z = { "location" },
         },
         winbar = {
           lualine_b = {
