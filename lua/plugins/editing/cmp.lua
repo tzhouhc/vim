@@ -95,8 +95,12 @@ local function back_to_normal()
 end
 
 -- weird behavior due to some screen movement schenanigans?
-local function cancel_and_fallback(cmp)
+local function cancel_and_exit(cmp)
   return cmp.cancel({ callback = back_to_normal })
+end
+
+local function accept_and_exit(cmp)
+  return cmp.accept({ callback = back_to_normal })
 end
 
 local function cmd_sources()
@@ -193,7 +197,7 @@ return {
       },
       keymap = {
         ['<esc>'] = {
-          cancel_and_fallback,
+          cancel_and_exit,
           'fallback',
         },
         ['<Tab>'] = {
@@ -203,6 +207,8 @@ return {
         },
         ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
+        -- accept but also exit from input mode.
+        ['<s-CR>'] = { accept_and_exit, 'fallback' },
       },
       cmdline = {
         sources = cmd_sources,
