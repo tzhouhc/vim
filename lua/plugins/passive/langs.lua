@@ -13,10 +13,11 @@ return {
       },
       code = {
         width = 'block',
-        left_pad = 2,
+        left_pad = 0,
         right_pad = 2,
         language_pad = 2,
         min_width = 40,
+        border = 'thin',
       },
       sign = {
         enabled = true,
