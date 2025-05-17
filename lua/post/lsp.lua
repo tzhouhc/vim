@@ -36,3 +36,13 @@ vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
+-- autohover
+if vim.g.do_hover then
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      vim.lsp.buf.hover()
+    end,
+    group = vim.api.nvim_create_augroup("LspHover", { clear = true }),
+  })
+end
