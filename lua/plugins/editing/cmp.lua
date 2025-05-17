@@ -1,7 +1,6 @@
 local events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 
--- TODO: disable completion in comments
-
+-- Map longer kind names to abbreviations for a nicer looking column.
 local kind_map = {
   Variable = "Var ",
   Function = "Func",
@@ -32,9 +31,65 @@ local comment_types = {
   'comment_content',
   'line_comment',
   'block_comment',
+  'string',
 }
 
+local function kind_icon_text(ctx)
+  return " " .. ctx.kind_icon .. " "
+end
+
+local function kind_text(ctx)
+  return (kind_map[ctx.kind] or ctx.kind) .. " "
+end
+
+local function kind_highlight(ctx)
+  return { { group = ctx.kind_hl, priority = 20000 } }
+end
+
+local function label_text(ctx)
+  local highlights_info = require("colorful-menu").blink_highlights(ctx)
+  if highlights_info ~= nil then
+    -- Or you want to add more item to label
+    return highlights_info.label
+  else
+    return ctx.label
+  end
+end
+
+local function label_highlight(ctx)
+  local highlights = {}
+  local highlights_info = require("colorful-menu").blink_highlights(ctx)
+  if highlights_info ~= nil then
+    highlights = highlights_info.highlights
+  end
+  for _, idx in ipairs(ctx.label_matched_indices) do
+    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+  end
+  -- Do something else
+  return highlights
+end
+
+local function all_bufnrs()
+  return vim.tbl_filter(function(bufnr)
+    return vim.bo[bufnr].buftype == ''
+  end, vim.api.nvim_list_bufs())
+end
+
+local function select_cmp_sources(_)
+  local default = { 'lsp', 'path', 'snippets', 'buffer' }
+  local success, node = pcall(vim.treesitter.get_node)
+  if not success or not node then
+    return default
+  end
+  if vim.tbl_contains(comment_types, node:type()) then
+    return { 'buffer' }
+  else
+    return default
+  end
+end
+
 return {
+  -- color rendering of completion labels
   "xzbdmw/colorful-menu.nvim",
   -- completions
   {
@@ -47,6 +102,7 @@ return {
       end,
       signature = { enabled = true },
       completion = {
+        keyword = { range = "full" },
         -- Show documentation when selecting a completion item
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
         -- Display a preview of the selected item on the current line
@@ -55,44 +111,21 @@ return {
         -- rendering of the actual completion menu
         menu = {
           draw = {
+            cursorline_priority = 5000,
+            padding = { 0, 1 },
             columns = { { "kind_icon", "kind" }, { "label", gap = 1 } },
             components = {
               kind_icon = {
-                text = function(ctx)
-                  return " " .. ctx.kind_icon .. " "
-                end,
+                text = kind_icon_text,
               },
               kind = {
-                text = function(ctx)
-                  return (kind_map[ctx.kind] or ctx.kind) .. " "
-                end,
-                highlight = function(ctx)
-                  return { { group = ctx.kind_hl, priority = 20000 } }
-                end
+                text = kind_text,
+                highlight = kind_highlight,
               },
               label = {
                 width = { fill = true, max = 60 },
-                text = function(ctx)
-                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-                  if highlights_info ~= nil then
-                    -- Or you want to add more item to label
-                    return highlights_info.label
-                  else
-                    return ctx.label
-                  end
-                end,
-                highlight = function(ctx)
-                  local highlights = {}
-                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-                  if highlights_info ~= nil then
-                    highlights = highlights_info.highlights
-                  end
-                  for _, idx in ipairs(ctx.label_matched_indices) do
-                    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
-                  end
-                  -- Do something else
-                  return highlights
-                end,
+                text = label_text,
+                highlight = label_highlight,
               },
             },
           },
@@ -102,34 +135,23 @@ return {
             preselect = false,
           }
         },
-        sources = {
-          default = function(_)
-            local default = { 'lsp', 'path', 'snippets', 'buffer' }
-            local success, node = pcall(vim.treesitter.get_node)
-            if not success or not node then
-              return default
-            end
-            if vim.tbl_contains(comment_types, node:type()) then
-              return { 'buffer' }
-            else
-              return default
-            end
-          end,
-          providers = {
-            buffer = {
-              opts = {
-                -- or (recommended) filter to only "normal" buffers
-                get_bufnrs = function()
-                  return vim.tbl_filter(function(bufnr)
-                    return vim.bo[bufnr].buftype == ''
-                  end, vim.api.nvim_list_bufs())
-                end
-              }
+      },
+      sources = {
+        default = select_cmp_sources,
+        providers = {
+          buffer = {
+            opts = {
+              -- or (recommended) filter to only "normal" buffers
+              get_bufnrs = all_bufnrs,
             }
           }
         }
       },
       keymap = {
+        ['<esc>'] = {
+          'cancel',
+          'fallback',
+        },
         ['<Tab>'] = {
           'select_next',
           'snippet_forward',

@@ -2,7 +2,7 @@
 
 local colors = require("lib.colors")
 
--- Create bg color for each completion kind
+-- Create bg color for each completion kind, asd
 
 local bg = colors.bg_by_hlgroup("Pmenu")
 if not bg then
@@ -18,3 +18,8 @@ for _, name in pairs(vim.fn.getcompletion('BlinkCmpKind*', 'highlight')) do
     vim.api.nvim_set_hl(0, name, { bg = fg, fg = bg })
   end
 end
+
+vim.api.nvim_set_hl(0, "BlinkCmpKindText",
+  { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })
+vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet",
+  { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })

@@ -12,7 +12,7 @@ require("post.visuals")
 require("post.diagnostics")
 -- language services
 require("post.lsp")
--- completions via nvim-cmp
-require("post.completions")
+-- completions via blink-cmp
+require("post.cmp")
 -- custom commands
 require("post.commands")
