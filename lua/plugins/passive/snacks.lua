@@ -30,7 +30,7 @@ local dash_header =
 
 local dash_keys = {
   dashboard_key_conf("0", "", "Recent Files", ":FzfLua oldfiles"),
-  dashboard_key_conf("1", "", "New File", ":ene <BAR> startinsert "),
+  dashboard_key_conf("1", "", "New File", ":ene"),
   dashboard_key_conf("2", "󰍉", "Find File", ":FzfLua files"),
   dashboard_key_conf("3", "", "Last File", ":e#<1"),
   dashboard_key_conf("4", "󰏗", "Last Session", ":SessionLoadLast"),
