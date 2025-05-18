@@ -5,6 +5,7 @@ local core_lsps = {
   "lua_ls",
   "clangd",
   "basedpyright",
+  "prettierd",
   -- "ty",  -- rust-based python lsp, however the feature set is a bit thin rn
 }
 
