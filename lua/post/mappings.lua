@@ -72,6 +72,16 @@ local key_configs = {
   v = {
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
+
+    -- surround
+    ["q"] = {"<Plug>(nvim-surround-visual)'", {}},
+    ["Q"] = {"<Plug>(nvim-surround-visual)\"", {}},
+    ["'"] = {"<Plug>(nvim-surround-visual)'", {}},
+    ["\""] = {"<Plug>(nvim-surround-visual)\"", {}},
+    ["("] = {"<Plug>(nvim-surround-visual))", {}},
+    [")"] = {"<Plug>(nvim-surround-visual))", {}},
+    ["["] = {"<Plug>(nvim-surround-visual)]", {}},
+    ["]"] = {"<Plug>(nvim-surround-visual)]", {}},
   },
   [{ "n", "v" }] = {
     -- jump to first position after the first space (to avoid comment prefixes).

@@ -200,6 +200,9 @@ return {
           cancel_and_exit,
           'fallback',
         },
+        ['<c-c>'] = {
+          'cancel',
+        },
         ['<Tab>'] = {
           'select_next',
           'snippet_forward',

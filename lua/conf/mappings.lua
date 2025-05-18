@@ -51,9 +51,6 @@ local key_configs = {
     -- select whole words by default
     ["w"] = "iw",
     ["W"] = "iW",
-    [")"] = "i)",
-    ["]"] = "i]",
-    ['"'] = 'i"',
 
     -- replace currently selected text with default register
     -- without yanking it.
