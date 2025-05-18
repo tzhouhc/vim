@@ -9,10 +9,29 @@ neovim.
 causes nvim to crash.
 
 See [issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/5501);
-*possibly* fixed by uninstalling all TS parsers then reinstalling.
+_possibly_ fixed by uninstalling all TS parsers then reinstalling.
 
 ### Markdown rendering not working properly
 
 **Symptom**: Conceals not working.
 
 Fixed by `:TSInstall markdown_inline`.
+
+### Strikethrough
+
+**Symptom**: strikethrough doesn't render correctly while using terminals that
+support it.
+
+Fixed by:
+
+```
+infocmp $TERM > myterm.info
+vim myterm.info # add `smxx=\E[9m, rmxx=\E[29m,`
+tic -x myterm.info
+```
+
+[Source](https://github.com/neovim/neovim/discussions/24346#discussioncomment-9197378)
+
+### Failure to Install `pylsp`
+
+Run `sudo apt install python3-venv`
