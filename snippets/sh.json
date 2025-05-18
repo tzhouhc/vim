@@ -3,6 +3,14 @@
     "prefix": "color",
     "body": "GREEN='\\033[0;32m'\nRED='\\033[0;31m'\nYELLOW='\\033[0;33m'\nNC='\\033[0m'"
   },
+  "Subsequent args": {
+    "prefix": "argsafter",
+    "body": "\\${@:2}"
+  },
+  "Parse args": {
+    "prefix": "zparse",
+    "body": "zparseopts -D -E -- $1:=$2"
+  },
   "check if binary exists\" b": {
     "prefix": "ifbin",
     "body": "if type $1 &>/dev/null; then\nfi"

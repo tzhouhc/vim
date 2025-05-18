@@ -45,6 +45,7 @@ return {
   },
   {
     "jackMort/ChatGPT.nvim",
+    keys = { "<leader>cc" },
     cmd = { "ChatGPT", "ChatGPTRun", "ChatGPTCompleteCode", "ChatGPTEditWithInstructions" },
     config = function()
       require("chatgpt").setup({
@@ -59,6 +60,8 @@ return {
           n = 1,
         }
       })
+
+      vim.keymap.set("v", "<leader>cc", "<cmd>ChatGPTRun complete_code<cr>", {})
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
