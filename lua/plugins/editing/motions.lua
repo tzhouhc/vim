@@ -15,20 +15,8 @@ return {
       local f = require("flash")
       f.setup({ modes = { search = { enabled = false } } })
       -- ctrl/meta+j to select and go to one specific letter on screen
-      vim.keymap.set("n", "<c-j>", f.jump)
-      vim.keymap.set("n", "<m-j>", f.jump)
-    end
-  },
-  {
-    "mfussenegger/nvim-treehopper",
-    dependencies = { "hadronized/hop.nvim" },
-    keys = { "<c-h>", "g[", "g]" },
-    config = function()
-      require("hop").setup()
-      local tsht = require("tsht")
-      vim.keymap.set("n", "<c-h>", tsht.nodes)
-      vim.keymap.set("n", "g[", function() tsht.move({ side = "start" }) end)
-      vim.keymap.set("n", "g]", function() tsht.move({ side = "end" }) end)
+      vim.keymap.set({ "n", "v" }, "<c-j>", f.jump)
+      vim.keymap.set({ "n", "v" }, "<m-j>", f.jump)
     end
   },
   -- quick jump to locally or globally recorded locations
