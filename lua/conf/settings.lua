@@ -100,6 +100,3 @@ if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep -P --color=never"
   vim.opt.grepformat = "%f:%l:%c:%m"
 end
-
----@diagnostic disable-next-line: duplicate-set-field
-vim.deprecate = function() end

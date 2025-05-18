@@ -18,3 +18,5 @@ require("conf.settings")
 require("conf.mappings")
 -- filetypes recognition
 require("conf.files")
+-- override neovim native components
+require("conf.overrides")
