@@ -1,7 +1,7 @@
 {
   "ANSI color vars": {
     "prefix": "color",
-    "body": "GREEN='\\033[0;32m'\nRED='\\033[0;31m'\nYELLOW='\\033[0;33m'\nNC='\\033[0m'"
+    "body": "GRAY='\\033[0;90m'\nCYAN='\\033[0;36m'\nMAGENTA='\\033[0;35m'\nBLUE='\\033[0;34m'\nYELLOW='\\033[0;33m'\nGREEN='\\033[0;32m'\nRED='\\033[0;31m'\nNC='\\033[0m'"
   },
   "Subsequent args": {
     "prefix": "argsafter",
@@ -9,11 +9,31 @@
   },
   "Parse args": {
     "prefix": "zparse",
-    "body": "zparseopts -D -E -- $1:=$2"
+    "body": "zparseopts -D -E -F -- $1:=$2"
   },
   "flag": {
     "prefix": "flag",
     "body": "f=flag -flag=flag"
+  },
+  "param": {
+    "prefix": "param",
+    "body": "p:=param"
+  },
+  "Stacking flag": {
+    "prefix": "flag_stack",
+    "body": "p+=flag"
+  },
+  "Stacking flag count": {
+    "prefix": "flag_stack_count",
+    "body": "$#flag"
+  },
+  "Array param": {
+    "prefix": "array_param",
+    "body": "p+:=param"
+  },
+  "Strip flag from array param": {
+    "prefix": "array_param_strip",
+    "body": "args=()\nfor ((i=1; i<${#param}; i+=2)); do\n  args+=(${param[i]})\ndone"
   },
   "check if binary exists": {
     "prefix": "ifbin",
