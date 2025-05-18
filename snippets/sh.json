@@ -11,55 +11,67 @@
     "prefix": "zparse",
     "body": "zparseopts -D -E -- $1:=$2"
   },
-  "check if binary exists\" b": {
+  "flag": {
+    "prefix": "flag",
+    "body": "f=flag -flag=flag"
+  },
+  "check if binary exists": {
     "prefix": "ifbin",
     "body": "if type $1 &>/dev/null; then\nfi"
   },
-  "check if cmd returned 0\" b": {
+  "check if cmd returned 0": {
     "prefix": "ifcmd",
     "body": "if $1; then\nfi"
   },
-  "check if current os is darwin\" b": {
+  "check if current os is darwin": {
     "prefix": "ifosx",
     "body": "if uname -a | grep -i darwin &>/dev/null; then\nfi"
   },
-  "check if env var is not empty\" b": {
+  "check if env var is not empty": {
     "prefix": "ifenv",
     "body": "if [[ \\$${1} != '' ]]; then\nfi"
   },
-  "check if file exists\" b": {
+  "check if env var is set": {
+    "prefix": "ifvar",
+    "body": "if [[ -v $1 ]]; then\nfi"
+  },
+  "check if file exists": {
     "prefix": "iffile",
     "body": "if [[ -f '${1:file}' ]]; then\nfi"
   },
-  "check if folder exists\" b": {
+  "check if folder exists": {
     "prefix": "ifdir",
     "body": "if [[ -d '${1:dir}' ]]; then\nfi"
   },
-  "check if string has content": {
+  "check if string has no content": {
     "prefix": "ifempty",
     "body": "if [[ -z \"$1\" ]]; then\nfi"
+  },
+  "check if string has content": {
+    "prefix": "ifstr",
+    "body": "if [[ -n \"$1\" ]]; then\nfi"
   },
   "check if string matches regex": {
     "prefix": "ifregex",
     "body": "if [[ \"$1\" =~ \"$2\" ]]; then\nfi"
   },
-  "comment chunk\" b": {
+  "comment chunk": {
     "prefix": "#---",
     "body": "# --------------\n# $1\n# --------------"
   },
-  "for each line in input\" b": {
+  "for each line in input": {
     "prefix": "forline",
     "body": "for line in \\$(<$1); do\ndone"
   },
-  "go to directory containing the script\" b": {
+  "go to directory containing the script": {
     "prefix": "cwd",
     "body": "cd \"\\$(dirname \"\\$0\")\""
   },
-  "multiple assignment\" b": {
+  "multiple assignment": {
     "prefix": "read<",
     "body": "read -r $2 <<<\\$($1)"
   },
-  "pipe to /dev/null\" b": {
+  "pipe to /dev/null": {
     "prefix": "devnull",
     "body": "&>/dev/null"
   },
