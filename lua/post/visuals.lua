@@ -34,6 +34,13 @@ local diffChangedColor = "#41423F"
 local flashMatch = "#81a1c1"
 local flashLabel = "#A3BE8C"
 
+local diffDeleteStr
+if vim.g.crossout_diff_delete then
+  diffDeleteStr = "guibg=" .. diffRemovedColor .. " gui=strikethrough"
+else
+  diffDeleteStr = "guibg=" .. diffRemovedColor
+end
+
 local hilight = {
   -- signify
   SignifySignAdd = "guifg=" .. signifyAdd,
@@ -68,7 +75,7 @@ local hilight = {
   -- softer colors for diffing and diffview
   DiffAdd = "guibg=" .. diffAddedColor,
   DiffChange = "guibg=" .. diffChangedColor,
-  DiffDelete = "guibg=" .. diffRemovedColor .. " gui=strikethrough",
+  DiffDelete = diffDeleteStr,
   DiffText = "guibg=" .. diffChangedColor .. " guifg=" .. diffChangedForeground .. " gui=bold",
 
   -- flash.nvim jumping highlight

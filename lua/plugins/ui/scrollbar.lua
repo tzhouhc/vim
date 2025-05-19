@@ -2,6 +2,7 @@ return {
   -- scroll-bar for checking location in file
   {
     "petertriho/nvim-scrollbar",
+    enabled = not not vim.g.enable_scrollbar,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       show_in_active_only = true,

@@ -1,6 +1,10 @@
 return {
   -- highlight same token as the cursor is currently hovering over
-  {"RRethy/vim-illuminate", event = { "BufReadPost", "BufNewFile", "BufWritePre" } },
+  {
+    "RRethy/vim-illuminate",
+    enabled = not not vim.g.highlight_word_under_cursor,
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  },
 
   -- highlight words under cursor
   {

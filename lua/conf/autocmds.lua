@@ -22,13 +22,16 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 
 -- on save, clean all trailing whitespaces.
 api.nvim_create_augroup("Misc", { clear = true })
-api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.*" },
-  callback = function()
-    api.nvim_command(":FixWhitespace")
-  end,
-  group = "Misc",
-})
+
+if vim.g.auto_cleanup_whitespace then
+  api.nvim_create_autocmd({ "BufWritePost" }, {
+    pattern = { "*.*" },
+    callback = function()
+      api.nvim_command(":FixWhitespace")
+    end,
+    group = "Misc",
+  })
+end
 
 -- exit ephemeral buffers with <esc>
 api.nvim_create_autocmd({ "BufEnter" }, {
@@ -58,30 +61,34 @@ api.nvim_create_autocmd({ "BufRead" }, {
 })
 
 -- write oldfiles to disk before exiting vim
-api.nvim_create_autocmd({ "VimLeavePre" }, {
-  pattern = { "*.*" },
-  callback = function()
-    vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
-  end,
-  group = "Misc",
-})
+if vim.g.save_old_files then
+  api.nvim_create_autocmd({ "VimLeavePre" }, {
+    pattern = { "*.*" },
+    callback = function()
+      vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
+    end,
+    group = "Misc",
+  })
+end
 
 -- use EN IME on leaving Insert
-api.nvim_create_autocmd({ "InsertLeave" }, {
-  pattern = { "*.*" },
-  callback = ime.switch_to_en_ime,
-  group = "Misc",
-})
+if vim.g.auto_toggle_ime then
+  api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = { "*.*" },
+    callback = ime.switch_to_en_ime,
+    group = "Misc",
+  })
 
-api.nvim_create_autocmd({ "InsertEnter" }, {
-  pattern = { "*.*" },
-  callback = function()
-    if ime.context_is_cn() then
-      ime.switch_to_cn_ime()
-    end
-  end,
-  group = "Misc",
-})
+  api.nvim_create_autocmd({ "InsertEnter" }, {
+    pattern = { "*.*" },
+    callback = function()
+      if ime.context_is_cn() then
+        ime.switch_to_cn_ime()
+      end
+    end,
+    group = "Misc",
+  })
+end
 
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = "sql",

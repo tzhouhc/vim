@@ -7,13 +7,14 @@ return {
     config = function()
       vim.cmd("colorscheme nord")
     end,
-    cond = vim.g.theme == "nord" or vim.g.theme == "",
+    cond = vim.g.theme == "nord",
   },
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    cond = vim.g.theme == "catppuccin",
+    -- global default
+    cond = vim.g.theme == "catppuccin" or vim.g.theme == "",
     config = function()
       require("catppuccin").setup({
         flavour = "macchiato", -- latte, frappe, macchiato, mocha

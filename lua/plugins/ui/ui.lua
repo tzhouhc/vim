@@ -4,6 +4,7 @@ return {
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    enabled = not not vim.g.enable_todo_highlights,
     opts = {
       signs = true,
       sign_priority = 8,

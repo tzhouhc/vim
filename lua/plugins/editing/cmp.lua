@@ -114,6 +114,20 @@ local function cmd_sources()
   return {}
 end
 
+local keymap = {
+  ['<c-c>'] = { 'cancel' },
+  ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+  ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+  ['<CR>'] = { 'accept', 'fallback' },
+}
+if vim.g.escape_clears_cmp then
+  keymap['<esc>'] = {
+    cancel_and_exit,
+    'fallback',
+  }
+  keymap['<S-CR>'] = { accept_and_exit, 'fallback' }
+end
+
 return {
   -- color rendering of completion labels
   "xzbdmw/colorful-menu.nvim",
@@ -195,24 +209,7 @@ return {
           },
         }
       },
-      keymap = {
-        ['<esc>'] = {
-          cancel_and_exit,
-          'fallback',
-        },
-        ['<c-c>'] = {
-          'cancel',
-        },
-        ['<Tab>'] = {
-          'select_next',
-          'snippet_forward',
-          'fallback'
-        },
-        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-        ['<CR>'] = { 'accept', 'fallback' },
-        -- accept but also exit from input mode.
-        ['<s-CR>'] = { accept_and_exit, 'fallback' },
-      },
+      keymap = keymap,
       cmdline = {
         sources = cmd_sources,
         completion = {

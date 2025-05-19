@@ -35,3 +35,8 @@ tic -x myterm.info
 ### Failure to Install `pylsp`
 
 Run `sudo apt install python3-venv`
+
+### Crossed-out Headers in Markdowns
+
+Fix: disable `vim.g.crossout_diff_delete`. Apparently some colorschemes just
+use `DiffDelete` as a shortcut for "Red".

@@ -97,7 +97,7 @@ return {
         },
       },
       indent = {
-        enabled = true,
+        enabled = not not vim.g.enable_rainbow_indent,
         char = "┆",
         only_scope = true,
         only_current = true,
