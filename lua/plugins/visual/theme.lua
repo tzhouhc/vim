@@ -1,3 +1,23 @@
+local colorschemes = {
+  "nord",
+  "kanagawa",
+  "github_dark",
+  "gruvbox-material",
+  "tokyonight",
+  "catppuccin",
+  "everforest",
+  "oceanic-next",
+}
+
+-- while os.time is only granular to the second it is more than enough for
+-- nvim initialization needs. Not doing this init would cause the same color
+-- scheme selected "randomly" every time.
+math.randomseed(os.time())
+
+if vim.g.theme == "random" then
+  vim.g.theme = colorschemes[math.random(1, #colorschemes)]
+end
+
 return {
   {
     -- the Neovim version of `nord` theme has better compatibility
@@ -121,5 +141,42 @@ return {
       })
       vim.cmd('colorscheme github_dark')
     end
-  }
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    cond = vim.g.theme == "tokyonight",
+    config = function()
+      require('tokyonight').setup({})
+      vim.cmd('colorscheme tokyonight')
+    end
+  },
+  {
+    "sainnhe/everforest",
+    lazy = false,
+    priority = 1000,
+    cond = vim.g.theme == "everforest",
+    config = function()
+      vim.cmd('colorscheme everforest')
+    end
+  },
+  {
+    "sainnhe/gruvbox-material",
+    lazy = false,
+    priority = 1000,
+    cond = vim.g.theme == "gruvbox-material",
+    config = function()
+      vim.cmd('colorscheme gruvbox-material')
+    end
+  },
+  {
+    "mhartington/oceanic-next",
+    lazy = false,
+    priority = 1000,
+    cond = vim.g.theme == "oceanic-next",
+    config = function()
+      vim.cmd('colorscheme OceanicNext')
+    end
+  },
 }

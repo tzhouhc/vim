@@ -1,5 +1,6 @@
 -- vim overall colorscheme, options are:
---   "nord", "catppuccin", "kanagawa", "github_dark"
+--   "nord", "catppuccin", "kanagawa", "github_dark", "tokyonight",
+--   "everforest", "gruvbox-material", or "random"
 vim.g.theme = "catppuccin"
 
 -- Visuals
