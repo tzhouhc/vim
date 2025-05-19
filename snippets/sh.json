@@ -59,6 +59,10 @@
     "prefix": "iffile",
     "body": "if [[ -f '${1:file}' ]]; then\nfi"
   },
+  "check if socket exists": {
+    "prefix": "ifsock",
+    "body": "if [[ -S '${1:file}' ]]; then\nfi"
+  },
   "check if folder exists": {
     "prefix": "ifdir",
     "body": "if [[ -d '${1:dir}' ]]; then\nfi"
