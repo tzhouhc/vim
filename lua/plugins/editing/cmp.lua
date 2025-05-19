@@ -140,6 +140,7 @@ return {
       "rafamadriz/friendly-snippets",
       "mgalliou/blink-cmp-tmux",
     },
+    build = 'cargo build --release',
     config = true,
     opts = {
       enabled = function()
@@ -208,6 +209,9 @@ return {
             },
           },
         }
+      },
+      fuzzy = {
+        implementation = "prefer_rust",
       },
       keymap = keymap,
       cmdline = {
