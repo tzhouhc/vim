@@ -25,6 +25,8 @@ vim.g.enable_rainbow_indent = true
 vim.g.crossout_diff_delete = false
 -- Peek line number
 vim.g.enable_peek_line_number = true
+-- Prevent LSP from also highlighting references to word under cursor
+vim.g.prevent_lsp_cursor_highlight = true
 
 -- Features
 -- Enable sophisticated notifications via noice

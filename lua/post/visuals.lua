@@ -16,6 +16,12 @@ local hiclear = {
   "IlluminatedWordText",
 }
 
+if vim.g.prevent_lsp_cursor_highlight then
+  vim.api.nvim_set_hl(0, "LspReferenceRead", {})
+  vim.api.nvim_set_hl(0, "LspReferenceWrite", {})
+  vim.api.nvim_set_hl(0, "LspReferenceText", {})
+end
+
 -- custom colors for plugin effects
 
 local signifyAdd = "#2DD671"
