@@ -6,7 +6,7 @@ local colorschemes = {
   "tokyonight",
   "catppuccin",
   "everforest",
-  "oceanic-next",
+  "OceanicNext",
 }
 
 -- while os.time is only granular to the second it is more than enough for
@@ -174,7 +174,7 @@ return {
     "mhartington/oceanic-next",
     lazy = false,
     priority = 1000,
-    cond = vim.g.theme == "oceanic-next",
+    cond = vim.g.theme == "OceanicNext",
     config = function()
       vim.cmd('colorscheme OceanicNext')
     end

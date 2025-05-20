@@ -32,6 +32,7 @@ return {
   -- peek line number
   {
     'nacro90/numb.nvim',
+    enabled = not not vim.g.enable_peek_line_number,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = true,
   },

@@ -23,6 +23,8 @@ vim.g.enable_rainbow_paren = true
 vim.g.enable_rainbow_indent = true
 -- Crossout line in DiffDelete
 vim.g.crossout_diff_delete = false
+-- Peek line number
+vim.g.enable_peek_line_number = true
 
 -- Features
 -- Enable sophisticated notifications via noice
