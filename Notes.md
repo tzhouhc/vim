@@ -40,3 +40,10 @@ Run `sudo apt install python3-venv`
 
 Fix: disable `vim.g.crossout_diff_delete`. Apparently some colorschemes just
 use `DiffDelete` as a shortcut for "Red".
+
+### Cursor Flickering
+
+**Symptom**: Cursor flickers around when moving fast, especially if `noice`
+is on. Apparently only happens in `zellij` but not `tmux`.
+
+Fix: turn off `termsync` or (preferrably) use latest `zellij` (>0.40).
