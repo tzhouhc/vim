@@ -21,7 +21,7 @@ return {
   -- kill buffer but keep split
   {
     "qpkorr/vim-bufkill",
-    enabled = not not vim.g.keep_win_after_bufkill,
+    cond = not not vim.g.keep_win_after_bufkill,
     event = events,
   },
   -- follow symlinks
@@ -29,7 +29,7 @@ return {
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",
-    enabled = not not vim.g.no_yank_deletion,
+    cond = not not vim.g.no_yank_deletion,
     opts = {
       cut_key = "d",
     },
@@ -38,7 +38,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    enabled = not not vim.g.enable_which_key,
+    cond = not not vim.g.enable_which_key,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings

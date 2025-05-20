@@ -97,7 +97,7 @@ return {
         },
       },
       indent = {
-        enabled = not not vim.g.enable_rainbow_indent,
+        cond = not not vim.g.enable_rainbow_indent,
         char = "┆",
         only_scope = true,
         only_current = true,
@@ -144,7 +144,7 @@ return {
       quickfile = { enabled = true },
       rename = { enabled = true },
       -- double not to cast as bool
-      scroll = { enabled = not not vim.g.animate_scroll },
+      scroll = { cond = not not vim.g.animate_scroll },
       statuscolumn = { enabled = true },
       words = { enabled = true },
       styles = {

@@ -21,7 +21,7 @@ return {
   -- show lines that have been changed in the gutter
   {
     "lewis6991/gitsigns.nvim",
-    enabled = not not vim.g.enable_git_signs,
+    cond = not not vim.g.enable_git_signs,
     opts = {
       signs                        = middle_signs,
       signs_staged                 = middle_signs,

@@ -2,7 +2,7 @@ return {
   -- highlight same token as the cursor is currently hovering over
   {
     "RRethy/vim-illuminate",
-    enabled = not not vim.g.highlight_word_under_cursor,
+    cond = not not vim.g.highlight_word_under_cursor,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   },
 

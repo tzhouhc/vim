@@ -2,7 +2,7 @@ return {
   -- transparent background
   {
     "xiyaowong/transparent.nvim",
-    enabled = not not vim.g.enable_transparency,
+    cond = not not vim.g.enable_transparency,
     opts = {
       extra_groups = { "ColorColumn" }
     },
@@ -10,7 +10,7 @@ return {
   -- rainbow colors for parentheses/brackets for easier depth determination
   {
     "HiPhish/rainbow-delimiters.nvim",
-    enabled = not not vim.g.enable_rainbow_paren,
+    cond = not not vim.g.enable_rainbow_paren,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   },
   -- highlight hex colors

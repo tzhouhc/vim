@@ -4,7 +4,7 @@ return {
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    enabled = not not vim.g.enable_todo_highlights,
+    cond = not not vim.g.enable_todo_highlights,
     opts = {
       signs = true,
       sign_priority = 8,
@@ -32,7 +32,7 @@ return {
   -- peek line number
   {
     'nacro90/numb.nvim',
-    enabled = not not vim.g.enable_peek_line_number,
+    cond = not not vim.g.enable_peek_line_number,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = true,
   },
@@ -40,7 +40,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     event = "VeryLazy",
-    enabled = not not vim.g.enable_ufo,
+    cond = not not vim.g.enable_ufo,
     dependencies = "kevinhwang91/promise-async",
     config = function()
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
@@ -64,7 +64,7 @@ return {
   },
   {
     "sphamba/smear-cursor.nvim",
-    enabled = not not vim.g.smear_cursor,
+    cond = not not vim.g.smear_cursor,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       smear_between_buffers = false,
