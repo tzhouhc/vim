@@ -76,6 +76,9 @@ return {
       vim.api.nvim_create_user_command("Manpages", "FzfLua manpages", {})
       vim.api.nvim_create_user_command("HelpTags", "FzfLua helptags", {})
       vim.api.nvim_create_user_command("FilesInRepo", "FzfLua git_files", {})
+      vim.api.nvim_create_user_command("GitFileHistory", "FzfLua git_bcommits", {})
+      vim.api.nvim_create_user_command("ChangedInRepo", "FzfLua git_diffs", {})
+      vim.api.nvim_create_user_command("Changes", "FzfLua git_hunks", {})
       vim.api.nvim_create_user_command("Zoxide", "FzfLua zoxide", {})
       vim.api.nvim_create_user_command("Diagnostics", "FzfLua lsp_document_diagnostics", {})
       vim.api.nvim_create_user_command("Z", "FzfLua zoxide", {})
@@ -86,7 +89,6 @@ return {
 
       -- custom scopes
       vim.api.nvim_create_user_command("GrepAcrossRepo", fv.live_grep_across_repo, {})
-      vim.api.nvim_create_user_command("ChangedInRepo", fv.changed_files_in_repo, {})
       vim.api.nvim_create_user_command("AllFiles", fv.all_files, {})
 
       -- aliases
