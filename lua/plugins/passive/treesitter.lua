@@ -60,6 +60,23 @@ return {
           },
         },
       })
+      local tree = require("lib.tree")
+      -- treesitter based actions
+      local key_configs = {
+        -- Normal mode
+        n = {
+          ["<space><up>"] = tree.above_ts_node_by_cursor,
+          ["<space><down>"] = tree.below_ts_node_by_cursor,
+          ["<space><left>"] = tree.prev_ts_node_by_cursor,
+          ["<space><right>"] = tree.next_ts_node_by_cursor,
+          ["g<left>"] = tree.swap_with_prev_ts_node_by_cursor,
+          ["g<right>"] = tree.swap_with_next_ts_node_by_cursor,
+        },
+      }
+      require("lib.misc").batch_set_buf_keymap(key_configs)
+
+      -- Treesitter
+      vim.api.nvim_create_user_command("PrintTSNode", tree.print_cur_node, {})
     end,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" }
   },

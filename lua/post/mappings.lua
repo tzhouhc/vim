@@ -1,8 +1,8 @@
 -- Keyboard Mapping Configurations, with Plugins
 local key_utils = require("lib.key_utils")
+local df = require("lib.diffs")
 local terms = require("lib.terms")
 local popups = require("lib.popups")
-local tree = require("lib.tree")
 local fts = require("lib.ft")
 
 ---- Generic File Mappings ----
@@ -35,8 +35,8 @@ local key_configs = {
     ["[<space>"] = key_utils.add_blank_line_before,
     ["]<space>"] = key_utils.add_blank_line_after,
     -- move between change hunks
-    ["[c"] = key_utils.prev_hunk,
-    ["]c"] = key_utils.next_hunk,
+    ["[c"] = df.prev_hunk,
+    ["]c"] = df.next_hunk,
 
     -- buffer movement
     ["<c-1>"] = "<Cmd>BufferLineGoToBuffer 1<CR>",
@@ -50,14 +50,6 @@ local key_configs = {
     ["<c-9>"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
     ["<c-0>"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
 
-    -- treesitter based actions
-    ["<space><up>"] = tree.above_ts_node_by_cursor,
-    ["<space><down>"] = tree.below_ts_node_by_cursor,
-    ["<space><left>"] = tree.prev_ts_node_by_cursor,
-    ["<space><right>"] = tree.next_ts_node_by_cursor,
-    ["g<left>"] = tree.swap_with_prev_ts_node_by_cursor,
-    ["g<right>"] = tree.swap_with_next_ts_node_by_cursor,
-
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
 
@@ -66,7 +58,6 @@ local key_configs = {
 
     -- smarter shift I
     ["I"] = key_utils.smarter_shift_i,
-    ["<m-i>"] = key_utils.smart_move_to_start_and_insert,
   },
   -- Visual mode
   v = {
@@ -86,10 +77,6 @@ local key_configs = {
   [{ "n", "v" }] = {
     -- jump to first position after the first space (to avoid comment prefixes).
     ["0"] = key_utils.alternating_zero,
-    -- jump to start of text object, be situationally aware
-    ["<m-0>"] = key_utils.smart_move_to_start,
-    ["<m-left>"] = key_utils.smart_move_to_start,
-    ["<m-right>"] = key_utils.smart_move_to_end,
   },
   [{ "i", "s" }] = {
     -- fallback value of these commands are hardcoded to tab and s-tab, so

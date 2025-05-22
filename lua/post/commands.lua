@@ -5,7 +5,6 @@ local popups = require("lib.popups")
 local tools = require("lib.tools")
 local lazygit = require("snacks.lazygit")
 local rename = require("snacks.rename")
-local tree = require("lib.tree")
 
 vim.api.nvim_create_user_command("SelectSession", function()
   require("persistence").select()
@@ -38,6 +37,3 @@ vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 
 -- Snacks
 vim.api.nvim_create_user_command("RenameFile", rename.rename_file, {})
-
--- Treesitter
-vim.api.nvim_create_user_command("PrintTSNode", tree.print_cur_node, {})
