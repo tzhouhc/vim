@@ -1,13 +1,9 @@
 -- Keyboard Mapping Configurations, with Plugins
 local key_utils = require("lib.key_utils")
-local df = require("lib.diffs")
 local popups = require("lib.popups")
-local fts = require("lib.ft")
+local binder = require("lib.misc")
 
 ---- Generic File Mappings ----
-
--- to avoid creating mappings in unusual buffers, we exclude them explicitly.
-local normal_buffer_mappings = vim.api.nvim_create_augroup("NormalBufferMappings", { clear = true })
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
@@ -30,9 +26,6 @@ local key_configs = {
     -- create empty lines without moving
     ["[<space>"] = key_utils.add_blank_line_before,
     ["]<space>"] = key_utils.add_blank_line_after,
-    -- move between change hunks
-    ["[c"] = df.prev_hunk,
-    ["]c"] = df.next_hunk,
 
     -- buffer movement
     ["<c-1>"] = "<Cmd>BufferLineGoToBuffer 1<CR>",
@@ -90,16 +83,7 @@ local key_configs = {
   }
 }
 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  group = normal_buffer_mappings,
-  callback = function(args)
-    local bufnr = args.buf
-    if not fts.is_normal_buffer(bufnr) then
-      return
-    end
-    require("lib.misc").batch_set_buf_keymap(key_configs)
-  end,
-})
+binder.batch_set_auto_buf_keymap(key_configs, "general")
 
 ---- Mappings specific to Help ----
 -- use help tags as if they are LSP symbols and jump using `g;`
@@ -117,7 +101,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     local bufnr = args.buf
     local filetype = vim.bo[bufnr].filetype
     if filetype == "help" then
-      require("lib.misc").batch_set_buf_keymap(help_binds)
+      binder.batch_set_buf_keymap(help_binds)
     end
   end
 })
