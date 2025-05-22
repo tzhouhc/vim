@@ -147,6 +147,21 @@ function M.batch_set_buf_keymap(mappings)
   do_batch_set_keymap(mappings, { noremap = true, silent = true, buffer = 0 })
 end
 
+function M.batch_set_auto_buf_keymap(mappings, suffix)
+  local fts = require("lib.ft")
+  local grp = vim.api.nvim_create_augroup("NormalBufferMappings-" .. suffix, { clear = true })
+  vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    group = grp,
+    callback = function(args)
+      local bufnr = args.buf
+      if not fts.is_normal_buffer(bufnr) then
+        return
+      end
+      M.batch_set_buf_keymap(mappings)
+    end,
+  })
+end
+
 --- generate a random string
 ---@param chars integer
 local function random_str(chars)

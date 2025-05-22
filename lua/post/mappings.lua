@@ -1,7 +1,6 @@
 -- Keyboard Mapping Configurations, with Plugins
 local key_utils = require("lib.key_utils")
 local df = require("lib.diffs")
-local terms = require("lib.terms")
 local popups = require("lib.popups")
 local fts = require("lib.ft")
 
@@ -24,9 +23,6 @@ local key_configs = {
 
     -- diffview
     ["<leader>dv"] = key_utils.toggle_diffview,
-
-    -- quake term
-    ["<m-e>"] = terms.quake_term,
 
     -- diagnostics movement
     ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
@@ -52,9 +48,6 @@ local key_configs = {
 
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
-
-    -- local fuzzy find
-    ["<m-f>"] = terms.repo_live_grep,
 
     -- smarter shift I
     ["I"] = key_utils.smarter_shift_i,

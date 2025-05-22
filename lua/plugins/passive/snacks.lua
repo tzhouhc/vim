@@ -78,100 +78,113 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    opts = {
-      -- https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
-      -- for more components to enable
-      bigfile = { enabled = false },
-      dashboard = {
-        enabled = true,
-        preset = {
-          header = dash_header,
-          -- [[string]] does not play nicely with uneven lengthed strings,
-          -- and auto-fix-whitespace won't let me leave spaces at the end.
-          keys = dash_keys,
+    config = function()
+      require('snacks').setup({
+        -- https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
+        -- for more components to enable
+        bigfile = { enabled = false },
+        dashboard = {
+          enabled = true,
+          preset = {
+            header = dash_header,
+            -- [[string]] does not play nicely with uneven lengthed strings,
+            -- and auto-fix-whitespace won't let me leave spaces at the end.
+            keys = dash_keys,
+          },
+          sections = {
+            { section = "header" },
+            { section = "keys",   gap = 1, padding = 1 },
+            { section = "startup" },
+          },
         },
-        sections = {
-          { section = "header" },
-          { section = "keys",   gap = 1, padding = 1 },
-          { section = "startup" },
-        },
-      },
-      indent = {
-        cond = not not vim.g.enable_rainbow_indent,
-        char = "┆",
-        only_scope = true,
-        only_current = true,
         indent = {
-          hl = (function()
-            local groups = {}
-            for i = 1, 12 do
-              groups[i] = "RainbowDarkDelim" .. i
-            end
-            return groups
-          end)()
-        },
-        animate = {
-          enabled = false,
-        },
-        scope = {
+          cond = not not vim.g.enable_rainbow_indent,
           char = "┆",
+          only_scope = true,
           only_current = true,
-          -- safe to keep permanently after
-          -- https://github.com/folke/snacks.nvim/issues/422 is resolved
-          hl = (function()
-            local groups = {}
-            for i = 1, 12 do
-              groups[i] = "RainbowDelim" .. i
-            end
-            return groups
-          end)()
-        }
-      },
-      input = {
-        icon = " ",
-        icon_hl = "SnacksInputIcon",
-        icon_pos = "left",
-        prompt_pos = "title",
-        win = { style = "input" },
-        expand = true,
-      },
-      lazygit = {
-        enabled = true,
-        configure = true,
-      },
-      -- notifier = { enabled = true },
-      -- disabled since it does not have everything from noice
-      quickfile = { enabled = true },
-      rename = { enabled = true },
-      -- double not to cast as bool
-      scroll = { cond = not not vim.g.animate_scroll },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
-      styles = {
-        terminal = {
-          border = "rounded",
-          bo = {
-            filetype = "snacks_terminal",
+          indent = {
+            hl = (function()
+              local groups = {}
+              for i = 1, 12 do
+                groups[i] = "RainbowDarkDelim" .. i
+              end
+              return groups
+            end)()
           },
-          wo = {},
-          keys = term_keys,
-          fixbuf = true,
+          animate = {
+            enabled = false,
+          },
+          scope = {
+            char = "┆",
+            only_current = true,
+            -- safe to keep permanently after
+            -- https://github.com/folke/snacks.nvim/issues/422 is resolved
+            hl = (function()
+              local groups = {}
+              for i = 1, 12 do
+                groups[i] = "RainbowDelim" .. i
+              end
+              return groups
+            end)()
+          }
         },
-        right_term = {
-          height = 0.9,
-          width = 0.45,
-          col = 0.5,
-          row = 0.025,
-          position = "float",
-          border = "rounded",
-          bo = {
-            filetype = "snacks_terminal",
+        input = {
+          icon = " ",
+          icon_hl = "SnacksInputIcon",
+          icon_pos = "left",
+          prompt_pos = "title",
+          win = { style = "input" },
+          expand = true,
+        },
+        lazygit = {
+          enabled = true,
+          configure = true,
+        },
+        -- notifier = { enabled = true },
+        -- disabled since it does not have everything from noice
+        quickfile = { enabled = true },
+        rename = { enabled = true },
+        -- double not to cast as bool
+        scroll = { cond = not not vim.g.animate_scroll },
+        statuscolumn = { enabled = true },
+        words = { enabled = true },
+        styles = {
+          terminal = {
+            border = "rounded",
+            bo = {
+              filetype = "snacks_terminal",
+            },
+            wo = {},
+            keys = term_keys,
+            fixbuf = true,
           },
-          wo = {},
-          keys = term_keys,
-          fixbuf = true,
+          right_term = {
+            height = 0.9,
+            width = 0.45,
+            col = 0.5,
+            row = 0.025,
+            position = "float",
+            border = "rounded",
+            bo = {
+              filetype = "snacks_terminal",
+            },
+            wo = {},
+            keys = term_keys,
+            fixbuf = true,
+          }
+        }
+      })
+      local terms = require("lib.terms")
+      local key_configs = {
+        -- Normal mode
+        n = {
+          -- quake term
+          ["<m-e>"] = terms.quake_term,
+          -- local fuzzy find
+          ["<m-f>"] = terms.repo_live_grep,
         }
       }
-    },
+      require("lib.misc").batch_set_auto_buf_keymap(key_configs, "snacks")
+    end,
   }
 }
