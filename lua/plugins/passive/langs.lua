@@ -1,7 +1,17 @@
 return {
   -- languages
-  { "preservim/vim-markdown", ft = { "markdown" } },
   {
+    -- editing support
+    "preservim/vim-markdown",
+    ft = { "markdown" },
+  },
+  {
+    -- allows jumping around via internal links
+    "lervag/wiki.vim",
+    ft = { "markdown" },
+  },
+  {
+    -- nice shiny colors and conceals
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {
       file_types = { "Avante", "markdown" },
