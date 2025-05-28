@@ -1,5 +1,5 @@
 -- Keyboard Mapping Configurations
-local key_utils = require("lib.key_utils")
+local edit = require("lib.editing")
 
 -- For automating setting key maps.
 -- Usage: highest level keys are modes;
@@ -15,7 +15,7 @@ local key_configs = {
     ["<m-esc>"] = ":q<CR>",
     -- leader actions
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
-    ["<leader>ql"] = key_utils.toggle_quickfix,
+    ["<leader>ql"] = edit.toggle_quickfix,
 
     -- disable cmdline window
     ["q:"] = "",
@@ -27,8 +27,8 @@ local key_configs = {
     ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
     ["]e"] = function() vim.diagnostic.jump({ count = 1 }) end,
     -- create empty lines without moving
-    ["[<space>"] = key_utils.add_blank_line_before,
-    ["]<space>"] = key_utils.add_blank_line_after,
+    ["[<space>"] = edit.add_blank_line_before,
+    ["]<space>"] = edit.add_blank_line_after,
 
     -- buffer movement
     ["[b"] = ":bprev<cr>",
@@ -56,7 +56,7 @@ local key_configs = {
     ["-"] = "<c-x>",
 
     -- smarter shift I
-    ["I"] = key_utils.smarter_shift_i,
+    ["I"] = edit.smarter_shift_i,
   },
   -- Visual mode
   v = {
@@ -76,7 +76,7 @@ local key_configs = {
     -- but it doesn't delete the whole line.)
     ["X"] = '"_dd',
     -- jump to first position after the first space (to avoid comment prefixes).
-    ["0"] = key_utils.alternating_zero,
+    ["0"] = edit.alternating_zero,
   },
   [{ "i", "s" }] = {
     -- enter new line but don't keep commenting if currently in comment block
