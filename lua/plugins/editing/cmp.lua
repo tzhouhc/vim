@@ -1,118 +1,5 @@
 local events = { "BufReadPost", "BufNewFile", "BufWritePre" }
-
--- Map longer kind names to abbreviations for a nicer looking column.
-local kind_map = {
-  Variable = "Var ",
-  Function = "Func",
-  Snippet = "Snip",
-  Property = "Prty",
-  Keyword = "Kwrd",
-  Class = "Cls ",
-  Color = "Colr",
-  Event = "Evnt",
-  Field = "Fld ",
-  Value = "Val ",
-  Folder = "Fdr ",
-  Method = "Mtd ",
-  Module = "Mdl ",
-  Struct = "Strt",
-  Copilot = "Cplt",
-  Constant = "Cons",
-  Operator = "Oprt",
-  Interface = "Intf",
-  Reference = "Ref ",
-  EnumMember = "Enum",
-  Constructor = "Cons",
-  TypeParameter = "Type",
-}
-
-local comment_types = {
-  'comment',
-  'comment_content',
-  'line_comment',
-  'block_comment',
-  'string',
-  'string_content',
-}
-
-local function kind_icon_text(ctx)
-  return " " .. ctx.kind_icon .. " "
-end
-
-local function kind_text(ctx)
-  return (kind_map[ctx.kind] or ctx.kind) .. " "
-end
-
-local function kind_highlight(ctx)
-  return { { group = ctx.kind_hl, priority = 20000 } }
-end
-
-local function label_text(ctx)
-  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-  if highlights_info ~= nil then
-    -- Or you want to add more item to label
-    return highlights_info.label
-  else
-    return ctx.label
-  end
-end
-
-local function label_highlight(ctx)
-  local highlights = {}
-  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-  if highlights_info ~= nil then
-    highlights = highlights_info.highlights
-  end
-  for _, idx in ipairs(ctx.label_matched_indices) do
-    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
-  end
-  -- Do something else
-  return highlights
-end
-
-local function all_bufnrs()
-  return vim.tbl_filter(function(bufnr)
-    return vim.bo[bufnr].buftype == ''
-  end, vim.api.nvim_list_bufs())
-end
-
-local function select_cmp_sources(_)
-  local default = { 'lsp', 'snippets', 'path', 'buffer' }
-  local success, node = pcall(vim.treesitter.get_node)
-  if not success or not node then
-    return default
-  end
-  if vim.tbl_contains(comment_types, node:type()) then
-    return { 'buffer' }
-  else
-    return default
-  end
-end
-
-local function back_to_normal()
-  vim.api.nvim_feedkeys(
-    vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
-end
-
--- weird behavior due to some screen movement schenanigans?
-local function cancel_and_exit(cmp)
-  return cmp.cancel({ callback = back_to_normal })
-end
-
-local function accept_and_exit(cmp)
-  return cmp.accept({ callback = back_to_normal })
-end
-
-local function cmd_sources()
-  local type = vim.fn.getcmdtype()
-  -- Search forward and backward
-  if type == '/' or type == '?' then return { 'buffer' } end
-  -- Commands
-  if type == ':' or type == '@' then
-    return { 'cmdline' }
-  end
-  return {}
-end
+local cmplib = require("lib.cmp")
 
 local keymap = {
   ['<c-c>'] = { 'cancel' },
@@ -122,10 +9,10 @@ local keymap = {
 }
 if vim.g.escape_clears_cmp then
   keymap['<esc>'] = {
-    cancel_and_exit,
+    cmplib.cancel_and_exit,
     'fallback',
   }
-  keymap['<S-CR>'] = { accept_and_exit, 'fallback' }
+  keymap['<S-CR>'] = { cmplib.accept_and_exit, 'fallback' }
 end
 
 return {
@@ -166,16 +53,16 @@ return {
               columns = { { "kind_icon", "kind" }, { "label", gap = 1 }, { "source_name" } },
               components = {
                 kind_icon = {
-                  text = kind_icon_text,
+                  text = cmplib.kind_icon_text,
                 },
                 kind = {
-                  text = kind_text,
-                  highlight = kind_highlight,
+                  text = cmplib.kind_text,
+                  highlight = cmplib.kind_highlight,
                 },
                 label = {
                   width = { fill = true, max = 60 },
-                  text = label_text,
-                  highlight = label_highlight,
+                  text = cmplib.label_text,
+                  highlight = cmplib.label_highlight,
                 },
               },
             },
@@ -188,12 +75,12 @@ return {
           },
         },
         sources = {
-          default = select_cmp_sources,
+          default = cmplib.select_cmp_sources,
           providers = {
             buffer = {
               opts = {
                 -- or (recommended) filter to only "normal" buffers
-                get_bufnrs = all_bufnrs,
+                get_bufnrs = cmplib.all_bufnrs,
               }
             },
             tmux = {
@@ -216,7 +103,7 @@ return {
         },
         keymap = keymap,
         cmdline = {
-          sources = cmd_sources,
+          sources = cmplib.cmd_sources,
           completion = {
             list = {
               selection = {
@@ -240,10 +127,5 @@ return {
         H = true,
       }
     end
-  },
-  {
-    "saghen/blink.compat",
-    event = events,
-    opts = {}
   },
 }
