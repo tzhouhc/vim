@@ -39,7 +39,7 @@ end
 ---@param t any
 function M.info_popup_wrapper(cmd, ft, t)
   -- do not create new popup window if one already exists
-  if win.is_win_open_with_type(ft) then
+  if win.has_win_of_filetype(ft) then
     vim.fn.execute(cmd .. " " .. t.args)
     return
   end

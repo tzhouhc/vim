@@ -1,3 +1,6 @@
+-- Utilities that deal with neovim text editing space -- lines, visuals, cursor
+-- positions, etc.
+
 local misc = require("lib.misc")
 local M = {}
 
@@ -75,7 +78,7 @@ function M.add_blank_line_before()
 end
 
 function M.toggle_quickfix()
-  if misc.has_win_of_type("quickfix") then
+  if require("lib.windows").has_win_of_type("quickfix") then
     vim.cmd.cclose()
     return
   end
@@ -117,19 +120,6 @@ function M.get_char_at_cursor(offset, lookback)
     end
   end
   return line:sub(pos, pos)
-end
-
----check for windows with specific key properties, e.g. "quickfix"
----@param type string
----@return boolean
-function M.has_win_of_type(type)
-  local windows = vim.fn.getwininfo()
-  for _, win in pairs(windows) do
-    if win[type] == 1 then
-      return true
-    end
-  end
-  return false
 end
 
 -- Function to get start and end lines of visual selection
