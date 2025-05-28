@@ -12,20 +12,6 @@ local key_configs = {
     ["<leader>q"] = ":BD<cr>",
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>nm"] = ":Namu symbols<cr>",
-
-    -- buffer movement
-    -- WARN: not working?
-    ["<c-1>"] = "<Cmd>BufferLineGoToBuffer 1<CR>",
-    ["<c-2>"] = "<Cmd>BufferLineGoToBuffer 2<CR>",
-    ["<c-3>"] = "<Cmd>BufferLineGoToBuffer 3<CR>",
-    ["<c-4>"] = "<Cmd>BufferLineGoToBuffer 4<CR>",
-    ["<c-5>"] = "<Cmd>BufferLineGoToBuffer 5<CR>",
-    ["<c-6>"] = "<Cmd>BufferLineGoToBuffer 6<CR>",
-    ["<c-7>"] = "<Cmd>BufferLineGoToBuffer 7<CR>",
-    ["<c-8>"] = "<Cmd>BufferLineGoToBuffer 8<CR>",
-    ["<c-9>"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
-    ["<c-0>"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
-
   },
   -- Visual mode
   v = {
