@@ -8,3 +8,4 @@ vim.diagnostic.config({
 })
 
 vim.o.updatetime = 500
+

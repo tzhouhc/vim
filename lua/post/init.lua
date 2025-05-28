@@ -9,8 +9,6 @@
 require("post.rainbow")
 -- highlighting and other visual effects
 require("post.visuals")
--- errors, hints, etc
-require("post.diagnostics")
 -- language services
 require("post.lsp")
 -- completions via blink-cmp

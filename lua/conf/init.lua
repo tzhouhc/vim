@@ -14,6 +14,8 @@ require("conf.autocmds")
 require("conf.menus")
 -- vim opts
 require("conf.settings")
+-- errors, hints, etc
+require("conf.diagnostics")
 -- keymaps
 require("conf.mappings")
 -- filetypes recognition
