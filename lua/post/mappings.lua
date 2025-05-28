@@ -13,23 +13,6 @@ local key_configs = {
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>nm"] = ":Namu symbols<cr>",
   },
-  -- Visual mode
-  v = {
-    -- surround
-    ["q"] = {"<Plug>(nvim-surround-visual)'", {}},
-    ["Q"] = {"<Plug>(nvim-surround-visual)\"", {}},
-    ["'"] = {"<Plug>(nvim-surround-visual)'", {}},
-    ["\""] = {"<Plug>(nvim-surround-visual)\"", {}},
-    ["("] = {"<Plug>(nvim-surround-visual))", {}},
-    [")"] = {"<Plug>(nvim-surround-visual))", {}},
-    ["["] = {"<Plug>(nvim-surround-visual)]", {}},
-    ["]"] = {"<Plug>(nvim-surround-visual)]", {}},
-  },
-  [{ "n", "v" }] = {
-  },
-  -- Terminal mode
-  t = {
-  },
   -- Command mode, abbrev
   ca = {
     ["h"] = "H",

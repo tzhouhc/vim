@@ -10,7 +10,22 @@ return {
   -- y/d/s for pairs at once
   {
     "kylechui/nvim-surround",
-    config = true,
+    config = function()
+      require("nvim-surround").setup({})
+      local keymap = {
+        v = {
+          ["q"] = { "<Plug>(nvim-surround-visual)'", {} },
+          ["Q"] = { "<Plug>(nvim-surround-visual)\"", {} },
+          ["'"] = { "<Plug>(nvim-surround-visual)'", {} },
+          ["\""] = { "<Plug>(nvim-surround-visual)\"", {} },
+          ["("] = { "<Plug>(nvim-surround-visual))", {} },
+          [")"] = { "<Plug>(nvim-surround-visual))", {} },
+          ["["] = { "<Plug>(nvim-surround-visual)]", {} },
+          ["]"] = { "<Plug>(nvim-surround-visual)]", {} },
+        }
+      }
+      require("lib.misc").batch_set_auto_buf_keymap(keymap, "surround")
+    end,
     event = events,
   },
   -- removing trailing whitespace on save
