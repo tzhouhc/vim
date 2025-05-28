@@ -1,5 +1,33 @@
 -- LSP configurations
-local fzf = require("fzf-lua")
+--
+-- Note: half of these can probably be done in `conf`, but for the sake of
+-- centralization with the other half we do it here in `post`.
+
+local has_fzf, fzf = pcall(require, "fzf-lua")
+local lsp_key_config = {}
+
+if has_fzf and vim.g.use_fzf_for_lsp then
+  lsp_key_config = {
+    n = {
+      ["gd"] = fzf.lsp_declarations,
+      ["gf"] = fzf.lsp_definitions,
+      ["gi"] = fzf.lsp_implementations,
+      ["gt"] = fzf.lsp_typedefs,
+      ["gr"] = fzf.lsp_references,
+    }
+  }
+else
+  lsp_key_config = {
+    n = {
+      ["gd"] = vim.lsp.buf.declaration,
+      ["gf"] = vim.lsp.buf.definition,
+      ["gi"] = vim.lsp.buf.implementation,
+      ["gt"] = vim.lsp.buf.type_definition,
+      ["gr"] = vim.lsp.buf.references,
+    }
+  }
+end
+
 
 local core_lsps = {
   "lua_ls",
@@ -22,13 +50,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- these will be buffer-local keybindings
     -- because they only work if you have an active language server
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    vim.keymap.set("n", "gd", fzf.lsp_declarations, opts)
-    vim.keymap.set("n", "gf", fzf.lsp_definitions, opts)
-    vim.keymap.set("n", "gi", fzf.lsp_implementations, opts)
-    vim.keymap.set("n", "gt", fzf.lsp_typedefs, opts)
-    vim.keymap.set("n", "gr", fzf.lsp_references, opts)
     vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
     vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+
+    require("lib.binder").batch_set_auto_buf_keymap(lsp_key_config, "lsp")
   end,
 })
 

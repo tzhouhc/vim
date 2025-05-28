@@ -52,3 +52,7 @@ vim.g.enable_which_key = false
 -- pressing escape will *clear* temporarily selected completion items, instead
 -- of leaving it written. `false` is nvim-cmp previous behavior.
 vim.g.escape_clears_cmp = false
+
+-- Lsp preferences
+-- Whether to use fzf for lsp selector
+vim.g.use_fzf_for_lsp = true
