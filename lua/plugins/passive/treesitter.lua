@@ -73,7 +73,7 @@ return {
           ["g<right>"] = tree.swap_with_next_ts_node_by_cursor,
         },
       }
-      require("lib.misc").batch_set_auto_buf_keymap(key_configs, "treesitter")
+      require("lib.binder").batch_set_auto_buf_keymap(key_configs, "treesitter")
 
       -- Treesitter
       vim.api.nvim_create_user_command("PrintTSNode", tree.print_cur_node, {})

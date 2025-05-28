@@ -30,7 +30,7 @@ return {
           ["<leader>fc"] = "<Cmd>FormatCode<cr>",
         },
       }
-      require("lib.misc").batch_set_auto_buf_keymap(keymap, "conform")
+      require("lib.binder").batch_set_auto_buf_keymap(keymap, "conform")
     end,
   }
 }

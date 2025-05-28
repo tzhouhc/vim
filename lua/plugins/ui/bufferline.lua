@@ -36,7 +36,7 @@ return {
           ["<c-0>"] = "<cmd>BufferLineGoToBuffer -1<CR>",
         }
       }
-      require("lib.misc").batch_set_keymap(keymap)
+      require("lib.binder").batch_set_keymap(keymap)
     end,
   },
 }

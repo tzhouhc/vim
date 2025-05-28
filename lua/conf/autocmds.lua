@@ -132,7 +132,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     local bufnr = args.buf
     local filetype = vim.bo[bufnr].filetype
     if filetype == "help" then
-      require("lib.misc").batch_set_buf_keymap(help_binds)
+      require("lib.binder").batch_set_buf_keymap(help_binds)
     end
   end
 })

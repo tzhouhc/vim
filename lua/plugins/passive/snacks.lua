@@ -186,7 +186,7 @@ return {
           ["<m-f>"] = terms.repo_live_grep,
         }
       }
-      require("lib.misc").batch_set_auto_buf_keymap(key_configs, "snacks")
+      require("lib.binder").batch_set_auto_buf_keymap(key_configs, "snacks")
 
       vim.api.nvim_create_user_command("Git", function() require("snacks.lazygit").open() end, {})
       vim.api.nvim_create_user_command("RenameFile", require("snacks.rename").rename_file, {})

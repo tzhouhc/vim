@@ -93,4 +93,4 @@ local key_configs = {
   }
 }
 
-require("lib.misc").batch_set_keymap(key_configs)
+require("lib.binder").batch_set_keymap(key_configs)

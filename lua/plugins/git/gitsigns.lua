@@ -68,7 +68,7 @@ return {
           ["ih"] = ":<C-U>Gitsigns select_hunk<CR>",
         }
       }
-      require("lib.misc").batch_set_auto_buf_keymap(key_configs, "diffhunks")
+      require("lib.binder").batch_set_auto_buf_keymap(key_configs, "diffhunks")
     end,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   },

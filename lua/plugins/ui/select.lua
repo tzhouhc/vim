@@ -68,7 +68,7 @@ return {
           ["<leader>p"] = ":FzfLua registers<cr>",
         }
       }
-      require("lib.misc").batch_set_keymap(key_configs)
+      require("lib.binder").batch_set_keymap(key_configs)
 
       -- commands
       vim.api.nvim_create_user_command("Registers", "FzfLua registers", {})
@@ -142,7 +142,7 @@ return {
           ["<leader>ud"] = ":Telescope undo<cr>",
         },
       }
-      require("lib.misc").batch_set_keymap(key_configs)
+      require("lib.binder").batch_set_keymap(key_configs)
     end
 
   },
