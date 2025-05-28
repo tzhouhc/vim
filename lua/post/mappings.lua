@@ -1,5 +1,4 @@
 -- Keyboard Mapping Configurations, with Plugins
-local key_utils = require("lib.key_utils")
 local binder = require("lib.misc")
 
 ---- Generic File Mappings ----
@@ -11,21 +10,11 @@ local key_configs = {
   -- Normal mode
   n = {
     ["<leader>q"] = ":BD<cr>",
-    ["<leader>ql"] = key_utils.toggle_quickfix,
     ["<leader>lg"] = ":Git<cr>",
     ["<leader>nm"] = ":Namu symbols<cr>",
 
-    -- diffview
-    ["<leader>dv"] = key_utils.toggle_diffview,
-
-    -- diagnostics movement
-    ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
-    ["]e"] = function() vim.diagnostic.jump({ count = 1 }) end,
-    -- create empty lines without moving
-    ["[<space>"] = key_utils.add_blank_line_before,
-    ["]<space>"] = key_utils.add_blank_line_after,
-
     -- buffer movement
+    -- WARN: not working?
     ["<c-1>"] = "<Cmd>BufferLineGoToBuffer 1<CR>",
     ["<c-2>"] = "<Cmd>BufferLineGoToBuffer 2<CR>",
     ["<c-3>"] = "<Cmd>BufferLineGoToBuffer 3<CR>",
@@ -39,9 +28,6 @@ local key_configs = {
 
     -- formatting
     ["<leader>fc"] = "<Cmd>FormatCode<cr>",
-
-    -- smarter shift I
-    ["I"] = key_utils.smarter_shift_i,
   },
   -- Visual mode
   v = {
@@ -59,14 +45,6 @@ local key_configs = {
     ["]"] = {"<Plug>(nvim-surround-visual)]", {}},
   },
   [{ "n", "v" }] = {
-    -- jump to first position after the first space (to avoid comment prefixes).
-    ["0"] = key_utils.alternating_zero,
-  },
-  [{ "i", "s" }] = {
-    -- fallback value of these commands are hardcoded to tab and s-tab, so
-    -- change the corresponding func if changed here.
-    ["<c-right>"] = { key_utils.vsnip_jump_forward, { expr = true } },
-    ["<c-left>"] = { key_utils.vsnip_jump_backward, { expr = true } },
   },
   -- Terminal mode
   t = {

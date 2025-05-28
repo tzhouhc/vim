@@ -64,32 +64,6 @@ function M.smart_move_to_start_and_insert()
   vim.cmd.startinsert()
 end
 
-function M.toggle_diffview()
-  if next(require("diffview.lib").views) == nil then
-    vim.cmd("DiffviewFileHistory %")
-  else
-    vim.o.hidden = true
-    vim.cmd("DiffviewClose")
-    vim.o.hidden = false
-  end
-end
-
-function M.vsnip_jump_forward()
-  if vim.fn["vsnip#jumpable"](1) == 1 then
-    return "<plug>(vsnip-jump-next)"
-  else
-    return "<c-right>"
-  end
-end
-
-function M.vsnip_jump_backward()
-  if vim.fn["vsnip#jumpable"](1) == 1 then
-    return "<plug>(vsnip-jump-prev)"
-  else
-    return "<c-left>"
-  end
-end
-
 function M.add_blank_line_after()
   local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_lines(0, row, row, false, { "" })
