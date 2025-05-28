@@ -1,11 +1,11 @@
 local fzf_lua = require 'fzf-lua'
-local misc = require("lib.misc")
+local git = require("lib.git")
 
 local M = {}
 
 -- Search across repo; if not repo, just under CWD
 function M.local_or_repo_files()
-  if misc.is_git() then
+  if git.is_git() then
     vim.cmd("FzfLua git_files")
     return
   end
@@ -28,7 +28,7 @@ end
 
 -- grep across repo
 function M.live_grep_across_repo()
-  if not misc.is_git() then
+  if not git.is_git() then
     vim.cmd("FzfLua live_grep")
   end
   local opts = common_file_opts()
@@ -38,13 +38,13 @@ function M.live_grep_across_repo()
     return opts
   end
   return fzf_lua.fzf_live(function(q)
-    return "rg --column --color=always -- " .. vim.fn.shellescape(q or '') .. " " .. misc.git_repo_root()
+    return "rg --column --color=always -- " .. vim.fn.shellescape(q or '') .. " " .. git.git_repo_root()
   end, opts)
 end
 
 -- This uses a custom git tool `git-dirt` from the dotfiles repo.
 function M.changed_files_in_repo()
-  if not misc.is_git() then
+  if not git.is_git() then
     return fzf_lua.fzf_exec("ls")
   end
   local opts = common_file_opts()

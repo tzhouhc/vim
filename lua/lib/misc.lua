@@ -28,18 +28,6 @@ function M.dump(o)
   end
 end
 
----Setup autocmd to close a window on cursor move. Suitable for use with
----nvim.notify.
----@param win integer
-function M.window_auto_close(win)
-  vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-    callback = function()
-      vim.api.nvim_win_close(win, true)
-    end,
-    once = true,
-  })
-end
-
 ---look for patterns matching a GitHub repo and open it in the browser.
 function M.get_current_line_plugin()
   local line = vim.api.nvim_get_current_line()
@@ -101,21 +89,6 @@ function M.has_win_of_type(type)
     end
   end
   return false
-end
-
----check whether current file is under a git repo
----@return boolean
-function M.is_git()
-  -- remember: system calls return include a newline character
-  local git = vim.fn.system("git rev-parse --is-inside-work-tree")
-  return git:match("true") == "true"
-end
-
----get the root of the current repo
----@return string
-function M.git_repo_root()
-  local match, _ = vim.fn.system("git rev-parse --show-toplevel"):gsub("\n$", "")
-  return match
 end
 
 --- generate a random string

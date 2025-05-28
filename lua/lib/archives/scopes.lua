@@ -6,7 +6,7 @@ local builtin = require("telescope.builtin")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local misc = require("lib.misc")
+local git = require("lib.git")
 
 local M = {}
 
@@ -90,7 +90,7 @@ function M.open_file_history_selector(opts)
 end
 
 function M.local_or_repo_files()
-  if misc.is_git() then
+  if git.is_git() then
     vim.cmd("FilesInRepo")
     return
   end
@@ -165,14 +165,14 @@ end
 function M.live_grep_across_repo()
   builtin.live_grep({
     prompt_title = "󰊢 Searching Across Repository",
-    search_dirs = { misc.git_repo_root() },
+    search_dirs = { git.git_repo_root() },
   })
 end
 
 function M.files_in_repo()
   builtin.find_files({
     prompt_title = "󰊢 Files in Repository",
-    search_dirs = { misc.git_repo_root() },
+    search_dirs = { git.git_repo_root() },
   })
 end
 
@@ -181,7 +181,7 @@ function M.changed_files_in_repo()
   builtin.find_files({
     prompt_title = "󰊢 Changed Files in Repository",
     find_command = { "git-dirt", },
-    search_dirs = { misc.git_repo_root() },
+    search_dirs = { git.git_repo_root() },
   })
 end
 
