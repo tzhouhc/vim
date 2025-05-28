@@ -3,7 +3,6 @@
 local api = vim.api
 local fn = vim.fn
 local ime = require("lib.ime")
-local nt = require("lib.notify")
 
 local function cd()
   local path = fn.expand("%:h") .. "/"
@@ -96,25 +95,6 @@ vim.api.nvim_create_autocmd("Filetype", {
     vim.keymap.del('i', '<left>', { buffer = true })
     vim.keymap.del('i', '<right>', { buffer = true })
   end
-})
-
-api.nvim_create_augroup("Notification", { clear = true })
-
--- Visible notification for recording.
-api.nvim_create_autocmd({ "RecordingEnter" }, {
-  pattern = { "*.*" },
-  callback = function()
-    nt.notify_hover("Recording macro '" .. vim.fn.reg_recording() .. "'.")
-  end,
-  group = "Notification",
-})
-
-api.nvim_create_autocmd({ "RecordingLeave" }, {
-  pattern = { "*.*" },
-  callback = function()
-    nt.notify_hover("Finished recording macro '" .. vim.fn.reg_recording() .. "'.")
-  end,
-  group = "Notification",
 })
 
 -- use help tags as if they are LSP symbols and jump using `g;`
