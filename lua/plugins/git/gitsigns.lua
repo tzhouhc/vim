@@ -64,6 +64,9 @@ return {
           ["[c"] = df.prev_hunk,
           ["]c"] = df.next_hunk,
         },
+        [{ "o", "x" }] = {
+          ["ih"] = ":<C-U>Gitsigns select_hunk<CR>",
+        }
       }
       require("lib.misc").batch_set_auto_buf_keymap(key_configs, "diffhunks")
     end,

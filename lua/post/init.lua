@@ -2,8 +2,6 @@
 -- Here are the more complicated setups for plugins that cannot be done
 -- directly via the `opts` in lazy loading.
 
--- key mappings using plugins
-require("post.mappings")
 -- rainbow delimiter and indentation
 require("post.rainbow")
 -- highlighting and other visual effects
