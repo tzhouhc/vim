@@ -77,6 +77,9 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    dependencies = {
+      "folke/persistence.nvim",
+    },
     config = function()
       require('snacks').setup({
         -- https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
@@ -184,6 +187,9 @@ return {
         }
       }
       require("lib.misc").batch_set_auto_buf_keymap(key_configs, "snacks")
+
+      vim.api.nvim_create_user_command("Git", function() require("snacks.lazygit").open() end, {})
+      vim.api.nvim_create_user_command("RenameFile", require("snacks.rename").rename_file, {})
     end,
   }
 }
