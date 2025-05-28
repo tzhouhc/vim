@@ -24,6 +24,23 @@ return {
       conform.formatters.black = {
         prepend_args = { "--line-length", "80" },
       }
+
+      local function smart_format(opts)
+        if opts.range == 0 then
+          conform.format({ lsp_format = "prefer", async = true })
+        else
+          conform.format({
+            lsp_format = "prefer",
+            async = true,
+            range = {
+              start = { opts.line1, 0 },
+              ["end"] = { opts.line2, 0 },
+            }
+          })
+        end
+      end
+      vim.api.nvim_create_user_command("FormatCode", smart_format, { range = true })
+
       local keymap = {
         -- Normal mode
         [{ 'n', 'v' }] = {

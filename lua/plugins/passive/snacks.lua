@@ -190,6 +190,14 @@ return {
 
       vim.api.nvim_create_user_command("Git", function() require("snacks.lazygit").open() end, {})
       vim.api.nvim_create_user_command("RenameFile", require("snacks.rename").rename_file, {})
+
+      -- Git Tools
+      vim.api.nvim_create_user_command("GitLinesLogs", terms.git_lines_log, { range = true })
+      vim.api.nvim_create_user_command("GitLinesBlame", terms.git_lines_blame, { range = true })
+
+      -- Others
+      vim.api.nvim_create_user_command("Seb", terms.global_file_list, { range = true })
+      vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
     end,
   }
 }
