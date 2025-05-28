@@ -1,6 +1,6 @@
 vim.g.en_ime = "com.apple.keylayout.US"
 vim.g.cn_ime = "im.rime.inputmethod.Squirrel.Hans"
-local misc = require("lib.misc")
+local edit = require("lib.editing")
 
 local M = {}
 
@@ -14,7 +14,7 @@ end
 
 -- check previous character; if start of line, check previous line.
 function M.context_is_cn()
-  local char = misc.get_char_at_cursor(-1, true)
+  local char = edit.get_char_at_cursor(-1, true)
   return char >= "\x80"
 end
 

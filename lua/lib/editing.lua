@@ -82,4 +82,66 @@ function M.toggle_quickfix()
   vim.cmd.copen()
 end
 
+local function last_non_empty_line(row)
+  if row == nil then
+    row = vim.api.nvim_win_get_cursor(0)[1] - 1
+  end
+  local content = ""
+  repeat
+    content = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+    row = row - 1
+  until (content ~= "" or row == 0)
+  return content
+end
+
+---get the character under the cursor with the given offset
+---@param offset integer
+---@param lookback boolean
+function M.get_char_at_cursor(offset, lookback)
+  if offset == nil then
+    offset = 0
+  end
+  if lookback == nil then
+    lookback = false
+  end
+  local line = vim.api.nvim_get_current_line()
+  local pos = vim.api.nvim_win_get_cursor(0)[2] + offset + 1
+  if pos <= 0 then
+    if lookback then
+      local line = last_non_empty_line()
+      if line ~= nil then
+        return line:sub(#line, #line)
+      end
+    else
+      pos = 0
+    end
+  end
+  return line:sub(pos, pos)
+end
+
+---check for windows with specific key properties, e.g. "quickfix"
+---@param type string
+---@return boolean
+function M.has_win_of_type(type)
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win[type] == 1 then
+      return true
+    end
+  end
+  return false
+end
+
+-- Function to get start and end lines of visual selection
+function M.get_visual_selection_lines()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+
+  -- start_pos[2] and end_pos[2] contain the line numbers
+  local start_line = start_pos[2]
+  local end_line = end_pos[2]
+
+  return start_line, end_line
+end
+
 return M

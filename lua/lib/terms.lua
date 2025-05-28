@@ -1,4 +1,4 @@
-local misc = require("lib.misc")
+local edit = require("lib.editing")
 local term = require("snacks.terminal")
 
 local M = {}
@@ -19,7 +19,7 @@ function M.quake_term()
 end
 
 function M.git_lines_log()
-  local start_line, end_line = misc.get_visual_selection_lines()
+  local start_line, end_line = edit.get_visual_selection_lines()
   local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
   term.open(
     "git log -L" ..
@@ -28,7 +28,7 @@ function M.git_lines_log()
 end
 
 function M.git_lines_blame()
-  local start_line, end_line = misc.get_visual_selection_lines()
+  local start_line, end_line = edit.get_visual_selection_lines()
   local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
   term.open(
     "git blame -w -CCC -L" ..
