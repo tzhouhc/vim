@@ -1,4 +1,4 @@
-local popups = require("lib.popups")
+local popups = require("lib.plugin.nui")
 
 return {
   {

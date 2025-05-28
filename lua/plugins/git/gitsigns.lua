@@ -56,7 +56,7 @@ return {
           col = 1
         },
       })
-      local df = require("lib.diffs")
+      local df = require("lib.plugin.gitsigns")
       local key_configs = {
         -- Normal mode
         n = {

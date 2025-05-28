@@ -1,3 +1,6 @@
+-- Completion related content. While it does not actually depend on the package
+-- `blink-cmp`, the API assumed is strictly associated with blink-cmp.
+
 local M = {}
 
 -- Map longer kind names to abbreviations for a nicer looking column.

@@ -6,7 +6,7 @@ return {
     config = function()
       local fzf = require("fzf-lua")
       local actions = require("fzf-lua").actions
-      local fv = require("lib.fzf")
+      local fv = require("lib.plugin.fzflua")
       fzf.setup({
         actions = {
           files = {

@@ -1,5 +1,5 @@
 local events = { "BufReadPost", "BufNewFile", "BufWritePre" }
-local cmplib = require("lib.cmp")
+local cmplib = require("lib.plugin.blink")
 
 local keymap = {
   ['<c-c>'] = { 'cancel' },

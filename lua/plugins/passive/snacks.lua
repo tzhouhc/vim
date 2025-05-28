@@ -176,7 +176,7 @@ return {
           }
         }
       })
-      local terms = require("lib.terms")
+      local terms = require("lib.plugin.snacks")
       local key_configs = {
         -- Normal mode
         n = {

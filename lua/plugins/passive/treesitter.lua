@@ -60,7 +60,7 @@ return {
           },
         },
       })
-      local tree = require("lib.tree")
+      local tree = require("lib.plugin.treesitter")
       -- treesitter based actions
       local key_configs = {
         -- Normal mode

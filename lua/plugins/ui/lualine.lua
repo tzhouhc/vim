@@ -5,7 +5,7 @@ return {
     dependencies = { "SmiteshP/nvim-navic" },
     config = function()
 
-      local lines = require("lib.lines")
+      local lines = require("lib.plugin.navic")
 
       require("lualine").setup({
         options = {

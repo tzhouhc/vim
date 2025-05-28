@@ -1,7 +1,8 @@
 -- Noice notification setup
 
 ---@diagnostic disable: missing-fields
-local noice_views = require("lib.noice").views
+local noicelib = require("lib.plugin.noice")
+local noice_views = noicelib.views
 
 local cmdline_format = {
   -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -109,20 +110,19 @@ return {
         },
       })
 
-      local nt = require("lib.noice")
       vim.api.nvim_create_augroup("Notification", { clear = true })
       -- Visible notification for recording.
       vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
         pattern = { "*.*" },
         callback = function()
-          nt.notify_hover("Recording macro '" .. vim.fn.reg_recording() .. "'.")
+          noicelib.notify_hover("Recording macro '" .. vim.fn.reg_recording() .. "'.")
         end,
         group = "Notification",
       })
       vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
         pattern = { "*.*" },
         callback = function()
-          nt.notify_hover("Finished recording macro '" .. vim.fn.reg_recording() .. "'.")
+          noicelib.notify_hover("Finished recording macro '" .. vim.fn.reg_recording() .. "'.")
         end,
         group = "Notification",
       })

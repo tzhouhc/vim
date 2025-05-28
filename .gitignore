@@ -2,7 +2,6 @@ cache
 *.bk
 .netrwhist
 *.shada
-plugin
 *.old
 .mypy_cache
 vim_history
