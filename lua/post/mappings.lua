@@ -26,14 +26,9 @@ local key_configs = {
     ["<c-9>"] = "<Cmd>BufferLineGoToBuffer 9<CR>",
     ["<c-0>"] = "<Cmd>BufferLineGoToBuffer -1<CR>",
 
-    -- formatting
-    ["<leader>fc"] = "<Cmd>FormatCode<cr>",
   },
   -- Visual mode
   v = {
-    -- formatting
-    ["<leader>fc"] = "<Cmd>FormatCode<cr>",
-
     -- surround
     ["q"] = {"<Plug>(nvim-surround-visual)'", {}},
     ["Q"] = {"<Plug>(nvim-surround-visual)\"", {}},

@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    lazy = true,
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
       local conform = require("conform")
       conform.setup({
@@ -24,6 +24,13 @@ return {
       conform.formatters.black = {
         prepend_args = { "--line-length", "80" },
       }
+      local keymap = {
+        -- Normal mode
+        [{ 'n', 'v' }] = {
+          ["<leader>fc"] = "<Cmd>FormatCode<cr>",
+        },
+      }
+      require("lib.misc").batch_set_auto_buf_keymap(keymap, "conform")
     end,
-  },
+  }
 }
