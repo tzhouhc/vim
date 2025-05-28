@@ -136,11 +136,12 @@ return {
   {
     "saghen/blink.cmp",
     event = events,
+    version = "1.*",
     dependencies = {
       "rafamadriz/friendly-snippets",
       "mgalliou/blink-cmp-tmux",
     },
-    build = 'cargo build --release',
+    -- build = 'cargo build --release',
     config = function()
       require("blink.cmp").setup({
         enabled = function()
