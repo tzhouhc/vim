@@ -35,9 +35,20 @@ return {
   },
   -- kill buffer but keep split
   {
-    "qpkorr/vim-bufkill",
+    "ojroques/nvim-bufdel",
     cond = not not vim.g.keep_win_after_bufkill,
     event = events,
+    config = function()
+      require('bufdel').setup()
+      local keymap = {
+        ca = {
+          ["bd"] = "BufDel",
+          ["bda"] = "BufDelAll",
+          ["bdo"] = "BufDelOthers",
+        }
+      }
+      require("lib.binder").batch_set_keymap(keymap)
+    end
   },
   -- follow symlinks
   "aymericbeaumet/vim-symlink",
