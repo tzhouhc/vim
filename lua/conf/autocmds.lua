@@ -46,19 +46,6 @@ api.nvim_create_autocmd({ "BufEnter" }, {
   group = "Misc",
 })
 
--- visuals.lua get colorizer started automatically on file open
-api.nvim_create_autocmd({ "BufRead" }, {
-  pattern = {
-    "visuals.lua", -- vim / wezterm visual configs
-    "prompt.json", -- oh-my-posh prompt configs
-    "rainbow.lua",
-  },
-  callback = function()
-    vim.cmd("ColorizerToggle")
-  end,
-  group = "Misc",
-})
-
 -- write oldfiles to disk before exiting vim
 if vim.g.save_old_files then
   api.nvim_create_autocmd({ "VimLeavePre" }, {

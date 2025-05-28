@@ -16,8 +16,25 @@ return {
   -- highlight hex colors
   {
     "norcalli/nvim-colorizer.lua",
-    config = true,
-    cmd = "ColorizerToggle",
+    config = function()
+      require("colorizer").setup({})
+      -- visuals.lua get colorizer started automatically on file open
+      vim.api.nvim_create_autocmd(
+        { "BufReadPost", "BufNewFile", "BufWritePre" },
+        {
+          pattern = {
+            "*.css",
+            "visuals.lua", -- vim / wezterm visual configs
+            "prompt.json", -- oh-my-posh prompt configs
+            "rainbow.lua",
+          },
+          callback = function()
+            vim.cmd("ColorizerAttachToBuffer")
+          end,
+          group = "Misc",
+        }
+      )
+    end,
   },
   -- smart dimming of unrelated contextual code
   {
