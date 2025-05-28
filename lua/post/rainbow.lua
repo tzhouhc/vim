@@ -1,9 +1,10 @@
-local mix_colors = require("lib.colors").mix_colors
+-- Configure multiple sets of rainbow colors for use with plugins like rainbow
+-- indent and delimiters, etc.
 
-local M = {}
+local cs = require("lib.colors")
 
 -- rainbow delimiters
-M.rainbow_colors = {
+local rainbow_colors = {
   "#F6ED56",
   "#A6C955",
   "#4BA690",
@@ -18,15 +19,18 @@ M.rainbow_colors = {
   "#F7C247",
 }
 
--- default background color for nord theme
-local bg = "#2E3440"
+-- default background color for *current* theme; needing to fetch this is why
+-- this is loaded as part of `post`.
+local bg = cs.bg_by_hlgroup("Normal")
+assert(bg, "Normal discolored")
 
+-- Create mixed colored hl groups using the given colors,
 -- mix each color from `colors` with `bg`. `bright` determines how much original
 -- color there is compared to the darker `bg`.
 local make_rainbow = function(colors, prefix, bright)
   local out = {}
   for i, color in ipairs(colors) do
-    local darker = mix_colors(color, bg, bright)
+    local darker = cs.mix_colors(color, bg, bright)
     vim.api.nvim_set_hl(0, prefix .. i, { fg = darker })
     table.insert(out, prefix .. i)
   end
@@ -34,19 +38,17 @@ local make_rainbow = function(colors, prefix, bright)
 end
 
 -- vanilla version of the colors
-M.rainbow_groups = make_rainbow(M.rainbow_colors, "RainbowDelim", 1)
+make_rainbow(rainbow_colors, "RainbowDelim", 1)
 
 -- slightly dim variant for less sharp colors
-M.rainbow_dim_groups = make_rainbow(M.rainbow_colors, "RainbowDimDelim", 0.85)
+local rainbow_dim_groups = make_rainbow(rainbow_colors, "RainbowDimDelim", 0.85)
 
 -- significantly darker variant
-M.rainbow_dark_groups = make_rainbow(M.rainbow_colors, "RainbowDarkDelim", 0.2)
+make_rainbow(rainbow_colors, "RainbowDarkDelim", 0.2)
 
 vim.g.rainbow_delimiters = {
-  highlight = M.rainbow_dim_groups,
+  highlight = rainbow_dim_groups,
   blacklist = {
     "dashboard",
   },
 }
-
-return M
