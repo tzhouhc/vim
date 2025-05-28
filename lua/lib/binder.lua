@@ -1,3 +1,6 @@
+-- Utilities for batch setting keymaps, optionally creating autocmds to
+-- associate them with individual buffers.
+
 local M = {}
 
 ---Batch set mappings. Expects a table where the top level are tables keyed by

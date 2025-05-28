@@ -1,3 +1,6 @@
+-- Utilities for dealing with git repos from within vim -- checking repo status
+-- and repo root.
+
 local M = {}
 
 ---check whether current file is under a git repo

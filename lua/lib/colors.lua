@@ -1,3 +1,6 @@
+-- Color utilities -- blending color, converting from hex strings, getting
+-- color from highlight groups, etc.
+
 local M = {}
 
 local function strip_hash(s)

@@ -1,3 +1,6 @@
+-- Utilities dealing with input methods. Mainly relevant with available IME
+-- switching API.
+
 vim.g.en_ime = "com.apple.keylayout.US"
 vim.g.cn_ime = "im.rime.inputmethod.Squirrel.Hans"
 local edit = require("lib.editing")

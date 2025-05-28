@@ -37,7 +37,7 @@ function M.get_current_line_plugin()
     vim.fn.system("open 'https://github.com/" .. plugin .. "'")
   else
     -- create popup with the link so user can do whatever
-    M.popup("https://github.com/" .. plugin)
+    vim.notify("https://github.com/" .. plugin, vim.log.levels.INFO)
   end
 end
 
