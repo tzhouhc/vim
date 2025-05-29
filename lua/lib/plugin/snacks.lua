@@ -50,4 +50,10 @@ function M.global_file_list()
   end
 end
 
+function M.mods_chat()
+  if vim.fn.executable('mods_chat') == 1 then
+    term.get("mods_chat")
+  end
+end
+
 return M

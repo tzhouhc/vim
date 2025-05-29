@@ -197,6 +197,7 @@ return {
 
       -- Others
       vim.api.nvim_create_user_command("Seb", terms.global_file_list, { range = true })
+      vim.api.nvim_create_user_command("QQ", terms.mods_chat, {})
       vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
     end,
   }
