@@ -9,4 +9,3 @@ vim_history
 /data/*
 lua/conf/local.lua
 vim-plug
-lazy-lock.json
