@@ -29,7 +29,7 @@ return {
       -- fill any relevant options here
     },
     config = function ()
-      vim.keymap.set("n", "<leader>nt", "<cmd>Neotree<cr>", {})
+      vim.keymap.set("n", "<leader>nt", "<cmd>Neotree dir=./<cr>", {})
     end
   }
 }
