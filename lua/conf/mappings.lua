@@ -17,6 +17,9 @@ local key_configs = {
     ["<leader>ev"] = ":e $MYVIMRC<cr>",
     ["<leader>ql"] = edit.toggle_quickfix,
 
+    -- tab cycles windows
+    ["<tab>"] = "<c-w>w",
+
     -- disable cmdline window
     ["q:"] = "",
 
