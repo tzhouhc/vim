@@ -23,17 +23,16 @@ return {
       local keymap = {
         n = {
           -- buffer movement
-          -- WARN: not working?
-          ["<c-1>"] = "<cmd>BufferLineGoToBuffer 1<CR>",
-          ["<c-2>"] = "<cmd>BufferLineGoToBuffer 2<CR>",
-          ["<c-3>"] = "<cmd>BufferLineGoToBuffer 3<CR>",
-          ["<c-4>"] = "<cmd>BufferLineGoToBuffer 4<CR>",
-          ["<c-5>"] = "<cmd>BufferLineGoToBuffer 5<CR>",
-          ["<c-6>"] = "<cmd>BufferLineGoToBuffer 6<CR>",
-          ["<c-7>"] = "<cmd>BufferLineGoToBuffer 7<CR>",
-          ["<c-8>"] = "<cmd>BufferLineGoToBuffer 8<CR>",
-          ["<c-9>"] = "<cmd>BufferLineGoToBuffer 9<CR>",
-          ["<c-0>"] = "<cmd>BufferLineGoToBuffer -1<CR>",
+          ["g1"] = "<cmd>BufferLineGoToBuffer 1<CR>",
+          ["g2"] = "<cmd>BufferLineGoToBuffer 2<CR>",
+          ["g3"] = "<cmd>BufferLineGoToBuffer 3<CR>",
+          ["g4"] = "<cmd>BufferLineGoToBuffer 4<CR>",
+          ["g5"] = "<cmd>BufferLineGoToBuffer 5<CR>",
+          ["g6"] = "<cmd>BufferLineGoToBuffer 6<CR>",
+          ["g7"] = "<cmd>BufferLineGoToBuffer 7<CR>",
+          ["g8"] = "<cmd>BufferLineGoToBuffer 8<CR>",
+          ["g9"] = "<cmd>BufferLineGoToBuffer 9<CR>",
+          ["g0"] = "<cmd>BufferLineGoToBuffer -1<CR>",
         }
       }
       require("lib.binder").batch_set_keymap(keymap)

@@ -47,3 +47,9 @@ use `DiffDelete` as a shortcut for "Red".
 is on. Apparently only happens in `zellij` but not `tmux`.
 
 Fix: turn off `termsync` or (preferrably) use latest `zellij` (>0.40).
+
+### Ctrl-Number Keymap
+
+**Symptom**: these would not work as natively they don't send valid keycodes.
+To get it working would require some sort of synchronized effort between the
+terminal emulator and neovim.
