@@ -1,0 +1,5 @@
+-- zig
+return {
+  cmd = { "zls" },
+}
+

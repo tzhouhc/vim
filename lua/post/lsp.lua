@@ -34,6 +34,7 @@ local core_lsps = {
   "clangd",
   "basedpyright",
   "prettierd",
+  "zls",
   -- "ty",  -- rust-based python lsp, however the feature set is a bit thin rn
 }
 
