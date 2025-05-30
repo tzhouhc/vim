@@ -93,6 +93,7 @@ return {
 
       -- aliases
       vim.api.nvim_create_user_command("Snippets", "FzfLua files cwd=~/.config/nvim/snippets", {})
+      vim.api.nvim_create_user_command("Dotfiles", fv.dotfiles, {})
     end
   },
   {

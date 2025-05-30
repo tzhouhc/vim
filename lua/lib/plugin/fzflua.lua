@@ -53,7 +53,12 @@ end
 
 function M.all_files()
   local opts = common_file_opts()
-  return fzf_lua.fzf_exec("fd . \"/Applications/\" --extension app & fd . ~/ --hidden", opts)
+  return fzf_lua.fzf_exec("fd . ~/ --hidden", opts)
+end
+
+function M.dotfiles()
+  local opts = common_file_opts()
+  return fzf_lua.fzf_exec("git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME ls-files --full-name $HOME --format=\"$HOME/%(path)\"", opts)
 end
 
 return M
