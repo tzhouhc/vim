@@ -47,6 +47,8 @@ vim.g.no_yank_deletion = true
 vim.g.keep_win_after_bufkill = true
 -- Enable folke.which-key
 vim.g.enable_which_key = false
+-- Cleanup unused user commands
+vim.g.cleanup_usercmds = true
 
 -- Typing preferences
 -- pressing escape will *clear* temporarily selected completion items, instead

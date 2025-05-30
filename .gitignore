@@ -9,3 +9,4 @@ vim_history
 /data/*
 lua/conf/local.lua
 vim-plug
+cmds.txt
