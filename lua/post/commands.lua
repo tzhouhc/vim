@@ -172,7 +172,7 @@ local function export_all_cmds()
   for cmd, _ in pairs(all_cmds) do
     res = res .. cmd .. "\n"
   end
-  local output = os.getenv("HOME") .. "/.config/nvim/cmds.txt"
+  local output = vim.fs.joinpath(vim.g.vim_home, "cmds.txt")
   local file = io.open(output, "w")
   assert(file)
   io.output(file)

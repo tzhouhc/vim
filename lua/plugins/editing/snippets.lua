@@ -5,7 +5,7 @@ return {
     cmd = { "ScissorsAddNewSnippet", "ScissorsEditSnippet" },
     dependencies = "nvim-telescope/telescope.nvim", -- if using telescope
     opts = {
-      snippetDir = os.getenv("VIM_HOME") .. "/snippets",
+      snippetDir = vim.fs.joinpath(vim.g.vim_home, "snippets"),
     },
   },
 }
