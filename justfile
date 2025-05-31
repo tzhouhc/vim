@@ -1,13 +1,14 @@
-# In a fresh installation of Neovim, the local.lua symlink points to a null
-# target. It does not affect usage, but prevents editing local configs.
+# Initialize some of the commonly needed tooling for neovim.
+# Alternatively, `dotfiles/install` also contains py_requirements for
+# the same packages.
 init:
-  #!/usr/bin/env zsh
-  if [[ ! -f ./lua/conf/local.lua ]]; then
-    cp ./lua/conf/local_defaults.lua ./lua/conf/local.lua
-  fi
+  python3 -m pip install pynvim neovim-remote hererocks --break-system-packages
 
 # Export all available user commands. Note that this *is* affected by the
 # config flag to cleanup unwanted commands.
 # Generates a `cmds.txt` file in the vim dir.
 export-all-cmds:
   nvim --headless +ExportAllCmds +q
+
+reset-prefs:
+  mv {{justfile_directory()}}/lua/conf/local.lua {{justfile_directory()}}/lua/conf/local.lua.bk
