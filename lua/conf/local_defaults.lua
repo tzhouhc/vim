@@ -27,6 +27,8 @@ vim.g.crossout_diff_delete = false
 vim.g.enable_peek_line_number = true
 -- Prevent LSP from also highlighting references to word under cursor
 vim.g.prevent_lsp_cursor_highlight = true
+-- Compatibility mode for nerd font
+vim.g.nerdfont_v2_compat = false
 
 -- Features
 -- Enable sophisticated notifications via noice
