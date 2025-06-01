@@ -35,11 +35,25 @@ return {
   },
   -- kill buffer but keep split
   {
-    "ojroques/nvim-bufdel",
+    "tzhouhc/nvim-bufdel",
+    dependencies = {
+      "folke/snacks.nvim",
+      "mikavilpas/yazi.nvim",
+    },
     cond = not not vim.g.keep_win_after_bufkill,
     event = events,
     config = function()
-      require('bufdel').setup()
+      require('bufdel').setup({
+        quit = vim.g.last_buffer_close_action == "quit",
+        empty_action = function(_)
+          if vim.g.last_buffer_close_action == "dash" then
+            require("snacks")
+            Snacks.dashboard()
+          elseif vim.g.last_buffer_close_action == "yazi" then
+            vim.cmd("Yazi")
+          end
+        end
+      })
       local keymap = {
         ca = {
           ["bd"] = "BufDel",

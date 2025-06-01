@@ -51,6 +51,8 @@ vim.g.keep_win_after_bufkill = true
 vim.g.enable_which_key = false
 -- Cleanup unused user commands
 vim.g.cleanup_usercmds = true
+-- Last buffer close behavior (quit, empty, dash, yazi)
+vim.g.last_buffer_close_action = "dash"
 
 -- Typing preferences
 -- pressing escape will *clear* temporarily selected completion items, instead
