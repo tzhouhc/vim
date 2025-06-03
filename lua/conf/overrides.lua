@@ -1,14 +1,16 @@
 -- Overriding neovim default operations
 
----@diagnostic disable-next-line: duplicate-set-field
-vim.deprecate = function() end
-
+-- Silent annoying deprecation notice triggered by some plugin (probably)
+if vim.version().minor == 11 then
+  ---@diagnostic disable-next-line: duplicate-set-field
+  vim.deprecate = function() end
+end
 
 -- replace nvim native popup menu config as it forces you to accept some of
 -- the menu items
 vim.api.nvim_del_augroup_by_name("nvim.popupmenu")
 
--- remove unwanted items
+-- remove unwanted items from RMB popup menu
 vim.cmd("aunmenu PopUp.-2-")
 vim.cmd("aunmenu PopUp.How-to\\ disable\\ mouse")
 vim.cmd("aunmenu PopUp.Configure\\ Diagnostics")
@@ -42,6 +44,8 @@ local function enable_ctx_menu()
   end
 end
 
+-- adjust nvim native popupmenu configs to avoid errors due to nvim not finding
+-- the expected items.
 local nvim_popupmenu_augroup = vim.api.nvim_create_augroup('nvim.popupmenu', {})
 vim.api.nvim_create_autocmd('MenuPopup', {
   pattern = '*',
