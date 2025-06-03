@@ -28,6 +28,7 @@ return {
         language_pad = 2,
         min_width = 40,
         border = 'thin',
+        sign = false,
       },
       sign = {
         enabled = true,

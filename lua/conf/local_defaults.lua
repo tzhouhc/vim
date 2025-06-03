@@ -53,6 +53,8 @@ vim.g.enable_which_key = false
 vim.g.cleanup_usercmds = true
 -- Last buffer close behavior (quit, empty, dash, yazi)
 vim.g.last_buffer_close_action = "dash"
+-- Use customized safe incremental selection instead of nvim's built-in
+vim.g.use_safe_incremental_selection = false
 
 -- Typing preferences
 -- pressing escape will *clear* temporarily selected completion items, instead
