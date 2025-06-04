@@ -53,3 +53,12 @@ Fix: turn off `termsync` or (preferrably) use latest `zellij` (>0.40).
 **Symptom**: these would not work as natively they don't send valid keycodes.
 To get it working would require some sort of synchronized effort between the
 terminal emulator and neovim.
+
+### Neovim Slow Startup Time
+
+**Symptom**: Without changing configs, Neovim hitting over 200ms startup time.
+
+*Potential Fix*: if on macos, verify that Neovim binary is of the correct
+architecture. `x86_64` binary *will* still run on ARM-chipped macs but with
+considerable performance loss. Just using the precompiled releases from github
+should be fine.

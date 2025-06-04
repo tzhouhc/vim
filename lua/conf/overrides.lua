@@ -56,3 +56,6 @@ vim.api.nvim_create_autocmd('MenuPopup', {
     enable_ctx_menu()
   end,
 })
+
+-- disable newtr
+vim.keymap.set("n", "gf", "", {})
