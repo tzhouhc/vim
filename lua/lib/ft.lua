@@ -17,7 +17,8 @@ M.special_filetypes = {
   "startify",
   "alpha",
   "lspinfo",
-  "oil"
+  "oil",
+  "trouble",
   -- Add more as needed
 }
 
@@ -26,7 +27,8 @@ M.special_buftypes = {
   "nofile",
   "prompt",
   "quickfix",
-  "help"
+  "help",
+  "trouble",
   -- Add more as needed
 }
 
@@ -53,5 +55,11 @@ function M.is_normal_buffer(bufnr)
   return true
 end
 
+function M.is_file_backed(bufnr)
+  if vim.api.nvim_buf_get_name(bufnr) then
+    return true
+  end
+  return false
+end
 
 return M

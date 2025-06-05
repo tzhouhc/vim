@@ -99,7 +99,7 @@ local unwanted_cmds = {
   "TSInstallSync",
   "TodoTrouble",
   "TodoQuickFix",
-  "TodoFzfLua",
+  "TodoLocList",
   "TSInstallFromGrammar",
   "TSInstall",
   "Texplore",
