@@ -128,7 +128,29 @@ return {
               end
               return groups
             end)()
-          }
+          },
+          chunk = {
+            enabled = true,
+            -- only show chunk scopes in the current window
+            only_current = true,
+            priority = 200,
+            hl = (function()
+              local groups = {}
+              for i = 1, 12 do
+                groups[i] = "RainbowDelim" .. i
+              end
+              return groups
+            end)(),
+            char = {
+              corner_top = "┌",
+              corner_bottom = "└",
+              -- corner_top = "╭",
+              -- corner_bottom = "╰",
+              horizontal = "─",
+              vertical = "│",
+              arrow = "",
+            },
+          },
         },
         input = {
           icon = " ",
