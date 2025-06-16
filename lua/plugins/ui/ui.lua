@@ -86,7 +86,12 @@ return {
     cond = not not vim.g.visual_wordcount,
     opts = {
       count_newlines = true,
+      highlight_group = "CurSearch",
       spacing = 4,
+      button = {
+        left = "\u{E0B6}",
+        right = "\u{E0B4}",
+      },
       format = function(l, w, c)
         return "󰈚 " .. l .. " 󰬞 " .. w .. " 󰬊 " .. c
       end,
