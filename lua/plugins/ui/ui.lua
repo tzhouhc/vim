@@ -80,5 +80,16 @@ return {
       min_horizontal_distance_smear = 2,
       min_vertical_distance_smear = 2,
     },
-  }
+  },
+  {
+    "tzhouhc/virt-counter.nvim",
+    cond = not not vim.g.visual_wordcount,
+    opts = {
+      count_newlines = true,
+      spacing = 4,
+      format = function(l, w, c)
+        return "󰈚 " .. l .. " 󰬞 " .. w .. " 󰬊 " .. c
+      end,
+    }
+  },
 }

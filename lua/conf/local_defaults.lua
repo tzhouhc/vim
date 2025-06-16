@@ -29,6 +29,8 @@ vim.g.enable_peek_line_number = true
 vim.g.prevent_lsp_cursor_highlight = true
 -- Compatibility mode for nerd font
 vim.g.nerdfont_v2_compat = false
+-- Visual mode provides word count (line, word, char)
+vim.g.visual_wordcount = true
 
 -- Features
 -- Enable sophisticated notifications via noice
