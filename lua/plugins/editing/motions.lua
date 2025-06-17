@@ -1,10 +1,5 @@
 return {
   -- motion
-  -- text targets like "inside quotes"
-  {
-    "wellle/targets.vim",
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-  },
   -- % to jump to matching "pair"
   { "andymass/vim-matchup", keys = { "%", "n" } },
   -- overall better movement methods
