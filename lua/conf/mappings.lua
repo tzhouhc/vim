@@ -70,6 +70,8 @@ local key_configs = {
     -- replace currently selected text with default register
     -- without yanking it.
     ["p"] = '"_dP',
+
+    ["/"] = edit.search_selected,
   },
   [{ "n", "v" }] = {
     -- faster movement

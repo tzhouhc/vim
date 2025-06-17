@@ -4,6 +4,13 @@
 local misc = require("lib.misc")
 local M = {}
 
+local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+local enter = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
+
+function M.return_to_normal_mode()
+  vim.api.nvim_feedkeys(esc, "n", false)
+end
+
 -- WARN: doesn't quite work well enough if line doesn't contain comment or TS
 -- doesn't recognize comments for current context
 function M.go_to_start_of_comment()
@@ -16,11 +23,11 @@ function M.go_to_start_of_comment()
   vim.api.nvim_feedkeys("$[tf l", "M", false)
 end
 
+-- Return the word under the cursor.
 function M.get_word_under_cursor()
   return vim.fn.expand("<cword>")
 end
 
--- three states: start of line, start of non-spaces, first after comment
 local alternating_zero_behaviors = {
   function()
     vim.api.nvim_feedkeys("0", "n", false)
@@ -33,6 +40,8 @@ local alternating_zero_behaviors = {
   end,
 }
 
+-- Alternate the cursor position between three states:
+-- start of line, start of non-spaces, first after comment.
 function M.alternating_zero()
   -- we maintain the same start for each distinct row we run this in
   local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
@@ -50,6 +59,7 @@ function M.alternating_zero()
   end
 end
 
+-- Shift-I based somewhat on line content
 function M.smarter_shift_i()
   local syns = vim.inspect_pos() -- assume default: current buffer, on cursor
   for _, syn in ipairs(syns["treesitter"]) do
@@ -67,16 +77,19 @@ function M.smart_move_to_start_and_insert()
   vim.cmd.startinsert()
 end
 
+-- Add a blank line after cursor line without moving cursor
 function M.add_blank_line_after()
   local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_lines(0, row, row, false, { "" })
 end
 
+-- Add a blank line before cursor line without moving cursor
 function M.add_blank_line_before()
   local row, _ = table.unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { "" })
 end
 
+-- Invoke or close the quickfix window.
 function M.toggle_quickfix()
   if require("lib.windows").has_win_of_type("quickfix") then
     vim.cmd.cclose()
@@ -122,7 +135,7 @@ function M.get_char_at_cursor(offset, lookback)
   return line:sub(pos, pos)
 end
 
--- Function to get start and end lines of visual selection
+-- Get the start and end lines of visual selection
 function M.get_visual_selection_lines()
   local start_pos = vim.fn.getpos("'<")
   local end_pos = vim.fn.getpos("'>")
@@ -132,6 +145,25 @@ function M.get_visual_selection_lines()
   local end_line = end_pos[2]
 
   return start_line, end_line
+end
+
+-- Get the selected text in visual mode as string list.
+function M.get_visual_selected()
+  local start_pos = vim.fn.getpos("v")
+  local end_pos = vim.fn.getpos(".")
+  return vim.fn.getregion(start_pos, end_pos, { type = vim.fn.mode() })
+end
+
+-- Return to normal mode from visual mode and search the visually
+-- selected text (first line if multi-line).
+function M.search_selected()
+  local text = M.get_visual_selected()
+  if not text then return end
+  for _, line in ipairs(text) do
+    M.return_to_normal_mode()
+    vim.api.nvim_feedkeys("/" .. line .. enter, "n", false)
+    return
+  end
 end
 
 return M
