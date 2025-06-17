@@ -1,4 +1,6 @@
 -- Keyboard Mapping Configurations
+
+-- editing utilities written in lua that do not depend on plugins
 local edit = require("lib.editing")
 
 -- For automating setting key maps.

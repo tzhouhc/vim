@@ -11,7 +11,5 @@ require("post.rainbow")
 require("post.visuals")
 -- language services
 require("post.lsp")
--- completions via blink-cmp
-require("post.cmp")
 -- custom commands
 require("post.commands")

@@ -1,17 +1,15 @@
 -- Autocommand Setup
 
-local api = vim.api
-local fn = vim.fn
 local ime = require("lib.ime")
 
 local function cd()
-  local path = fn.expand("%:h") .. "/"
-  api.nvim_command("cd " .. path)
+  local path = vim.fn.expand("%:h") .. "/"
+  vim.api.nvim_command("cd " .. path)
 end
 
 -- automatically update working dir when entering buffer.
-api.nvim_create_augroup("WorkingDirectory", { clear = true })
-api.nvim_create_autocmd({ "BufEnter" }, {
+vim.api.nvim_create_augroup("WorkingDirectory", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.*" },
   callback = function()
     pcall(cd)
@@ -20,20 +18,20 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 })
 
 -- on save, clean all trailing whitespaces.
-api.nvim_create_augroup("Misc", { clear = true })
+vim.api.nvim_create_augroup("Misc", { clear = true })
 
 if vim.g.auto_cleanup_whitespace then
-  api.nvim_create_autocmd({ "BufWritePost" }, {
+  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     pattern = { "*.*" },
     callback = function()
-      api.nvim_command(":FixWhitespace")
+      vim.api.nvim_command(":FixWhitespace")
     end,
     group = "Misc",
   })
 end
 
 -- exit ephemeral buffers with <esc>
-api.nvim_create_autocmd({ "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = {
     "help",
     "noice",
@@ -41,14 +39,14 @@ api.nvim_create_autocmd({ "BufEnter" }, {
     "man",
   },
   callback = function()
-    api.nvim_buf_set_keymap(api.nvim_get_current_buf(), "n", "<esc>", ":bd<cr>", { silent = true, noremap = true })
+    vim.api.nvim_buf_set_keymap(vim.api.nvim_get_current_buf(), "n", "<esc>", ":bd<cr>", { silent = true, noremap = true })
   end,
   group = "Misc",
 })
 
 -- write oldfiles to disk before exiting vim
 if vim.g.save_old_files then
-  api.nvim_create_autocmd({ "VimLeavePre" }, {
+  vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
     pattern = { "*.*" },
     callback = function()
       vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
@@ -59,13 +57,13 @@ end
 
 -- use EN IME on leaving Insert
 if vim.g.auto_toggle_ime then
-  api.nvim_create_autocmd({ "InsertLeave" }, {
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     pattern = { "*.*" },
     callback = ime.switch_to_en_ime,
     group = "Misc",
   })
 
-  api.nvim_create_autocmd({ "InsertEnter" }, {
+  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
     pattern = { "*.*" },
     callback = function()
       if ime.context_is_cn() then

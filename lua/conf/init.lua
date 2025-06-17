@@ -4,6 +4,7 @@
 
 -- Read environment and make corresponding changes
 require("conf.env")
+
 -- `local` contains unchecked-in configs, with default values stored in
 -- `local_defaults`. Defaults need to be loaded once since some defaults are
 -- true.

@@ -1,7 +1,6 @@
 -- Utilities that deal with neovim text editing space -- lines, visuals, cursor
 -- positions, etc.
 
-local misc = require("lib.misc")
 local M = {}
 
 local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
