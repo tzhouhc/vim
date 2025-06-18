@@ -114,14 +114,12 @@ return {
       vim.api.nvim_create_augroup("Notification", { clear = true })
       -- Visible notification for recording.
       vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
-        pattern = { "*.*" },
         callback = function()
           noicelib.notify_hover("Recording macro '" .. vim.fn.reg_recording() .. "'.")
         end,
         group = "Notification",
       })
       vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
-        pattern = { "*.*" },
         callback = function()
           noicelib.notify_hover("Finished recording macro '" .. vim.fn.reg_recording() .. "'.")
         end,

@@ -160,7 +160,6 @@ if vim.g.cleanup_usercmds then
   local grp = vim.api.nvim_create_augroup("UsercmdCleanup", { clear = true })
   -- ensure these gets cleaned up again in case they were being reinserted
   vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = { "*.*" },
     callback = del_unwanted_cmds,
     group = grp,
   })

@@ -48,7 +48,6 @@ end
 -- the expected items.
 local nvim_popupmenu_augroup = vim.api.nvim_create_augroup('nvim.popupmenu', {})
 vim.api.nvim_create_autocmd('MenuPopup', {
-  pattern = '*',
   group = nvim_popupmenu_augroup,
   desc = 'Mouse popup menu',
   -- nested = true,

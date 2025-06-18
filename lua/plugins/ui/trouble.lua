@@ -14,7 +14,6 @@ return {
       -- IF we are closing a regular window, which likely is the *primary*
       -- window, close all trouble views first.
       vim.api.nvim_create_autocmd({ "QuitPre" }, {
-        pattern = { "*.*" },
         callback = function(args)
           if ft.is_normal_buffer(args.buf) and ft.is_file_backed(args.buf) then
             local view = tr.close()

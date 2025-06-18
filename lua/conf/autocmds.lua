@@ -10,7 +10,6 @@ end
 -- automatically update working dir when entering buffer.
 vim.api.nvim_create_augroup("WorkingDirectory", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.*" },
   callback = function()
     pcall(cd)
   end,
@@ -22,7 +21,6 @@ vim.api.nvim_create_augroup("Misc", { clear = true })
 
 if vim.g.auto_cleanup_whitespace then
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    pattern = { "*.*" },
     callback = function()
       vim.api.nvim_command(":FixWhitespace")
     end,
@@ -47,7 +45,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- write oldfiles to disk before exiting vim
 if vim.g.save_old_files then
   vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
-    pattern = { "*.*" },
     callback = function()
       vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
     end,
@@ -58,13 +55,11 @@ end
 -- use EN IME on leaving Insert
 if vim.g.auto_toggle_ime then
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-    pattern = { "*.*" },
     callback = ime.switch_to_en_ime,
     group = "Misc",
   })
 
   vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-    pattern = { "*.*" },
     callback = function()
       if ime.context_is_cn() then
         ime.switch_to_cn_ime()
