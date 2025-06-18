@@ -62,4 +62,8 @@ function M.is_file_backed(bufnr)
   return false
 end
 
+function M.is_file(filename)
+  return vim.fn.filereadable(filename) == 1
+end
+
 return M

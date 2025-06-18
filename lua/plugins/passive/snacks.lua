@@ -1,3 +1,5 @@
+local ft = require("lib.ft")
+
 local function dashboard_key_conf(key, icon, text, action)
   local res = {
     key = key,
@@ -6,6 +8,19 @@ local function dashboard_key_conf(key, icon, text, action)
     action = action,
   }
   return res
+end
+
+-- this is needed to prevent the situation where vim tries to `e#-1` but the
+-- target is Neotree or some such non-file.
+local function open_last_actual_file()
+  for _, file in ipairs(vim.api.nvim_get_vvar("oldfiles")) do
+    if ft.is_file(file) then
+      vim.cmd("edit " .. file)
+      -- only open one then just stop
+      return
+    end
+  end
+  vim.notify("No oldfile found.", vim.log.levels.ERROR, {})
 end
 
 local dash_header =
@@ -31,7 +46,7 @@ local dash_header =
 local dash_keys = {
   dashboard_key_conf("1", "", "New File", ":ene"),
   dashboard_key_conf("2", "󰍉", "Find File", ":FzfLua files"),
-  dashboard_key_conf("3", "", "Last File", ":e#<1"),
+  dashboard_key_conf("3", "", "Last File", open_last_actual_file),
   dashboard_key_conf("4", "󰏗", "Last Session", ":SessionLoadLast"),
   dashboard_key_conf("5", "󰏗", "Local Session", ":SessionLoadHere"),
   dashboard_key_conf("r", "", "Recent Files", ":FzfLua oldfiles"),
