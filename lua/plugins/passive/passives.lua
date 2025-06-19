@@ -64,8 +64,6 @@ return {
       require("lib.binder").batch_set_keymap(keymap)
     end
   },
-  -- follow symlinks
-  "aymericbeaumet/vim-symlink",
   -- don't yank deletion except with 'd'
   {
     "gbprod/cutlass.nvim",

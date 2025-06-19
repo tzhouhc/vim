@@ -38,7 +38,7 @@ end
 
 function M.repo_live_grep()
   if vim.fn.executable('local_live_grep_vim') == 1 then
-    term.get("local_live_grep_vim")
+    term.get("local_live_grep_vim", { cwd = vim.fn.expand('%:p:h') })
   else
     vim.cmd("FzfLua live_grep")
   end
