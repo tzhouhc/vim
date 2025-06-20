@@ -25,6 +25,10 @@ function M.yazi()
   term_with_cwd("yazi")
 end
 
+function M.lazygit()
+  term_with_cwd("lazygit")
+end
+
 function M.right_side_term()
   term_with_cwd("zsh", { win = { style = "right_term" } })
 end
@@ -39,8 +43,8 @@ function M.git_lines_log()
   local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
   term.open(
     "git log -L" ..
-    start_line .. "," .. end_line .. ":'" .. file .. "' | delta --paging=always"
-  )
+    start_line .. "," .. end_line .. ":'" .. file .. "' | delta --paging=always",
+    { cwd = vim.fn.expand('%:p:h') })
 end
 
 function M.git_lines_blame()
@@ -48,8 +52,8 @@ function M.git_lines_blame()
   local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
   term.open(
     "git blame -w -CCC -L" ..
-    start_line .. "," .. end_line .. " '" .. file .. "' | delta --paging=always"
-  )
+    start_line .. "," .. end_line .. " '" .. file .. "' | delta --paging=always",
+    { cwd = vim.fn.expand('%:p:h') })
 end
 
 function M.repo_live_grep()
