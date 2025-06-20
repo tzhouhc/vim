@@ -3,30 +3,14 @@
 local ime = require("lib.ime")
 
 -- on save, clean all trailing whitespaces.
-vim.api.nvim_create_augroup("Misc", { clear = true })
-
 if vim.g.auto_cleanup_whitespace then
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
       vim.api.nvim_command(":FixWhitespace")
     end,
-    group = "Misc",
+    group = vim.api.nvim_create_augroup("AutoFixWhitespace", { clear = true }),
   })
 end
-
--- exit ephemeral buffers with <esc>
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = {
-    "help",
-    "noice",
-    "checkhealth",
-    "man",
-  },
-  callback = function()
-    vim.api.nvim_buf_set_keymap(vim.api.nvim_get_current_buf(), "n", "<esc>", ":bd<cr>", { silent = true, noremap = true })
-  end,
-  group = "Misc",
-})
 
 -- write oldfiles to disk before exiting vim
 if vim.g.save_old_files then
@@ -34,7 +18,7 @@ if vim.g.save_old_files then
     callback = function()
       vim.cmd("redir >> /tmp/oldfiles.txt | silent oldfiles | redir end")
     end,
-    group = "Misc",
+    group = vim.api.nvim_create_augroup("RecordOldFiles", { clear = true }),
   })
 end
 
@@ -48,11 +32,11 @@ vim.api.nvim_create_autocmd("Filetype", {
   callback = function()
     vim.keymap.del('i', '<left>', { buffer = true })
     vim.keymap.del('i', '<right>', { buffer = true })
-  end
+  end,
+  group = vim.api.nvim_create_augroup("RemoveSqlKeymapQuirk", { clear = true }),
 })
 
 -- use help tags as if they are LSP symbols and jump using `g;`
-local help_binds_grp = vim.api.nvim_create_augroup("HelpMappings", { clear = true })
 local help_binds = {
   n = {
     ["gd"] = "<c-]>",
@@ -61,7 +45,7 @@ local help_binds = {
 }
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  group = help_binds_grp,
+  group = vim.api.nvim_create_augroup("HelpMappings", { clear = true }),
   callback = function(args)
     local bufnr = args.buf
     local filetype = vim.bo[bufnr].filetype

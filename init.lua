@@ -1,7 +1,7 @@
 -- Ting's custom Neovim configurations.
 
 -- general vim settings unrelated to plugins
-require("conf") 
+require("conf")
 
 -- plguins, managed by Lazy.nvim
 require("plugins")
