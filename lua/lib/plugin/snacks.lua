@@ -4,7 +4,8 @@ local term = require("snacks.terminal")
 local M = {}
 
 local function term_with_cwd(cmd, opts)
-  local config = { cwd = vim.fn.expand('%:p:h') }
+  -- this *should* work normally; not sure what broke on snacks' end?
+  local config = { cwd = vim.fn.getcwd() }
   if opts then
     config = vim.tbl_deep_extend("force", config, opts)
   end
