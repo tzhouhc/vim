@@ -2,20 +2,6 @@
 
 local ime = require("lib.ime")
 
-local function cd()
-  local path = vim.fn.expand("%:h") .. "/"
-  vim.api.nvim_command("cd " .. path)
-end
-
--- automatically update working dir when entering buffer.
-vim.api.nvim_create_augroup("WorkingDirectory", { clear = true })
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  callback = function()
-    pcall(cd)
-  end,
-  group = "WorkingDirectory",
-})
-
 -- on save, clean all trailing whitespaces.
 vim.api.nvim_create_augroup("Misc", { clear = true })
 
