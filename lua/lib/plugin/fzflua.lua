@@ -1,5 +1,7 @@
 local fzf_lua = require 'fzf-lua'
 local git = require("lib.git")
+local ft = require("lib.ft")
+local edit = require("lib.editing")
 
 local M = {}
 
@@ -10,6 +12,41 @@ function M.local_or_repo_files()
     return
   end
   vim.cmd("FzfLua files")
+end
+
+function M.nerdfont()
+  local csv_path = vim.fs.joinpath(os.getenv("HOME"), ".dotfiles/lib/nerdfont/nerdfont.csv")
+  if not ft.is_file(csv_path) then
+    vim.notify("Nerdfont data sheet not found.", vim.log.levels.ERROR, {})
+  end
+  fzf_lua.fzf_exec(function(fzf_cb)
+      -- Read the contents of the nerdfont CSV file
+      local f = io.open(csv_path, "r")
+      if f then
+        for line in f:lines() do
+          fzf_cb(line)
+        end
+        f:close()
+      else
+        vim.notify("Failed to open nerdfont CSV file.", vim.log.levels.ERROR, {})
+      end
+      -- close pipe
+      fzf_cb()
+    end,
+    {
+      prompt = 'Nerdfont> ',
+      exec_empty_query = true,
+      actions = {
+        ["default"] = function(selected)
+          local res = string.gsub(selected[1], "^[^,]*,[^,]*,", "")
+          edit.insert_after_cursor(res)
+        end,
+        ["ctrl-y"] = function(selected)
+          local res = string.gsub(selected[1], "^[^,]*,[^,]*,", "")
+          vim.fn.setreg('"', res)
+        end
+      }
+    })
 end
 
 local function common_file_opts()
@@ -58,7 +95,8 @@ end
 
 function M.dotfiles()
   local opts = common_file_opts()
-  return fzf_lua.fzf_exec("git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME ls-files --full-name $HOME --format=\"$HOME/%(path)\"", opts)
+  return fzf_lua.fzf_exec(
+    "git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME ls-files --full-name $HOME --format=\"$HOME/%(path)\"", opts)
 end
 
 return M

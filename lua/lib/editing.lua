@@ -134,6 +134,15 @@ function M.get_char_at_cursor(offset, lookback)
   return line:sub(pos, pos)
 end
 
+function M.insert_after_cursor(str)
+  local _, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  local before = line:sub(1, col)
+  local after = line:sub(col + 1)
+  local new_line = before .. str .. after
+  vim.api.nvim_set_current_line(new_line)
+end
+
 -- Get the start and end lines of visual selection
 function M.get_visual_selection_lines()
   local start_pos = vim.fn.getpos("'<")
