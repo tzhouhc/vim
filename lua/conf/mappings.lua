@@ -25,9 +25,6 @@ local key_configs = {
     -- disable cmdline window
     ["q:"] = "",
 
-    -- mimic right mouse
-    ["g<space>"] = "<cmd>popup PopUp<cr>",
-
     -- diagnostics movement
     ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
     ["]e"] = function() vim.diagnostic.jump({ count = 1 }) end,
