@@ -54,19 +54,7 @@ end
 
 -- use EN IME on leaving Insert
 if vim.g.auto_toggle_ime then
-  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-    callback = ime.switch_to_en_ime,
-    group = "Misc",
-  })
-
-  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-    callback = function()
-      if ime.context_is_cn() then
-        ime.switch_to_cn_ime()
-      end
-    end,
-    group = "Misc",
-  })
+  ime.create_autocmds()
 end
 
 vim.api.nvim_create_autocmd("Filetype", {
