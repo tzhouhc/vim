@@ -10,7 +10,15 @@ M.normal = {
       iw.InterestingWord('n', false)
       iw.InterestingWord('n', true)
     end
-  }
+  },
+  {
+    name = "Inspect",
+    cmd = "Inspect",
+  },
+  {
+    name = "Go to Definition",
+    cmd = vim.lsp.buf.definition,
+  },
 }
 
 M.visual = {
@@ -21,6 +29,10 @@ M.visual = {
       iw.InterestingWord('v', false)
       iw.InterestingWord('v', true)
     end
+  },
+  {
+    name = "Format",
+    cmd = "FormatCode",
   }
 }
 
