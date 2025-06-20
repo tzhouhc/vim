@@ -3,19 +3,35 @@ local term = require("snacks.terminal")
 
 local M = {}
 
+local function term_with_cwd(cmd, opts)
+  local config = { cwd = vim.fn.expand('%:p:h') }
+  if opts then
+    config = vim.tbl_deep_extend("force", config, opts)
+  end
+  term.get(cmd, config)
+end
+
+local function toggle_term_with_cwd(cmd, opts)
+  local config = { cwd = vim.fn.expand('%:p:h') }
+  if opts then
+    config = vim.tbl_deep_extend("force", config, opts)
+  end
+  term.toggle(cmd, config)
+end
+
 -- This version of Yazi integration opens in a _split_. Yuck.
 -- Using a plugin for this purpose instead.
 function M.yazi()
-  term.get("yazi")
+  term_with_cwd("yazi")
 end
 
 function M.right_side_term()
-  term.get("zsh", { win = { style = "right_term" } })
+  term_with_cwd("zsh", { win = { style = "right_term" } })
 end
 
 ---create a floaterm if none exists; toggle it otherwise.
 function M.quake_term()
-  term.toggle("zsh")
+  toggle_term_with_cwd("zsh")
 end
 
 function M.git_lines_log()
@@ -37,8 +53,8 @@ function M.git_lines_blame()
 end
 
 function M.repo_live_grep()
-  if vim.fn.executable('local_live_grep_vim') == 1 then
-    term.get("local_live_grep_vim", { cwd = vim.fn.expand('%:p:h') })
+  if vim.fn.executable("local_live_grep_vim") == 1 then
+    term_with_cwd("local_live_grep_vim")
   else
     vim.cmd("FzfLua live_grep")
   end
@@ -46,13 +62,13 @@ end
 
 function M.global_file_list()
   if vim.fn.executable('seb') == 1 then
-    term.get("seb_vim")
+    term_with_cwd("seb_vim")
   end
 end
 
 function M.mods_chat()
   if vim.fn.executable('mods_chat') == 1 then
-    term.get("mods_chat")
+    term_with_cwd("mods_chat")
   end
 end
 
