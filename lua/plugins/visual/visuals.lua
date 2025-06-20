@@ -31,7 +31,7 @@ return {
           callback = function()
             vim.cmd("ColorizerAttachToBuffer")
           end,
-          group = "Misc",
+          group = vim.api.nvim_create_augroup("AutoColorizer", { clear = true }),
         }
       )
     end,
