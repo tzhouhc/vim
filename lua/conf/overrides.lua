@@ -1,7 +1,7 @@
 -- Overriding neovim default operations
 
 -- Silent annoying deprecation notice triggered by some plugin (probably)
-if vim.version().minor == 11 then
+if vim.version().minor >= 11 then
   ---@diagnostic disable-next-line: duplicate-set-field
   vim.deprecate = function() end
 end

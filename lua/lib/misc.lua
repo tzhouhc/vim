@@ -13,20 +13,35 @@ local function extract_plugin(line)
   return line:match("[\"']([^'\"]+)[\"']")
 end
 
-function M.dump(o)
+local function make_indent(level)
+  return string.rep("  ", level)
+end
+
+local function _dump(o, indent)
+  indent = indent or 0
+
   if type(o) == "table" then
-    local s = "{ "
+    local s = "{\n"
     for k, v in pairs(o) do
+      local key
       if type(k) ~= "number" then
-        k = '"' .. k .. '"'
+        key = '"' .. k .. '"'
+      else
+        key = k
       end
-      s = s .. "[" .. k .. "] = " .. M.dump(v) .. ","
+      s = s .. make_indent(indent + 1) .. "[" .. key .. "] = " .. _dump(v, indent + 1) .. ",\n"
     end
-    return s .. "} "
+    s = s .. make_indent(indent) .. "}"
+    return s
   else
     return tostring(o)
   end
 end
+
+function M.dump(o)
+  return _dump(o, 0)
+end
+
 
 ---look for patterns matching a GitHub repo and open it in the browser.
 function M.get_current_line_plugin()

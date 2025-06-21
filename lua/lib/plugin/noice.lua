@@ -98,6 +98,8 @@ M.views = {
         CurSearch = "",
         Search = "",
       },
+      wrap = true,
+      linebreak = true,
       winbar = "",
       foldenable = true,
       cursorline = false,
@@ -164,24 +166,5 @@ M.views = {
     },
   },
 }
-
-function M.popup(content)
-  require("noice").notify(content, "󰍡")
-end
-
-function M.noice_hover(content)
-  require("noice").redirect(function()
-    print(content) -- always a msg_show event
-  end, {
-    {
-      view = "timid_hover",
-      filter = { event = "msg_show" },
-    },
-  })
-end
-
-function M.notify_hover(content)
-  require("noice").notify(content, "info", {})
-end
 
 return M

@@ -57,6 +57,10 @@ return {
           opts = {},              -- global options for the cmdline. See section on views
           format = cmdline_format,
         },
+        notify = {
+          enabled = true,
+          view = "notify",
+        },
         messages = {
           -- NOTE: If you enable messages, then the cmdline is enabled automatically.
           -- This is a current Neovim limitation.
@@ -84,19 +88,28 @@ return {
         views = noice_views, ---@see section on views
         routes = {
           {
-            -- for "msg_show" that is too long, throw into a temp hover in the top
-            -- right of screen.
             filter = {
-              event = "msg_show",
-              min_height = 5,
+              -- ALL `vim.notify` messages will come here.
+              -- - log level becomes the `kind` in the message.
+              -- - `find` allows checking for keywords
+              -- See https://github.com/folke/noice.nvim?tab=readme-ov-file#-filters
+              event = "notify",
+              any = {
+                { error = true },
+                { kind = "debug" }, -- seems like this is the field after 'event' in Noice's history logging.
+              }
             },
             view = "temp_corner_popup",
           },
           {
-            -- similar to above, but length-wise.
+            -- for "msg_show" that is too long, throw into a temp hover in the top
+            -- right of screen.
             filter = {
               event = "msg_show",
-              min_length = 100,
+              any = {
+                { min_height = 5 },
+                { min_length = 100 },
+              }
             },
             view = "temp_corner_popup",
           },
@@ -115,13 +128,19 @@ return {
       -- Visible notification for recording.
       vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
         callback = function()
-          noicelib.notify_hover("Recording macro '" .. vim.fn.reg_recording() .. "'.")
+          vim.notify(
+            "Recording macro '" .. vim.fn.reg_recording() .. "'.",
+            vim.log.levels.INFO
+          )
         end,
         group = "Notification",
       })
       vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
         callback = function()
-          noicelib.notify_hover("Finished recording macro '" .. vim.fn.reg_recording() .. "'.")
+          vim.notify(
+            "Finished recording macro '" .. vim.fn.reg_recording() .. "'.",
+            vim.log.levels.INFO
+          )
         end,
         group = "Notification",
       })
