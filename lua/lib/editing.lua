@@ -174,4 +174,26 @@ function M.search_selected()
   end
 end
 
+function M.toggle_gutter()
+  local signcolumn = vim.wo.signcolumn
+  local number = vim.wo.number
+  local relativenumber = vim.wo.relativenumber
+
+  -- Toggle signcolumn between 'yes' and 'no'
+  if signcolumn == 'yes' or signcolumn == 'auto' then
+    vim.wo.signcolumn = 'no'
+  else
+    vim.wo.signcolumn = 'yes'
+  end
+
+  -- Toggle line numbers
+  if number or relativenumber then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+  else
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  end
+end
+
 return M

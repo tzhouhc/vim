@@ -7,10 +7,12 @@
 -- then the command be associated with the "primary" plugin.
 
 local misc = require("lib.misc")
+local edit = require("lib.editing")
 
 -- Tooling shortcuts
 vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, {})
 vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
+vim.api.nvim_create_user_command("GutterToggle", edit.toggle_gutter, {})
 
 -- Cleaning up unwanted commands
 local unwanted_cmds = {
