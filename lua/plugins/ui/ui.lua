@@ -116,20 +116,10 @@ return {
     cond = not not vim.g.visual_wordcount,
     config = function()
       local vt = require("virt-counter")
-      vt.setup(
-        {
-          count_newlines = true,
-          highlight_group = "CurSearch",
-          spacing = 4,
-          button = {
-            left = "\u{E0B6}",
-            right = "\u{E0B4}",
-          },
-          format = function(l, w, c)
-            return "󰈚 " .. l .. " 󰬞 " .. w .. " 󰬊 " .. c
-          end,
-        }
-      )
+      vt.setup({
+        count_newlines = true,
+        preset = "pill",
+      })
       vim.keymap.set("v", "<space>", vt.refresh, {})
     end
   },

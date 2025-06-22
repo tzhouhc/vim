@@ -9,6 +9,8 @@ return {
     },
     keys = {
       { "cc", mode = "ca" },
+      { "ccc", mode = "ca" },
+      { "<leader>cc" },
     },
     config = function()
       require("codecompanion").setup({
@@ -30,6 +32,9 @@ return {
         },
       })
       vim.keymap.set("ca", "cc", "CodeCompanion", { noremap = true, silent = true })
+      vim.keymap.set("ca", "ccc", "CodeCompanionChat", { noremap = true, silent = true })
+
+      vim.keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
