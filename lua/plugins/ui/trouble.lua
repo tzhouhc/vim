@@ -1,7 +1,7 @@
 return {
   {
     "folke/trouble.nvim",
-    cmd = { "Trouble", "DiagnosticsList", "SymbolsList", "LSPList" },
+    cmd = { "Trouble", "DiagnosticsList", "SymbolsList", "LSPList", "TodoList" },
     config = function()
       local tr = require("trouble")
       tr.setup({})
@@ -9,6 +9,11 @@ return {
       vim.api.nvim_create_user_command("DiagnosticsList", "Trouble diagnostics toggle focus=false", {})
       vim.api.nvim_create_user_command("SymbolsList", "Trouble symbols toggle focus=false", {})
       vim.api.nvim_create_user_command("LSPList", "Trouble lsp toggle focus=false win.position=right", {})
+      vim.api.nvim_create_user_command(
+        "TodoList",
+        "Trouble todo toggle focus=false win.position=right filter={tag={TODO,FIX,FIXME,HACK}}",
+        {}
+      )
 
       local ft = require("lib.ft")
       -- IF we are closing a regular window, which likely is the *primary*

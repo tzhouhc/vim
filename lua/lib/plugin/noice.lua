@@ -141,7 +141,9 @@ M.views = {
     },
   },
   -- custom version of the hover
-  -- TODO: figure out if possible to close on CursorMoved event.
+  -- DONE: figure out if possible to close on CursorMoved event.
+  -- Turns out that while possible, it makes the notification just blink away --
+  -- CursorMoved is way too sensitive. "<esc>" works just fine.
   temp_hover = {
     view = "popup",
     relative = "cursor",
