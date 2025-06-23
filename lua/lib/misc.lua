@@ -74,26 +74,4 @@ function M.make_scratch()
   vim.cmd("e /tmp/vim-scratch-" .. name)
 end
 
--- unused -- function to create a lookup
-local function show_dictionary_popup(word)
-  -- Run the shell command asynchronously
-  vim.fn.jobstart({ 'dictionary', word }, {
-    stdout_buffered = true,
-    on_stdout = function(_, data)
-      if data then
-        -- Remove empty lines at the end
-        while #data > 0 and data[#data]:match('^%s*$') do
-          table.remove(data)
-        end
-        if #data == 0 then data = { 'No results.' } end
-        vim.schedule(function()
-          vim.lsp.util.open_floating_preview(
-            data, 'markdown', { border = 'single', focusable = false, close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter' }, }
-          )
-        end)
-      end
-    end
-  })
-end
-
 return M
