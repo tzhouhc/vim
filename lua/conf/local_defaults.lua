@@ -41,6 +41,8 @@ vim.g.enable_ufo = true
 vim.g.do_hover = false
 -- Automatically fix whitespaces at file save
 vim.g.auto_cleanup_whitespace = true
+-- Automatically detect filetype at file save if none set yet
+vim.g.detect_filetype_on_save = true
 -- Save oldfiles to /tmp/oldfiles.txt separately from shada
 vim.g.save_oldfiles = false
 -- Automatically toggle between CN/EN ime on escape/insert

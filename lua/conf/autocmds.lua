@@ -12,6 +12,18 @@ if vim.g.auto_cleanup_whitespace then
   })
 end
 
+-- on save, detect filetype if not set yet
+if vim.g.detect_filetype_on_save then
+  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    callback = function()
+      if vim.bo.filetype == "" then
+        vim.cmd(":filetype detect")
+      end
+    end,
+    group = vim.api.nvim_create_augroup("AutoDetectFiletype", { clear = true }),
+  })
+end
+
 -- write oldfiles to disk before exiting vim
 if vim.g.save_old_files then
   vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
