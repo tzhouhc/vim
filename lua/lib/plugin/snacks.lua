@@ -13,6 +13,10 @@ function M.right_side_term()
   term.get("zsh", { win = { style = "right_term" } })
 end
 
+function M.dictionary(word)
+  term.get("dictionary " .. word .. " | less", { win = { style = "right_term" } })
+end
+
 ---create a floaterm if none exists; toggle it otherwise.
 function M.quake_term()
   term.toggle("zsh")
