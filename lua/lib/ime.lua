@@ -4,10 +4,10 @@
 vim.g.en_ime = "com.apple.keylayout.US"
 vim.g.cn_ime = "im.rime.inputmethod.Squirrel.Hans"
 
-local autogrp_name = "AutoSwitchInputMethod"
 local edit = require("lib.editing")
 
 local M = {}
+M.autogrp_name = "AutoSwitchInputMethod"
 M.insert_lang = "en"
 
 local function switch_to_en_ime()
@@ -33,7 +33,7 @@ local function context_is_cn()
 end
 
 function M.create_autocmds()
-  local autogrp = vim.api.nvim_create_augroup(autogrp_name, { clear = true })
+  local autogrp = vim.api.nvim_create_augroup(M.autogrp_name, { clear = true })
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     callback = function()
       if is_using_cn_ime() then
@@ -55,19 +55,5 @@ function M.create_autocmds()
     group = autogrp,
   })
 end
-
-function M.remove_autocmds()
-  vim.api.nvim_del_augroup_by_name(autogrp_name)
-end
-
-vim.api.nvim_create_user_command("AutoSwitchInputMethodToggle", function()
-  if vim.g.auto_toggle_ime then
-    vim.g.auto_toggle_ime = false
-    M.remove_autocmds()
-  else
-    vim.g.auto_toggle_ime = true
-    M.create_autocmds()
-  end
-end, { range = true })
 
 return M
