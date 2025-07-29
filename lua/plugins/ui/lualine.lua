@@ -9,7 +9,7 @@ return {
 
       require("lualine").setup({
         options = {
-          theme = vim.g.theme,
+          theme = "auto",
           component_separators = { "▎", "🮇" },
           section_separators = { "▎", "🮇" },
           always_divide_middle = true,

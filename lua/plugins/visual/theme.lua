@@ -6,6 +6,7 @@ local colorschemes = {
   "tokyonight",
   "catppuccin",
   "everforest",
+  "techbase",
   "OceanicNext",
 }
 
@@ -177,6 +178,15 @@ return {
     cond = vim.g.theme == "OceanicNext",
     config = function()
       vim.cmd('colorscheme OceanicNext')
+    end
+  },
+  {
+    "mcauley-penney/techbase.nvim",
+    lazy = false,
+    priority = 1000,
+    cond = vim.g.theme == "techbase",
+    config = function()
+      vim.cmd('colorscheme techbase')
     end
   },
 }
