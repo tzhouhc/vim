@@ -65,4 +65,23 @@ return {
       full_path_list = {},                                                 -- filenames on this list will ALWAYS show the file path too.
     },
   },
+  {
+    -- jump to relevant file
+    "rgroli/other.nvim",
+    cmd = { "Other" },
+    config = function()
+      require("other-nvim").setup({
+        mappings = {
+          {
+            pattern = "/src/(.*).c",
+            target = "/include/%1.h",
+          },
+          {
+            pattern = "/src/(.*).h",
+            target = "/include/%1.c",
+          },
+        },
+      })
+    end
+  },
 }
