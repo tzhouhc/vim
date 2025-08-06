@@ -99,4 +99,43 @@ function M.dotfiles()
     "git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME ls-files --full-name $HOME --format=\"$HOME/%(path)\"", opts)
 end
 
+-- Take current pasteboard, split by paragraph, and paste selected ones.
+function M.current_pasteboard()
+  -- Get the contents of the system pasteboard (register '+')
+  local pbs = vim.fn.getreg('+')
+  local pb
+  if type(pbs) == 'string' then
+    pb = vim.split(pbs, '\n\n', { plain = true })
+  else
+    return
+  end
+
+  -- Filter out empty entries
+  local entries = {}
+  for _, line in ipairs(pb) do
+    if line ~= '' then
+      table.insert(entries, line)
+    end
+  end
+  if #entries == 0 then
+    return
+  end
+
+  -- Use fzf-lua for multi-select
+  return require('fzf-lua').fzf_exec(entries, {
+    prompt = 'Pasteboard> ',
+    actions = {
+      ['default'] = function(selected)
+        -- Join all selected entries with newlines and paste
+        local text = table.concat(selected, '\n')
+        vim.api.nvim_paste(text, true, -1)
+      end,
+    },
+    fzf_opts = {
+      ['--multi'] = true, -- allow selecting multiple lines
+      ['--read0'] = true, -- allow entries with embedded newlines
+    },
+  })
+end
+
 return M

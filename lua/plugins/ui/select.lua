@@ -91,6 +91,7 @@ return {
       vim.api.nvim_create_user_command("GrepAcrossRepo", fv.live_grep_across_repo, {})
       vim.api.nvim_create_user_command("AllFiles", fv.all_files, {})
       vim.api.nvim_create_user_command("Nerdfont", fv.nerdfont, {})
+      vim.api.nvim_create_user_command("Pasteboard", fv.current_pasteboard, {})
 
       -- aliases
       vim.api.nvim_create_user_command("Snippets", "FzfLua files cwd=~/.config/nvim/snippets", {})
