@@ -20,7 +20,6 @@ local unwanted_cmds = {
   "ColorizerDetachFromBuffer",
   "ColorizerReloadAllBuffers",
   "ColorizerToggle",
-  "ConformInfo",
   "DoMatchParen",
   "EditQuery",
   "Explore",

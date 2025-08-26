@@ -3,6 +3,12 @@
 Here I record some of the tips when it comes to solving random issues with
 neovim.
 
+### Conform/LSP Installation
+
+Both Conform linter/formatters and LSPs can be installed via Mason -- Mason
+just makes these binaries available to nvim. Check with `ConformInfo` and then
+install with `MasonInstall`. Tools should become immediately available.
+
 ### Treesitter Incremental Selection Crash
 
 **Symptom**: After selecting text, attempting to invoke TS incremental selection
