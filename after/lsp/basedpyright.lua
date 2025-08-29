@@ -5,7 +5,11 @@ return {
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "strict",
         useLibraryCodeForTypes = true,
+        diagnosticSeverityOverrides = {
+          reportInvalidStringEscapeSequence = "warning",
+        },
       }
     }
   }
