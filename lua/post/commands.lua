@@ -14,6 +14,12 @@ vim.api.nvim_create_user_command("GetPluginLink", misc.get_current_line_plugin, 
 vim.api.nvim_create_user_command("Scratch", misc.make_scratch, {})
 vim.api.nvim_create_user_command("GutterToggle", edit.toggle_gutter, {})
 
+vim.api.nvim_create_user_command("CopyToggle", function()
+  Snacks.indent.enabled = not Snacks.indent.enabled
+  edit.toggle_gutter()
+  vim.cmd("redraw!")
+end, {})
+
 -- Cleaning up unwanted commands
 local unwanted_cmds = {
   "Vexplore",

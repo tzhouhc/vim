@@ -236,6 +236,10 @@ return {
       vim.api.nvim_create_user_command("Seb", terms.global_file_list, { range = true })
       vim.api.nvim_create_user_command("QQ", terms.mods_chat, {})
       vim.api.nvim_create_user_command("FloatRight", terms.right_side_term, {})
+      vim.api.nvim_create_user_command("IndentlineToggle", function()
+        Snacks.indent.enabled = not Snacks.indent.enabled
+        vim.cmd("redraw!")
+      end, {})
     end,
   }
 }
