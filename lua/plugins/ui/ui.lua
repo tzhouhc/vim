@@ -123,4 +123,32 @@ return {
       vim.keymap.set("v", "<space>", vt.refresh, {})
     end
   },
+  {
+    "rmagatti/goto-preview",
+    dependencies = { "rmagatti/logger.nvim" },
+    event = "BufEnter",
+    config = function()
+      local gp = require('goto-preview')
+      gp.setup({
+        width = 90,
+        height = 15,
+        references = {
+          provider = vim.g.use_fzf_for_lsp and "fzf_lua" or "default",
+          -- telescope|fzf_lua|snacks|mini_pick|default
+        },
+      })
+
+      local lsp_key_config = {
+        n = {
+          ["gF"] = gp.goto_preview_declaration,
+          ["gD"] = gp.goto_preview_definition,
+          ["gI"] = gp.goto_preview_implementation,
+          ["gT"] = gp.goto_preview_type_definition,
+          ["gR"] = gp.goto_preview_references,
+          ["g<esc>"] = gp.close_all_win,
+        }
+      }
+      require("lib.binder").batch_set_keymap(lsp_key_config)
+    end,
+  }
 }

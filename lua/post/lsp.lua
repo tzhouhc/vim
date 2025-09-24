@@ -9,8 +9,8 @@ local lsp_key_config = {}
 if has_fzf and vim.g.use_fzf_for_lsp then
   lsp_key_config = {
     n = {
-      ["gd"] = fzf.lsp_declarations,
-      ["gf"] = fzf.lsp_definitions,
+      ["gf"] = fzf.lsp_declarations,
+      ["gd"] = fzf.lsp_definitions,
       ["gi"] = fzf.lsp_implementations,
       ["gt"] = fzf.lsp_typedefs,
       ["gr"] = fzf.lsp_references,
@@ -19,8 +19,8 @@ if has_fzf and vim.g.use_fzf_for_lsp then
 else
   lsp_key_config = {
     n = {
-      ["gd"] = vim.lsp.buf.declaration,
-      ["gf"] = vim.lsp.buf.definition,
+      ["gf"] = vim.lsp.buf.declaration,
+      ["gd"] = vim.lsp.buf.definition,
       ["gi"] = vim.lsp.buf.implementation,
       ["gt"] = vim.lsp.buf.type_definition,
       ["gr"] = vim.lsp.buf.references,
