@@ -92,7 +92,7 @@ return {
       vim.api.nvim_create_user_command("AllFiles", fv.all_files, {})
       vim.api.nvim_create_user_command("Nerdfont", fv.nerdfont, {})
       vim.api.nvim_create_user_command("Pasteboard", fv.current_pasteboard, {})
-      vim.api.nvim_create_user_command("ChangeGitSignsBase", fv.bcommit_change_base, {})
+      vim.api.nvim_create_user_command("RebaseGitsigns", fv.bcommit_change_base, {})
 
       -- aliases
       vim.api.nvim_create_user_command("Snippets", "FzfLua files cwd=~/.config/nvim/snippets", {})

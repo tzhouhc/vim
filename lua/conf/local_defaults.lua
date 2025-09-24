@@ -31,6 +31,8 @@ vim.g.prevent_lsp_cursor_highlight = true
 vim.g.nerdfont_v2_compat = false
 -- Visual mode provides word count (line, word, char)
 vim.g.visual_wordcount = true
+-- Show inline diffs via gitsigns
+vim.g.gitsigns_word_diff = false
 
 -- Features
 -- Enable sophisticated notifications via noice
