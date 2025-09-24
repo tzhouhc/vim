@@ -138,4 +138,28 @@ function M.current_pasteboard()
   })
 end
 
+function M.bcommit_change_base()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local filepath = vim.api.nvim_buf_get_name(bufnr)
+  if filepath == "" then
+    vim.notify("Buffer is not associated with a file.", vim.log.levels.ERROR)
+    return
+  end
+  local cmd = string.format('git log --oneline -- %q', filepath)
+  require('fzf-lua').fzf_exec(cmd, {
+    prompt  = 'BCommits❯ ',
+    preview = "git show --color {1} -- " .. filepath,
+    actions = {
+      ['default'] = function(selected)
+        local hash = selected[1]:match('^%S+')
+        if hash then
+          vim.cmd('Gitsigns change_base ' .. hash)
+        else
+          vim.notify("Could not extract commit hash.", vim.log.levels.ERROR)
+        end
+      end,
+    }
+  })
+end
+
 return M
