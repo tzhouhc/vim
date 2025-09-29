@@ -36,6 +36,17 @@ function M.has_win_of_filetype(ft)
   return false
 end
 
+function M.kill_all_win_of_filetype(ft)
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    local buf = vim.api.nvim_win_get_buf(win.winid)
+    local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
+    if filetype == ft then
+      vim.api.nvim_win_close(win.winid, true)
+    end
+  end
+end
+
 -- Create a float at cursor location with the specified ft
 function M.make_float(content, ft)
   vim.schedule(function()

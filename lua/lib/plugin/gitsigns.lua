@@ -1,4 +1,5 @@
 local gitsigns = require("gitsigns")
+local blame_ft = "gitsigns-blame"
 local M = {}
 
 function M.prev_hunk()
@@ -18,16 +19,12 @@ function M.next_hunk()
 end
 
 function M.toggle_blame()
-  local windows = vim.fn.getwininfo()
-  for _, win in pairs(windows) do
-    local buf = vim.api.nvim_win_get_buf(win.winid)
-    local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
-    if filetype == "gitsigns-blame" then
-      vim.api.nvim_win_close(win.winid, true)
-      return
-    end
+  local wd = require("lib.windows")
+  if wd.has_win_of_filetype(blame_ft) then
+    wd.kill_all_win_of_filetype(blame_ft)
+  else
+    vim.cmd("Gitsigns blame")
   end
-  vim.cmd("Gitsigns blame")
 end
 
 return M
