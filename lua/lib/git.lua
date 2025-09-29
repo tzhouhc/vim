@@ -18,4 +18,14 @@ function M.git_repo_root()
   return match
 end
 
+---get the root of the current repo IF in a repo, otherwise return cwd.
+---@return string
+function M.soft_git_repo_root()
+  if M.is_git() then
+    return M.git_repo_root()
+  else
+    return vim.fn.getcwd()
+  end
+end
+
 return M

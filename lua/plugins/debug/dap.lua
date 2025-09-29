@@ -26,7 +26,7 @@ return {
 					type = "cppdbg",
 					request = "launch",
 					program = function()
-						return vim.fn.input("Path to executable: ", git.git_repo_root() .. "/", "file")
+						return vim.fn.input("Path to executable: ", git.soft_git_repo_root() .. "/", "file")
 					end,
 					cwd = "${workspaceFolder}",
 					stopAtEntry = true,
@@ -41,11 +41,12 @@ return {
 					miDebuggerPath = "/usr/bin/gdb",
 					cwd = "${workspaceFolder}",
 					program = function()
-						return vim.fn.input("Path to executable: ", git.git_repo_root() .. "/", "file")
+						return vim.fn.input("Path to executable: ", git.soft_git_repo_root() .. "/", "file")
 					end,
 					setupCommands = pretty_print,
 				},
 			}
+			dap.configurations.cpp = dap.configurations.c
 		end,
 	},
 	{
