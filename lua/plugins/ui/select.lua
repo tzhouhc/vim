@@ -58,8 +58,6 @@ return {
 
           -- registers
           ["<leader>p"] = ":FzfLua registers<cr>",
-          ["<leader>sb"] = ":FzfLua lsp_document_symbols<cr>",
-          ["<leader>dg"] = ":FzfLua lsp_document_diagnostics<cr>",
         },
         v = {
           -- search for visually selected
