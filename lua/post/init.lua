@@ -13,5 +13,5 @@ require("post.visuals")
 require("post.lsp")
 -- custom commands
 require("post.commands")
--- debugging tools
-require("post.debug")
+-- development tools
+require("post.dev")
