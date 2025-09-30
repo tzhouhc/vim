@@ -75,7 +75,7 @@ function M.live_grep_across_repo()
     return opts
   end
   return fzf_lua.fzf_live(function(q)
-    return "rg --column --color=always -- " .. vim.fn.shellescape(q or '') .. " " .. git.git_repo_root()
+    return "rg --column --color=always -- " .. vim.fn.shellescape(q or '') .. " " .. git.soft_git_repo_root()
   end, opts)
 end
 
