@@ -14,6 +14,16 @@ return {
           section_separators = { "▎", "🮇" },
           always_divide_middle = true,
           globalstatus = true,
+          disabled_filetypes = {
+            winbar = {
+              "dapui_watches",
+              "dapui_stacks",
+              "dapui_breakpoints",
+              "dapui_scopes",
+              "dapui_console",
+              "dap-repl",
+            },
+          },
         },
         sections = {
           lualine_a = { "mode" },
