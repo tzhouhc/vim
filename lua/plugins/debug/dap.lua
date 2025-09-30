@@ -48,11 +48,6 @@ return {
         },
       }
       dap.configurations.cpp = dap.configurations.c
-
-      vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>dc", dap.continue, { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>ds", dap.step_into, { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>do", dap.step_over, { noremap = true, silent = true })
     end,
   },
   {

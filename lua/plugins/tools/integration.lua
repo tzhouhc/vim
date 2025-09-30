@@ -1,6 +1,7 @@
 return {
   {
     "ruifm/gitlinker.nvim",
+    cmd = { "GetGithubLink", "GetGithubLinkToLine" },
     config = function()
       local gl = require("gitlinker")
       local copy_url_and_open = function(data)

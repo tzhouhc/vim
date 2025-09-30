@@ -126,7 +126,7 @@ return {
   {
     "rmagatti/goto-preview",
     dependencies = { "rmagatti/logger.nvim" },
-    event = "BufEnter",
+    event = "LspAttach",
     config = function()
       local gp = require('goto-preview')
       gp.setup({
@@ -150,5 +150,8 @@ return {
       }
       require("lib.binder").batch_set_keymap(lsp_key_config)
     end,
+  },
+  {
+    "nvimtools/hydra.nvim",
   }
 }
