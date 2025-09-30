@@ -36,6 +36,7 @@ return {
         }
       }
       require("lib.binder").batch_set_keymap(keymap)
+      require("lib.plugin.bufferline")
     end,
   },
 }
