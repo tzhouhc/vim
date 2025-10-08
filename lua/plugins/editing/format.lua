@@ -16,6 +16,9 @@ return {
           html = { "prettier" },
           sql = { "sql_formatter" },
           markdown = { "prettier" },
+          zsh = { "shellcheck" },
+          sh = { "shellcheck" },
+          bash = { "shellcheck" },
         },
         default_format_opts = {
           lsp_format = "prefer",

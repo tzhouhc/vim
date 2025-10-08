@@ -36,6 +36,7 @@ local core_lsps = {
   "prettierd",
   "zls",
   "rust_analyzer",
+  "bashls",
   -- "ty",  -- rust-based python lsp, however the feature set is a bit thin rn
 }
 
