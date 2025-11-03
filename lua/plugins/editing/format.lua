@@ -16,6 +16,7 @@ return {
           html = { "prettier" },
           sql = { "sql_formatter" },
           markdown = { "prettier" },
+          bzl = { "buildifier" },
           zsh = { "shellcheck" },
           sh = { "shellcheck" },
           bash = { "shellcheck" },
