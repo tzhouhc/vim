@@ -136,7 +136,6 @@ local unwanted_cmds = {
   "ScrollbarShow",
   "RegexplainerToggle",
   "RegexplainerShow",
-  "PrintTSNode",
   "PlenaryBustedFile",
   "PlenaryBustedDirectory",
   "Pexplore",
