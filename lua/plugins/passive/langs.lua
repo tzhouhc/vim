@@ -46,7 +46,8 @@ return {
         },
         custom = {
           todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
-          unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownTodo' },
+          unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownWarn' },
+          bad = { raw = '[!]', rendered = '', highlight = 'RenderMarkdownError' },
         },
       },
       pipe_table = { preset = 'heavy' },

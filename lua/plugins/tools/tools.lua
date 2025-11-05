@@ -128,5 +128,18 @@ return {
       --   setting this to `false` will give you
       --   descriptions of available keymaps.
     }
-  }
+  },
+	-- deadline rendering
+	{
+		"NFrid/due.nvim",
+    ft = { "markdown" },
+		config = function()
+			require("due_nvim").setup({
+				due_hi = "Special",
+				prescript = "by ",
+				pattern_start = "[", -- start for a date string pattern
+				pattern_end = "]", -- end for a date string pattern
+			})
+		end,
+	},
 }

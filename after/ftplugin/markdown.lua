@@ -5,6 +5,8 @@
 -- point. I.e. we only want a new line when we *ask* for it.
 vim.bo.autoindent = true
 vim.bo.formatoptions = "crnojqw"
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
 
 -- set conceallevel=2
 -- set concealcursor=nc
