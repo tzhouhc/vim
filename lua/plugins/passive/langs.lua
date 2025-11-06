@@ -41,11 +41,11 @@ return {
           highlight = 'RenderMarkdownUnchecked',
         },
         checked = {
-          icon = '󰱒',
+          icon = '',
           highlight = 'RenderMarkdownChecked',
         },
         custom = {
-          todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
+          todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownBullet' },
           unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownWarn' },
           bad = { raw = '[!]', rendered = '', highlight = 'RenderMarkdownError' },
         },
