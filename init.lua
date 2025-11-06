@@ -9,6 +9,9 @@ require("plugins")
 -- plugin post-loading configurations (i.e. needs `require` from the plugin)
 require("post")
 
+-- autocmds
+require("autocmds")
+
 -- `lua/lib` includes custom logic (with or w/o plugin API usage) that are
 -- not loaded by default, but are imported by their corresponding plugins or
 -- post conf scripts.

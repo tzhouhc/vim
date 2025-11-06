@@ -16,13 +16,13 @@ function M.toggle_todo_item()
 	local line = vim.api.nvim_get_current_line()
 
 	-- Match the todo pattern; capture spaces and the potential "by ..." at end
-	local pattern = "^([%s%-]*)%[([ xX])%](.*)$"
+	local pattern = "^([%s%-]*)%[([ -?!xX])%](.*)$"
 	local prefix, state, rest = line:match(pattern)
 	if not prefix then
 		return
 	end
 
-	if state == " " then
+	if state ~= "x" then
 		-- Toggle to checked, remove trailing 'by ...'
 		-- Remove 'by ...' (ignore leading/trailing whitespace)
 		local content = rest:gsub("%s+by%s+.*$", "")

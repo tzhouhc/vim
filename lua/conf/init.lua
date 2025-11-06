@@ -21,8 +21,6 @@ end
 
 -- visual effects
 require("conf.visuals")
--- autocommands
-require("conf.autocmds")
 -- vim opts
 require("conf.settings")
 -- errors, hints, etc
