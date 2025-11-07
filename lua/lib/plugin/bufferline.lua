@@ -5,7 +5,7 @@ Hydra({
   name = "Buffer",
   mode = "n",
   body = "<leader>b",
-  hint = [[ _[_ Prev _]_ Next ]],
+  hint = [[ _[_ Prev _]_ Next _<_ Swap Left _>_ Swap Right _X_ Close Others _x_ Close ]],
   config = {
     color = "red",
     invoke_on_body = true,
@@ -26,8 +26,24 @@ Hydra({
     {"8", "<cmd>BufferLineGoToBuffer 8<CR>", {}},
     {"9", "<cmd>BufferLineGoToBuffer 9<CR>", {}},
     {"0", "<cmd>BufferLineGoToBuffer -1<CR>", {}},
-    {"[", "<cmd>bprev<cr>", {}},
-    {"]", "<cmd>bnext<cr>", {}},
+    {"[", "<cmd>BufferLineCyclePrev<cr>", {}},
+    {"]", "<cmd>BufferLineCycleNext<cr>", {}},
+    {"<", function()
+      vim.cmd("BufferLineMovePrev")
+      vim.cmd("redraw!")
+    end, {}},
+    {">", function()
+      vim.cmd("BufferLineMoveNext")
+      vim.cmd("redraw!")
+    end, {}},
+    {"x", function()
+      vim.cmd("bd")
+      vim.cmd("redraw!")
+    end, {}},
+    {"X", function()
+      vim.cmd("BufferLineCloseOthers")
+      vim.cmd("redraw!")
+    end, {}},
     { "<esc>", nil, { exit = true } },
   },
 })
