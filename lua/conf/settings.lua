@@ -102,4 +102,4 @@ if vim.fn.executable("rg") then
 end
 
 -- remote clipboard
-vim.g.clipboard = 'osc52'
+-- vim.g.clipboard = 'osc52'
