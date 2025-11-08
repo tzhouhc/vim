@@ -100,3 +100,6 @@ if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep -P --color=never"
   vim.opt.grepformat = "%f:%l:%c:%m"
 end
+
+-- remote clipboard
+vim.g.clipboard = 'osc52'
