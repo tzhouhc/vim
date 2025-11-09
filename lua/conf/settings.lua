@@ -100,24 +100,3 @@ if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep -P --color=never"
   vim.opt.grepformat = "%f:%l:%c:%m"
 end
-
--- remote clipboard
-if vim.g.ssh then
-  local function paste()
-    return {
-      vim.fn.split(vim.fn.getreg(""), "\n"),
-      vim.fn.getregtype(""),
-    }
-  end
-  vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-      ['+'] = paste,
-      ['*'] = paste,
-    },
-  }
-end

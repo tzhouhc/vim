@@ -58,3 +58,24 @@ vim.api.nvim_create_autocmd('MenuPopup', {
 
 -- disable newtr
 vim.keymap.set("n", "gf", "", {})
+
+-- remote clipboard
+if vim.g.ssh then
+  local function paste()
+    return {
+      vim.fn.split(vim.fn.getreg(""), "\n"),
+      vim.fn.getregtype(""),
+    }
+  end
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = paste,
+      ['*'] = paste,
+    },
+  }
+end
