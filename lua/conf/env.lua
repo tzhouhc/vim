@@ -5,3 +5,6 @@ if vim_home then
 else
   vim.g.vim_home = vim.fs.joinpath(os.getenv("HOME"), ".config/nvim/")
 end
+
+-- current vim session is over SSH
+vim.g.ssh = not not os.getenv("SSH_CLIENT")
