@@ -184,7 +184,7 @@ return {
         quickfile = { enabled = true },
         rename = { enabled = true },
         -- double not to cast as bool
-        scroll = { cond = not not vim.g.animate_scroll },
+        scroll = { enabled = not not vim.g.animate_scroll },
         statuscolumn = { enabled = true },
         words = { enabled = true },
         styles = {
