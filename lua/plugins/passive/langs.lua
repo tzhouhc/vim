@@ -48,6 +48,7 @@ return {
           todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownBullet' },
           unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownWarn' },
           bad = { raw = '[!]', rendered = '', highlight = 'RenderMarkdownError' },
+          abandoned = { raw = '[/]', rendered = '󰩹', highlight = 'Comment' },
         },
       },
       pipe_table = { preset = 'heavy' },

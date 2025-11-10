@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*tasks.md", -- Replace with your desired filename
 	callback = function()
-    vim.fn.matchadd('SignColumn', '\\[x\\]\\zs.*')
+    vim.fn.matchadd('SignColumn', '\\[[x/]\\]\\zs.*')
 		vim.keymap.set("n", "gt", require("lib.tasks").toggle_todo_item, { noremap = true, silent = true })
 	end,
 })
