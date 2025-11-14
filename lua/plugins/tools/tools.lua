@@ -142,4 +142,10 @@ return {
 			})
 		end,
 	},
+  -- Colorpicker inside neovim
+  {
+    "uga-rosa/ccc.nvim",
+    config = true,
+    cmd = { "CccPick" },
+  }
 }
