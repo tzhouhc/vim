@@ -39,6 +39,8 @@ return {
 					["bx"] = "<cmd>BufferLinePickClose<cr>",
 					["b]"] = "<cmd>BufferLineCycleNext<cr>",
 					["b["] = "<cmd>BufferLineCyclePrev<cr>",
+					["]b"] = "<cmd>BufferLineCycleNext<cr>",
+					["[b"] = "<cmd>BufferLineCyclePrev<cr>",
 				},
 			}
 			require("lib.binder").batch_set_keymap(keymap)
