@@ -29,24 +29,16 @@ return {
   {
     "rachartier/tiny-code-action.nvim",
     dependencies = {
-      { "nvim-lua/plenary.nvim" },
-
-      -- optional picker via telescope
-      { "nvim-telescope/telescope.nvim" },
       -- optional picker via fzf-lua
       { "ibhagwan/fzf-lua" },
-      -- .. or via snacks
-      {
-        "folke/snacks.nvim",
-        opts = {
-          terminal = {},
-        }
-      }
     },
     event = "LspAttach",
     config = function()
       local tca = require("tiny-code-action")
-      tca.setup({})
+      tca.setup({
+        backend = "delta",
+        picker = "fzf-lua",
+      })
       vim.keymap.set("n", "<leader>ca", function()
         tca.code_action()
       end, { noremap = true, silent = true })
