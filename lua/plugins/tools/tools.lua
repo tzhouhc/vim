@@ -147,5 +147,6 @@ return {
     "uga-rosa/ccc.nvim",
     config = true,
     cmd = { "CccPick" },
-  }
+  },
+	{ "subnut/nvim-ghost.nvim" },
 }
