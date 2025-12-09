@@ -20,6 +20,7 @@ return {
           zsh = { "shellcheck" },
           sh = { "shellcheck" },
           bash = { "shellcheck" },
+          tex = { "tex-fmt" },
         },
         default_format_opts = {
           lsp_format = "prefer",
