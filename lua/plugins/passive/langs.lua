@@ -12,7 +12,7 @@ return {
   },
   {
     -- nice shiny colors and conceals
-    'MeanderingProgrammer/render-markdown.nvim',
+    "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       file_types = { "Avante", "markdown" },
       heading = {
@@ -22,36 +22,40 @@ return {
         icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰲦 ", "󰲨 ", "󰲪 " },
       },
       code = {
-        width = 'block',
+        width = "block",
         left_pad = 0,
         right_pad = 2,
         language_pad = 2,
         min_width = 40,
-        border = 'thin',
+        border = "thin",
         sign = false,
       },
       sign = {
         enabled = true,
       },
+      bullet = {
+        icons = { "·" },
+        highlight = "SignColumn",
+      },
       checkbox = {
-        enabled = true,
-        position = 'inline',
+        enabled = false,
+        position = "inline",
         unchecked = {
-          icon = '󰄱',
-          highlight = 'RenderMarkdownUnchecked',
+          icon = "󰄱",
+          highlight = "RenderMarkdownUnchecked",
         },
         checked = {
-          icon = '',
-          highlight = 'RenderMarkdownChecked',
+          icon = "",
+          highlight = "RenderMarkdownChecked",
         },
         custom = {
-          todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownBullet' },
-          unsure = { raw = '[?]', rendered = '', highlight = 'RenderMarkdownWarn' },
-          bad = { raw = '[!]', rendered = '', highlight = 'RenderMarkdownError' },
-          abandoned = { raw = '[/]', rendered = '󰩹', highlight = 'Comment' },
+          todo = { raw = "[-]", rendered = "󰥔", highlight = "RenderMarkdownBullet" },
+          unsure = { raw = "[?]", rendered = "", highlight = "RenderMarkdownWarn" },
+          bad = { raw = "[!]", rendered = "", highlight = "RenderMarkdownError" },
+          abandoned = { raw = "[/]", rendered = "󰩹", highlight = "Comment" },
         },
       },
-      pipe_table = { preset = 'heavy' },
+      pipe_table = { preset = "heavy" },
     },
     ft = { "Avante", "markdown" },
   },
