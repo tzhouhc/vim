@@ -1,10 +1,10 @@
 return {
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     keys = { "<leader>ae" },
     cmd = { "AerialToggle" },
@@ -18,6 +18,6 @@ return {
         end,
       })
       vim.keymap.set("n", "<leader>ae", "<cmd>AerialToggle!<CR>")
-    end
+    end,
   },
 }

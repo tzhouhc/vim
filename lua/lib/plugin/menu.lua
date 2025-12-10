@@ -9,9 +9,9 @@ M.normal = {
   {
     name = "󰈭 Highlight Word",
     cmd = function()
-      iw.InterestingWord('n', false)
-      iw.InterestingWord('n', true)
-    end
+      iw.InterestingWord("n", false)
+      iw.InterestingWord("n", true)
+    end,
   },
   {
     name = "󰍉 Inspect",
@@ -38,9 +38,9 @@ M.visual = {
   {
     name = "󰈭 Highlight Word",
     cmd = function()
-      iw.InterestingWord('v', false)
-      iw.InterestingWord('v', true)
-    end
+      iw.InterestingWord("v", false)
+      iw.InterestingWord("v", true)
+    end,
   },
   {
     name = " Lookup",
@@ -55,7 +55,7 @@ M.visual = {
   {
     name = "󰉼 Format",
     cmd = "FormatCode",
-  }
+  },
 }
 
 return M

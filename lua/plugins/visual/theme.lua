@@ -39,23 +39,23 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "macchiato", -- latte, frappe, macchiato, mocha
-        background = {         -- :h background
+        background = { -- :h background
           light = "latte",
           dark = "mocha",
         },
         transparent_background = false, -- disables setting the background color.
-        show_end_of_buffer = false,     -- shows the '~' characters after the end of buffers
-        term_colors = false,            -- sets terminal colors (e.g. `g:terminal_color_0`)
+        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+        term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
         dim_inactive = {
-          enabled = true,               -- dims the background color of inactive window
+          enabled = true, -- dims the background color of inactive window
           shade = "dark",
-          percentage = 0.15,            -- percentage of the shade to apply to the inactive window
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
         },
-        no_italic = false,              -- Force no italic
-        no_bold = false,                -- Force no bold
-        no_underline = false,           -- Force no underline
-        styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { "italic" },      -- Change the style of comments
+        no_italic = false, -- Force no italic
+        no_bold = false, -- Force no bold
+        no_underline = false, -- Force no underline
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
           loops = {},
           functions = {},
@@ -95,7 +95,7 @@ return {
         },
       })
       vim.cmd("colorscheme catppuccin")
-    end
+    end,
   },
   {
     "rebelot/kanagawa.nvim",
@@ -103,45 +103,44 @@ return {
     priority = 1000,
     cond = vim.g.theme == "kanagawa",
     config = function()
-      require('kanagawa').setup({
-        compile = false,  -- enable compiling the colorscheme
+      require("kanagawa").setup({
+        compile = false, -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
         functionStyle = {},
         keywordStyle = { italic = false },
         statementStyle = { bold = true },
         typeStyle = {},
-        transparent = false,    -- do not set background color
-        dimInactive = false,    -- dim inactive window `:h hl-NormalNC`
+        transparent = false, -- do not set background color
+        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
         terminalColors = false, -- define vim.g.terminal_color_{0,17}
-        colors = {              -- add/modify theme and palette colors
+        colors = { -- add/modify theme and palette colors
           palette = {},
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
         overrides = function(colors) -- add/modify highlights
           return {}
         end,
-        theme = "wave",  -- Load "wave" theme when 'background' option is not set
-        background = {   -- map the value of 'background' option to a theme
+        theme = "wave", -- Load "wave" theme when 'background' option is not set
+        background = { -- map the value of 'background' option to a theme
           dark = "wave", -- try "dragon" !
-          light = "lotus"
+          light = "lotus",
         },
       })
 
       -- setup must be called before loading
       vim.cmd("colorscheme kanagawa")
-    end
+    end,
   },
   {
-    'projekt0n/github-nvim-theme',
+    "projekt0n/github-nvim-theme",
     lazy = false,
     priority = 1000,
     cond = vim.g.theme == "github_dark",
     config = function()
-      require('github-theme').setup({
-      })
-      vim.cmd('colorscheme github_dark')
-    end
+      require("github-theme").setup({})
+      vim.cmd("colorscheme github_dark")
+    end,
   },
   {
     "folke/tokyonight.nvim",
@@ -149,9 +148,9 @@ return {
     priority = 1000,
     cond = vim.g.theme == "tokyonight",
     config = function()
-      require('tokyonight').setup({})
-      vim.cmd('colorscheme tokyonight')
-    end
+      require("tokyonight").setup({})
+      vim.cmd("colorscheme tokyonight")
+    end,
   },
   {
     "sainnhe/everforest",
@@ -159,8 +158,8 @@ return {
     priority = 1000,
     cond = vim.g.theme == "everforest",
     config = function()
-      vim.cmd('colorscheme everforest')
-    end
+      vim.cmd("colorscheme everforest")
+    end,
   },
   {
     "sainnhe/gruvbox-material",
@@ -168,8 +167,8 @@ return {
     priority = 1000,
     cond = vim.g.theme == "gruvbox-material",
     config = function()
-      vim.cmd('colorscheme gruvbox-material')
-    end
+      vim.cmd("colorscheme gruvbox-material")
+    end,
   },
   {
     "mhartington/oceanic-next",
@@ -177,8 +176,8 @@ return {
     priority = 1000,
     cond = vim.g.theme == "OceanicNext",
     config = function()
-      vim.cmd('colorscheme OceanicNext')
-    end
+      vim.cmd("colorscheme OceanicNext")
+    end,
   },
   {
     "mcauley-penney/techbase.nvim",
@@ -186,7 +185,7 @@ return {
     priority = 1000,
     cond = vim.g.theme == "techbase",
     config = function()
-      vim.cmd('colorscheme techbase')
-    end
+      vim.cmd("colorscheme techbase")
+    end,
   },
 }

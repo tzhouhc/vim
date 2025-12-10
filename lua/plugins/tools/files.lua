@@ -23,11 +23,11 @@ return {
     },
     cmd = { "Neotree" },
     lazy = false, -- neo-tree will lazily load itself
-    config = function ()
+    config = function()
       require("neo-tree").setup({
         close_if_last_window = true,
       })
       vim.keymap.set("n", "<leader>nt", "<cmd>Neotree dir=./<cr>", {})
-    end
-  }
+    end,
+  },
 }

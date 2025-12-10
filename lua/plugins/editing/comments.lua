@@ -13,5 +13,5 @@ return {
       require("neogen").setup()
       vim.keymap.set("n", "<leader>ng", "<cmd>Neogen<cr>", {})
     end,
-  }
+  },
 }

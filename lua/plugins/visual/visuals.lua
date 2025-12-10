@@ -4,7 +4,7 @@ return {
     "xiyaowong/transparent.nvim",
     cond = not not vim.g.enable_transparency,
     opts = {
-      extra_groups = { "ColorColumn" }
+      extra_groups = { "ColorColumn" },
     },
   },
   -- rainbow colors for parentheses/brackets for easier depth determination
@@ -19,21 +19,18 @@ return {
     config = function()
       require("colorizer").setup({})
       -- visuals.lua get colorizer started automatically on file open
-      vim.api.nvim_create_autocmd(
-        { "BufReadPost", "BufNewFile", "BufWritePre" },
-        {
-          pattern = {
-            "*.css",
-            "visuals.lua", -- vim / wezterm visual configs
-            "prompt.json", -- oh-my-posh prompt configs
-            "rainbow.lua",
-          },
-          callback = function()
-            vim.cmd("ColorizerAttachToBuffer")
-          end,
-          group = vim.api.nvim_create_augroup("AutoColorizer", { clear = true }),
-        }
-      )
+      vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
+        pattern = {
+          "*.css",
+          "visuals.lua", -- vim / wezterm visual configs
+          "prompt.json", -- oh-my-posh prompt configs
+          "rainbow.lua",
+        },
+        callback = function()
+          vim.cmd("ColorizerAttachToBuffer")
+        end,
+        group = vim.api.nvim_create_augroup("AutoColorizer", { clear = true }),
+      })
     end,
   },
   -- smart dimming of unrelated contextual code

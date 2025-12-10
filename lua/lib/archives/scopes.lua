@@ -23,68 +23,75 @@ local repo_ignore = {
 
 function M.open_file_history_selector(opts)
   -- Get current file path
-  local current_file = vim.fn.expand('%:p')
+  local current_file = vim.fn.expand("%:p")
 
   if opts and opts.branch then
     -- First, select a branch using Telescope
-    require('telescope.builtin').git_branches({
+    require("telescope.builtin").git_branches({
       attach_mappings = function(_, map)
-        map('i', '<CR>', function(prompt_bufnr)
+        map("i", "<CR>", function(prompt_bufnr)
           -- Get selected branch
-          local branch_selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
-          require('telescope.actions').close(prompt_bufnr)
+          local branch_selection = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+          require("telescope.actions").close(prompt_bufnr)
 
           if branch_selection then
             local branch_name = branch_selection.name or branch_selection.value
 
             -- Now, show commits from the selected branch
-            require('telescope.builtin').git_commits({
+            require("telescope.builtin").git_commits({
               -- Specify the branch to get commits from
               git_command = { "git", "log", "--pretty=oneline", "--abbrev-commit", branch_name },
 
               attach_mappings = function(_, inner_map)
-                inner_map('i', '<CR>', function(inner_prompt_bufnr)
+                inner_map("i", "<CR>", function(inner_prompt_bufnr)
                   -- Get selected commit
-                  local commit_selection = require('telescope.actions.state').get_selected_entry(inner_prompt_bufnr)
-                  require('telescope.actions').close(inner_prompt_bufnr)
+                  local commit_selection = require("telescope.actions.state").get_selected_entry(inner_prompt_bufnr)
+                  require("telescope.actions").close(inner_prompt_bufnr)
 
                   if commit_selection and commit_selection.value then
                     -- Open diffview with the selected commit
-                    vim.cmd(string.format('DiffviewOpen %s --selected-file=%s -- %s',
-                      commit_selection.value, current_file, current_file))
+                    vim.cmd(
+                      string.format(
+                        "DiffviewOpen %s --selected-file=%s -- %s",
+                        commit_selection.value,
+                        current_file,
+                        current_file
+                      )
+                    )
                   end
 
                   return true
                 end)
                 return true
-              end
+              end,
             })
           end
 
           return true
         end)
         return true
-      end
+      end,
     })
   else
     -- Simple commit picker from current branch
-    require('telescope.builtin').git_commits({
+    require("telescope.builtin").git_commits({
       attach_mappings = function(_, map)
-        map('i', '<CR>', function(prompt_bufnr)
+        map("i", "<CR>", function(prompt_bufnr)
           -- Get selected commit
-          local selection = require('telescope.actions.state').get_selected_entry(prompt_bufnr)
-          require('telescope.actions').close(prompt_bufnr)
+          local selection = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+          require("telescope.actions").close(prompt_bufnr)
 
           if selection and selection.value then
             -- Open diffview with the selected commit
-            vim.cmd(string.format('DiffviewOpen %s --selected-file=%s -- %s',
-              selection.value, current_file, current_file))
+            vim.cmd(
+              string.format("DiffviewOpen %s --selected-file=%s -- %s", selection.value, current_file, current_file)
+            )
           end
 
           return true
         end)
         return true
-      end
+      end,
     })
   end
 end
@@ -102,25 +109,25 @@ function M.runtime_files(opts)
   local files = vim.api.nvim_get_runtime_file("*.vim", true)
   opts = opts or {}
   pickers
-      .new(opts, {
-        prompt_title = " Runtime Files",
-        finder = finders.new_table({
-          results = files,
-        }),
-        sorter = conf.file_sorter(opts),
-        previewer = conf.file_previewer(opts),
-        -- NOTE THE SPELLING: `attach_mappings`! Failure to pluralize causes the
-        -- default mappings to be used and debugging to be hellish!
-        attach_mappings = function(prompt_bufnr, _)
-          actions.select_default:replace(function()
-            actions.close(prompt_bufnr)
-            local selection = action_state.get_selected_entry()[1]
-            vim.api.nvim_command("source " .. selection)
-          end)
-          return true
-        end,
-      })
-      :find()
+    .new(opts, {
+      prompt_title = " Runtime Files",
+      finder = finders.new_table({
+        results = files,
+      }),
+      sorter = conf.file_sorter(opts),
+      previewer = conf.file_previewer(opts),
+      -- NOTE THE SPELLING: `attach_mappings`! Failure to pluralize causes the
+      -- default mappings to be used and debugging to be hellish!
+      attach_mappings = function(prompt_bufnr, _)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()[1]
+          vim.api.nvim_command("source " .. selection)
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 function M.find_configs()
@@ -180,7 +187,7 @@ end
 function M.changed_files_in_repo()
   builtin.find_files({
     prompt_title = "󰊢 Changed Files in Repository",
-    find_command = { "git-dirt", },
+    find_command = { "git-dirt" },
     search_dirs = { git.git_repo_root() },
   })
 end

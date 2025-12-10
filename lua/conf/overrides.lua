@@ -23,8 +23,8 @@ local function enable_ctx_menu()
       amenu disable PopUp.Show\ All\ Diagnostics
     ]])
 
-  local urls = require('vim.ui')._get_urls()
-  if vim.startswith(urls[1], 'http') then
+  local urls = require("vim.ui")._get_urls()
+  if vim.startswith(urls[1], "http") then
     vim.cmd([[amenu enable PopUp.Open\ in\ web\ browser]])
   elseif vim.lsp.get_clients({ bufnr = 0 })[1] then
     vim.cmd([[anoremenu enable PopUp.Go\ to\ definition]])
@@ -46,10 +46,10 @@ end
 
 -- adjust nvim native popupmenu configs to avoid errors due to nvim not finding
 -- the expected items.
-local nvim_popupmenu_augroup = vim.api.nvim_create_augroup('nvim.popupmenu', {})
-vim.api.nvim_create_autocmd('MenuPopup', {
+local nvim_popupmenu_augroup = vim.api.nvim_create_augroup("nvim.popupmenu", {})
+vim.api.nvim_create_autocmd("MenuPopup", {
   group = nvim_popupmenu_augroup,
-  desc = 'Mouse popup menu',
+  desc = "Mouse popup menu",
   -- nested = true,
   callback = function()
     enable_ctx_menu()
@@ -68,14 +68,14 @@ if vim.g.ssh then
     }
   end
   vim.g.clipboard = {
-    name = 'OSC 52',
+    name = "OSC 52",
     copy = {
-      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
     paste = {
-      ['+'] = paste,
-      ['*'] = paste,
+      ["+"] = paste,
+      ["*"] = paste,
     },
   }
 end

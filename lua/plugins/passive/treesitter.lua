@@ -48,7 +48,7 @@ return {
           additional_vim_regex_highlighting = false,
         },
         indent = {
-          enable = true
+          enable = true,
         },
         incremental_selection = {
           enable = true,
@@ -64,7 +64,7 @@ return {
       -- Treesitter
       vim.api.nvim_create_user_command("PrintTSNode", tree.print_cur_node, {})
     end,
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" }
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",

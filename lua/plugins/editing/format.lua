@@ -40,7 +40,7 @@ return {
             range = {
               start = { opts.line1, 0 },
               ["end"] = { opts.line2, 0 },
-            }
+            },
           })
         end
       end
@@ -48,11 +48,11 @@ return {
 
       local keymap = {
         -- Normal mode
-        [{ 'n', 'v' }] = {
+        [{ "n", "v" }] = {
           ["<leader>fc"] = "<Cmd>FormatCode<cr>",
         },
       }
       require("lib.binder").batch_set_auto_buf_keymap(keymap, "conform")
     end,
-  }
+  },
 }

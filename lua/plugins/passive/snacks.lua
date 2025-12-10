@@ -23,25 +23,24 @@ local function open_last_actual_file()
   vim.notify("No oldfile found.", vim.log.levels.ERROR, {})
 end
 
-local dash_header =
-    "        ██            ██                          \n" ..
-    "      ██░░██        ██░░██                        \n" ..
-    "      ██░░▒▒████████▒▒░░██                ████    \n" ..
-    "    ██▒▒░░░░▒▒▒▒░░▒▒░░░░▒▒██            ██░░░░██  \n" ..
-    "    ██░░░░░░░░░░░░░░░░░░░░██            ██  ░░██  \n" ..
-    "  ██▒▒░░░░░░░░░░░░░░░░░░░░▒▒████████      ██▒▒██  \n" ..
-    "  ██░░  ██  ░░██░░  ██  ░░  ▒▒  ▒▒  ██    ██░░██  \n" ..
-    "  ██░░░░░░░░██░░██░░░░░░░░░░▒▒░░▒▒░░░░██████▒▒██  \n" ..
-    "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n" ..
-    "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n" ..
-    "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
-    "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
-    "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n" ..
-    "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██      \n" ..
-    "    ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██        \n" ..
-    "      ██▒▒░░▒▒▒▒░░▒▒░░░░░░▒▒░░▒▒▒▒░░▒▒██          \n" ..
-    "        ██░░████░░██████████░░████░░██            \n" ..
-    "        ██▓▓░░  ▓▓██░░  ░░██▓▓  ░░▓▓██            \n"
+local dash_header = "        ██            ██                          \n"
+  .. "      ██░░██        ██░░██                        \n"
+  .. "      ██░░▒▒████████▒▒░░██                ████    \n"
+  .. "    ██▒▒░░░░▒▒▒▒░░▒▒░░░░▒▒██            ██░░░░██  \n"
+  .. "    ██░░░░░░░░░░░░░░░░░░░░██            ██  ░░██  \n"
+  .. "  ██▒▒░░░░░░░░░░░░░░░░░░░░▒▒████████      ██▒▒██  \n"
+  .. "  ██░░  ██  ░░██░░  ██  ░░  ▒▒  ▒▒  ██    ██░░██  \n"
+  .. "  ██░░░░░░░░██░░██░░░░░░░░░░▒▒░░▒▒░░░░██████▒▒██  \n"
+  .. "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n"
+  .. "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██░░██    \n"
+  .. "  ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n"
+  .. "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n"
+  .. "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██      \n"
+  .. "  ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██      \n"
+  .. "    ██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██        \n"
+  .. "      ██▒▒░░▒▒▒▒░░▒▒░░░░░░▒▒░░▒▒▒▒░░▒▒██          \n"
+  .. "        ██░░████░░██████████░░████░░██            \n"
+  .. "        ██▓▓░░  ▓▓██░░  ░░██▓▓  ░░▓▓██            \n"
 
 local dash_keys = {
   dashboard_key_conf("1", "", "New File", ":ene"),
@@ -96,7 +95,7 @@ return {
       "folke/persistence.nvim",
     },
     config = function()
-      require('snacks').setup({
+      require("snacks").setup({
         -- https://github.com/folke/snacks.nvim?tab=readme-ov-file#-features
         -- for more components to enable
         bigfile = { enabled = false },
@@ -110,7 +109,7 @@ return {
           },
           sections = {
             { section = "header" },
-            { section = "keys",   gap = 1, padding = 1 },
+            { section = "keys", gap = 1, padding = 1 },
             { section = "startup" },
           },
         },
@@ -126,7 +125,7 @@ return {
                 groups[i] = "RainbowDarkDelim" .. i
               end
               return groups
-            end)()
+            end)(),
           },
           animate = {
             enabled = false,
@@ -142,7 +141,7 @@ return {
                 groups[i] = "RainbowDelim" .. i
               end
               return groups
-            end)()
+            end)(),
           },
           chunk = {
             enabled = true,
@@ -210,8 +209,8 @@ return {
             wo = {},
             keys = term_keys,
             fixbuf = true,
-          }
-        }
+          },
+        },
       })
       local terms = require("lib.plugin.snacks")
       local key_configs = {
@@ -221,11 +220,13 @@ return {
           ["<m-e>"] = terms.quake_term,
           -- local fuzzy find
           ["<m-f>"] = terms.repo_live_grep,
-        }
+        },
       }
       require("lib.binder").batch_set_auto_buf_keymap(key_configs, "snacks")
 
-      vim.api.nvim_create_user_command("Git", function() require("snacks.lazygit").open() end, {})
+      vim.api.nvim_create_user_command("Git", function()
+        require("snacks.lazygit").open()
+      end, {})
       vim.api.nvim_create_user_command("RenameFile", require("snacks.rename").rename_file, {})
 
       -- Git Tools
@@ -241,5 +242,5 @@ return {
         vim.cmd("redraw!")
       end, {})
     end,
-  }
+  },
 }

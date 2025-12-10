@@ -14,7 +14,7 @@ return {
     config = function()
       local iw = require("interestingwords")
       iw.setup({
-        colors = { '#8fbcbb', '#88c0d0', '#bf616a', '#d08770', '#ebcb8b', '#a3be8c' },
+        colors = { "#8fbcbb", "#88c0d0", "#bf616a", "#d08770", "#ebcb8b", "#a3be8c" },
         search_count = true,
         navigation = true,
         scroll_center = false,
@@ -28,13 +28,13 @@ return {
       -- I don't really ever search backwards, so we use `?` as
       -- "higlight + search", and it also does the normal + visual combined
       -- thing.
-      vim.keymap.set('n', "?", function()
-        iw.InterestingWord('n', false)
-        iw.InterestingWord('n', true)
+      vim.keymap.set("n", "?", function()
+        iw.InterestingWord("n", false)
+        iw.InterestingWord("n", true)
       end, { noremap = true, silent = true, desc = "InterestingWord Toggle Search" })
-      vim.keymap.set('x', "?", function()
-        iw.InterestingWord('v', false)
-        iw.InterestingWord('v', true)
+      vim.keymap.set("x", "?", function()
+        iw.InterestingWord("v", false)
+        iw.InterestingWord("v", true)
       end, { noremap = true, silent = true, desc = "InterestingWord Toggle Search" })
     end,
   },

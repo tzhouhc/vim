@@ -18,5 +18,5 @@ return {
         ps.load()
       end, {})
     end,
-  }
+  },
 }

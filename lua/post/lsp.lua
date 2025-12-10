@@ -14,7 +14,7 @@ if has_fzf and vim.g.use_fzf_for_lsp then
       ["gi"] = fzf.lsp_implementations,
       ["gt"] = fzf.lsp_typedefs,
       ["gr"] = fzf.lsp_references,
-    }
+    },
   }
 else
   lsp_key_config = {
@@ -24,10 +24,9 @@ else
       ["gi"] = vim.lsp.buf.implementation,
       ["gt"] = vim.lsp.buf.type_definition,
       ["gr"] = vim.lsp.buf.references,
-    }
+    },
   }
 end
-
 
 local core_lsps = {
   "lua_ls",

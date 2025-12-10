@@ -94,7 +94,7 @@ local hilight = {
 }
 
 local hilink = {
-  LspInlayHint = "Comment"
+  LspInlayHint = "Comment",
 }
 
 for _, hc in ipairs(hiclear) do

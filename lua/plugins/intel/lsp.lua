@@ -1,6 +1,6 @@
 return {
-	-- LSPs
-	"neovim/nvim-lspconfig",
+  -- LSPs
+  "neovim/nvim-lspconfig",
   -- pictograms for completion types
   { "onsails/lspkind.nvim", event = "LspAttach" },
 
@@ -21,7 +21,7 @@ return {
     opts = {
       lsp = {
         auto_attach = true,
-      }
+      },
     },
     config = true,
   },

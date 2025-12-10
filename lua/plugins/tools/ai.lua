@@ -19,7 +19,7 @@ return {
             window = {
               layout = "float",
               position = "right",
-            }
+            },
           },
         },
         strategies = {

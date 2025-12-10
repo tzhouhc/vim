@@ -16,7 +16,7 @@ local succ, _ = pcall(require, "conf.local")
 if not succ then
   local default_file = vim.fs.joinpath(vim.g.vim_home, "lua/conf/local_defaults.lua")
   local local_file = vim.fs.joinpath(vim.g.vim_home, "lua/conf/local.lua")
-	io.popen("cp " .. default_file .. " " .. local_file)
+  io.popen("cp " .. default_file .. " " .. local_file)
 end
 
 -- visual effects

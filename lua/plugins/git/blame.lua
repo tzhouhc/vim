@@ -18,10 +18,7 @@ return {
                 hl = "Comment",
               },
               {
-                textValue = utils.format_time(
-                  config.date_format,
-                  line_porcelain.committer_time
-                ),
+                textValue = utils.format_time(config.date_format, line_porcelain.committer_time),
                 hl = hash,
               },
               {
@@ -47,7 +44,7 @@ return {
       end
 
       require("blame").setup({
-        blame_options = { '-w', '-CCC' },
+        blame_options = { "-w", "-CCC" },
         date_format = "%Y-%m-%d",
         colors = {
           "#61AFEF",

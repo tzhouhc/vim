@@ -1,4 +1,3 @@
 return {
   cmd = { "prettierd" },
 }
-

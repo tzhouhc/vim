@@ -55,18 +55,21 @@ local debug_hydra = Hydra({
   },
   heads = {
     { "b", dap.toggle_breakpoint, {} },
-    { "c", dap.continue,          {} },
-    { "s", dap.step_over,         {} },
-    { "i", dap.step_into,         {} },
-    { "o", dap.step_out,          {} },
-    { "C", function()
-      vim.ui.select(
-        { "y", "n" }, { prompt = "Clear all breakpoints? ", }, function(item)
+    { "c", dap.continue, {} },
+    { "s", dap.step_over, {} },
+    { "i", dap.step_into, {} },
+    { "o", dap.step_out, {} },
+    {
+      "C",
+      function()
+        vim.ui.select({ "y", "n" }, { prompt = "Clear all breakpoints? " }, function(item)
           if item == "y" then
             dap.clear_breakpoints()
           end
         end)
-    end, {} },
+      end,
+      {},
+    },
     { "<leader>db", nil, { exit = true } },
   },
 })

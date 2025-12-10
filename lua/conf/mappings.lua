@@ -26,8 +26,12 @@ local key_configs = {
     ["q:"] = "",
 
     -- diagnostics movement
-    ["[e"] = function() vim.diagnostic.jump({ count = -1 }) end,
-    ["]e"] = function() vim.diagnostic.jump({ count = 1 }) end,
+    ["[e"] = function()
+      vim.diagnostic.jump({ count = -1 })
+    end,
+    ["]e"] = function()
+      vim.diagnostic.jump({ count = 1 })
+    end,
     -- create empty lines without moving
     ["[<space>"] = edit.add_blank_line_before,
     ["]<space>"] = edit.add_blank_line_after,
@@ -93,7 +97,7 @@ local key_configs = {
   },
   ca = {
     ["waq"] = "wa | q",
-  }
+  },
 }
 
 require("lib.binder").batch_set_keymap(key_configs)

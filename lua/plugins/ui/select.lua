@@ -16,13 +16,13 @@ return {
         previewers = {
           builtin = {
             ueberzug_scaler = false,
-            snacks_image    = { enabled = false },
-            extensions      = {
+            snacks_image = { enabled = false },
+            extensions = {
               ["png"] = { "imgcatr" },
               ["jpg"] = { "imgcatr" },
               ["jpeg"] = { "imgcatr" },
             },
-          }
+          },
         },
       })
       fzf.register_ui_select()
@@ -64,7 +64,7 @@ return {
           ["<c-f>"] = ":FzfLua grep_visual<cr>",
 
           ["<leader>p"] = ":FzfLua registers<cr>",
-        }
+        },
       }
       require("lib.binder").batch_set_keymap(key_configs)
 
@@ -95,7 +95,7 @@ return {
       -- aliases
       vim.api.nvim_create_user_command("Snippets", "FzfLua files cwd=~/.config/nvim/snippets", {})
       vim.api.nvim_create_user_command("Dotfiles", fv.dotfiles, {})
-    end
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -110,17 +110,17 @@ return {
       local ts = require("telescope")
 
       local select_one_or_multi = function(prompt_bufnr)
-        local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+        local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
         local multi = picker:get_multi_selection()
         if not vim.tbl_isempty(multi) then
-          require('telescope.actions').close(prompt_bufnr)
+          require("telescope.actions").close(prompt_bufnr)
           for _, j in pairs(multi) do
             if j.path ~= nil then
-              vim.cmd(string.format('%s %s', 'edit', j.path))
+              vim.cmd(string.format("%s %s", "edit", j.path))
             end
           end
         else
-          require('telescope.actions').select_default(prompt_bufnr)
+          require("telescope.actions").select_default(prompt_bufnr)
         end
       end
 
@@ -128,9 +128,9 @@ return {
       -- as imagined.
       local default_mapping = {
         i = {
-          ['<CR>'] = select_one_or_multi,
+          ["<CR>"] = select_one_or_multi,
           ["<esc>"] = require("telescope.actions").close,
-        }
+        },
       }
       ts.setup({
         defaults = {
@@ -145,7 +145,6 @@ return {
         },
       }
       require("lib.binder").batch_set_keymap(key_configs)
-    end
-
+    end,
   },
 }

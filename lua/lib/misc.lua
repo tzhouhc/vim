@@ -42,7 +42,6 @@ function M.dump(o)
   return _dump(o, 0)
 end
 
-
 ---look for patterns matching a GitHub repo and open it in the browser.
 function M.get_current_line_plugin()
   local line = vim.api.nvim_get_current_line()

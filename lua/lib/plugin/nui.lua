@@ -16,7 +16,7 @@ function M.static_info_popup()
     },
     position = {
       row = "5%",
-      col = "95%"
+      col = "95%",
     },
     size = {
       width = "40%",
@@ -24,11 +24,11 @@ function M.static_info_popup()
     },
   })
   _G.info_popup = popup
-  popup:map('n', '<esc>', function()
+  popup:map("n", "<esc>", function()
     popup:hide()
   end)
-  popup:map('n', '<enter>', '<c-]>')
-  popup:map('c', 'bd', 'bw')
+  popup:map("n", "<enter>", "<c-]>")
+  popup:map("c", "bd", "bw")
   popup:mount()
   vim.api.nvim_set_current_win(popup.winid)
   vim.opt_local.buftype = "help"
@@ -44,7 +44,7 @@ function M.info_popup_wrapper(cmd, ft, t)
     return
   end
 
-  M.static_info_popup()  -- handles focusing
+  M.static_info_popup() -- handles focusing
   -- this is the smart bit: help will open in existing windows that are of the
   -- help type!
   vim.opt_local.filetype = ft

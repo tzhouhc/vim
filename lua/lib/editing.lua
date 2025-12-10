@@ -3,8 +3,8 @@
 
 local M = {}
 
-local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-local enter = vim.api.nvim_replace_termcodes('<CR>', true, false, true)
+local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 
 function M.return_to_normal_mode()
   vim.api.nvim_feedkeys(esc, "n", false)
@@ -105,7 +105,7 @@ local function last_non_empty_line(row)
   repeat
     content = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     row = row - 1
-  until (content ~= "" or row == 0)
+  until content ~= "" or row == 0
   return content
 end
 
@@ -166,7 +166,9 @@ end
 -- selected text (first line if multi-line).
 function M.search_selected()
   local text = M.get_visual_selected()
-  if not text then return end
+  if not text then
+    return
+  end
   for _, line in ipairs(text) do
     M.return_to_normal_mode()
     vim.api.nvim_feedkeys("/" .. line .. enter, "n", false)
@@ -180,10 +182,10 @@ function M.toggle_gutter()
   local relativenumber = vim.wo.relativenumber
 
   -- Toggle signcolumn between 'yes' and 'no'
-  if signcolumn == 'yes' or signcolumn == 'auto' then
-    vim.wo.signcolumn = 'no'
+  if signcolumn == "yes" or signcolumn == "auto" then
+    vim.wo.signcolumn = "no"
   else
-    vim.wo.signcolumn = 'yes'
+    vim.wo.signcolumn = "yes"
   end
 
   -- Toggle line numbers

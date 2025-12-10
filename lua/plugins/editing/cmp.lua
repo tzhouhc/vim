@@ -2,17 +2,17 @@ local events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 local cmplib = require("lib.plugin.blink")
 
 local keymap = {
-  ['<c-c>'] = { 'cancel' },
-  ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-  ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-  ['<CR>'] = { 'accept', 'fallback' },
+  ["<c-c>"] = { "cancel" },
+  ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+  ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+  ["<CR>"] = { "accept", "fallback" },
 }
 if vim.g.escape_clears_cmp then
-  keymap['<esc>'] = {
+  keymap["<esc>"] = {
     cmplib.cancel_and_exit,
-    'fallback',
+    "fallback",
   }
-  keymap['<S-CR>'] = { cmplib.accept_and_exit, 'fallback' }
+  keymap["<S-CR>"] = { cmplib.accept_and_exit, "fallback" }
 end
 
 return {
@@ -71,7 +71,7 @@ return {
             selection = {
               preselect = false,
               auto_insert = true,
-            }
+            },
           },
         },
         sources = {
@@ -81,7 +81,7 @@ return {
               opts = {
                 -- or (recommended) filter to only "normal" buffers
                 get_bufnrs = cmplib.all_bufnrs,
-              }
+              },
             },
             tmux = {
               module = "blink-cmp-tmux",
@@ -93,10 +93,10 @@ return {
                 -- only suggest completions from `tmux` if the `trigger_chars` are
                 -- used
                 triggered_only = false,
-                trigger_chars = { "." }
+                trigger_chars = { "." },
               },
             },
-          }
+          },
         },
         fuzzy = {
           implementation = "prefer_rust",
@@ -113,7 +113,7 @@ return {
               },
             },
             menu = { auto_show = true },
-          }
+          },
         },
       })
 
@@ -136,18 +136,15 @@ return {
       end
 
       -- completion colors
-      for _, name in pairs(vim.fn.getcompletion('BlinkCmpKind*', 'highlight')) do
+      for _, name in pairs(vim.fn.getcompletion("BlinkCmpKind*", "highlight")) do
         local fg = colors.fg_by_hlgroup(name)
         if fg then
           vim.api.nvim_set_hl(0, name, { bg = fg, fg = bg })
         end
       end
 
-      vim.api.nvim_set_hl(0, "BlinkCmpKindText",
-        { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })
-      vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet",
-        { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })
-
-    end
+      vim.api.nvim_set_hl(0, "BlinkCmpKindText", { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })
+      vim.api.nvim_set_hl(0, "BlinkCmpKindSnippet", { bg = bg, fg = colors.fg_by_hlgroup("BlinkCmpLabel") })
+    end,
   },
 }

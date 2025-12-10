@@ -25,13 +25,23 @@ return {
       local set = vim.keymap.set
 
       -- Add or skip cursor above/below the main cursor.
-      set({ "n", "x" }, "<m-up>", function() mc.lineAddCursor(-1) end)
-      set({ "n", "x" }, "<m-down>", function() mc.lineAddCursor(1) end)
-      set({ "n", "x" }, "<leader-up>", function() mc.lineSkipCursor(-1) end)
-      set({ "n", "x" }, "<leader-down>", function() mc.lineSkipCursor(1) end)
+      set({ "n", "x" }, "<m-up>", function()
+        mc.lineAddCursor(-1)
+      end)
+      set({ "n", "x" }, "<m-down>", function()
+        mc.lineAddCursor(1)
+      end)
+      set({ "n", "x" }, "<leader-up>", function()
+        mc.lineSkipCursor(-1)
+      end)
+      set({ "n", "x" }, "<leader-down>", function()
+        mc.lineSkipCursor(1)
+      end)
 
       -- Add or skip adding a new cursor by matching word/selection
-      set({ "n", "x" }, "<c-n>", function() mc.matchAddCursor(1) end)
+      set({ "n", "x" }, "<c-n>", function()
+        mc.matchAddCursor(1)
+      end)
 
       -- Disable and enable cursors.
       set({ "n", "x" }, "<c-q>", mc.toggleCursor)
@@ -65,7 +75,7 @@ return {
       hl(0, "MultiCursorDisabledCursor", { reverse = true })
       hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
       hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
-    end
+    end,
   },
   -- regex explainer
   {
@@ -109,7 +119,7 @@ return {
   -- "time machine" for git history
   {
     "fredeeb/tardis.nvim",
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
     cmd = "Tardis",
   },
@@ -124,29 +134,29 @@ return {
     },
     opts = {
       round_units = false,
-      simple_statusline = true,   -- If you are just starting out with Videre,
+      simple_statusline = true, -- If you are just starting out with Videre,
       --   setting this to `false` will give you
       --   descriptions of available keymaps.
-    }
+    },
   },
-	-- deadline rendering
-	{
-		"NFrid/due.nvim",
+  -- deadline rendering
+  {
+    "NFrid/due.nvim",
     ft = { "markdown" },
-		config = function()
-			require("due_nvim").setup({
-				due_hi = "Special",
-				prescript = "by ",
-				pattern_start = "[", -- start for a date string pattern
-				pattern_end = "]", -- end for a date string pattern
-			})
-		end,
-	},
+    config = function()
+      require("due_nvim").setup({
+        due_hi = "Special",
+        prescript = "by ",
+        pattern_start = "[", -- start for a date string pattern
+        pattern_end = "]", -- end for a date string pattern
+      })
+    end,
+  },
   -- Colorpicker inside neovim
   {
     "uga-rosa/ccc.nvim",
     config = true,
     cmd = { "CccPick" },
   },
-	{ "subnut/nvim-ghost.nvim" },
+  { "subnut/nvim-ghost.nvim" },
 }

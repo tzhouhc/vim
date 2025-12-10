@@ -27,12 +27,7 @@ return {
         end
       end
 
-      vim.keymap.set(
-        "n",
-        "<leader>dv",
-        toggle_diffview,
-        { noremap = true, silent = true }
-      )
-    end
+      vim.keymap.set("n", "<leader>dv", toggle_diffview, { noremap = true, silent = true })
+    end,
   },
 }

@@ -2,4 +2,3 @@
 return {
   cmd = { "zls" },
 }
-

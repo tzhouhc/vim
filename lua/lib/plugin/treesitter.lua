@@ -1,9 +1,9 @@
 local M = {}
 
-local ts = require 'nvim-treesitter.ts_utils'
-local parsers = require "nvim-treesitter.parsers"
-local locals = require "nvim-treesitter.locals"
-local queries = require "nvim-treesitter.query"
+local ts = require("nvim-treesitter.ts_utils")
+local parsers = require("nvim-treesitter.parsers")
+local locals = require("nvim-treesitter.locals")
+local queries = require("nvim-treesitter.query")
 
 local node_list = {}
 local current_index = nil
@@ -23,10 +23,10 @@ local function find_expand_node(node)
   end
   local parent_start_row, parent_start_col, parent_end_row, parent_end_col = parent:range()
   if
-      start_row == parent_start_row
-      and start_col == parent_start_col
-      and end_row == parent_end_row
-      and end_col == parent_end_col
+    start_row == parent_start_row
+    and start_col == parent_start_col
+    and end_row == parent_end_row
+    and end_col == parent_end_col
   then
     return find_expand_node(parent)
   end

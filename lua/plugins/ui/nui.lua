@@ -9,6 +9,6 @@ return {
       vim.api.nvim_create_user_command("H", popups.help_popup, { nargs = "?", complete = "help" })
       vim.keymap.set("ca", "h", "H", { noremap = true, silent = true })
       vim.api.nvim_create_user_command("M", popups.man_popup, { nargs = "?" })
-    end
+    end,
   },
 }

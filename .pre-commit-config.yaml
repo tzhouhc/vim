@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: stylua
+        name: stylua
+        entry: "stylua"
+        language: system
+        types: [lua]
+        env:
+          HOME: "{HOME}"
+

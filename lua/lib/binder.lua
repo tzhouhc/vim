@@ -35,7 +35,7 @@ end
 function M.batch_set_auto_buf_keymap(mappings, suffix)
   local fts = require("lib.ft")
   local grp = vim.api.nvim_create_augroup("NormalBufferMappings-" .. suffix, { clear = true })
-  vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     group = grp,
     callback = function(args)
       local bufnr = args.buf

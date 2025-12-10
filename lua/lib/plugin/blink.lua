@@ -30,12 +30,12 @@ local kind_map = {
 }
 
 local comment_types = {
-  'comment',
-  'comment_content',
-  'line_comment',
-  'block_comment',
-  'string',
-  'string_content',
+  "comment",
+  "comment_content",
+  "line_comment",
+  "block_comment",
+  "string",
+  "string_content",
 }
 
 function M.kind_icon_text(ctx)
@@ -75,26 +75,25 @@ end
 
 function M.all_bufnrs()
   return vim.tbl_filter(function(bufnr)
-    return vim.bo[bufnr].buftype == ''
+    return vim.bo[bufnr].buftype == ""
   end, vim.api.nvim_list_bufs())
 end
 
 function M.select_cmp_sources(_)
-  local default = { 'lsp', 'snippets', 'path', 'buffer' }
+  local default = { "lsp", "snippets", "path", "buffer" }
   local success, node = pcall(vim.treesitter.get_node)
   if not success or not node then
     return default
   end
   if vim.tbl_contains(comment_types, node:type()) then
-    return { 'buffer' }
+    return { "buffer" }
   else
     return default
   end
 end
 
 function M.back_to_normal()
-  vim.api.nvim_feedkeys(
-    vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
 end
 
 -- weird behavior due to some screen movement schenanigans?
@@ -109,10 +108,12 @@ end
 function M.cmd_sources()
   local type = vim.fn.getcmdtype()
   -- Search forward and backward
-  if type == '/' or type == '?' then return { 'buffer' } end
+  if type == "/" or type == "?" then
+    return { "buffer" }
+  end
   -- Commands
-  if type == ':' or type == '@' then
-    return { 'cmdline' }
+  if type == ":" or type == "@" then
+    return { "cmdline" }
   end
   return {}
 end

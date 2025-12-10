@@ -15,14 +15,14 @@ return {
       local keymap = {
         v = {
           ["q"] = { "<Plug>(nvim-surround-visual)'", {} },
-          ["Q"] = { "<Plug>(nvim-surround-visual)\"", {} },
+          ["Q"] = { '<Plug>(nvim-surround-visual)"', {} },
           ["'"] = { "<Plug>(nvim-surround-visual)'", {} },
-          ["\""] = { "<Plug>(nvim-surround-visual)\"", {} },
+          ['"'] = { '<Plug>(nvim-surround-visual)"', {} },
           ["("] = { "<Plug>(nvim-surround-visual))", {} },
           [")"] = { "<Plug>(nvim-surround-visual))", {} },
           ["["] = { "<Plug>(nvim-surround-visual)]", {} },
           ["]"] = { "<Plug>(nvim-surround-visual)]", {} },
-        }
+        },
       }
       require("lib.binder").batch_set_auto_buf_keymap(keymap, "surround")
     end,
@@ -43,7 +43,7 @@ return {
     cond = not not vim.g.keep_win_after_bufkill,
     event = events,
     config = function()
-      require('bufdel').setup({
+      require("bufdel").setup({
         quit = vim.g.last_buffer_close_action == "quit",
         empty_action = function(_)
           if vim.g.last_buffer_close_action == "dash" then
@@ -52,17 +52,17 @@ return {
           elseif vim.g.last_buffer_close_action == "yazi" then
             vim.cmd("Yazi")
           end
-        end
+        end,
       })
       local keymap = {
         ca = {
           ["bd"] = "BufDel",
           ["bda"] = "BufDelAll",
           ["bdo"] = "BufDelOthers",
-        }
+        },
       }
       require("lib.binder").batch_set_keymap(keymap)
-    end
+    end,
   },
   -- don't yank deletion except with 'd'
   {
@@ -96,9 +96,9 @@ return {
   {
     "LunarVim/bigfile.nvim",
     opts = {
-      filesize = 2,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
+      filesize = 2, -- size of the file in MiB, the plugin round file sizes to the closest MiB
       pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-      features = {       -- features to disable
+      features = { -- features to disable
         "indent_blankline",
         "illuminate",
         "lsp",
@@ -108,6 +108,6 @@ return {
         "vimopts",
         "filetype",
       },
-    }
+    },
   },
 }
