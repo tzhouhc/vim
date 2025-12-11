@@ -71,7 +71,7 @@ return {
           },
         },
         metadata = {
-          check_at = {
+          review = {
             style = { fg = "#eed49f" },
             get_value = function()
               -- tomorrow's date (a very naive implementation)
@@ -158,7 +158,7 @@ return {
         local filtered = {}
         for _, t in ipairs(todos) do
           -- note: use `.get_metadata` instead of `:get_metadata`
-          local meta, check_date = t.get_metadata("check_at")
+          local meta, check_date = t.get_metadata("review")
           -- check_date would be of the format "12-15" or "2025-12-15"
           if meta and check_date_passed(check_date) then
             filtered[#filtered + 1] = t
