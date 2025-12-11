@@ -4,6 +4,7 @@
 init:
   python3 -m pip install pynvim neovim-remote hererocks --break-system-packages
   nvim --headless "+Lazy! sync" +qa
+  nvim --headless "+TSUpdate" +qa
   nvim --headless "+MasonInstall tree-sitter-cli" +qa
 
 # Export all available user commands. Note that this *is* affected by the
