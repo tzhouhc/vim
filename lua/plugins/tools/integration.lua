@@ -48,7 +48,7 @@ return {
     end,
   },
   {
-    "bngarren/checkmate.nvim",
+    "tzhouhc/checkmate.nvim",
     ft = "markdown",
     config = function()
       opts = {
