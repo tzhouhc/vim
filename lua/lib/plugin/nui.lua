@@ -19,7 +19,7 @@ function M.static_info_popup()
       col = "95%",
     },
     size = {
-      width = "40%",
+      width = 80,
       height = "95%",
     },
   })

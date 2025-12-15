@@ -113,7 +113,13 @@ return {
   -- bulk find/replace tool
   {
     "MagicDuck/grug-far.nvim",
-    config = true,
+    opts = {
+      engines = {
+        ripgrep = {
+          extraArgs = "-P", -- pcre2
+        },
+      },
+    },
     cmd = "GrugFar",
   },
   -- "time machine" for git history
