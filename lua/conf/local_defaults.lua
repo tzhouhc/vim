@@ -47,8 +47,6 @@ vim.g.auto_cleanup_whitespace = true
 vim.g.detect_filetype_on_save = true
 -- Save oldfiles to /tmp/oldfiles.txt separately from shada
 vim.g.save_oldfiles = false
--- Automatically toggle between CN/EN ime on escape/insert
-vim.g.auto_toggle_ime = false
 -- Do not yank content deleted via x/X/s/c...
 vim.g.no_yank_deletion = true
 -- Keep window open after split kill
@@ -70,3 +68,9 @@ vim.g.escape_clears_cmp = false
 -- Lsp preferences
 -- Whether to use fzf for lsp selector
 vim.g.use_fzf_for_lsp = true
+
+-- DEPRECATED --
+
+-- Automatically toggle between CN/EN ime on escape/insert; Rime natively
+-- supports this toggling
+vim.g.auto_toggle_ime = false

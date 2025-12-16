@@ -1,5 +1,10 @@
 -- Utilities dealing with input methods. Mainly relevant with available IME
 -- switching API.
+--
+-- NOTE:
+-- As of 2025-12-25, this instrumentation is no longer needed -- Rime input
+-- has native support for automatically defaulting to ASCII for chosen apps
+-- and upon escaping to normal mode.
 
 vim.g.en_ime = "com.apple.keylayout.US"
 vim.g.cn_ime = "im.rime.inputmethod.Squirrel.Hans"
