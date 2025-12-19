@@ -164,5 +164,4 @@ return {
     config = true,
     cmd = { "CccPick" },
   },
-  { "subnut/nvim-ghost.nvim" },
 }

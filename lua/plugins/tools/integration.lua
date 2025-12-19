@@ -52,7 +52,6 @@ return {
     ft = "markdown",
     config = function()
       opts = {
-        files = { "*tasks.md" },
         keys = {
           ["gt"] = {
             rhs = "<cmd>Checkmate toggle<CR>",
