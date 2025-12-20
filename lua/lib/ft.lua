@@ -9,6 +9,7 @@ M.special_filetypes = {
   "netrw",
   "NvimTree",
   "neo-tree",
+  "grug-far",
   "fzf",
   "FzfLua",
   "Telescope",

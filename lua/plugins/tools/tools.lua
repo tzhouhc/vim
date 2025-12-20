@@ -113,14 +113,23 @@ return {
   -- bulk find/replace tool
   {
     "MagicDuck/grug-far.nvim",
-    opts = {
-      engines = {
-        ripgrep = {
-          extraArgs = "-P", -- pcre2
+    config = function()
+      local grug = require("grug-far")
+      grug.setup({
+        engines = {
+          ripgrep = {
+            extraArgs = "-P", -- pcre2
+          },
         },
-      },
-    },
-    cmd = "GrugFar",
+        transient = true,
+        wrap = false,
+      })
+
+      vim.api.nvim_create_user_command("GrugNear", function()
+        grug.open({ prefills = { paths = vim.fn.expand("%") } })
+      end, {})
+    end,
+    cmd = { "GrugFar", "GrugNear" },
   },
   -- "time machine" for git history
   {
