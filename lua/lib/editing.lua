@@ -198,4 +198,18 @@ function M.toggle_gutter()
   end
 end
 
+function M.fix_whitespace()
+  local bufnr = 0 -- current buffer
+  local line_count = vim.api.nvim_buf_line_count(bufnr)
+  for lnum = 1, line_count do
+    local line = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1]
+    if line then
+      local trimmed = string.gsub(line, "%s+$", "")
+      if trimmed ~= line then
+        vim.api.nvim_buf_set_lines(bufnr, lnum - 1, lnum, false, { trimmed })
+      end
+    end
+  end
+end
+
 return M

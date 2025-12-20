@@ -28,11 +28,6 @@ return {
     end,
     event = events,
   },
-  -- removing trailing whitespace on save
-  {
-    "bronson/vim-trailing-whitespace",
-    event = events,
-  },
   -- kill buffer but keep split
   {
     "tzhouhc/nvim-bufdel",

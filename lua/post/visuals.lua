@@ -1,8 +1,5 @@
 -- all following highlight groups will be cleared
 local hiclear = {
-  -- hide trailing whitespace marker
-  "ExtraWhitespace",
-
   "DiffAdd",
   "DiffChange",
   "DiffDelete",

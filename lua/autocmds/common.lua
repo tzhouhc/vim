@@ -2,16 +2,16 @@
 
 local tooling = require("autocmds.tooling")
 local ime = require("lib.ime")
+local editing = require("lib.editing")
 
 -- on save, clean all trailing whitespaces.
 tooling.create_toggleable_autocmd("auto_cleanup_whitespace", function()
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    callback = function()
-      vim.api.nvim_command(":FixWhitespace")
-    end,
+    callback = editing.fix_whitespace,
     group = vim.api.nvim_create_augroup("AutoFixWhitespace", { clear = true }),
   })
 end, "AutoFixWhitespace")
+vim.api.nvim_create_user_command("FixWhitespace", editing.fix_whitespace, {})
 
 -- on save, detect filetype if not set yet
 tooling.create_toggleable_autocmd("detect_filetype_on_save", function()
