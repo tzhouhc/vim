@@ -6,6 +6,3 @@ repos:
         entry: "stylua"
         language: system
         types: [lua]
-        env:
-          HOME: "{HOME}"
-

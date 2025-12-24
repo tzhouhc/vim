@@ -2,6 +2,7 @@
 
 -- set leader as Lazy expects it before setting up plugins
 vim.g.mapleader = "\\"
+vim.g.python3_host_prog = "pynvim-python"
 
 vim.opt.termguicolors = true
 
