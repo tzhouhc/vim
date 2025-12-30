@@ -3,6 +3,7 @@
 vim.filetype.add({
   extension = {
     nu = "nu",
+    todo = "markdown",
   },
   filename = {
     ["justfile"] = "just",
