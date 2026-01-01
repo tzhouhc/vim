@@ -1,5 +1,19 @@
 # Ting's NeoVim Setup
 
+## Setup
+
+If this repo is cloned to your `~/.config/nvim`, then it _should_ just work...
+almost.
+
+There might be some missing tooling. The included `justfile` provides an `init`
+target that should help, though I imagine it still will work even without.
+
+The default setup is probably in this sort of weird corner where it's like
+vim, probably close enough for you to even use like it's old vim, but also
+breaks in very subtle ways since I've tweaked stuff to my own likings. Overall
+I would *not* recommend using my setup as-is -- though you could probably copy
+the layout and clean a lot of the stuff up.
+
 ## Structure
 
 ### init.lua
